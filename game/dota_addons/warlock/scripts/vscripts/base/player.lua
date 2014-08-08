@@ -89,7 +89,15 @@ function Player:HeroSpawned(hero)
 		owner = self
 	}
 	
+	GAME.picked_count = (GAME.picked_count or 0) + 1
 	--self.pawn:disable()
+end
+
+function Player:HeroRemoved()
+	if self.pawn then
+		self.pawn:disable()
+		self.pawn = nil
+	end
 end
 
 function Player:EventReconnect(info)

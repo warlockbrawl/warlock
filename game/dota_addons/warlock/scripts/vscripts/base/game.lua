@@ -63,20 +63,27 @@ function Game:init()
 
 	-- Wait for the game to start
 	self.in_progress = false
+end
 
-	self.task_start = self:addTask{
-		id='game start check',
-		period=1,
-		func=function()
-			if self.in_progrss then
-				self.task_start:cancel()
-				return
-			end
-
-			-- Check if the phase is proper
-			if GameRules:State_Get() >= DOTA_GAMERULES_STATE_PRE_GAME then
-				-- Check if we have any players
-				if self.player_count > 0 then
+function Game:EventStateChanged(event)
+	new_state = GameRules:State_Get()
+	
+	log("GameState changed to " .. tostring(new_state))
+	
+	-- Fix for current state bug
+	if new_state == DOTA_GAMERULES_STATE_INIT then
+		for id, player in pairs(GAME.players) do
+			player:HeroRemoved()
+		end
+	end
+	
+	-- Start a timer for game start
+	if not self.in_progress and not self.task_start and new_state >= DOTA_GAMERULES_STATE_PRE_GAME then
+		self.task_start = self:addTask {
+			id = "game start",
+			period = 1,
+			func = function()
+				if (self.picked_count or 0) > 0 then
 					self.in_progress = true
 					self.task_start:cancel()
 					self.task_start = nil
@@ -84,11 +91,9 @@ function Game:init()
 				else
 					log("Waiting for at least 1 player")
 				end
-			else
-				log("Waiting for DOTA_GAMERULES_STATE_PRE_GAME")
 			end
-		end
-	}
+		}
+	end
 end
 
 function Game:start()
@@ -167,11 +172,12 @@ function Game:initEvents()
 	ListenToGameEvent('dota_item_purchased', Dynamic_Wrap(self, 'EventShop'), self)
 	ListenToGameEvent('dota_player_learned_ability', Dynamic_Wrap(self, 'EventUpgrade'), self)
 
-	ListenToGameEvent('dota_player_used_ability', Dynamic_Wrap(self, 'EventAbilityUsed'), self)
 	ListenToGameEvent('entity_killed', Dynamic_Wrap(self, 'EventEntityKilled'), self)
 
 	ListenToGameEvent('player_reconnected', Dynamic_Wrap(self, 'EventPlayerReconnected'), self)
 	ListenToGameEvent('npc_spawned', Dynamic_Wrap(self, 'EventNPCSpawned'), self)
+	
+	ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(self, 'EventStateChanged'), self)
 end
 
 --- Function executed periodically every GAME_TICK_RATE
@@ -203,14 +209,9 @@ end
 function Game:EventTick(dt)
 end
 
-function Game:EventAbilityUsed(event)
-	--print('EventAbilityUsed ')
-	--PrintTable(event)
-end
-
 function Game:EventEntityKilled(event)
-	--print('EventEntityKilled ')
-	--PrintTable(event)
+	print('EventEntityKilled')
+	PrintTable(event)
 end
 
 -- Custom events
