@@ -104,7 +104,6 @@ function Mode:prepareForRound()
 end
 
 function Mode:onRoundStart()
-
 	self.round = self.round + 1
 	display(self:roundName())
 
