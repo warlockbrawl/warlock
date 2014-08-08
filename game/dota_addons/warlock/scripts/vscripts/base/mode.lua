@@ -16,7 +16,6 @@ function Mode:init()
 end
 
 function Mode:onStart()
-
 	for id, player in pairs(GAME.players) do
 		player:setCash(Config.CASH_ON_START)
 	end

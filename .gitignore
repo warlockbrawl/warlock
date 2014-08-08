@@ -223,3 +223,7 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+#Dota specific
+*/game/dota_addons/warlock/tools_asset_info.bin
+*/game/dota_addons/warlock/tools_thumbnail_cache.bin
