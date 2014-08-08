@@ -78,7 +78,12 @@ function Player:HeroSpawned(hero)
 		return
 	end
 	
+	-- Set mana to zero
+	hero:SetMana(0)
+	
 	self.heroEntity = hero
+	
+	-- Create pawn
 	self.pawn = Pawn:new {
 		unit = hero,
 		owner = self

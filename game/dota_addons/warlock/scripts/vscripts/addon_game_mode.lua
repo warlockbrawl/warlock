@@ -144,6 +144,7 @@ function Precache(context)
 	PrecacheResource("particle_folder", "particles/units/heroes/hero_dazzle", context)
 	PrecacheResource("particle_folder", "particles/units/heroes/hero_wisp", context)
 	PrecacheResource("particle_folder", "particles/units/heroes/hero_phantom_assassin", context)
+	PrecacheResource("particle_folder", "particles/units/heroes/hero_lich", context)
 end
 
 function Activate()
