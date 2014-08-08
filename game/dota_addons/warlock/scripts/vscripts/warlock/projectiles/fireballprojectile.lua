@@ -1,0 +1,1 @@
+FireballProjectile = class(SimpleProjectile)

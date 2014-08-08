@@ -1,0 +1,1820 @@
+"Lightning.Cast"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"		"sos_reference_stack"
+                "reference_stack"		"dota_update_default"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "value0"		"sounds/weapons/hero/zuus/lightning_bolt.vsnd"
+                        }
+                    }
+                    "volume_min"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "volume_max"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "pitch_min"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "pitch_max"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "chan_type"
+                    {
+                        "value"		"6"
+                    }
+                    "memory_type"
+                    {
+                        "value"		"0"
+                    }
+                    "soundlevel_min"
+                    {
+                        "value"		"81.000000"
+                    }
+                    "soundlevel_max"
+                    {
+                        "value"		"81.000000"
+                    }
+                    "mixgroup"
+                    {
+                        "value"		"Weapons"
+                    }
+                    "spread_radius"
+                    {
+                        "value"		"600.000000"
+                    }
+                }
+            }
+        }
+    }
+}
+
+"Lightning.FBExplosion"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"		"sos_reference_stack"
+                "reference_stack"		"dota_update_default"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "value0"		"sounds/weapons/hero/zuus/gods_wrath_cast.vsnd"
+                        }
+                    }
+                    "volume_min"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "volume_max"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "pitch_min"
+                    {
+                        "value"		"0.950000"
+                    }
+                    "pitch_max"
+                    {
+                        "value"		"1.050000"
+                    }
+                    "chan_type"
+                    {
+                        "value"		"6"
+                    }
+                    "memory_type"
+                    {
+                        "value"		"0"
+                    }
+                    "soundlevel_min"
+                    {
+                        "value"		"81.000000"
+                    }
+                    "soundlevel_max"
+                    {
+                        "value"		"81.000000"
+                    }
+                    "mixgroup"
+                    {
+                        "value"		"Ultimates"
+                    }
+                    "volume_falloff_max"
+                    {
+                        "value"		"30000.000000"
+                    }
+                    "spread_radius"
+                    {
+                        "value"		"3000.000000"
+                    }
+                }
+            }
+        }
+    }
+}
+
+"Scourge.Cast"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"		"sos_reference_stack"
+                "reference_stack"		"dota_update_default"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "value0"		"sounds/weapons/hero/abaddon/shield_detonate.vsnd"
+                        }
+                    }
+                    "volume_min"
+                    {
+                        "value"		"0.750000"
+                    }
+                    "volume_max"
+                    {
+                        "value"		"0.750000"
+                    }
+                    "pitch_min"
+                    {
+                        "value"		"0.950000"
+                    }
+                    "pitch_max"
+                    {
+                        "value"		"1.050000"
+                    }
+                    "chan_type"
+                    {
+                        "value"		"6"
+                    }
+                    "memory_type"
+                    {
+                        "value"		"0"
+                    }
+                    "soundlevel_min"
+                    {
+                        "value"		"81.000000"
+                    }
+                    "soundlevel_max"
+                    {
+                        "value"		"81.000000"
+                    }
+                    "mixgroup"
+                    {
+                        "value"		"Weapons"
+                    }
+                    "spread_radius"
+                    {
+                        "value"		"300.000000"
+                    }
+                }
+            }
+        }
+    }
+}
+
+"Boomerang.Hit"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"		"sos_reference_stack"
+                "reference_stack"		"dota_src1_3d"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "wave0"		"sounds/weapons/hero/bloodseeker/attack01.vsnd"
+                            "wave1"		"sounds/weapons/hero/bloodseeker/attack02.vsnd"
+                            "wave2"		"sounds/weapons/hero/bloodseeker/attack03.vsnd"
+                        }
+                    }
+                    "volume_min"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "volume_max"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "pitch_min"
+                    {
+                        "value"		"0.950000"
+                    }
+                    "pitch_max"
+                    {
+                        "value"		"1.050000"
+                    }
+                    "chan_type"
+                    {
+                        "value"		"1"
+                    }
+                    "memory_type"
+                    {
+                        "value"		"0"
+                    }
+                    "soundlevel_min"
+                    {
+                        "value"		"75.000000"
+                    }
+                    "soundlevel_max"
+                    {
+                        "value"		"75.000000"
+                    }
+                    "distance_max"
+                    {
+                        "value"		"2500.000000"
+                    }
+                }
+            }
+        }
+    }
+}
+
+"Fireball.Explode"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"		"sos_reference_stack"
+                "reference_stack"		"dota_update_default"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "value0"		"sounds/weapons/hero/ogre_magi/fireblast_target.vsnd"
+                        }
+                    }
+                    "volume_min"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "volume_max"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "pitch_min"
+                    {
+                        "value"		"0.950000"
+                    }
+                    "pitch_max"
+                    {
+                        "value"		"1.050000"
+                    }
+                    "chan_type"
+                    {
+                        "value"		"1"
+                    }
+                    "memory_type"
+                    {
+                        "value"		"0"
+                    }
+                    "soundlevel_min"
+                    {
+                        "value"		"84.000000"
+                    }
+                    "soundlevel_max"
+                    {
+                        "value"		"84.000000"
+                    }
+                    "mixgroup"
+                    {
+                        "value"		"Weapons"
+                    }
+                    "spread_radius"
+                    {
+                        "value"		"300.000000"
+                    }
+                }
+            }
+        }
+    }
+}
+
+"Cluster.Explode"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"		"sos_reference_stack"
+                "reference_stack"		"dota_update_default"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "value0"		"sounds/weapons/hero/ogre_magi/fireblast_target.vsnd"
+                        }
+                    }
+                    "volume_min"
+                    {
+                        "value"		"0.250000"
+                    }
+                    "volume_max"
+                    {
+                        "value"		"0.250000"
+                    }
+                    "pitch_min"
+                    {
+                        "value"		"0.950000"
+                    }
+                    "pitch_max"
+                    {
+                        "value"		"1.050000"
+                    }
+                    "chan_type"
+                    {
+                        "value"		"1"
+                    }
+                    "memory_type"
+                    {
+                        "value"		"0"
+                    }
+                    "soundlevel_min"
+                    {
+                        "value"		"84.000000"
+                    }
+                    "soundlevel_max"
+                    {
+                        "value"		"84.000000"
+                    }
+                    "mixgroup"
+                    {
+                        "value"		"Weapons"
+                    }
+                    "spread_radius"
+                    {
+                        "value"		"300.000000"
+                    }
+                }
+            }
+        }
+    }
+}
+
+"Gravity.Cast"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"		"sos_reference_stack"
+                "reference_stack"		"dota_src1_3d"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "value0"		"sounds/weapons/hero/medusa/snake_return.vsnd"
+                        }
+                    }
+                    "volume_min"
+                    {
+                        "value"		"0.750000"
+                    }
+                    "volume_max"
+                    {
+                        "value"		"0.750000"
+                    }
+                    "pitch_min"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "pitch_max"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "chan_type"
+                    {
+                        "value"		"6"
+                    }
+                    "memory_type"
+                    {
+                        "value"		"0"
+                    }
+                    "soundlevel_min"
+                    {
+                        "value"		"75.000000"
+                    }
+                    "soundlevel_max"
+                    {
+                        "value"		"75.000000"
+                    }
+                    "distance_max"
+                    {
+                        "value"		"2500.000000"
+                    }
+                    "limiter_on"
+                    {
+                        "value"		"0.000000"
+                    }
+                }
+            }
+        }
+    }
+}
+
+"Gravity.Destroyed"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"		"sos_reference_stack"
+                "reference_stack"		"dota_src1_3d"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "wave0"		"sounds/weapons/hero/lich/impact01.vsnd"
+                            "wave1"		"sounds/weapons/hero/lich/impact02.vsnd"
+                        }
+                    }
+                    "volume_min"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "volume_max"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "pitch_min"
+                    {
+                        "value"		"0.950000"
+                    }
+                    "pitch_max"
+                    {
+                        "value"		"1.050000"
+                    }
+                    "chan_type"
+                    {
+                        "value"		"1"
+                    }
+                    "memory_type"
+                    {
+                        "value"		"0"
+                    }
+                    "soundlevel_min"
+                    {
+                        "value"		"72.000000"
+                    }
+                    "soundlevel_max"
+                    {
+                        "value"		"72.000000"
+                    }
+                    "distance_max"
+                    {
+                        "value"		"1000.000000"
+                    }
+                }
+            }
+        }
+    }
+}
+
+"Meteor.Cast"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"		"sos_reference_stack"
+                "reference_stack"		"dota_update_default"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "value0"		"sounds/weapons/hero/invoker/meteor_cast.vsnd"
+                        }
+                    }
+                    "volume_min"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "volume_max"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "pitch_min"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "pitch_max"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "chan_type"
+                    {
+                        "value"		"6"
+                    }
+                    "memory_type"
+                    {
+                        "value"		"0"
+                    }
+                    "soundlevel_min"
+                    {
+                        "value"		"81.000000"
+                    }
+                    "soundlevel_max"
+                    {
+                        "value"		"81.000000"
+                    }
+                    "mixgroup"
+                    {
+                        "value"		"Weapons"
+                    }
+                    "spread_radius"
+                    {
+                        "value"		"600.000000"
+                    }
+                }
+            }
+        }
+    }
+}
+
+"Meteor.Explode"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"		"sos_reference_stack"
+                "reference_stack"		"dota_update_default"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "value0"		"sounds/weapons/hero/invoker/meteor_impact.vsnd"
+                        }
+                    }
+                    "volume_min"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "volume_max"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "pitch_min"
+                    {
+                        "value"		"0.950000"
+                    }
+                    "pitch_max"
+                    {
+                        "value"		"1.050000"
+                    }
+                    "chan_type"
+                    {
+                        "value"		"6"
+                    }
+                    "memory_type"
+                    {
+                        "value"		"0"
+                    }
+                    "soundlevel_min"
+                    {
+                        "value"		"81.000000"
+                    }
+                    "soundlevel_max"
+                    {
+                        "value"		"81.000000"
+                    }
+                    "mixgroup"
+                    {
+                        "value"		"Ultimates"
+                    }
+                    "spread_radius"
+                    {
+                        "value"		"900.000000"
+                    }
+                }
+            }
+        }
+    }
+}
+
+"Teleport.Cast"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"		"sos_reference_stack"
+                "reference_stack"		"dota_update_default"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "value0"		"sounds/weapons/hero/bane/brain_sap.vsnd"
+                        }
+                    }
+                    "volume_min"
+                    {
+                        "value"		"0.799805"
+                    }
+                    "volume_max"
+                    {
+                        "value"		"0.799805"
+                    }
+                    "pitch_min"
+                    {
+                        "value"		"0.950000"
+                    }
+                    "pitch_max"
+                    {
+                        "value"		"1.050000"
+                    }
+                    "chan_type"
+                    {
+                        "value"		"6"
+                    }
+                    "memory_type"
+                    {
+                        "value"		"0"
+                    }
+                    "soundlevel_min"
+                    {
+                        "value"		"81.000000"
+                    }
+                    "soundlevel_max"
+                    {
+                        "value"		"81.000000"
+                    }
+                    "mixgroup"
+                    {
+                        "value"		"Weapons"
+                    }
+                    "spread_radius"
+                    {
+                        "value"		"300.000000"
+                    }
+                }
+            }
+        }
+    }
+}
+
+"Bouncer.Hit"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"		"sos_reference_stack"
+                "reference_stack"		"dota_src1_3d"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "value0"		"sounds/weapons/hero/templar_assassin/meld_end.vsnd"
+                        }
+                    }
+                    "volume_min"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "volume_max"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "pitch_min"
+                    {
+                        "value"		"0.950000"
+                    }
+                    "pitch_max"
+                    {
+                        "value"		"1.050000"
+                    }
+                    "chan_type"
+                    {
+                        "value"		"6"
+                    }
+                    "memory_type"
+                    {
+                        "value"		"0"
+                    }
+                    "soundlevel_min"
+                    {
+                        "value"		"78.000000"
+                    }
+                    "soundlevel_max"
+                    {
+                        "value"		"78.000000"
+                    }
+                    "distance_max"
+                    {
+                        "value"		"2500.000000"
+                    }
+                    "limiter_on"
+                    {
+                        "value"		"0.000000"
+                    }
+                }
+            }
+        }
+    }
+}
+
+"Bouncer.Explode"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"		"sos_reference_stack"
+                "reference_stack"		"dota_src1_3d"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "wave0"		"sounds/weapons/hero/terrorblade/ranged_impacts_01.vsnd"
+                            "wave1"		"sounds/weapons/hero/terrorblade/ranged_impacts_02.vsnd"
+                        }
+                    }
+                    "volume_min"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "volume_max"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "pitch_min"
+                    {
+                        "value"		"0.950000"
+                    }
+                    "pitch_max"
+                    {
+                        "value"		"1.050000"
+                    }
+                    "chan_type"
+                    {
+                        "value"		"6"
+                    }
+                    "memory_type"
+                    {
+                        "value"		"0"
+                    }
+                    "soundlevel_min"
+                    {
+                        "value"		"78.000000"
+                    }
+                    "soundlevel_max"
+                    {
+                        "value"		"78.000000"
+                    }
+                    "distance_max"
+                    {
+                        "value"		"1000.000000"
+                    }
+                    "limiter_on"
+                    {
+                        "value"		"0.000000"
+                    }
+                }
+            }
+        }
+    }
+}
+
+"WindWalk.Hit"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"		"sos_reference_stack"
+                "reference_stack"		"dota_update_default"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "value0"		"sounds/weapons/hero/axe/berserkers_shoutmask.vsnd"
+                        }
+                    }
+                    "volume_min"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "volume_max"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "pitch_min"
+                    {
+                        "value"		"0.950000"
+                    }
+                    "pitch_max"
+                    {
+                        "value"		"1.050000"
+                    }
+                    "chan_type"
+                    {
+                        "value"		"6"
+                    }
+                    "memory_type"
+                    {
+                        "value"		"0"
+                    }
+                    "soundlevel_min"
+                    {
+                        "value"		"81.000000"
+                    }
+                    "soundlevel_max"
+                    {
+                        "value"		"81.000000"
+                    }
+                    "mixgroup"
+                    {
+                        "value"		"Weapons"
+                    }
+                    "volume_fade_out"
+                    {
+                        "value"		"0.200000"
+                    }
+                    "spread_radius"
+                    {
+                        "value"		"300.000000"
+                    }
+                }
+            }
+        }
+    }
+}
+
+"WindWalk.Cast"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"		"sos_reference_stack"
+                "reference_stack"		"dota_update_default"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "value0"		"sounds/weapons/hero/clinkz/windwalk.vsnd"
+                        }
+                    }
+                    "volume_min"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "volume_max"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "pitch_min"
+                    {
+                        "value"		"0.900000"
+                    }
+                    "pitch_max"
+                    {
+                        "value"		"1.100000"
+                    }
+                    "chan_type"
+                    {
+                        "value"		"1"
+                    }
+                    "memory_type"
+                    {
+                        "value"		"0"
+                    }
+                    "soundlevel_min"
+                    {
+                        "value"		"81.000000"
+                    }
+                    "soundlevel_max"
+                    {
+                        "value"		"81.000000"
+                    }
+                    "mixgroup"
+                    {
+                        "value"		"Weapons"
+                    }
+                    "spread_radius"
+                    {
+                        "value"		"300.000000"
+                    }
+                }
+            }
+        }
+    }
+}
+
+"Shield.Cast"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"		"sos_reference_stack"
+                "reference_stack"		"dota_update_default"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "value0"		"sounds/weapons/hero/invoker/alacrity.vsnd"
+                        }
+                    }
+                    "volume_min"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "volume_max"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "pitch_min"
+                    {
+                        "value"		"0.950000"
+                    }
+                    "pitch_max"
+                    {
+                        "value"		"1.050000"
+                    }
+                    "chan_type"
+                    {
+                        "value"		"6"
+                    }
+                    "memory_type"
+                    {
+                        "value"		"0"
+                    }
+                    "soundlevel_min"
+                    {
+                        "value"		"81.000000"
+                    }
+                    "soundlevel_max"
+                    {
+                        "value"		"81.000000"
+                    }
+                    "mixgroup"
+                    {
+                        "value"		"Weapons"
+                    }
+                    "spread_radius"
+                    {
+                        "value"		"150.000000"
+                    }
+                }
+            }
+        }
+    }
+}
+
+"Shield.Reflect"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"		"sos_reference_stack"
+                "reference_stack"		"dota_update_default"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "wave0"		"sounds/weapons/hero/leshrac/diabolic_edict01.vsnd"
+                            "wave1"		"sounds/weapons/hero/leshrac/diabolic_edict02.vsnd"
+                            "wave2"		"sounds/weapons/hero/leshrac/diabolic_edict03.vsnd"
+                            "wave3"		"sounds/weapons/hero/leshrac/diabolic_edict04.vsnd"
+                            "wave4"		"sounds/weapons/hero/leshrac/diabolic_edict05.vsnd"
+                            "wave5"		"sounds/weapons/hero/leshrac/diabolic_edict06.vsnd"
+                        }
+                    }
+                    "volume_min"
+                    {
+                        "value"		"0.399902"
+                    }
+                    "volume_max"
+                    {
+                        "value"		"0.599854"
+                    }
+                    "pitch_min"
+                    {
+                        "value"		"0.950000"
+                    }
+                    "pitch_max"
+                    {
+                        "value"		"1.100000"
+                    }
+                    "chan_type"
+                    {
+                        "value"		"6"
+                    }
+                    "memory_type"
+                    {
+                        "value"		"0"
+                    }
+                    "soundlevel_min"
+                    {
+                        "value"		"81.000000"
+                    }
+                    "soundlevel_max"
+                    {
+                        "value"		"81.000000"
+                    }
+                    "mixgroup"
+                    {
+                        "value"		"Weapons"
+                    }
+                    "spread_radius"
+                    {
+                        "value"		"150.000000"
+                    }
+                }
+            }
+        }
+    }
+}
+
+"Swap.Swap"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"		"sos_reference_stack"
+                "reference_stack"		"dota_update_default"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "value0"		"sounds/weapons/hero/vengeful_spirit/nether_swap.vsnd"
+                        }
+                    }
+                    "volume_min"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "volume_max"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "pitch_min"
+                    {
+                        "value"		"0.950000"
+                    }
+                    "pitch_max"
+                    {
+                        "value"		"1.050000"
+                    }
+                    "chan_type"
+                    {
+                        "value"		"6"
+                    }
+                    "memory_type"
+                    {
+                        "value"		"0"
+                    }
+                    "soundlevel_min"
+                    {
+                        "value"		"81.000000"
+                    }
+                    "soundlevel_max"
+                    {
+                        "value"		"81.000000"
+                    }
+                    "mixgroup"
+                    {
+                        "value"		"Ultimates"
+                    }
+                    "spread_radius"
+                    {
+                        "value"		"300.000000"
+                    }
+                }
+            }
+        }
+    }
+}
+
+"Rush.Cast"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"		"sos_reference_stack"
+                "reference_stack"		"dota_update_default"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "value0"		"sounds/weapons/hero/ember_spirit/searing_chains_cast.vsnd"
+                        }
+                    }
+                    "volume_min"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "volume_max"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "pitch_min"
+                    {
+                        "value"		"0.950000"
+                    }
+                    "pitch_max"
+                    {
+                        "value"		"1.050000"
+                    }
+                    "chan_type"
+                    {
+                        "value"		"6"
+                    }
+                    "memory_type"
+                    {
+                        "value"		"0"
+                    }
+                    "soundlevel_min"
+                    {
+                        "value"		"75.000000"
+                    }
+                    "soundlevel_max"
+                    {
+                        "value"		"75.000000"
+                    }
+                    "mixgroup"
+                    {
+                        "value"		"Weapons"
+                    }
+                    "spread_radius"
+                    {
+                        "value"		"300.000000"
+                    }
+                }
+            }
+        }
+    }
+}
+
+"Grip.Hit"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"		"sos_reference_stack"
+                "reference_stack"		"dota_update_default"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "value0"		"sounds/weapons/hero/bane/nightmare.vsnd"
+                        }
+                    }
+                    "volume_min"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "volume_max"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "pitch_min"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "pitch_max"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "chan_type"
+                    {
+                        "value"		"6"
+                    }
+                    "memory_type"
+                    {
+                        "value"		"0"
+                    }
+                    "soundlevel_min"
+                    {
+                        "value"		"81.000000"
+                    }
+                    "soundlevel_max"
+                    {
+                        "value"		"81.000000"
+                    }
+                    "mixgroup"
+                    {
+                        "value"		"Weapons"
+                    }
+                    "spread_radius"
+                    {
+                        "value"		"300.000000"
+                    }
+                }
+            }
+        }
+    }
+}
+
+"Grip.End"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"		"sos_reference_stack"
+                "reference_stack"		"dota_src1_3d"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "value0"		"sounds/weapons/hero/bane/nightmare_end.vsnd"
+                        }
+                    }
+                    "volume_min"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "volume_max"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "pitch_min"
+                    {
+                        "value"		"0.950000"
+                    }
+                    "pitch_max"
+                    {
+                        "value"		"1.050000"
+                    }
+                    "chan_type"
+                    {
+                        "value"		"6"
+                    }
+                    "memory_type"
+                    {
+                        "value"		"0"
+                    }
+                    "soundlevel_min"
+                    {
+                        "value"		"78.000000"
+                    }
+                    "soundlevel_max"
+                    {
+                        "value"		"78.000000"
+                    }
+                    "distance_max"
+                    {
+                        "value"		"2500.000000"
+                    }
+                    "limiter_on"
+                    {
+                        "value"		"0.000000"
+                    }
+                }
+            }
+        }
+    }
+}
+
+"Grip.ProjectileDestroyed"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"		"sos_reference_stack"
+                "reference_stack"		"dota_src1_3d"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "value0"		"sounds/weapons/hero/bane/projectile_impact.vsnd"
+                        }
+                    }
+                    "volume_min"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "volume_max"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "pitch_min"
+                    {
+                        "value"		"0.950000"
+                    }
+                    "pitch_max"
+                    {
+                        "value"		"1.050000"
+                    }
+                    "chan_type"
+                    {
+                        "value"		"6"
+                    }
+                    "memory_type"
+                    {
+                        "value"		"0"
+                    }
+                    "soundlevel_min"
+                    {
+                        "value"		"75.000000"
+                    }
+                    "soundlevel_max"
+                    {
+                        "value"		"75.000000"
+                    }
+                    "distance_max"
+                    {
+                        "value"		"1000.000000"
+                    }
+                    "limiter_on"
+                    {
+                        "value"		"0.000000"
+                    }
+                }
+            }
+        }
+    }
+}
+
+"Drain.Hit"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"		"sos_reference_stack"
+                "reference_stack"		"dota_update_default"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "value0"		"sounds/weapons/hero/broodmother/spiderling_impact.vsnd"
+                        }
+                    }
+                    "volume_min"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "volume_max"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "pitch_min"
+                    {
+                        "value"		"0.950000"
+                    }
+                    "pitch_max"
+                    {
+                        "value"		"1.050000"
+                    }
+                    "chan_type"
+                    {
+                        "value"		"6"
+                    }
+                    "memory_type"
+                    {
+                        "value"		"0"
+                    }
+                    "soundlevel_min"
+                    {
+                        "value"		"78.000000"
+                    }
+                    "soundlevel_max"
+                    {
+                        "value"		"78.000000"
+                    }
+                    "mixgroup"
+                    {
+                        "value"		"Weapons"
+                    }
+                    "spread_radius"
+                    {
+                        "value"		"150.000000"
+                    }
+                }
+            }
+        }
+    }
+}
+
+"Drain.HealHit"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"		"sos_reference_stack"
+                "reference_stack"		"dota_src1_3d"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "value0"		"sounds/weapons/creep/neutral/troll_priest_heal.vsnd"
+                        }
+                    }
+                    "volume_min"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "volume_max"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "pitch_min"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "pitch_max"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "chan_type"
+                    {
+                        "value"		"4"
+                    }
+                    "memory_type"
+                    {
+                        "value"		"0"
+                    }
+                    "soundlevel_min"
+                    {
+                        "value"		"75.000000"
+                    }
+                    "soundlevel_max"
+                    {
+                        "value"		"75.000000"
+                    }
+                    "distance_max"
+                    {
+                        "value"		"2000.000000"
+                    }
+                }
+            }
+        }
+    }
+}
+
+"Homing.Destroy"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"		"sos_reference_stack"
+                "reference_stack"		"dota_src1_3d"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "value0"		"sounds/weapons/hero/chen/attack.vsnd"
+                        }
+                    }
+                    "volume_min"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "volume_max"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "pitch_min"
+                    {
+                        "value"		"0.950000"
+                    }
+                    "pitch_max"
+                    {
+                        "value"		"1.050000"
+                    }
+                    "chan_type"
+                    {
+                        "value"		"1"
+                    }
+                    "memory_type"
+                    {
+                        "value"		"0"
+                    }
+                    "soundlevel_min"
+                    {
+                        "value"		"75.000000"
+                    }
+                    "soundlevel_max"
+                    {
+                        "value"		"75.000000"
+                    }
+                    "distance_max"
+                    {
+                        "value"		"2500.000000"
+                    }
+                }
+            }
+        }
+    }
+}
+
+"Thrust.Hit"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"		"sos_reference_stack"
+                "reference_stack"		"dota_update_default"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "value0"		"sounds/weapons/hero/doom_bringer/lvl_death.vsnd"
+                        }
+                    }
+                    "volume_min"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "volume_max"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "pitch_min"
+                    {
+                        "value"		"0.950000"
+                    }
+                    "pitch_max"
+                    {
+                        "value"		"1.050000"
+                    }
+                    "chan_type"
+                    {
+                        "value"		"6"
+                    }
+                    "memory_type"
+                    {
+                        "value"		"0"
+                    }
+                    "soundlevel_min"
+                    {
+                        "value"		"81.000000"
+                    }
+                    "soundlevel_max"
+                    {
+                        "value"		"81.000000"
+                    }
+                    "mixgroup"
+                    {
+                        "value"		"Weapons"
+                    }
+                    "spread_radius"
+                    {
+                        "value"		"300.000000"
+                    }
+                }
+            }
+        }
+    }
+}
+
+"Thrust.End"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"		"sos_reference_stack"
+                "reference_stack"		"dota_update_default"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "value0"		"sounds/weapons/hero/dark_seer/dota_dark_seer_ion_shield_end.vsnd"
+                        }
+                    }
+                    "volume_min"
+                    {
+                        "value"		"0.799805"
+                    }
+                    "volume_max"
+                    {
+                        "value"		"0.799805"
+                    }
+                    "pitch_min"
+                    {
+                        "value"		"0.950000"
+                    }
+                    "pitch_max"
+                    {
+                        "value"		"1.050000"
+                    }
+                    "chan_type"
+                    {
+                        "value"		"6"
+                    }
+                    "memory_type"
+                    {
+                        "value"		"0"
+                    }
+                    "soundlevel_min"
+                    {
+                        "value"		"81.000000"
+                    }
+                    "soundlevel_max"
+                    {
+                        "value"		"81.000000"
+                    }
+                    "mixgroup"
+                    {
+                        "value"		"Weapons"
+                    }
+                    "spread_radius"
+                    {
+                        "value"		"150.000000"
+                    }
+                }
+            }
+        }
+    }
+}
+
+"Thrust.Cast"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"		"sos_reference_stack"
+                "reference_stack"		"dota_update_default"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "value0"		"sounds/weapons/hero/faceless_void/time_walk.vsnd"
+                        }
+                    }
+                    "volume_min"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "volume_max"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "pitch_min"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "pitch_max"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "chan_type"
+                    {
+                        "value"		"6"
+                    }
+                    "memory_type"
+                    {
+                        "value"		"0"
+                    }
+                    "soundlevel_min"
+                    {
+                        "value"		"81.000000"
+                    }
+                    "soundlevel_max"
+                    {
+                        "value"		"81.000000"
+                    }
+                    "mixgroup"
+                    {
+                        "value"		"Weapons"
+                    }
+                    "spread_radius"
+                    {
+                        "value"		"900.000000"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,49 @@
+"DOTAHeroes"
+{
+	"npc_dota_hero_invoker_warlock"
+	{
+		"AbilityLayout" 		"6"
+		"override_hero"			"npc_dota_hero_warlock"
+		"SoundSet"				"1"
+		"Ability1"				"warlock_emptyslot1"
+		"Ability2"				"warlock_emptyslot2"
+		"Ability3"				"warlock_emptyslot3"
+		"Ability4"				"warlock_emptyslot4"
+		"Ability5"				"warlock_emptyslot5"
+		"Ability6"				"warlock_emptyslot6"
+
+		"ArmorPhysical"				"-1"										// Physical protection.
+		"MagicalResistance"			"-1"										// Magical protection (percentage).
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"1"										// Damage range min.
+		"AttackDamageMax"			"1"										// Damage range max.
+
+		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
+		"AttributeBaseStrength"		"1"										// Base strength
+		"AttributeStrengthGain"		"0"										// Strength bonus per level.
+		"AttributeBaseIntelligence"	"1"										// Base intelligence
+		"AttributeIntelligenceGain"	"0"										// Intelligence bonus per level.
+		"AttributeBaseAgility"		"1"										// Base agility
+		"AttributeAgilityGain"		"0"										// Agility bonus per level.
+
+		"BountyXP"					"0"										// Experience earn.
+		"BountyGoldMin"				"0"										// Gold earned min.
+		"BountyGoldMax"				"0"										// Gold earned max.
+
+		//"BoundsHullName"			"DOTA_HULL_SIZE_HERO"
+		"RingRadius"				"60"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementSpeed"				"210"									// Speed.
+		"MovementTurnRate"			"1.2"									// Turning rate.
+
+		"StatusHealth"				"981"									// Base health.
+		"StatusHealthRegen"			"4.97"									// Health regeneration rate.
+		"StatusMana"				"4988"									// Base mana.
+		"StatusManaRegen"			"-0.04"										// Mana regeneration rate.
+
+		"VisionNighttimeRange"		"1800"									// Range of vision at night time.
+		"VisionDaytimeRange"		"1800"									// Range of vision at night time.
+	}
+}

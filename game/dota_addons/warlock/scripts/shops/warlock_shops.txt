@@ -1,0 +1,62 @@
+"dota_shops"
+{
+"consumables"
+{
+"item"	"item_warlock_scourge_incarnation"
+}
+"attributes"
+{
+"item"	"item_warlock_ring_of_health"
+"item"	"item_warlock_cape"
+"item"	"item_warlock_armor"
+"item"	"item_warlock_boots"
+}
+"weapons_armor"
+{
+}
+"misc"
+{
+}
+"basics" // Knockout (Primary)
+{
+"item"	"item_warlock_lightning"
+"item"	"item_warlock_boomerang"
+"item"	"item_warlock_homing"
+}
+"support" // Transport
+{
+"item"	"item_warlock_teleport"
+"item"	"item_warlock_thrust"
+"item"	"item_warlock_swap"
+}
+"magics" // Damage (Secondary)
+{
+"item"	"item_warlock_drain"
+"item"	"item_warlock_cluster"
+"item"	"item_warlock_bouncer"
+}
+"weapons" // Devastator
+{
+"item"	"item_warlock_meteor"
+"item"	"item_warlock_windwalk"
+}
+"defense"  // Defensive
+{
+"item"	"item_warlock_rush"
+"item"	"item_warlock_shield"
+}
+"artifacts" // Knockbackless
+{
+"item"	"item_warlock_grip"
+"item"	"item_warlock_gravity"
+}
+"sideshop1"
+{
+}
+"sideshop2"
+{
+}
+"secretshop1"
+{
+}
+}
