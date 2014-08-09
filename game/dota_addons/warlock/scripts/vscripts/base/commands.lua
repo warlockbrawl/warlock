@@ -125,5 +125,9 @@ end
 
 function Game:registerCommand(cmd, func)
 	self.commands[cmd] = func
+	
+	if Config.DEVELOPMENT then
+		Convars:RegisterCommand("wl_" .. cmd, func, cmd, 0)
+	end
 end
 
