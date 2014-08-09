@@ -211,7 +211,7 @@ ModelEffect = class(Effect)
 function ModelEffect:init(def)
 	ModelEffect.super.init(self, def)
 
-	self:spawnLocustProp()
+	self:spawnLocustUnit()
 
 	-- Need to do this again because the super ctr is called before the
 	-- locust was spawned

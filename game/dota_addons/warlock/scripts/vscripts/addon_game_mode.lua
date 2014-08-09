@@ -116,7 +116,7 @@ function Precache(context)
 	PrecacheItemByNameSync("item_warlock_gravity", context)
 	
 	-- Spells
-	PrecacheResource("model", "models/particle/meteor.mdl", context)
+	PrecacheResource("model", "models/particle/meteor.vmdl", context)
 	PrecacheResource("particle_folder", "particles/msg_fx", context)
 	PrecacheResource("particle_folder", "particles/base_attacks", context)
 	PrecacheResource("particle_folder", "particles/econ/generic/generic_aoe_explosion_sphere_1", context)

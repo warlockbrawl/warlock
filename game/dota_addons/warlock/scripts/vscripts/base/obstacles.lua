@@ -3,7 +3,7 @@
 
 Obstacle = class(Actor)
 Obstacle.mass 			= 10000
-Obstacle.z				= 72
+Obstacle.z				= -94
 Obstacle.owner = {
 	team = DOTA_TEAM_NEUTRALS,
 	userid = -1
@@ -68,8 +68,8 @@ function Obstacle:init(def)
 	}
 
 	-- effect
-	self.prop = Entities:CreateByClassname("prop_dynamic")
-	self.prop:SetModel(obstacle_def.model)
+	self.model_unit = CreateUnitByName(Config.LOCUST_UNIT, self.location, false, nil, nil, DOTA_TEAM_NOTEAM)
+	self.model_unit:SetModel(obstacle_def.model)
 
 	self:_updateLocation()
 end
@@ -80,8 +80,8 @@ function Obstacle.getRandomDefinition()
 end
 
 function Obstacle:_updateLocation()
-	if self.prop ~= nil then
-		self.prop:SetAbsOrigin(Vector(self.location.x, self.location.y, Obstacle.z))
+	if self.model_unit ~= nil then
+		self.model_unit:SetAbsOrigin(Vector(self.location.x, self.location.y, Obstacle.z))
 	end
 end
 
@@ -90,8 +90,8 @@ function Obstacle:receiveDamage(dmg_info)
 end
 
 function Obstacle:onDestroy()
-	if self.prop then
-		self.prop:Destroy()
+	if self.model_unit then
+		self.model_unit:RemoveSelf()
 	end
 
 	Obstacle.super.onDestroy(self)

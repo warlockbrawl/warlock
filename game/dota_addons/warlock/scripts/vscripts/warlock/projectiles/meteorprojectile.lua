@@ -112,4 +112,6 @@ function MeteorProjectile:onPreTick(dt)
 		-- Hover
 		self.location.z = self.height + 50 * math.sin(math.pi / self.hover_time * (GAME:time() - self.creation_time))
 	end
+	
+	self.effect.location = self.location
 end
