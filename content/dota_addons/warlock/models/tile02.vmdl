@@ -7,8 +7,8 @@ CVModel CVModel_0
 		[
 			CVmesh
 			{
-				string m_meshName = "warlocktile_03"
-				string m_meshFile = "models/warlocktile_03.smd"
+				string m_meshName = "tile02"
+				string m_meshFile = "models/tile02.smd"
 				string m_materialSearchPath = ""
 				bool m_bSkinParentedObjects = true
 				bool m_bExpensiveTangents = false

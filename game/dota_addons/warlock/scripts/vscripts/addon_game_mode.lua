@@ -74,9 +74,9 @@ function Precache(context)
 	PrecacheUnitByNameAsync("npc_dota_hero_warlock", context)
 	
 	-- Arena
-	PrecacheResource("model", "models/warlocktile_01.vmdl", context)
-	PrecacheResource("model", "models/warlocktile_02.vmdl", context)
-	PrecacheResource("model", "models/warlocktile_03.vmdl", context)
+	PrecacheResource("model", "models/tile01.vmdl", context)
+	PrecacheResource("model", "models/tile02.vmdl", context)
+	PrecacheResource("model", "models/tile03.vmdl", context)
 	PrecacheResource("sound", "scripts/game_sounds_heroes/game_sounds_jakiro.txt", context)
 	PrecacheResource("particle_folder", "particles/units/heroes/hero_jakiro", context)
 	

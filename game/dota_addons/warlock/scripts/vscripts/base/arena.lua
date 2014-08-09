@@ -41,9 +41,9 @@ Arena.LAYERS = {
 }
 Arena.MAX_LAYER 		= #Arena.LAYERS
 Arena.TILE_MODELS = {
-	"models/warlocktile_01.vmdl",
-	"models/warlocktile_02.vmdl",
-	"models/warlocktile_03.vmdl"
+	"models/tile01.vmdl",
+	"models/tile02.vmdl",
+	"models/tile03.vmdl"
 }
 
 Arena.tile_model = Arena.TILE_MODELS[1]

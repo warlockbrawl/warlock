@@ -4,9 +4,6 @@ Layer0
 {
 	shader "global_lit_simple.vfx"
 
-	//---- 2-Sided Rendering ----
-	F_RENDER_BACKFACES 1
-
 	//---- Normal Maps ----
 	F_NORMAL_MAP 1
 
@@ -15,9 +12,9 @@ Layer0
 
 	//---- Color ----
 	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
-	g_vTexCoordOffset "[1.000 1.000]"
+	g_vTexCoordOffset "[0.000 0.000]"
 	g_vTexCoordScale "[1.000 1.000]"
-	TextureColor "models/wl_tile01.tga"
+	TextureColor "materials/tile03.tga"
 
 	//---- Normal Map ----
 	g_flBumpStrength "1.000"
@@ -27,8 +24,8 @@ Layer0
 	TextureSelfIllumMask "materials/default/default_selfillum.tga"
 
 	//---- Specular ----
-	g_flSpecularBloom "1.391"
-	g_flSpecularIntensity "0.887"
+	g_flSpecularBloom "0.300"
+	g_flSpecularIntensity "0.300"
 	TextureBloom "materials/default/default_bloom.tga"
 	TextureReflectance "materials/default/default_refl.tga"
 }
