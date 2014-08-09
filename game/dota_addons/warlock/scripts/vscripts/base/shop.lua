@@ -80,13 +80,14 @@ function purchase(event)
 		log("FATAL ERROR: Nil hero in shop!")
 		print("FATAL ERROR: Nil hero in shop!")
 	end
-	
+		
+	local gold = buying_player:getCash()
 	local item_handle = GAME.players[id].pawn.unit:GetItemInSlot(6)
 	
 	func = item_handle:GetSpecialValueFor("type")
-	if func == nil then
+	if (func == nil) or (event.itemcost > gold) then
 		print(event.itemname)
-		print("Error in shop: Undefined item")
+		print("Error in shop: Undefined item OR fake money purchase")
 		local item = hero:GetItemInSlot(6)
 		item:RemoveSelf()
 		buying_player:updateCash()
