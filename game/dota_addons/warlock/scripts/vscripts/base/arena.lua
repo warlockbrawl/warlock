@@ -3,7 +3,7 @@
 
 Arena = class()
 Arena.ARENA_TILE_SIZE 	= 192
-Arena.ARENA_TILE_Z 		= 8
+Arena.ARENA_TILE_Z 		= 71.5
 Arena.ARENA_MAX_COORD	= 8
 Arena.SHRINK_PERIOD 	= 9
 Arena.DAMAGE_PERIOD 	= 0.4
@@ -41,9 +41,9 @@ Arena.LAYERS = {
 }
 Arena.MAX_LAYER 		= #Arena.LAYERS
 Arena.TILE_MODELS = {
-	"models/props_stone/stoneblock004a.vmdl",
-	"models/props_stone/stoneblock004a.vmdl",
-	"models/props_stone/stoneblock004a.vmdl"
+	"models/warlocktile_01.vmdl",
+	"models/warlocktile_02.vmdl",
+	"models/warlocktile_03.vmdl"
 }
 
 Arena.tile_model = Arena.TILE_MODELS[1]
@@ -109,7 +109,7 @@ function Arena:setTileStatus(grid_x, grid_y, status)
 		-- create a new tile
 
 		tile = Entities:CreateByClassname("prop_dynamic")
-		tile:SetAbsOrigin(Vector(grid_x*self.ARENA_TILE_SIZE, grid_y*self.ARENA_TILE_SIZE, self.ARENA_TILE_Z))
+		tile:SetAbsOrigin(Vector(grid_x*self.ARENA_TILE_SIZE, grid_y*self.ARENA_TILE_SIZE, self.ARENA_TILE_Z ))
 		tile:SetModel(self.tile_model)
 
 		self.tiles[grid_x][grid_y] = tile
