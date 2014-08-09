@@ -219,7 +219,7 @@ function Game:EventPlayerConnected(event)
 	log('EventPlayerConnected')
 	PrintTable(event)
 	
-	if GAME.players[event.index] then
+	if GAME.playersByIndex[event.index] then
 		log("Player connected but was already in the userlist")
 		return
 	end
