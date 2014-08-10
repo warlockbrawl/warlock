@@ -35,12 +35,12 @@ function Player:EventConnect(info)
 		return
 	end
 	
-	-- Reconnect, set it EventReconnect
+	-- Reconnect, set in EventReconnect
 	if self.reconnect then
 		self.reconnect = false
 		
-		if self.pawn then
-			self.pawn:enable()
+		if not GAME.combat then
+			self.pawn:respawn()
 		end
 		
 		log("Player " .. self.name .. " reconnected fully.")
@@ -86,7 +86,7 @@ end
 
 function Player:HeroSpawned(hero)	
 	if self.pawn then
-		log("HeroSpawned called but pawn already created.")
+		log("HeroSpawned called but pawn already created (normal on respawn).")
 		return
 	end
 	
@@ -113,7 +113,7 @@ function Player:HeroRemoved()
 end
 
 function Player:EventReconnect(info)
-	p.reconnect = true
+	self.reconnect = true
 end
 
 function Player:EventDisconnect(info)
@@ -225,12 +225,18 @@ function Game:EventPlayerConnected(event)
 	log('EventPlayerConnected')
 	PrintTable(event)
 	
-	if GAME.playersByIndex[event.index] then
-		log("Player connected but was already in the userlist")
-		return
+	local p = GAME.playersByIndex[event.index]
+	
+	if p then
+		log("Existing player")
+		if not p.reconnect then
+			warning("Existing player connected and is not reconnecting")
+		end
+	else
+		log("New player created")
+		p = Player:new()
 	end
 	
-	local p = Player:new()
 	p:EventConnect(event)
 end
 

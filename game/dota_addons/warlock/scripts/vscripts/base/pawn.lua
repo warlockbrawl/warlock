@@ -103,6 +103,8 @@ function Pawn:removeNativeModifier(mod_name)
 end
 
 function Pawn:respawn()
+	log("respawn")
+	
 	self.velocity = Vector(0, 0, 0)
 	self.walk_velocity = Vector(0, 0, 0)
 	self.location = GAME:getRespawnLocation(self)
@@ -111,21 +113,15 @@ function Pawn:respawn()
 	self:enable()
 
 	if not self.unit:IsAlive() then
+		log("Repsawning hero")
 		self.unit:RespawnHero(false, false, false)
 		--GAME.team_alive_count[self.owner.team] = (GAME.team_alive_count[self.owner.team] or 0) + 1
-	end
-	
-
-	if self.unit:HasModifier(Config.ABILITY_KILL_MODIFIER) then
-		warning("Pawn has DOOM modifier during respawn")
-		self.unit:RemoveModifier(Config.ABILITY_KILL_MODIFIER)
 	end
 
 	self.unit:SetMana(0)
 	self:resetCooldowns()
 	self.health = self.max_hp
 	self:applyStats()
-	
 end
 
 function Pawn:die(dmg_info)
@@ -143,8 +139,12 @@ function Pawn:die(dmg_info)
 	end
 
 	source_unit = source_actor.unit
+	
+	-- Set health to 0
+	self.health = 0
 
-	killUnitWithNativeDamage(self.unit, source_unit)
+	-- Kill unit
+	self.unit:Kill(nil, source_unit)
 
 	-- disable the actor
 	self:disable()
@@ -339,35 +339,6 @@ function add_and_set_level(unit, abil_name, level)
 
 	local abil = unit:FindAbilityByName(abil_name)
 	abil:SetLevel(level)
-end
-
---- Kills a unit using native mechanisms
--- The killer is given the ability doom and scripts apply the doom debuff
--- to the victim, which ensured the kill
--- The previous approach with casting an ability sometimes failed.
-function killUnitWithNativeDamage(victim, killer)
-
-	-- create a casting unit
-	local killer_unit = CreateUnitByName(Config.LOCUST_UNIT, Vector(0,0,0), false, killer, killer, killer:GetTeamNumber())
-	killer_unit:AddNewModifier(unit, nil, "modifier_invulnerable", {})
-	killer_unit:AddNewModifier(unit, nil, "modifier_phased", {})
-
-	-- give it the doom ability
-	local kill_ability_name = Config.ABILITY_KILL
-	killer_unit:AddAbility(kill_ability_name)
-	local kill_ability = killer_unit:FindAbilityByName(kill_ability_name)
-	kill_ability:SetLevel(1)
-
-	-- Ensure hes low on life
-	victim:SetHealth(1)
-
-	-- Add the doom debuff reliably
-	victim:AddNewModifier(killer_unit, kill_ability, Config.ABILITY_KILL_MODIFIER, {})
-
-	-- remove the casting unit
-	GAME:addTask{id="remove_killer_unit", time=0.5, func=function()
-		killer_unit:Destroy()
-	end}
 end
 
 function Game:filterPawns(filter)

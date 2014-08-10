@@ -83,6 +83,20 @@ function Game:initCommands()
 				})
 			end
 		end)
+	
+		self:registerCommand('kill', function()
+			for pawn, _ in pairs(GAME.pawns) do
+				pawn:die({})
+			end
+		end)
+	
+		self:registerCommand('respawn', function()
+			for i, player in pairs(GAME.players) do
+				if player.pawn then
+					player.pawn:respawn()
+				end
+			end
+		end)
 	end
 end
 
