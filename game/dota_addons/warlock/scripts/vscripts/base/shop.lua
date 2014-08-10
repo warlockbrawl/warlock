@@ -35,6 +35,7 @@ for i = 0, 9 do -- 10 players
 
 	for j = 2, 5 do -- first two items given on pawn init
 		ItemsPurchased[i][j] = nil
+		AbilityLevel[i][j] = 0
 		ItemLevel[i][j] = 0	
 		ItemID[i][j] = nil
 		WarlockItems[i][j] = nil
