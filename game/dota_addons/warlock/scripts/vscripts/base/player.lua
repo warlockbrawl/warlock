@@ -34,41 +34,53 @@ function Player:EventConnect(info)
 		err("Invalid player entity")
 		return
 	end
-
-	-- It is required to assign him to a team
-	self:initTeam()
-
-	self.id = self.playerEntity:GetPlayerID()
-	self.steamId = PlayerResource:GetSteamAccountID(self.id)
-
-	self.userid = info.userid
-	self.index = info.index
-	self.name = PlayerResource:GetPlayerName(self.id)
-
-	-- add to the permanent player table
-	GAME.playersByUserid[self.userid] = self
-	GAME.playersByIndex[self.index] = self
 	
-	-- remove all unreliable gold
-	-- no cash before mode starts
-	PlayerResource:SetGold(self.id, 0, true)
-	PlayerResource:SetGold(self.id, 0, false)
+	-- Reconnect, set it EventReconnect
+	if self.reconnect then
+		self.reconnect = false
+		
+		if self.pawn then
+			self.pawn:enable()
+		end
+		
+		log("Player " .. self.name .. " reconnected fully.")
+	else
+		-- It is required to assign him to a team
+		self:initTeam()
 
-	display(self.name .. ' has joined the game as player '..self.id)
+		self.id = self.playerEntity:GetPlayerID()
+		self.steamId = PlayerResource:GetSteamAccountID(self.id)
 
-	GAME.players[self.id] = self
-	GAME.player_count = (GAME.player_count or 0) + 1
+		self.userid = info.userid
+		self.index = info.index
+		self.name = PlayerResource:GetPlayerName(self.id)
 
-	-- increase the size of the team we are joining and add the player to the team players list
-	GAME.team_size[self.team] = (GAME.team_size[self.team] or 0) + 1
-	for i = 0, 10 do
-		if GAME.team_players[self.team][i] == nil then
-			self.team_player_index = i
-			GAME.team_players[self.team][self.team_player_index] = self
-			break
+		-- add to the permanent player table
+		GAME.playersByUserid[self.userid] = self
+		GAME.playersByIndex[self.index] = self
+		
+		-- remove all unreliable gold
+		-- no cash before mode starts
+		PlayerResource:SetGold(self.id, 0, true)
+		PlayerResource:SetGold(self.id, 0, false)
+
+		display(self.name .. ' has joined the game as player '..self.id)
+		
+		GAME.players[self.id] = self
+		GAME.player_count = (GAME.player_count or 0) + 1
+
+		-- increase the size of the team we are joining and add the player to the team players list
+		GAME.team_size[self.team] = (GAME.team_size[self.team] or 0) + 1
+		for i = 0, 10 do
+			if GAME.team_players[self.team][i] == nil then
+				self.team_player_index = i
+				GAME.team_players[self.team][self.team_player_index] = self
+				break
+			end
 		end
 	end
 
+	self.active = true
 	self:updateCash()
 end
 
@@ -101,35 +113,29 @@ function Player:HeroRemoved()
 end
 
 function Player:EventReconnect(info)
-
+	p.reconnect = true
 end
 
 function Player:EventDisconnect(info)
 	log(self.name .. ' has left the game.')
 
-	-- remove from team
-	if self.team then
-		GAME.team_players[self.team][self.team_player_index] = nil
-		GAME.team_size[self.team] = GAME.team_size[self.team] - 1
-	end
-
-	-- remove the pawn
+	-- Kill the pawn
 	if self.pawn.enabled then
 		self.pawn.last_hitter = nil
 		self.pawn:die({})
 	end
 
-	-- make sure the pawn is removed
+	-- Disable pawn
 	self.pawn:disable()
+	
+	-- Make sure the hero is dead
 	if self.heroEntity and self.heroEntity:IsAlive() then
 		self.heroEntity:ForceKill(false)
 	end
 
-	GAME.players[self.id] = nil
-	GAME.player_count = GAME.player_count - 1
-
 	-- the entity will be removed from c++ anyway
 	self.playerEntity = nil
+	self.active = false
 end
 
 -- function Player:EventReconnected(info)
@@ -232,7 +238,13 @@ function Game:EventPlayerReconnected(event)
 	log("EventPlayerReconnected")
 	PrintTable(event)
 	
-	local p = self:findPlayerByEvent(event)
+	local p = GAME.players[event.PlayerID]
+	
+	if not p then
+		log("Unknown player reconnected")
+		return
+	end
+	
 	p:EventReconnect(event)
 end
 

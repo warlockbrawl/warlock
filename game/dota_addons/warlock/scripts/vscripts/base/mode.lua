@@ -38,7 +38,7 @@ function Mode:prepareForRound()
 	GAME:addRandomObstacles(math.random(Mode.OBSTACLE_COUNT_MIN, Mode.OBSTACLE_COUNT_MAX))
 
 	for id, player in pairs(GAME.players) do
-		if player.pawn then
+		if player.pawn and player.active then
 			player.pawn:respawn()
 			player.pawn.unit:SetAbilityPoints(1)
 		end
@@ -112,7 +112,7 @@ function Mode:onRoundStart()
 	GAME:setCombat(true)
 
 	for id, player in pairs(GAME.players) do
-		if player.pawn then
+		if player.pawn and player.active then
 			player.pawn:respawn()
 			player.pawn.unit:SetAbilityPoints(0)
 		end
