@@ -280,6 +280,9 @@
 			}
 		}
 	}
+	
+	
+	
 
 "item_warlock_lightning"
 {
@@ -815,6 +818,43 @@
 "AbilityCastAnimation"	"ACT_DOTA_DISABLED"
 "AbilityManaCost"	"0"
 "ItemCost"	12
+"ItemShopTags"	"consumable"
+"ItemQuality"	"consumable"
+"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
+"ItemPurchasable"	"1"
+"SideShop"	"1"
+"MaxUpgradeLevel"	"1"
+"ItemBaseLevel"	"1"
+"AbilitySpecial"
+{
+"01"
+{
+"var_type"	"FIELD_INTEGER"
+"column"	"5"
+}
+"02"
+{
+"var_type"	"FIELD_INTEGER"
+"type"	"1"
+}
+}
+}
+"item_warlock_warpzone"
+{
+"ID"	"1953"
+"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+"BaseClass"	"item_datadriven"
+"AbilityTextureName"	"warlock_warpzone"
+"ItemKillable"	"0"
+"ItemSellable"	"0"
+"ItemDroppable"	"0"
+"AbilityCastRange"	"1000"
+"AbilityCastPoint"	"0.0"
+"AbilityCooldown"	"0.0"
+"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+"AbilityManaCost"	"0"
+"ItemCost"	0
 "ItemShopTags"	"consumable"
 "ItemQuality"	"consumable"
 "ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
@@ -1580,6 +1620,162 @@
 {
 "var_type"	"FIELD_FLOAT"
 "speed_bonus_abs"	"18 29 40"
+}
+}
+}
+"item_warlock_duration_mastery"
+{
+"ID"	"1981"
+"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+"BaseClass"	"item_datadriven"
+"AbilityTextureName"	"warlock_duration_mastery"
+"ItemKillable"	"0"
+"ItemSellable"	"0"
+"ItemDroppable"	"0"
+"AbilityCastRange"	"0"
+"AbilityCastPoint"	"0.0"
+"AbilityCooldown"	"0.0"
+"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+"AbilityManaCost"	"0"
+"ItemCost"	4
+"ItemShopTags"	"consumable"
+"ItemQuality"	"consumable"
+"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
+"ItemPurchasable"	"1"
+"SideShop"	"1"
+"MaxUpgradeLevel"	5
+"ItemBaseLevel"	"1"
+"AbilitySpecial"
+{
+"01"
+{
+"var_type"	"FIELD_FLOAT"
+"maxlevel"	"5"
+}
+"02"
+{
+"var_type"	"FIELD_FLOAT"
+"mass"	""
+}
+"03"
+{
+"var_type"	"FIELD_FLOAT"
+"stats"	"8 7 6 5 4"
+}
+"04"
+{
+"var_type"	"FIELD_INTEGER"
+"type"	"2"
+}
+"05"
+{
+"var_type"	"FIELD_INTEGER"
+"index"	"0"
+}
+}
+}
+"item_warlock_range_mastery"
+{
+"ID"	"1982"
+"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+"BaseClass"	"item_datadriven"
+"AbilityTextureName"	"warlock_range_mastery"
+"ItemKillable"	"0"
+"ItemSellable"	"0"
+"ItemDroppable"	"0"
+"AbilityCastRange"	"0"
+"AbilityCastPoint"	"0.0"
+"AbilityCooldown"	"0.0"
+"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+"AbilityManaCost"	"0"
+"ItemCost"	5
+"ItemShopTags"	"consumable"
+"ItemQuality"	"consumable"
+"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
+"ItemPurchasable"	"1"
+"SideShop"	"1"
+"MaxUpgradeLevel"	5
+"ItemBaseLevel"	"1"
+"AbilitySpecial"
+{
+"01"
+{
+"var_type"	"FIELD_FLOAT"
+"maxlevel"	"5"
+}
+"02"
+{
+"var_type"	"FIELD_FLOAT"
+"mass"	""
+}
+"03"
+{
+"var_type"	"FIELD_FLOAT"
+"stats"	"12 10 8 6 4"
+}
+"04"
+{
+"var_type"	"FIELD_INTEGER"
+"type"	"2"
+}
+"05"
+{
+"var_type"	"FIELD_INTEGER"
+"index"	"1"
+}
+}
+}
+"item_warlock_life_steal_mastery"
+{
+"ID"	"1983"
+"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+"BaseClass"	"item_datadriven"
+"AbilityTextureName"	"warlock_life_steal_mastery"
+"ItemKillable"	"0"
+"ItemSellable"	"0"
+"ItemDroppable"	"0"
+"AbilityCastRange"	"0"
+"AbilityCastPoint"	"0.0"
+"AbilityCooldown"	"0.0"
+"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+"AbilityManaCost"	"0"
+"ItemCost"	6
+"ItemShopTags"	"consumable"
+"ItemQuality"	"consumable"
+"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
+"ItemPurchasable"	"1"
+"SideShop"	"1"
+"MaxUpgradeLevel"	5
+"ItemBaseLevel"	"1"
+"AbilitySpecial"
+{
+"01"
+{
+"var_type"	"FIELD_FLOAT"
+"maxlevel"	"5"
+}
+"02"
+{
+"var_type"	"FIELD_FLOAT"
+"mass"	""
+}
+"03"
+{
+"var_type"	"FIELD_FLOAT"
+"stats"	"10 8 6 4 2"
+}
+"04"
+{
+"var_type"	"FIELD_INTEGER"
+"type"	"2"
+}
+"05"
+{
+"var_type"	"FIELD_INTEGER"
+"index"	"2"
 }
 }
 }

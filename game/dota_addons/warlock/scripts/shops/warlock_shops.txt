@@ -16,6 +16,9 @@
 }
 "misc"
 {
+"item"	"item_warlock_duration_mastery"
+"item"	"item_warlock_range_mastery"
+"item"	"item_warlock_life_steal_mastery"
 }
 "basics" // Knockout (Primary)
 {
@@ -49,6 +52,7 @@
 {
 "item"	"item_warlock_grip"
 "item"	"item_warlock_gravity"
+"item"	"item_warlock_warpzone"
 }
 "sideshop1"
 {

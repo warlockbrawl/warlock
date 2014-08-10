@@ -1,15 +1,20 @@
-
+Player.MASTERY_RANGE = 1
+Player.MASTERY_DURATION = 2
+Player.MASTERY_LIFESTEAL = 3
 
 Abilities = {} -- to detect if player has spell of a specific column
 AbilityLevel = {}
+MasteryLevel = {}
 ItemsPurchased = {} -- to keep track of items
 ItemLevel = {}
 ItemID = {} -- contains the item hscript (must save, cannot obtain)
 WarlockItems = {} -- contains the warlock items
 
+
 for i = 0, 9 do -- 10 players
 	Abilities[i] = {}
 	AbilityLevel[i] = {}
+	MasteryLevel[i] = {}
 	ItemsPurchased[i] = {}
 	ItemLevel[i] = {}
 	ItemID[i] = {}
@@ -20,15 +25,16 @@ for i = 0, 9 do -- 10 players
 	Abilities[i][3] = "warlock_emptyslot4"
 	Abilities[i][4] = "warlock_emptyslot5"
 	Abilities[i][5] = "warlock_emptyslot6"
+	AbilityLevel[i][0] = 0
+	AbilityLevel[i][1] = 0
+	MasteryLevel[i][0] = 0
+	MasteryLevel[i][1] = 0
+	MasteryLevel[i][2] = 0
 	ItemsPurchased[i][0] = "item_warlock_scourge_incarnation" -- these entries correspond to the base item identifier (the icons which appears in shop that are NOT given to players)
 	ItemsPurchased[i][1] = "item_warlock_fireball"
-	ItemsPurchased[i][2] = nil
-	ItemsPurchased[i][3] = nil
-	ItemsPurchased[i][4] = nil
-	ItemsPurchased[i][5] = nil
 
 	for j = 2, 5 do -- first two items given on pawn init
-		AbilityLevel[i][j] = 0
+		ItemsPurchased[i][j] = nil
 		ItemLevel[i][j] = 0	
 		ItemID[i][j] = nil
 		WarlockItems[i][j] = nil
@@ -173,7 +179,18 @@ function purchase(event)
 			buying_player:addCash( -event.itemcost)
 		end
 	elseif (func == 2) then ----- MASTERIES -----
-		--WL masteries not implemented yet
+		local maxlevel = item_handle:GetSpecialValueFor("maxlevel")
+		local index = item_handle:GetSpecialValueFor("index") -- 0=duration 1=range 2=lifesteal
+
+		if MasteryLevel[id][index] < maxlevel then -- upgrade
+			buying_player.mastery_factor[buying_player.index] = buying_player.mastery_factor[buying_player.index] + (item_handle:GetLevelSpecialValueFor('stats', MasteryLevel[id][index]))/100.0
+			MasteryLevel[id][index] = MasteryLevel[id][index]+1
+			print("upgraded mastery")
+			print(buying_player.mastery_factor[buying_player.MASTERY_DURATION])
+			print(buying_player.mastery_factor[buying_player.MASTERY_RANGE])
+			print(buying_player.mastery_factor[buying_player.MASTERY_LIFESTEAL])
+			buying_player:addCash( -event.itemcost)
+		end
 	else
 		print("Error: Shop type not found")
 	end
