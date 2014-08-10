@@ -31,6 +31,9 @@ function GripProjectile:onCollision(coll_info, cc)
 		actor.walk_velocity.x = 0
 		actor.walk_velocity.y = 0
 
+		-- Stop the actor from casting
+		actor.unit:Stop()
+
 		-- Add the grip modifier
 		GAME:addModifier(GripModifier:new {
 			pawn = actor,

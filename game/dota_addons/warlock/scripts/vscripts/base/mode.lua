@@ -121,6 +121,7 @@ function Mode:onRoundStart()
 	
 	-- initial invul
 	for pawn, _ in pairs(GAME.pawns) do
+		pawn.unit:Stop()
 		pawn:addNativeModifier("modifier_omninight_guardian_angel")
 		pawn.invulnerable = true
 	end

@@ -21,7 +21,7 @@ Drain.hit_sound					= 'Drain.Hit'
 function Drain:onCast(cast_info)
 	local start = cast_info.caster_actor.location
 
-	target = cast_info.target
+	local target = cast_info.target
 
 	-- Direction to target
 	local dir = target - start
