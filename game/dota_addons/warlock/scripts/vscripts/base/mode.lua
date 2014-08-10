@@ -250,7 +250,7 @@ function Mode:onKill(event)
 	end
 end
 
-function Mode:getRespawnLocation(pawn)
+function Mode:getRespawnLocation(pawn)	
 	--playerteams are 2 and 3, make them 0 and 1
 	local team = pawn.owner.team % 2
 	local radius = 650 + 50 * GAME.player_count

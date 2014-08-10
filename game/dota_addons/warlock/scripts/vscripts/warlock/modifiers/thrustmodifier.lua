@@ -68,8 +68,6 @@ function ThrustModifier:onCollision(coll_info, cc)
 		end
 
 		self:hitPawn(actor, coll_info.hit_normal)
-		
-		log("Thrust coll")
 	end
 end
 

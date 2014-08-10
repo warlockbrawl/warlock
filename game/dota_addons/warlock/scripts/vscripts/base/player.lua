@@ -68,16 +68,6 @@ function Player:EventConnect(info)
 		
 		GAME.players[self.id] = self
 		GAME.player_count = (GAME.player_count or 0) + 1
-
-		-- increase the size of the team we are joining and add the player to the team players list
-		GAME.team_size[self.team] = (GAME.team_size[self.team] or 0) + 1
-		for i = 0, 10 do
-			if GAME.team_players[self.team][i] == nil then
-				self.team_player_index = i
-				GAME.team_players[self.team][self.team_player_index] = self
-				break
-			end
-		end
 	end
 
 	self.active = true
@@ -138,9 +128,6 @@ function Player:EventDisconnect(info)
 	self.active = false
 end
 
--- function Player:EventReconnected(info)
--- end
-
 function Game:GetTeamForNewPlayer()
 	if (self.team_size[DOTA_TEAM_GOODGUYS] or 0) <= (self.team_size[DOTA_TEAM_BADGUYS] or 0) then
 		return DOTA_TEAM_GOODGUYS
@@ -152,15 +139,51 @@ end
 -- Native dota teams cannot be reassigned
 function Player:initTeam()
 	-- check for previous team
-	self.team = self.playerEntity:GetTeam()
+	local start_team = self.playerEntity:GetTeam()
 
-	print("TEAM ", self.team)
+	log("initTeam " .. tostring(start_team))
 
 	-- if team is not assigned yet, assign a new one
-	if self.team == -1 or self.team == 0 then
-		self.team = GAME:GetTeamForNewPlayer()
-		self.playerEntity:SetTeam(self.team)
+	if start_team == -1 or start_team == 0 then
+		log("Assigning new team")
+		self:setTeam(GAME:GetTeamForNewPlayer())
+	else
+		log("Assigning existing team")
+		self:setTeam(start_team)
 	end
+end
+
+function Player:setTeam(new_team)
+	log("setTeam " .. tostring(new_team))
+	
+	-- Remove from old team
+	if self.team_joined then
+		GAME.team_size[self.team] = (GAME.team_size[self.team] or 0) - 1
+		GAME.team_players[self.team][self.team_player_index] = nil
+	end
+	
+	self.team = new_team
+	
+	-- Add to the team
+	GAME.team_size[self.team] = (GAME.team_size[self.team] or 0) + 1
+	for i = 0, 10 do
+		if GAME.team_players[self.team][i] == nil then
+			self.team_player_index = i
+			GAME.team_players[self.team][self.team_player_index] = self
+			break
+		end
+	end
+	
+	-- Set the native team
+	self.playerEntity:SetTeam(self.team)
+	
+	if self.pawn and self.pawn.unit then
+		self.pawn.unit:SetTeam(self.team)
+	end
+	
+	self:updateCash()
+	
+	self.team_joined = true
 end
 
 function Player:getTeam()

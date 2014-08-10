@@ -97,6 +97,22 @@ function Game:initCommands()
 				end
 			end
 		end)
+	
+		self:registerCommand('team', function()
+			for i, player in pairs(GAME.players) do
+				local new_team
+				
+				if player.team == DOTA_TEAM_GOODGUYS then
+					new_team = DOTA_TEAM_BADGUYS
+				else
+					new_team = DOTA_TEAM_GOODGUYS
+				end
+				
+				player:setTeam(new_team)
+				
+				log("New team: " .. tostring(player.playerEntity:GetTeam()))
+			end
+		end)
 	end
 end
 
