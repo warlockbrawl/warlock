@@ -47,12 +47,14 @@ function Player:EventConnect(info)
 	else
 		-- It is required to assign him to a team
 		self:initTeam()
-
+		
+		-- Assign the ids
 		self.id = self.playerEntity:GetPlayerID()
 		self.steamId = PlayerResource:GetSteamAccountID(self.id)
-
 		self.userid = info.userid
 		self.index = info.index
+		
+		-- Get the players name
 		self.name = PlayerResource:GetPlayerName(self.id)
 
 		-- add to the permanent player table
@@ -181,7 +183,10 @@ function Player:setTeam(new_team)
 		self.pawn.unit:SetTeam(self.team)
 	end
 	
-	self:updateCash()
+	-- The player will only have an id if this is not the first assignment
+	if self.id then
+		self:updateCash()
+	end
 	
 	self.team_joined = true
 end
