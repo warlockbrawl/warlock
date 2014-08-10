@@ -18,12 +18,22 @@ function ThrustModifier:onPreTick(dt)
 end
 
 -- Called when thrust hits a pawn
-function ThrustModifier:hitPawn(pawn, normal)
+function ThrustModifier:hitPawn(pawn, normal, vel_dependend)
+	local damage = self.damage
+	
+	-- Damage depends on velocity if true
+	if vel_dependend then
+		local factor = self.pawn.velocity:Dot(self.pawn.velocity) / 1521
+		if factor < 0.8 then
+			damage = factor / 0.8 * damage
+		end
+	end
+	
 	-- Deal damage
 	pawn:receiveDamage {
 		source = self.pawn,
 		hit_normal = normal,
-		amount = self.damage,
+		amount = damage,
 		knockback_factor = self.knockback
 	}
 	
@@ -56,10 +66,13 @@ function ThrustModifier:onCollision(coll_info, cc)
 			actor.unit:EmitSound(self.hit_sound)
 		end
 		
+		local vel_dependend = true
+		
 		-- If other pawn also has thrust, remove it too and do its effects
 		local mod = actor:getModifierOfType(ThrustModifier)
 		if mod then
-			mod:hitPawn(self.pawn, -coll_info.hit_normal)
+			vel_dependend = false
+			mod:hitPawn(self.pawn, -coll_info.hit_normal, vel_dependend)
 		end
 		
 		-- Dont do anything if theres WW on self (WW will do it)
@@ -67,7 +80,7 @@ function ThrustModifier:onCollision(coll_info, cc)
 			return
 		end
 
-		self:hitPawn(actor, coll_info.hit_normal)
+		self:hitPawn(actor, coll_info.hit_normal, vel_dependend)
 	end
 end
 

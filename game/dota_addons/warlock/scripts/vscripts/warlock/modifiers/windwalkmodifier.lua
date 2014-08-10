@@ -51,7 +51,7 @@ function WindWalkModifier:onCollision(coll_info, cc)
 			thrust_mod.knockback = knockback
 			
 			-- Execute thrust hit which also removes its modifier
-			thrust_mod:hitPawn(coll_info.actor, coll_info.hit_normal)
+			thrust_mod:hitPawn(coll_info.actor, coll_info.hit_normal, false)
 		end
 		
 		-- Deal damage to the hit pawn
