@@ -632,7 +632,7 @@
 	"warlock_warpzone"
 	{
 		"ID"							"8852"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"BaseClass"						"ability_datadriven"
 		"AbilityTextureName"			"antimage_spell_shield"
 
@@ -644,6 +644,7 @@
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
 		"MaxLevel"						"7"
+		"AOERadius"						"%radius"
 		"AbilityManaCost"				"0"
 
 		"precache"
@@ -684,6 +685,11 @@
 				"radius"				"200 210 220 230 240 250 260"
 			}
 			"05"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"range"					"700 700 700 700 700 700 700"
+			}
+			"06"
 			{
 				"var_type"				"FIELD_INTEGER"
 				"upgrade_cost"			"6 7 8 9 10 11 12"
