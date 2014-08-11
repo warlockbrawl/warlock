@@ -26,6 +26,7 @@ end
 function Mode:prepareForRound()
 	GAME:setCombat(false)
 	GAME:removeProjectiles()
+	GAME:destroyTempActors()
 	GAME:setShop(true)
 	GAME.arena:setAutoShrink(false)
 	

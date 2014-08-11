@@ -667,17 +667,17 @@
 			"01"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"duration"				"4.50 4.75 5.00 5.25 5.50 5.75 6.00"
+				"duration"				"4.5 4.5 4.5 4.5 4.5 4.5 4.5"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"time_scale"			"0.30 0.28 0.26 0.24 0.22 0.20 0.18"
+				"time_scale"			"0.40 0.36 0.32 0.28 0.24 0.20 0.16"
 			}
 			"03"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"cooldown2"				"21 20 19 18 17 16 15"
+				"cooldown2"				"30 29 28 27 26 25 24"
 			}
 			"04"
 			{

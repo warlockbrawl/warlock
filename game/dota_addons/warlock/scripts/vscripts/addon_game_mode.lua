@@ -114,6 +114,7 @@ function Precache(context)
 	PrecacheItemByNameSync("item_warlock_shield", context)
 	PrecacheItemByNameSync("item_warlock_grip", context)
 	PrecacheItemByNameSync("item_warlock_gravity", context)
+	PrecacheItemByNameSync("item_warlock_warpzone", context)
 	
 	-- Spells
 	PrecacheResource("model", "models/particle/meteor.vmdl", context)
