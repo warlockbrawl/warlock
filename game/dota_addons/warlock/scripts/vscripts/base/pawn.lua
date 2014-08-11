@@ -214,7 +214,7 @@ function Pawn:heal(info)
 		num = info.amount,
 		location = self.location,
 		duration = 1,
-		color = dmg_info.text_color or Vector(50, 255, 50)
+		color = Vector(50, 255, 50)
 	}
 	
 	-- Increase healing statistics
