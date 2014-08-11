@@ -10,7 +10,8 @@ Swap.swap_sound = "Swap.Swap"
 Swap.swap_effect = "swap_effect"
 
 function Swap:onCast(cast_info)
-	local start = cast_info.caster_actor.location
+	local actor = cast_info.caster_actor
+	local start = actor.location
 
 	local target = cast_info.target
 
@@ -21,10 +22,10 @@ function Swap:onCast(cast_info)
 	dir = dir:Normalized()
 
 	local speed = cast_info:attribute("speed")
-	local lifetime = math.min(dist / speed, cast_info:attribute("lifetime"))
+	local lifetime = math.min(dist / speed, cast_info:attribute("lifetime") * actor.owner.mastery_factor[Player.MASTERY_RANGE])
 
-	local proj = SwapProjectile:new{
-		instigator	= cast_info.caster_actor,
+	local proj = SwapProjectile:new {
+		instigator	= actor,
 		coll_radius = cast_info:attribute("radius"),
 		projectile_effect = cast_info:attribute("projectile_effect"),
 		location = start,
@@ -32,7 +33,8 @@ function Swap:onCast(cast_info)
 		lifetime = lifetime,
 		end_time = GAME:time() + lifetime,
 		swap_sound = cast_info:attribute("swap_sound"),
-		swap_effect = cast_info:attribute("swap_effect")
+		swap_effect = cast_info:attribute("swap_effect"),
+		no_range_mastery = true -- Already calculated before
 	}
 end
 

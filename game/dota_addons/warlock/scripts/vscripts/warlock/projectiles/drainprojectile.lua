@@ -19,7 +19,7 @@ function DrainProjectile:init(def)
 	self.changed_speed = def.changed_speed
 	self.buff_duration = def.buff_duration
 	self.heal_projectile_effect = def.heal_projectile_effect
-
+	
 	DrainProjectile.super.init(self, def)
 
 	-- Enable collision with allies

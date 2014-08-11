@@ -19,7 +19,8 @@ Drain.hit_sound					= 'Drain.Hit'
 -- buff_duration
 
 function Drain:onCast(cast_info)
-	local start = cast_info.caster_actor.location
+	local actor = cast_info.caster_actor
+	local start = actor.location
 
 	local target = cast_info.target
 
@@ -29,15 +30,19 @@ function Drain:onCast(cast_info)
 	local dist = dir:Length()
 	dir = dir:Normalized()
 
-	local projectile_speed = cast_info:attribute('projectile_speed')
+
 	local damage = cast_info:attribute('damage')
-	local range = math.min(dist, cast_info:attribute('range'))
-	local projectile_effect = cast_info:attribute('projectile_effect')
-	local coll_radius = cast_info:attribute('coll_radius')
-	local extra_time = cast_info:attribute('extra_time')
-	local lifetime = range / projectile_speed + extra_time
 	local buff_duration = cast_info:attribute('buff_duration')
 	local changed_speed = cast_info:attribute('changed_speed')
+	local projectile_effect = cast_info:attribute('projectile_effect')
+	local coll_radius = cast_info:attribute('coll_radius')
+	
+	-- Calculate range, lifetime etc.
+	local projectile_speed = cast_info:attribute('projectile_speed')
+	local range = math.min(dist, cast_info:attribute('range') * actor.owner.mastery_factor[Player.MASTERY_RANGE]) -- range to turn
+	local extra_time = cast_info:attribute('extra_time') * actor.owner.mastery_factor[Player.MASTERY_RANGE] -- time after turn
+	local change_time = range / projectile_speed -- time after which drain turns
+	local lifetime = change_time + extra_time -- total lifetime
 
 	DrainProjectile:new {
 		instigator = cast_info.caster_actor,
@@ -53,7 +58,8 @@ function Drain:onCast(cast_info)
 		enemy_mod = cast_info:attribute('enemy_mod'),
 		heal_hit_sound = cast_info:attribute('heal_hit_sound'),
 		hit_sound = cast_info:attribute('hit_sound'),
-		heal_projectile_effect = cast_info:attribute('heal_projectile_effect')
+		heal_projectile_effect = cast_info:attribute('heal_projectile_effect'),
+		no_range_mastery = true -- Already calculated before
 	}
 end
 

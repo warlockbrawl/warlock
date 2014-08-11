@@ -7,8 +7,9 @@ function Projectile:init(def)
 	-- extract data
 	self.instigator = def.instigator
 	
-	self.range_mastery = true
-	self.duration_mastery = false
+	-- Default to range mastery = true, duration = false
+	self.range_mastery = not def.no_range_mastery
+	self.duration_mastery = def.duration_mastery
 
 	if self.instigator then
 		def.owner = self.instigator.owner
@@ -60,8 +61,6 @@ function Projectile:onDestroy()
 end
 
 function Projectile:setLifetime(lifetime)
-	
-	
 	local scaled_lifetime = lifetime
 	
 	if self.duration_mastery then

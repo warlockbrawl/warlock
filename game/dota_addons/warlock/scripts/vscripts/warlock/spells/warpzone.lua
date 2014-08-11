@@ -7,17 +7,30 @@ WarpZone = Spell:new{id='warlock_warpzone'}
 -- time_scale
 
 function WarpZone:onCast(cast_info)
+	-- Dir, dist
+	local target = cast_info.target
+	local dir = target - cast_info.caster_actor.location
+	dir.z = 0
+	local dist = dir:Length()
+	dir = dir:Normalized()
+	
+	local range = cast_info:attribute("range")
+	local radius = cast_info:attribute("radius")
 	local duration = cast_info:attribute("duration")
 	local time_scale = cast_info:attribute("time_scale")
-	
 	local owner = cast_info.caster_actor.owner
 	
+	-- Set max range
+	if dist > range then
+		target = cast_info.caster_actor.location + range * dir
+	end
+
 	-- Create the warp zone actor
 	local actor = WarpZoneActor:new {
-		location = cast_info.target,
+		location = target,
 		owner = owner,
 		lifetime = duration * owner.mastery_factor[Player.MASTERY_DURATION],
-		radius = 200,
+		radius = radius,
 		static = true,
 		time_scale_change = time_scale
 	}

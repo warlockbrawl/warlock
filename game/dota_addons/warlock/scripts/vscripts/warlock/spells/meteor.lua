@@ -32,7 +32,6 @@ function Meteor:onCast(cast_info)
 		fall_time = fall_time,
 		explode_effect = cast_info:attribute('explode_effect')
 	}
-
 end
 
 -- effects
