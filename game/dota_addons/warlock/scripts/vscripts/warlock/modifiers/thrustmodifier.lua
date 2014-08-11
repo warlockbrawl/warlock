@@ -68,14 +68,22 @@ function ThrustModifier:onCollision(coll_info, cc)
 		
 		local vel_dependend = true
 		
+		-- Null velocity if a player was hit
+		self.pawn.velocity = Vector(0, 0, 0)
+		
 		-- If other pawn also has thrust, remove it too and do its effects
+		-- its onColl wont get called because the modifier is removed
 		local mod = actor:getModifierOfType(ThrustModifier)
 		if mod then
 			vel_dependend = false
+			
+			-- Null both velocities before dealing damage (kb)
+			actor.velocity = Vector(0, 0, 0)
+
 			mod:hitPawn(self.pawn, -coll_info.hit_normal, vel_dependend)
 		end
 		
-		-- Dont do anything if theres WW on self (WW will do it)
+		-- Dont do anything if theres WW on self, WW will call hitPawn
 		if self.pawn:hasModifierOfType(WindWalkModifier) then
 			return
 		end
@@ -105,9 +113,8 @@ function ThrustModifier:onToggle(apply)
 	else
 		self.pawn:removeCollisionComponent("thrust")
 		
-		if self.hit_enemy then
-			self.pawn.velocity = Vector(0, 0, 0)
-		else
+		-- Slow velocity if no pawn was hit
+		if not self.hit_enemy then
 			self.pawn.velocity = self.pawn.velocity * 0.2
 			
 			if self.end_sound then
