@@ -58,7 +58,7 @@ function HomingProjectile:onCollision(coll_info, cc)
 			GAME:addModifier(Modifier:new {
 				pawn = actor,
 				speed_bonus_abs = bonus_speed,
-				time = 4,
+				time = actor:getBuffDuration(4, self.instigator),
 				native_mod = "modifier_chen_test_of_faith_teleport"
 			})
 		end

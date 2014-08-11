@@ -51,6 +51,7 @@ function Modifier:init(def)
 	self.hp_regen = def.hp_regen or 0
 	self.kb_reduction = def.kb_reduction or 0
 	self.mass = def.mass or 0
+	self.debuff_factor = def.debuff_factor or 0
 	
 	self.native_mod = def.native_mod
 end
@@ -91,6 +92,7 @@ function Modifier:onToggle(apply)
 		p.dmg_factor = p.dmg_factor - sign * self.dmg_reduction_rel
 		p.kb_factor = p.kb_factor - sign * self.kb_reduction
 		p.dmg_reduction = p.dmg_reduction + sign * self.dmg_reduction_abs
+		p.debuff_factor = p.debuff_factor + sign * self.debuff_factor
 		
 		p:applyStats()
 	end

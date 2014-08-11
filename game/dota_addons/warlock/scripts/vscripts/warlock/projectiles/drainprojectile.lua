@@ -73,11 +73,12 @@ function DrainProjectile:onCollision(coll_info, cc)
 		if alliance == Player.ALLIANCE_ALLY then
 			-- Heal and speedbuff allies
 			actor:setHealth(actor.health + self.damage)
-			
+
+			-- Add speed buff, affected by duration mastery
 			GAME:addModifier(Modifier:new {
 				pawn = actor,
 				speed_bonus_abs = 50,
-				time = self.buff_duration,
+				time = actor:getBuffDuration(self.buff_duration, self.instigator),
 				native_mod = self.ally_mod
 			})
 
@@ -94,12 +95,12 @@ function DrainProjectile:onCollision(coll_info, cc)
 				amount 	= self.damage,
 				knockback_factor = 0.2
 			}
-			
-			-- Slow enemies
+
+			-- Slow enemies, affected by duration mastery
 			GAME:addModifier(Modifier:new {
 				pawn = actor,
 				speed_bonus_abs = -50,
-				time = 7.5,
+				time = actor:getDebuffDuration(7.5, self.instigator),
 				native_mod = self.enemy_mod
 			})
 		

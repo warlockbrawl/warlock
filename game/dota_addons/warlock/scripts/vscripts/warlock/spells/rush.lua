@@ -6,11 +6,12 @@ Rush.mod_name = "modifier_ember_spirit_flame_guard"
 Rush.initial_speed_bonus = 35
 
 function Rush:onCast(cast_info)
-	cast_info.caster_actor.unit:EmitSound(cast_info:attribute("cast_sound"))
+	local actor = cast_info.caster_actor
+	actor.unit:EmitSound(cast_info:attribute("cast_sound"))
 	
 	GAME:addModifier(RushModifier:new {
 		pawn = cast_info.caster_actor,
-		time = cast_info:attribute("duration"),
+		time = actor:getBuffDuration(cast_info:attribute("duration"), actor),
 		native_mod = cast_info:attribute("mod_name"),
 		absorb_max = cast_info:attribute("absorb_max"),
 		initial_speed_bonus = cast_info:attribute("initial_speed_bonus")

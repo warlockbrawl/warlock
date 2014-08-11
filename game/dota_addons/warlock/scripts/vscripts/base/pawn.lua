@@ -49,6 +49,7 @@ function Pawn:init(def)
 	self.move_speed = Config.PAWN_MOVE_SPEED
 	self.hp_regen = Config.PAWN_HEALTH_REG
 	self.health = self.max_hp
+	self.debuff_factor = 1
 
 	-- Model scale
 	self.unit:SetModelScale(Config.PAWN_MODEL_SCALE)
@@ -89,6 +90,29 @@ function Pawn:setHealth(health)
 	self.unit:SetHealth(health)
 end
 
+-- Gets the scaled duration for a buff
+function Pawn:getBuffDuration(dur, buff_pawn)
+	-- Self factor
+	local scaled_dur = dur * self.owner.mastery_factor[Player.MASTERY_DURATION]
+	
+	-- Other factor
+	if buff_pawn ~= self then
+		scaled_dur = buff_pawn.owner.mastery_factor[Player.MASTERY_DURATION]
+	end
+	
+	return scaled_dur
+end
+
+-- Gets the scaled duration for a debuff
+function Pawn:getDebuffDuration(dur, debuff_pawn)
+	-- Self factor
+	local scaled_dur = dur * self.debuff_factor
+	
+	-- Other factor
+	scaled_dur = debuff_pawn.owner.mastery_factor[Player.MASTERY_DURATION]
+	
+	return scaled_dur
+end
 
 -- Methods for adding and removing native modifiers, stats need to be reapplied after
 -- because they get reset by dota

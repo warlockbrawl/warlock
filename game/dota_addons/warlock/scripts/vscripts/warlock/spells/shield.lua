@@ -7,11 +7,12 @@ Shield.modifier_name = "modifier_omniknight_repel"
 Shield.reflect_effect = "shield_reflect"
 
 function Shield:onCast(cast_info)
-	cast_info.caster_actor.unit:EmitSound(cast_info:attribute("cast_sound"))
+	local actor = cast_info.caster_actor
+	actor.unit:EmitSound(cast_info:attribute("cast_sound"))
 	
 	GAME:addModifier(ShieldModifier:new {
 		pawn = cast_info.caster_actor,
-		time = cast_info:attribute("duration"),
+		time = actor:getBuffDuration(cast_info:attribute("duration"), actor),
 		reflect_sound = cast_info:attribute("reflect_sound"),
 		reflect_effect = cast_info:attribute("reflect_effect"),
 		native_mod = cast_info:attribute("modifier_name")

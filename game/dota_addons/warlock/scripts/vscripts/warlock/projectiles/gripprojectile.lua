@@ -38,7 +38,7 @@ function GripProjectile:onCollision(coll_info, cc)
 		GAME:addModifier(GripModifier:new {
 			pawn = actor,
 			dp_gain = self.dp_gain,
-			time = self.duration,
+			time = actor:getDebuffDuration(self.duration, self.instigator),
 			native_mod = self.grip_mod,
 			end_sound = self.end_sound,
 			speed_bonus_abs = -10000,

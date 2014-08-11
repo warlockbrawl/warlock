@@ -17,7 +17,7 @@ for i = 0, 9 do -- 10 players
 	ItemID[i] = {}
 	WarlockItems[i] = {}
 	
-	for j = 0, 5 do
+	for j = 1, 6 do
 		Abilities[i][j] = "warlock_emptyslot" .. tostring(j) -- 6 columns (D=0,R=1,T=2,E=3,C=4,Y=5)
 	end
 	
@@ -163,6 +163,8 @@ function purchase(event)
 		
 			-- Set ability levels
 			for i = 0, 5 do
+				print(i)
+				print(Abilities[id][i])
 				local abil = hero:FindAbilityByName(Abilities[id][i])
 				abil:SetLevel(AbilityLevel[id][i])
 			end

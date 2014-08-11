@@ -10,11 +10,13 @@ function WarpZone:onCast(cast_info)
 	local duration = cast_info:attribute("duration")
 	local time_scale = cast_info:attribute("time_scale")
 	
+	local owner = cast_info.caster_actor.owner
+	
 	-- Create the warp zone actor
 	local actor = WarpZoneActor:new {
 		location = cast_info.target,
-		owner = cast_info.caster_actor.owner,
-		lifetime = duration,
+		owner = owner,
+		lifetime = duration * owner.mastery_level[Player.MASTERY_DURATION],
 		radius = 200,
 		static = true,
 		time_scale_change = time_scale
