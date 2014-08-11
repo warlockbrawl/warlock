@@ -18,16 +18,8 @@ function ThrustModifier:onPreTick(dt)
 end
 
 -- Called when thrust hits a pawn
-function ThrustModifier:hitPawn(pawn, normal, vel_dependend)
-	local damage = self.damage
-	
-	-- Damage depends on velocity if true
-	if vel_dependend then
-		local factor = self.pawn.velocity:Dot(self.pawn.velocity) / 1690000 -- 1300*1300
-		if factor < 0.8 then
-			damage = factor / 0.8 * damage
-		end
-	end
+function ThrustModifier:hitPawn(pawn, normal, dmg_factor)
+	local damage = self.damage * dmg_factor
 	
 	-- Deal damage
 	pawn:receiveDamage {
@@ -46,6 +38,15 @@ function ThrustModifier:hitPawn(pawn, normal, vel_dependend)
 	
 	-- Remove this modifier
 	GAME:removeModifier(self)
+end
+
+function ThrustModifier.calcDamageFactor(vel)
+	local factor = self.pawn.velocity:Dot(self.pawn.velocity) / 1690000 -- 1300*1300
+	if factor < 0.8 then
+		factor = factor / 0.8
+	else
+		return 1
+	end
 end
 
 function ThrustModifier:onCollision(coll_info, cc)
@@ -67,6 +68,7 @@ function ThrustModifier:onCollision(coll_info, cc)
 		end
 		
 		local vel_dependend = true
+		local self_vel = self.pawn.velocity
 		
 		-- Null velocity if a player was hit
 		self.pawn.velocity = Vector(0, 0, 0)
@@ -76,11 +78,10 @@ function ThrustModifier:onCollision(coll_info, cc)
 		local mod = actor:getModifierOfType(ThrustModifier)
 		if mod then
 			vel_dependend = false
-			
-			-- Null both velocities before dealing damage (kb)
-			actor.velocity = Vector(0, 0, 0)
+			local other_vel = actor.velocity
 
-			mod:hitPawn(self.pawn, -coll_info.hit_normal, vel_dependend)
+			-- Null both velocities before dealing damage (kb)
+			mod:hitPawn(self.pawn, -coll_info.hit_normal, 1)
 		end
 		
 		-- Dont do anything if theres WW on self, WW will call hitPawn
@@ -88,7 +89,12 @@ function ThrustModifier:onCollision(coll_info, cc)
 			return
 		end
 
-		self:hitPawn(actor, coll_info.hit_normal, vel_dependend)
+		local dmg_factor = 1
+		if vel_dependend then
+			dmg_factor = ThrustModifier.calcDamageFactor(self_vel)
+		end
+
+		self:hitPawn(actor, coll_info.hit_normal, dmg_factor)
 	end
 end
 
