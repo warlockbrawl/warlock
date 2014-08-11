@@ -14,7 +14,6 @@ Lightning.fb_effect = 'lightning_fb_explosion'
 Lightning.fb_sound = "Lightning.FBExplosion"
 
 function Lightning:onCast(cast_info)
-
 	local start = cast_info.caster_actor.location
 	local diff = (cast_info.target - start)
 	diff.z = 0
@@ -23,9 +22,8 @@ function Lightning:onCast(cast_info)
 
 	local radius = cast_info:attribute('radius')
 
-
 	local best_target = nil
-	local best_dst = cast_info:attribute('range')
+	local best_dst = cast_info:attribute('range') * cast_info.caster_actor.owner.mastery_factor[Player.MASTERY_RANGE]
 	local take_damage
 	local best_cc
 	local best_is_allied_fb --whether best_target is an allied fireball
@@ -33,9 +31,10 @@ function Lightning:onCast(cast_info)
 	for cc, _ in pairs(GAME.phys_active_ccs) do
 		local alliance = cast_info.caster_actor.owner:getAlliance(cc.actor.owner)
 
-		-- collision filters, fireball hardcoded
+		-- collision filters, fireball hardcoded, not hitting warpzone hardcoded
 		local is_allied_fb = alliance ~= Player.ALLIANCE_ENEMY and cc.actor:instanceof(FireballProjectile)
 		local coll = (Lightning.coll_mat[alliance][cc.channel] and cc.coll_mat[alliance][Lightning.channel]) or is_allied_fb
+			and not cc.actor:instanceof(WarpZoneActor)
 
 		if coll then
 			local target_actor = cc.actor
