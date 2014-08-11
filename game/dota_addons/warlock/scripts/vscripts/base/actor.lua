@@ -14,6 +14,7 @@ function Actor:init(def)
 	self.velocity 	= def.velocity or Vector(0, 0, 0)
 	self.mass 		= def.mass or 1
 	self.static		= def.static or false -- static means its vel will allways be zero
+	self.time_scale	= def.time_scale or 1
 	self.collision_components = {}
 
 	if def.lifetime and def.lifetime > 0 then
@@ -102,24 +103,12 @@ function Actor:destroy()
 
 	self.exists = false
 
-	-- cancel previous destruction task
-	if self.task_destroy then
-		self.task_destroy:cancel()
-		self.task_destroy = nil
-	end
-
 	self:onDestroy()
 	GAME:_removeActor(self)
 end
 
-function Actor:setLifetime(lifetime)
-	if self.task_destroy then
-		self.task_destroy:cancel()
-	end
-
-	-- save the tesk to cancel it if needed
-	self.task_destroy = GAME:addTask{id='destroy_actor '..self.name,
-		time=lifetime, func=self.destroy, args=self}
+function Actor:setLifetime(lifetime)	
+	self.time_to_live = lifetime
 end
 
 function Actor:receiveDamage(dmg_info)
@@ -138,6 +127,13 @@ function Actor:onPreTick(dt)
 end
 
 function Actor:onPostTick(dt)
+	-- Lifetime handling
+	if self.time_to_live then
+		self.time_to_live = self.time_to_live - dt * self.time_scale
+		if self.time_to_live <= 0 then
+			self:destroy()
+		end
+	end
 end
 
 function Actor:onCollision(coll_info, cc)

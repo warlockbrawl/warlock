@@ -272,6 +272,8 @@ function Pawn:onPreTick(dt)
 end
 
 function Pawn:onPostTick(dt)
+	Pawn.super.onPostTick(self, dt)
+	
 	if self.unit:IsAlive() then
 		self.health = math.min(self.max_hp, self.health + self.hp_regen * dt)
 	end

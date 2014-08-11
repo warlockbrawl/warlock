@@ -28,7 +28,7 @@ BASE_MODULES		= {
 	'warlock/spells/shield', 'warlock/spells/swap',
 	'warlock/spells/rush', 'warlock/spells/grip',
 	'warlock/spells/drain', 'warlock/spells/homing',
-	'warlock/spells/thrust',
+	'warlock/spells/thrust', 'warlock/spells/warpzone',
 
 	'warlock/modifiers/windwalkmodifier', 'warlock/modifiers/shieldmodifier',
 	'warlock/modifiers/rushmodifier', 'warlock/modifiers/gripmodifier',
@@ -147,6 +147,7 @@ function Precache(context)
 	PrecacheResource("particle_folder", "particles/units/heroes/hero_wisp", context)
 	PrecacheResource("particle_folder", "particles/units/heroes/hero_phantom_assassin", context)
 	PrecacheResource("particle_folder", "particles/units/heroes/hero_lich", context)
+	PrecacheResource("particle", "particles/warpzone.vpcf", context)
 end
 
 function Activate()

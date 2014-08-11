@@ -36,7 +36,7 @@ end
 
 function Projectile:_updateLocation()
 	if self.effect ~= nil then
-		self.effect:setLocation(self.location, self.velocity:Length())
+		self.effect:setLocation(self.location, self.time_scale * self.velocity:Length())
 	end
 end
 

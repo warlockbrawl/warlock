@@ -54,8 +54,9 @@ function SwapProjectile:onDestroy()
 		Effect:create(self.swap_effect, { location=self.instigator.location })
 
 		-- Set location of pawn at correct time
-		local overtime = GAME:time() - self.end_time
-		self.instigator.location = self.location - overtime * self.velocity
+		--local overtime = GAME:time() - self.end_time
+		--self.instigator.location = self.location - overtime * self.velocity
+		self.instigator.location = self.location
 
 		Effect:create(self.swap_effect, { location=self.instigator.location })
 	end

@@ -51,7 +51,7 @@ end
 -- @return minX, maxX
 function CollisionComponent:extentX(dt)
 	local lx = self.actor.location.x
-	local vx = self.actor.velocity.x * dt
+	local vx = self.actor.velocity.x * dt * self.actor.time_scale
 
 	if vx >= 0 then
 		return lx, lx + vx
@@ -359,8 +359,7 @@ end
 function Actor:moveInTime(dt)
 	-- moving only non-static actors
 	if not self.static then
-		self.location = self.location + self.velocity*dt --+ self.acceleration*math.abs(dt)*dt*0.5
-		--self.velocity = self.velocity + self.acceleration*dt
+		self.location = self.location + self.velocity * dt * self.time_scale
 	end
 end
 

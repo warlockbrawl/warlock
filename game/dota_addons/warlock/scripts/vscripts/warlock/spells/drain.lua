@@ -39,7 +39,7 @@ function Drain:onCast(cast_info)
 	local buff_duration = cast_info:attribute('buff_duration')
 	local changed_speed = cast_info:attribute('changed_speed')
 
-	DrainProjectile:new{
+	DrainProjectile:new {
 		instigator = cast_info.caster_actor,
 		coll_radius = coll_radius,
 		velocity = dir * projectile_speed,

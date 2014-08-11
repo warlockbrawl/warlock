@@ -7,7 +7,7 @@ function BoomerangProjectile:init(def)
 	self.hit_effect = def.hit_effect
 
 	BoomerangProjectile.super.init(self, def)
-
+	
 	-- Set the correct coll matrix
 	local coll_mat = { }
 	coll_mat[Player.ALLIANCE_SELF] = {}
@@ -112,7 +112,7 @@ function BoomerangProjectile:onPreTick(dt)
 	local dist = delta:Length()
 
 	-- Add Acceleration
-	self.velocity = self.velocity + self.acceleration * dt
+	self.velocity = self.velocity + self.acceleration * dt * self.time_scale
 
 	-- Skip rest if the main iteration isnt activated yet
 	if(not self.iter) then

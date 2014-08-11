@@ -629,6 +629,63 @@
 		}
 	}
 	
+	"warlock_warpzone"
+	{
+		"ID"							"8852"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"antimage_spell_shield"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"GLOBAL"
+		"AbilityCastPoint"				"0.2"
+		"AbilityCooldown"				"1 1 1 1 1 1 1"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
+		"MaxLevel"						"7"
+		"AbilityManaCost"				"0"
+
+		"precache"
+		{
+		}
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"				"POINT"
+				"ScriptFile"			"scripts/vscripts/triggers.lua"
+				"Function"				"cast"
+			}
+		}
+
+		// Attributes
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"4.50 4.75 5.00 5.25 5.50 5.75 6.00"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"time_scale"			"0.30 0.28 0.26 0.24 0.22 0.20 0.18"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"cooldown2"				"1 1 1 1 1 1 1"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"upgrade_cost"			"0 0 0 0 0 0 0"
+			}
+		}
+	}
+	
 	"warlock_teleport"
 	{
 		"ID"							"8860"
