@@ -60,7 +60,8 @@ CParticleSystemDefinition CParticleSystemDefinition_0
 	[
 		&C_INIT_RandomRotation_0,
 		&C_INIT_RandomColor_0,
-		&C_INIT_CreateWithinSphere_0
+		&C_INIT_CreateWithinSphere_0,
+		&C_INIT_RemapCPtoScalar_0
 	]
 	CParticleOperatorInstance*[] m_Emitters = 
 	[
@@ -376,6 +377,39 @@ C_INIT_CreateWithinSphere C_INIT_CreateWithinSphere_0
 	float m_flEndCPGrowthTime = 0.000000
 	float(3) m_LocalCoordinateSystemSpeedMin = ( 0.000000, 0.000000, 0.000000 )
 	float(3) m_LocalCoordinateSystemSpeedMax = ( 0.000000, 0.000000, 0.000000 )
+	bool m_bRunForParentApplyKillList = true
+	bool m_bDisableOperator = false
+	float m_flOpStartFadeInTime = 0.000000
+	float m_flOpEndFadeInTime = 0.000000
+	float m_flOpStartFadeOutTime = 0.000000
+	float m_flOpEndFadeOutTime = 0.000000
+	float m_flOpFadeOscillatePeriod = 0.000000
+	float m_flOpTimeOffsetMin = 0.000000
+	float m_flOpTimeOffsetMax = 0.000000
+	int m_nOpTimeOffsetSeed = 0
+	int m_nOpStrengthScaleSeed = 0
+	float m_flOpStrengthMinScale = 1.000000
+	float m_flOpStrengthMaxScale = 1.000000
+	int m_nOpTimeScaleSeed = 0
+	float m_flOpTimeScaleMin = 1.000000
+	float m_flOpTimeScaleMax = 1.000000
+	int m_nOpEndCapState = -1
+	int m_nOpScaleCP = -1
+	string m_Notes = ""
+}
+
+C_INIT_RemapCPtoScalar C_INIT_RemapCPtoScalar_0
+{
+	int m_nCPInput = 1
+	int m_nFieldOutput = 3
+	int m_nField = 0
+	float m_flInputMin = 0.000000
+	float m_flInputMax = 1000.000000
+	float m_flOutputMin = 0.000000
+	float m_flOutputMax = 1000.000000
+	float m_flStartTime = -1.000000
+	float m_flEndTime = -1.000000
+	bool m_bScaleInitialRange = false
 	bool m_bRunForParentApplyKillList = true
 	bool m_bDisableOperator = false
 	float m_flOpStartFadeInTime = 0.000000

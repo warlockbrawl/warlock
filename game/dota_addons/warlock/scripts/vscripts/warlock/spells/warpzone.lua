@@ -79,7 +79,7 @@ function WarpZoneActor:init(def)
 	self.locust:SetAbsOrigin(self.location)
 	
 	self.effect = ParticleManager:CreateParticle("particles/warpzone.vpcf", PATTACH_ABSORIGIN_FOLLOW, self.locust)
-	ParticleManager:SetParticleControl(self.effect, 1, Vector(self.radius, 1, 1))
+	ParticleManager:SetParticleControl(self.effect, 1, Vector(def.radius, 1, 1))
 end
 
 function WarpZoneActor:onDestroy()
