@@ -72,7 +72,10 @@ function DrainProjectile:onCollision(coll_info, cc)
 	if actor:instanceof(Pawn) then
 		if alliance == Player.ALLIANCE_ALLY then
 			-- Heal and speedbuff allies
-			actor:setHealth(actor.health + self.damage)
+			actor:heal {
+				source = self.instigator,
+				amount = self.damage
+			}
 
 			-- Add speed buff, affected by duration mastery
 			GAME:addModifier(Modifier:new {

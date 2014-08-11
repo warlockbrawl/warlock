@@ -201,8 +201,26 @@ end
 
 function Pawn:increaseKBPoints(amount)
 	local kb_points = self.unit:GetMana()
-	kb_points = kb_points + amount
+	kb_points = max(kb_points + amount, 0)
 	self.unit:SetMana(kb_points)
+end
+
+function Pawn:heal(info)
+	self:setHealth(self.health + info.amount)
+	self:increaseKBPoints(-(info.dp_factor or 0.5) * info.amount)
+	
+	-- Display heal text
+	GAME:showFloatingNum {
+		num = info.amount,
+		location = self.location,
+		duration = 1,
+		color = dmg_info.text_color or Vector(50, 255, 50)
+	}
+	
+	-- Increase healing statistics
+	if info.source and info.source.owner then
+		info.source.owner:changeStat(Player.STATS_HEALING, info.amount)
+	end
 end
 
 function Pawn:receiveDamage(dmg_info)
@@ -246,7 +264,17 @@ function Pawn:receiveDamage(dmg_info)
 	dmg_info.amount = dmg_info.amount + GAME:modDamagePostKB(self, dmg_info)
 
 	if dmg_info.source and dmg_info.source.owner then
-		dmg_info.source.owner.damage = dmg_info.source.owner.damage + dmg_info.amount
+		-- Increase damage statistics
+		dmg_info.source.owner:changeStat(Player.STATS_DAMAGE, dmg_info.amount)
+		
+		-- Lifesteal
+		local lifesteal_factor = dmg_info.source.owner.mastery_factor[Player.MASTERY_LIFESTEAL]
+		if lifesteal_factor ~= 0 then
+			self:heal {
+				source = self,
+				amount = dmg_info.amount * lifesteal_factor
+			}
+		end
 	end
 	
 	if dmg_info.source then

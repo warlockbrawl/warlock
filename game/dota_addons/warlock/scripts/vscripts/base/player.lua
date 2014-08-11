@@ -7,10 +7,14 @@ Player.ALLIANCE_SELF		= 0
 Player.ALLIANCE_ALLY		= 1
 Player.ALLIANCE_ENEMY		= 2
 
-Player.MASTERY_DURATION = 0
-Player.MASTERY_RANGE = 1
-Player.MASTERY_LIFESTEAL = 2
-Player.MASTERY_MAX_INDEX = 2
+Player.MASTERY_DURATION		= 0
+Player.MASTERY_RANGE		= 1
+Player.MASTERY_LIFESTEAL	= 2
+Player.MASTERY_MAX_INDEX	= 2
+
+Player.STATS_DAMAGE			= 0
+Player.STATS_HEALING		= 1
+Player.STATS_MAX_INDEX		= 1
 
 --- Create a player using the information
 -- from PreConnect event
@@ -20,13 +24,26 @@ function Player:init()
 	self.reconnect = false --will be set to true when leaving for the first time
 	
 	-- stats
-	self.damage = 0
+	self.stats = {}
+	for i = 0, Player.STATS_MAX_INDEX do
+		self.stats[i] = 0
+	end
 
 	-- Masteries
 	self.mastery_factor = {}
 	self.mastery_factor[Player.MASTERY_DURATION] = 1.0
 	self.mastery_factor[Player.MASTERY_RANGE] = 1.0
 	self.mastery_factor[Player.MASTERY_LIFESTEAL] = 0.0
+end
+
+function Player:resetStats()
+	for stat, val in pairs(self.stats) do
+		self.stats[stat] = 0
+	end
+end
+
+function Player:changeStat(stat, num)
+	self.stats[stat] = self.stats[stat] + num
 end
 
 function oppositeTeam(team)

@@ -16,7 +16,7 @@ function WarpZone:onCast(cast_info)
 	local actor = WarpZoneActor:new {
 		location = cast_info.target,
 		owner = owner,
-		lifetime = duration * owner.mastery_level[Player.MASTERY_DURATION],
+		lifetime = duration * owner.mastery_factor[Player.MASTERY_DURATION],
 		radius = 200,
 		static = true,
 		time_scale_change = time_scale
@@ -41,7 +41,7 @@ function WarpZoneActor:init(def)
 		id = 'warpzone',
 		channel 	= CollisionComponent.CHANNEL_PROJECTILE,
 		coll_mat 	= CollisionComponent.createCollMatSimple(
-			{Player.ALLIANCE_ENEMY, Player.ALLIANCE_SELF},
+			{Player.ALLIANCE_ENEMY},
 			{CollisionComponent.CHANNEL_PROJECTILE}),
 		radius 		= def.radius,
 		ellastic 	= false,

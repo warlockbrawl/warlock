@@ -122,6 +122,9 @@ function Actor:setLifetime(lifetime)
 	}
 end
 
+function Actor:heal(info)
+end
+
 function Actor:receiveDamage(dmg_info)
 	-- dmg_info
 	--	amount = damage amount (scalar)

@@ -116,7 +116,9 @@ function Mode:onRoundStart()
 			player.pawn:respawn()
 			player.pawn.unit:SetAbilityPoints(0)
 		end
-		player.damage = 0
+		
+		-- Reset round stats (damage, heal, etc.)
+		player:resetStats()
 	end
 	
 	-- initial invul

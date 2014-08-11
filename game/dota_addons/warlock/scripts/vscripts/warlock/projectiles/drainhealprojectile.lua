@@ -27,7 +27,10 @@ function DrainHealProjectile:onPreTick(dt)
 	
 	if dist_sq < 4096 then --64
 		-- Heal target and destroy
-		self.target:setHealth(self.target.health + self.heal_amount)
+		self.target:heal {
+			source = self.instigator,
+			amount = self.heal_amount
+		}
 
 		-- Play a sound
 		-- TODO: maybe not use the effects locust
