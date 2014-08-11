@@ -33,8 +33,9 @@ function Lightning:onCast(cast_info)
 
 		-- collision filters, fireball hardcoded, not hitting warpzone hardcoded
 		local is_allied_fb = alliance ~= Player.ALLIANCE_ENEMY and cc.actor:instanceof(FireballProjectile)
-		local coll = (Lightning.coll_mat[alliance][cc.channel] and cc.coll_mat[alliance][Lightning.channel]) or is_allied_fb
-			and not cc.actor:instanceof(WarpZoneActor)
+		local coll = ((Lightning.coll_mat[alliance][cc.channel] and cc.coll_mat[alliance][Lightning.channel]) 
+			and not cc.actor:instanceof(WarpZoneActor)) or is_allied_fb
+			
 
 		if coll then
 			local target_actor = cc.actor
