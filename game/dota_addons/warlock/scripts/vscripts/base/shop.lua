@@ -1,6 +1,3 @@
-Player.MASTERY_RANGE = 1
-Player.MASTERY_DURATION = 2
-Player.MASTERY_LIFESTEAL = 3
 
 Abilities = {} -- to detect if player has spell of a specific column
 AbilityLevel = {}
@@ -182,16 +179,28 @@ function purchase(event)
 	elseif (func == 2) then ----- MASTERIES -----
 		local maxlevel = item_handle:GetSpecialValueFor("maxlevel")
 		local index = item_handle:GetSpecialValueFor("index") -- 0=duration 1=range 2=lifesteal
-
-		if MasteryLevel[id][index] < maxlevel then -- upgrade
+		
+		if index == 3 then -- jack of all trades. Hardcoded
+			if MasteryLevel[id][0] >= 5 or MasteryLevel[id][1] >= 5 and MasteryLevel[id][2] >= 5 then
+				-- do nothing (return gold)
+			else
+				buying_player.mastery_factor[buying_player.MASTERY_DURATION] = buying_player.mastery_factor[buying_player.MASTERY_DURATION] + (item_handle:GetLevelSpecialValueFor('stats', MasteryLevel[id][0]))/100.0
+				buying_player.mastery_factor[buying_player.MASTERY_RANGE] = buying_player.mastery_factor[buying_player.MASTERY_RANGE] + (item_handle:GetLevelSpecialValueFor('stats', MasteryLevel[id][1]))/100.0
+				buying_player.mastery_factor[buying_player.MASTERY_LIFESTEAL] = buying_player.mastery_factor[buying_player.MASTERY_LIFESTEAL] + (item_handle:GetLevelSpecialValueFor('stats', MasteryLevel[id][2]))/100.0
+				for index = 0, 2 do
+					MasteryLevel[id][index] = MasteryLevel[id][index]+1
+				end
+				buying_player:addCash( -event.itemcost)
+			end
+		elseif MasteryLevel[id][index] < maxlevel then -- upgrade
 			buying_player.mastery_factor[buying_player.index] = buying_player.mastery_factor[buying_player.index] + (item_handle:GetLevelSpecialValueFor('stats', MasteryLevel[id][index]))/100.0
 			MasteryLevel[id][index] = MasteryLevel[id][index]+1
-			print("upgraded mastery")
-			print(buying_player.mastery_factor[buying_player.MASTERY_DURATION])
-			print(buying_player.mastery_factor[buying_player.MASTERY_RANGE])
-			print(buying_player.mastery_factor[buying_player.MASTERY_LIFESTEAL])
 			buying_player:addCash( -event.itemcost)
 		end
+		print("upgraded mastery")
+		print(buying_player.mastery_factor[buying_player.MASTERY_DURATION])
+		print(buying_player.mastery_factor[buying_player.MASTERY_RANGE])
+		print(buying_player.mastery_factor[buying_player.MASTERY_LIFESTEAL])
 	else
 		print("Error: Shop type not found")
 	end

@@ -854,7 +854,7 @@
 "AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
 "AbilityCastAnimation"	"ACT_DOTA_DISABLED"
 "AbilityManaCost"	"0"
-"ItemCost"	0
+"ItemCost"	12
 "ItemShopTags"	"consumable"
 "ItemQuality"	"consumable"
 "ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
@@ -1638,7 +1638,7 @@
 "AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
 "AbilityCastAnimation"	"ACT_DOTA_DISABLED"
 "AbilityManaCost"	"0"
-"ItemCost"	4
+"ItemCost"	5
 "ItemShopTags"	"consumable"
 "ItemQuality"	"consumable"
 "ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
@@ -1661,7 +1661,7 @@
 "03"
 {
 "var_type"	"FIELD_FLOAT"
-"stats"	"8 7 6 5 4"
+"stats"	"10 9 8 7 6"
 }
 "04"
 {
@@ -1713,7 +1713,7 @@
 "03"
 {
 "var_type"	"FIELD_FLOAT"
-"stats"	"12 10 8 6 4"
+"stats"	"12 11 10 9 8"
 }
 "04"
 {
@@ -1742,7 +1742,7 @@
 "AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
 "AbilityCastAnimation"	"ACT_DOTA_DISABLED"
 "AbilityManaCost"	"0"
-"ItemCost"	6
+"ItemCost"	5
 "ItemShopTags"	"consumable"
 "ItemQuality"	"consumable"
 "ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
@@ -1765,7 +1765,7 @@
 "03"
 {
 "var_type"	"FIELD_FLOAT"
-"stats"	"10 8 6 4 2"
+"stats"	"10 9 8 7 6"
 }
 "04"
 {
@@ -1776,6 +1776,58 @@
 {
 "var_type"	"FIELD_INTEGER"
 "index"	"2"
+}
+}
+}
+"item_warlock_jack_of_all_trades"
+{
+"ID"	"1984"
+"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+"BaseClass"	"item_datadriven"
+"AbilityTextureName"	"warlock_jack_of_all_trades"
+"ItemKillable"	"0"
+"ItemSellable"	"0"
+"ItemDroppable"	"0"
+"AbilityCastRange"	"0"
+"AbilityCastPoint"	"0.0"
+"AbilityCooldown"	"0.0"
+"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+"AbilityManaCost"	"0"
+"ItemCost"	13
+"ItemShopTags"	"consumable"
+"ItemQuality"	"consumable"
+"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
+"ItemPurchasable"	"1"
+"SideShop"	"1"
+"MaxUpgradeLevel"	15
+"ItemBaseLevel"	"1"
+"AbilitySpecial"
+{
+"01"
+{
+"var_type"	"FIELD_FLOAT"
+"maxlevel"	"15"
+}
+"02"
+{
+"var_type"	"FIELD_FLOAT"
+"mass"	""
+}
+"03"
+{
+"var_type"	"FIELD_FLOAT"
+"stats"	"10 9 8 7 6 12 11 10 9 8 10 9 8 7 6"
+}
+"04"
+{
+"var_type"	"FIELD_INTEGER"
+"type"	"2"
+}
+"05"
+{
+"var_type"	"FIELD_INTEGER"
+"index"	"3"
 }
 }
 }

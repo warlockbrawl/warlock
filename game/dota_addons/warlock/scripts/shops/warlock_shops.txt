@@ -19,6 +19,7 @@
 "item"	"item_warlock_duration_mastery"
 "item"	"item_warlock_range_mastery"
 "item"	"item_warlock_life_steal_mastery"
+"item"	"item_warlock_jack_of_all_trades"
 }
 "basics" // Knockout (Primary)
 {
