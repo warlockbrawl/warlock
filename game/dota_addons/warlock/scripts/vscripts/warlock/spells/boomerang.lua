@@ -21,6 +21,9 @@ function Boomerang:onCast(cast_info)
 	local damage = cast_info:attribute('damage')
 	local radius = cast_info:attribute('radius')
 	local projectile_effect = cast_info:attribute('projectile_effect')
+	
+	-- Calculate max range including range mastery
+	local range = cast_info:attribute('range') * cast_info.caster_actor.owner.mastery_factor[Player.MASTERY_RANGE]
 
 	BoomerangProjectile:new{
 		instigator	= cast_info.caster_actor,
@@ -29,7 +32,7 @@ function Boomerang:onCast(cast_info)
 		damage 		= damage,
 		location = start,
 		direction = dir,
-		distance = math.min(dist, cast_info:attribute('range')),
+		distance = math.min(dist, range),
 		hit_sound = Boomerang.hit_sound,
 		hit_effect = Boomerang.hit_effect
 	}

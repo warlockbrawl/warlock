@@ -164,8 +164,8 @@ function Mode:onRoundWon(winner_team)
 		local highest_dmg = -1
 		local highest_dmg_player
 		for id, player in pairs(GAME.players) do
-			if player.damage > highest_dmg then
-				highest_dmg = player.damage
+			if player.stats[Player.STATS_DAMAGE] > highest_dmg then
+				highest_dmg = player.stats[Player.STATS_DAMAGE]
 				highest_dmg_player = player
 			end
 		end
