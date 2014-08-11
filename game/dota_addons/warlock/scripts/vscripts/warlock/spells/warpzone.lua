@@ -92,8 +92,9 @@ function WarpZoneActor:onDestroy()
 	self.task:cancel()
 	
 	-- Remove the effect
-	self.locust:Destroy()
 	ParticleManager:ReleaseParticleIndex(self.effect)
+	self.effect = nil
+	self.locust:Destroy()
 	
 	GAME:removeTempActor(self)
 end
