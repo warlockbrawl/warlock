@@ -18,7 +18,7 @@ for i = 0, 9 do -- 10 players
 	WarlockItems[i] = {}
 	
 	for j = 1, 6 do
-		Abilities[i][j] = "warlock_emptyslot" .. tostring(j) -- 6 columns (D=0,R=1,T=2,E=3,C=4,Y=5)
+		Abilities[i][j-1] = "warlock_emptyslot" .. tostring(j) -- 6 columns (D=0,R=1,T=2,E=3,C=4,Y=5)
 	end
 	
 	AbilityLevel[i][0] = 0
