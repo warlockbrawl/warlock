@@ -184,9 +184,9 @@ function purchase(event)
 			if MasteryLevel[id][0] >= 5 or MasteryLevel[id][1] >= 5 and MasteryLevel[id][2] >= 5 then
 				-- do nothing (return gold)
 			else
-				buying_player.mastery_factor[buying_player.MASTERY_DURATION] = buying_player.mastery_factor[buying_player.MASTERY_DURATION] + (item_handle:GetLevelSpecialValueFor('stats', MasteryLevel[id][0]))/100.0
-				buying_player.mastery_factor[buying_player.MASTERY_RANGE] = buying_player.mastery_factor[buying_player.MASTERY_RANGE] + (item_handle:GetLevelSpecialValueFor('stats', MasteryLevel[id][1]))/100.0
-				buying_player.mastery_factor[buying_player.MASTERY_LIFESTEAL] = buying_player.mastery_factor[buying_player.MASTERY_LIFESTEAL] + (item_handle:GetLevelSpecialValueFor('stats', MasteryLevel[id][2]))/100.0
+				buying_player.mastery_factor[Player.MASTERY_DURATION] = buying_player.mastery_factor[Player.MASTERY_DURATION] + (item_handle:GetLevelSpecialValueFor('stats', MasteryLevel[id][0]))/100.0
+				buying_player.mastery_factor[Player.MASTERY_RANGE] = buying_player.mastery_factor[Player.MASTERY_RANGE] + (item_handle:GetLevelSpecialValueFor('stats', MasteryLevel[id][1]))/100.0
+				buying_player.mastery_factor[Player.MASTERY_LIFESTEAL] = buying_player.mastery_factor[Player.MASTERY_LIFESTEAL] + (item_handle:GetLevelSpecialValueFor('stats', MasteryLevel[id][2]))/100.0
 				for index = 0, 2 do
 					MasteryLevel[id][index] = MasteryLevel[id][index]+1
 				end
@@ -198,9 +198,9 @@ function purchase(event)
 			buying_player:addCash( -event.itemcost)
 		end
 		print("upgraded mastery")
-		print(buying_player.mastery_factor[buying_player.MASTERY_DURATION])
-		print(buying_player.mastery_factor[buying_player.MASTERY_RANGE])
-		print(buying_player.mastery_factor[buying_player.MASTERY_LIFESTEAL])
+		print(buying_player.mastery_factor[Player.MASTERY_DURATION])
+		print(buying_player.mastery_factor[Player.MASTERY_RANGE])
+		print(buying_player.mastery_factor[Player.MASTERY_LIFESTEAL])
 	else
 		print("Error: Shop type not found")
 	end

@@ -27,7 +27,7 @@ function DrainProjectile:init(def)
 	cc.coll_mat[Player.ALLIANCE_ALLY][CollisionComponent.CHANNEL_PLAYER] = true
 
 	-- Start the timer for changing acceleration
-	self.task = GAME:addTask {
+	self.timer = self:addTimer {
 		time = def.lifetime - def.extra_time,
 		func = function()
 			self:changeDirection()
@@ -137,8 +137,7 @@ end
 function DrainProjectile:onDestroy()
 	DrainProjectile.super.onDestroy(self)
 	
-	if self.task then
-		self.task:cancel()
-		self.task = nil
+	if self.timer then
+		self:removeTimer(self.timer)
 	end
 end

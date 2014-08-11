@@ -14,7 +14,7 @@ function ThrustModifier:init(def)
 end
 
 function ThrustModifier:onPreTick(dt)
-	self.pawn.velocity = self.pawn.velocity + self.acceleration * dt * self.time_scale
+	self.pawn.velocity = self.pawn.velocity + self.acceleration * dt
 end
 
 -- Called when thrust hits a pawn

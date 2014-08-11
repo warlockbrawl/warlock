@@ -6,6 +6,9 @@ Projectile = class(Actor)
 function Projectile:init(def)
 	-- extract data
 	self.instigator = def.instigator
+	
+	self.range_mastery = true
+	self.duration_mastery = false
 
 	if self.instigator then
 		def.owner = self.instigator.owner
@@ -54,6 +57,26 @@ function Projectile:onDestroy()
 	end
 
 	Projectile.super.onDestroy(self)
+end
+
+function Projectile:setLifetime(lifetime)
+	
+	
+	local scaled_lifetime = lifetime
+	
+	if self.duration_mastery then
+		scaled_lifetime = scaled_lifetime * self.instigator.owner.mastery_factor[Player.MASTERY_DURATION]
+	end
+	
+	if self.range_mastery then
+		scaled_lifetime = scaled_lifetime * self.instigator.owner.mastery_factor[Player.MASTERY_RANGE]
+	end
+	
+	print("Projectile time: " .. tostring(lifetime))
+	print("Scaled time: " .. tostring(scaled_lifetime))
+	print("Range factor: " .. tostring(self.instigator.owner.mastery_factor[Player.MASTERY_RANGE]))
+	
+	Projectile.super.setLifetime(self, scaled_lifetime)
 end
 
 -------------------------------------------------------------------------------

@@ -399,7 +399,7 @@ end
 function Game:tickPhysics(dt)
 	-- pre tick
 	for actor, _ in pairs(self.actors) do
-		actor:onPreTick(dt)
+		actor:onPreTick(dt * actor.time_scale)
 	end
 
 	-- collision detection
@@ -421,6 +421,6 @@ function Game:tickPhysics(dt)
 			actor:_updateLocation()
 		end
 
-		actor:onPostTick(dt)
+		actor:onPostTick(dt * actor.time_scale)
 	end
 end

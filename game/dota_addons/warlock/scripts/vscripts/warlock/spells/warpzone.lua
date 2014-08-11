@@ -39,7 +39,7 @@ function WarpZoneActor:init(def)
 		id = 'warpzone',
 		channel 	= CollisionComponent.CHANNEL_PROJECTILE,
 		coll_mat 	= CollisionComponent.createCollMatSimple(
-			{Player.ALLIANCE_ENEMY},
+			{Player.ALLIANCE_ENEMY, Player.ALLIANCE_SELF},
 			{CollisionComponent.CHANNEL_PROJECTILE}),
 		radius 		= def.radius,
 		ellastic 	= false,
@@ -121,8 +121,22 @@ function WarpZoneCollisionComponent:onCollision(coll_info)
 	
 	local actor = coll_info.actor
 	
-	-- Scale colliding projectiles
-	if not self.warp_zone_actor.scaled_actors[actor] and not actor:instanceof(WarpZoneActor) then
+	-- Scale colliding projectiles, hardcoded exceptions
+	if not self.warp_zone_actor.scaled_actors[actor] and 
+		not actor:instanceof(WarpZoneActor) and 
+		not actor:instanceof(MeteorProjectile) then
+			
 		self.warp_zone_actor:scaleActor(actor)
 	end
+end
+
+function WarpZoneCollisionComponent:collisionFilter(other_cc)
+	-- returns notify_self, notify_other, ellastic
+	local alliance = self.actor.owner:getAlliance(other_cc.actor.owner)
+
+	if(self.coll_mat[alliance][other_cc.channel]) then
+		return true, false, self.ellastic
+	end
+
+	return false, false, false
 end

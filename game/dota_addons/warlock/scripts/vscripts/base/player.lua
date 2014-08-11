@@ -7,6 +7,10 @@ Player.ALLIANCE_SELF		= 0
 Player.ALLIANCE_ALLY		= 1
 Player.ALLIANCE_ENEMY		= 2
 
+Player.MASTERY_DURATION = 0
+Player.MASTERY_RANGE = 1
+Player.MASTERY_LIFESTEAL = 2
+
 --- Create a player using the information
 -- from PreConnect event
 -- @param info Table received from PreConnect event.

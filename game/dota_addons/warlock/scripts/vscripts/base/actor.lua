@@ -16,6 +16,8 @@ function Actor:init(def)
 	self.static		= def.static or false -- static means its vel will allways be zero
 	self.time_scale	= def.time_scale or 1
 	self.collision_components = {}
+	
+	self.timers = Set:new()
 
 	if def.lifetime and def.lifetime > 0 then
 		self:setLifetime(def.lifetime)
@@ -108,7 +110,16 @@ function Actor:destroy()
 end
 
 function Actor:setLifetime(lifetime)	
-	self.time_to_live = lifetime
+	if self.death_timer then
+		self:removeTimer(self.death_timer)
+	end
+	
+	self.death_timer = self:addTimer {
+		time = lifetime,
+		func = function()
+			self:destroy()
+		end
+	}
 end
 
 function Actor:receiveDamage(dmg_info)
@@ -126,13 +137,27 @@ end
 function Actor:onPreTick(dt)
 end
 
-function Actor:onPostTick(dt)
-	-- Lifetime handling
-	if self.time_to_live then
-		self.time_to_live = self.time_to_live - dt * self.time_scale
-		if self.time_to_live <= 0 then
-			self:destroy()
+function Actor:onPostTick(dt)	
+	local remove_timers = {}
+	
+	-- Tick all actor timers
+	for timer, _ in pairs(self.timers) do
+		timer.time_left = timer.time_left - dt
+		if timer.time_left <= 0 then
+			timer.func()
+			
+			-- Extend the time left if its periodic
+			if timer.periodic then
+				timer.time_left = timer.time_left + timer.time
+			else
+				table.insert(remove_timers, timer)
+			end
 		end
+	end
+	
+	-- Remove timers marked for removal
+	for timer, _ in pairs(remove_timers) do
+		self.timers:remove(timer)
 	end
 end
 
@@ -142,6 +167,27 @@ function Actor:onCollision(coll_info, cc)
 end
 
 function Actor:onArenaBoundCollision()
+end
+
+-------------------------------------------------------------------------------
+-- Actor Timers, affected by time_scale
+-------------------------------------------------------------------------------
+ActorTimer = class()
+function ActorTimer:init(def)
+	self.time = def.time
+	self.func = def.func
+	self.periodic = def.periodic
+	self.time_left = def.time
+end
+
+function Actor:addTimer(def)
+	local timer = ActorTimer:new(def)
+	self.timers:add(timer)
+	return timer
+end
+
+function Actor:removeTimer(timer)
+	self.timers:remove(timer)
 end
 
 -------------------------------------------------------------------------------

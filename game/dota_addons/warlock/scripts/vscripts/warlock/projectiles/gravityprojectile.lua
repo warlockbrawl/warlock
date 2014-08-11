@@ -83,13 +83,13 @@ function GravityProjectile:onPreTick(dt)
 				-- Apply velocity for pawns that are close
 				if(dist <= 450) then
 					dir = dir:Normalized()
-					actor.velocity = actor.velocity + self.strength * (1 - dist * dist / 202500) * dir * dt
+					actor.velocity = actor.velocity + self.strength * (1 - dist * dist / 202500) * dir * dt / actor.time_scale
 				end
 			elseif(is_proj) then
 				-- Apply velocity for projectiles that are close
 				if(dist <= 600) then
 					dir = dir:Normalized()
-					actor.velocity = actor.velocity + 1650 * (1.5 - dist * dist / 360000) * dir * dt
+					actor.velocity = actor.velocity + 1650 * (1.5 - dist * dist / 360000) * dir * dt / actor.time_scale
 				end
 			end
 		end

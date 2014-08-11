@@ -39,7 +39,7 @@ function BoomerangProjectile:init(def)
 	self.changed_acc = par_acc * def.direction - perp_acc * perp_dir
 
 	-- Start the timer for changing acceleration
-	GAME:addTask {
+	self:addTimer {
 		time = self.change_acc_time,
 		func = function()
 			self:changeAcceleration()
@@ -53,7 +53,7 @@ function BoomerangProjectile:changeAcceleration()
 	if(not self.iter) then
 		-- Change the acceleration and add a task to stop the acceleration later
 		self.acceleration = self.changed_acc
-		GAME:addTask {
+		self:addTimer {
 			time = self.stop_acc_time,
 			func = function()
 				self:stopAcceleration()
@@ -112,7 +112,7 @@ function BoomerangProjectile:onPreTick(dt)
 	local dist = delta:Length()
 
 	-- Add Acceleration
-	self.velocity = self.velocity + self.acceleration * dt * self.time_scale
+	self.velocity = self.velocity + self.acceleration * dt
 
 	-- Skip rest if the main iteration isnt activated yet
 	if(not self.iter) then
