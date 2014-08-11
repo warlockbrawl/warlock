@@ -53,8 +53,8 @@ function Pawn:init(def)
 	-- Model scale
 	self.unit:SetModelScale(Config.PAWN_MODEL_SCALE)
 
-	add_start_item(self.unit,"item_warlock_fireball",1,def.owner.id)
-	add_start_item(self.unit,"item_warlock_scourge",0,def.owner.id)
+	add_start_item(self.unit, "item_warlock_fireball", 1, def.owner.id)
+	add_start_item(self.unit, "item_warlock_scourge", 0, def.owner.id)
 	
 	self:respawn()
 end
@@ -326,8 +326,8 @@ function Pawn:damageArea(target, radius, dmg_info)
 	return count 
 end
 
-function add_start_item(unit,abil_name,i,id)
-	ItemID[id][i] = CreateItem( abil_name, unit, unit)
+function add_start_item(unit, abil_name, i, id)
+	ItemID[id][i] = CreateItem(abil_name, unit, unit)
 	WarlockItems[id][i] = nil
 	ItemLevel[id][i] = 0
 	AbilityLevel[id][i] = 0

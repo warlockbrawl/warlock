@@ -10,6 +10,7 @@ Player.ALLIANCE_ENEMY		= 2
 Player.MASTERY_DURATION = 0
 Player.MASTERY_RANGE = 1
 Player.MASTERY_LIFESTEAL = 2
+Player.MASTERY_MAX_INDEX = 2
 
 --- Create a player using the information
 -- from PreConnect event
@@ -20,6 +21,12 @@ function Player:init()
 	
 	-- stats
 	self.damage = 0
+
+	-- Masteries
+	self.mastery_factor = {}
+	self.mastery_factor[Player.MASTERY_DURATION] = 1.0
+	self.mastery_factor[Player.MASTERY_RANGE] = 1.0
+	self.mastery_factor[Player.MASTERY_LIFESTEAL] = 0.0
 end
 
 function oppositeTeam(team)

@@ -18,10 +18,6 @@ end
 function Mode:onStart()
 	for id, player in pairs(GAME.players) do
 		player:setCash(Config.CASH_ON_START)
-		player.mastery_factor = {}
-		player.mastery_factor[player.MASTERY_DURATION] = 1.0
-		player.mastery_factor[player.MASTERY_RANGE] = 1.0
-		player.mastery_factor[player.MASTERY_LIFESTEAL] = 0.0
 	end
 	
 	self:prepareForRound()

@@ -16,17 +16,18 @@ for i = 0, 9 do -- 10 players
 	ItemLevel[i] = {}
 	ItemID[i] = {}
 	WarlockItems[i] = {}
-	Abilities[i][0] = "warlock_emptyslot1" -- 6 columns (D=0,R=1,T=2,E=3,C=4,Y=5)
-	Abilities[i][1] = "warlock_emptyslot2"
-	Abilities[i][2] = "warlock_emptyslot3"
-	Abilities[i][3] = "warlock_emptyslot4"
-	Abilities[i][4] = "warlock_emptyslot5"
-	Abilities[i][5] = "warlock_emptyslot6"
+	
+	for j = 0, 5 do
+		Abilities[i][j] = "warlock_emptyslot" .. tostring(j) -- 6 columns (D=0,R=1,T=2,E=3,C=4,Y=5)
+	end
+	
 	AbilityLevel[i][0] = 0
 	AbilityLevel[i][1] = 0
-	MasteryLevel[i][0] = 0
-	MasteryLevel[i][1] = 0
-	MasteryLevel[i][2] = 0
+	
+	for j = 0, Player.MASTERY_MAX_INDEX do
+		MasteryLevel[i][j] = 0
+	end
+	
 	ItemsPurchased[i][0] = "item_warlock_scourge_incarnation" -- these entries correspond to the base item identifier (the icons which appears in shop that are NOT given to players)
 	ItemsPurchased[i][1] = "item_warlock_fireball"
 
@@ -147,55 +148,59 @@ function purchase(event)
 	elseif (func == 1) then ----- ABILITIES -----
 		local col = item_handle:GetSpecialValueFor("column")
 		if AbilityLevel[id][col] == 0 then
-			hero:RemoveAbility(Abilities[id][0])
-			hero:RemoveAbility(Abilities[id][1])
-			hero:RemoveAbility(Abilities[id][2])
-			hero:RemoveAbility(Abilities[id][3])
-			hero:RemoveAbility(Abilities[id][4])
-			hero:RemoveAbility(Abilities[id][5])
+			-- Remove abilities
+			for i = 0, 5 do
+				hero:RemoveAbility(Abilities[id][i])
+			end
+			
 			Abilities[id][col] = string.sub(event.itemname,6) -- define the ability in the global ability column
 			AbilityLevel[id][col] = 1
-			hero:AddAbility(Abilities[id][0])
-			hero:AddAbility(Abilities[id][1])
-			hero:AddAbility(Abilities[id][2])
-			hero:AddAbility(Abilities[id][3])
-			hero:AddAbility(Abilities[id][4])
-			hero:AddAbility(Abilities[id][5])
-			local abil
-			abil = hero:FindAbilityByName(Abilities[id][0])
-			abil:SetLevel(AbilityLevel[id][0])
-			abil = hero:FindAbilityByName(Abilities[id][1])
-			abil:SetLevel(AbilityLevel[id][1])
-			abil = hero:FindAbilityByName(Abilities[id][2])
-			abil:SetLevel(AbilityLevel[id][2])
-			abil = hero:FindAbilityByName(Abilities[id][3])
-			abil:SetLevel(AbilityLevel[id][3])
-			abil = hero:FindAbilityByName(Abilities[id][4])
-			abil:SetLevel(AbilityLevel[id][4])
-			abil = hero:FindAbilityByName(Abilities[id][5])
-			abil:SetLevel(AbilityLevel[id][5])
-			buying_player:addCash( -event.itemcost)
+			
+			-- Add abilities
+			for i = 0, 5 do
+				hero:AddAbility(Abilities[id][i])
+			end
+		
+			-- Set ability levels
+			for i = 0, 5 do
+				local abil = hero:FindAbilityByName(Abilities[id][i])
+				abil:SetLevel(AbilityLevel[id][i])
+			end
+			
+			buying_player:addCash(-event.itemcost)
 		end
 	elseif (func == 2) then ----- MASTERIES -----
 		local maxlevel = item_handle:GetSpecialValueFor("maxlevel")
 		local index = item_handle:GetSpecialValueFor("index") -- 0=duration 1=range 2=lifesteal
 		
 		if index == 3 then -- jack of all trades. Hardcoded
-			if MasteryLevel[id][0] >= 5 or MasteryLevel[id][1] >= 5 and MasteryLevel[id][2] >= 5 then
-				-- do nothing (return gold)
-			else
-				buying_player.mastery_factor[Player.MASTERY_DURATION] = buying_player.mastery_factor[Player.MASTERY_DURATION] + (item_handle:GetLevelSpecialValueFor('stats', MasteryLevel[id][0]))/100.0
-				buying_player.mastery_factor[Player.MASTERY_RANGE] = buying_player.mastery_factor[Player.MASTERY_RANGE] + (item_handle:GetLevelSpecialValueFor('stats', MasteryLevel[id][1]))/100.0
-				buying_player.mastery_factor[Player.MASTERY_LIFESTEAL] = buying_player.mastery_factor[Player.MASTERY_LIFESTEAL] + (item_handle:GetLevelSpecialValueFor('stats', MasteryLevel[id][2]))/100.0
-				for index = 0, 2 do
-					MasteryLevel[id][index] = MasteryLevel[id][index]+1
+			local do_upgrade = true
+				
+			-- If a mastery level is >= 5 then you cant upgrade, refund gold
+			for i = 0, Player.MASTERY_MAX_INDEX do
+				if MasteryLevel[id][i] >= 5 then
+					do_upgrade = false
+					break
 				end
+			end
+			
+			if do_upgrade then
+				-- Increase masteryfactor and level for all masteries
+				for i = 0, Player.MASTERY_MAX_INDEX do
+					local stats = item_handle:GetLevelSpecialValueFor('stats', MasteryLevel[id][i])
+					buying_player.mastery_factor[i] = buying_player.mastery_factor[i] + stats / 100.0
+					MasteryLevel[id][i] = MasteryLevel[id][i] + 1
+				end
+
 				buying_player:addCash( -event.itemcost)
 			end
 		elseif MasteryLevel[id][index] < maxlevel then -- upgrade
-			buying_player.mastery_factor[buying_player.index] = buying_player.mastery_factor[buying_player.index] + (item_handle:GetLevelSpecialValueFor('stats', MasteryLevel[id][index]))/100.0
-			MasteryLevel[id][index] = MasteryLevel[id][index]+1
-			buying_player:addCash( -event.itemcost)
+			-- Increase masteryfactor and level for a purchased mastery
+			local stats = item_handle:GetLevelSpecialValueFor('stats', MasteryLevel[id][index]) / 100.0
+			buying_player.mastery_factor[index] = buying_player.mastery_factor[index] + stats
+			MasteryLevel[id][index] = MasteryLevel[id][index] + 1
+			
+			buying_player:addCash(-event.itemcost)
 		end
 		print("upgraded mastery")
 		print(buying_player.mastery_factor[Player.MASTERY_DURATION])
