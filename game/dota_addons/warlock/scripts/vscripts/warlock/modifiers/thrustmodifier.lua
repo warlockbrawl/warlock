@@ -23,7 +23,7 @@ function ThrustModifier:hitPawn(pawn, normal, vel_dependend)
 	
 	-- Damage depends on velocity if true
 	if vel_dependend then
-		local factor = self.pawn.velocity:Dot(self.pawn.velocity) / 1521
+		local factor = self.pawn.velocity:Dot(self.pawn.velocity) / 1690000 -- 1300*1300
 		if factor < 0.8 then
 			damage = factor / 0.8 * damage
 		end
