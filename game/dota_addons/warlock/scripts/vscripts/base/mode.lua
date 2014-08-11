@@ -109,6 +109,7 @@ function Mode:onRoundStart()
 
 	GAME:setShop(false)
 	GAME:removeProjectiles()
+	GAME:destroyTempActors()
 	GAME:setCombat(true)
 
 	for id, player in pairs(GAME.players) do
@@ -138,7 +139,6 @@ function Mode:onRoundStart()
 			end
 		end
 	}
-    
 	
 	GAME.arena:setLayer(15+GAME.player_count*1)
 	GAME.arena:setAutoShrink(true)

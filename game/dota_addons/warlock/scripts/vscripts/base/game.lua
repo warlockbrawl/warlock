@@ -39,6 +39,9 @@ function Game:init()
 	self.obstacles = Set:new()
 
 	self.combat = false
+	
+	-- Temporary actors, destroyed on each round
+	self.temp_actors = {}
 
 	-- Initialize subsystems
 	self:initTaskManager()
@@ -299,4 +302,20 @@ function Game:showFloatingNum(def)
 			ParticleManager:ReleaseParticleIndex(pid)
 		end
 	}
+end
+
+function Game:addTempActor(actor)
+	self.temp_actors[actor] = true
+end
+
+function Game:removeTempActor(actor)
+	self.temp_actors[actor] = nil
+end
+
+function Game:destroyTempActors()
+	for actor, _ in pairs(self.temp_actors) do
+		actor:destroy()
+	end
+	
+	self.temp_actors = {}
 end

@@ -32,6 +32,9 @@ WarpZoneActor = class(Actor)
 function WarpZoneActor:init(def)
 	WarpZoneActor.super.init(self, def)
 	
+	-- Add to temp actors so it gets removed on new round etc.
+	GAME:addTempActor(self)
+	
 	self.time_scale_change = def.time_scale_change
 	self.scaled_actors = {}
 	self.radius_sq = def.radius * def.radius
@@ -78,6 +81,8 @@ function WarpZoneActor:onDestroy()
 	-- Remove the effect
 	self.locust:Destroy()
 	ParticleManager:ReleaseParticleIndex(self.effect)
+	
+	GAME:removeTempActor(self)
 end
 
 function WarpZoneActor:scaleActor(actor)

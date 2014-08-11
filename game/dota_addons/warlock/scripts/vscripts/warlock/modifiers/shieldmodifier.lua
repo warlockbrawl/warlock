@@ -44,7 +44,8 @@ function ShieldModifier:onCollision(coll_info, cc)
 		
 		-- Hardcode actors which dont get reflected
 		local reflect = not actor:instanceof(SwapProjectile) and 
-			not actor:instanceof(GravityProjectile)
+			not actor:instanceof(GravityProjectile) and
+			not actor:instanceof(WarpZoneActor)
 			
 		-- Hardcode actors which dont get their owner changed
 		local change_owner = reflect and not actor:instanceof(BoomerangProjectile)

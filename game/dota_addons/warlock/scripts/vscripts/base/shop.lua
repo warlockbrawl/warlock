@@ -163,8 +163,6 @@ function purchase(event)
 		
 			-- Set ability levels
 			for i = 0, 5 do
-				print(i)
-				print(Abilities[id][i])
 				local abil = hero:FindAbilityByName(Abilities[id][i])
 				abil:SetLevel(AbilityLevel[id][i])
 			end

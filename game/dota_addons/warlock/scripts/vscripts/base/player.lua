@@ -34,6 +34,9 @@ function Player:init()
 	self.mastery_factor[Player.MASTERY_DURATION] = 1.0
 	self.mastery_factor[Player.MASTERY_RANGE] = 1.0
 	self.mastery_factor[Player.MASTERY_LIFESTEAL] = 0.0
+	
+	-- Owned actors, get destroyed on round restart etc
+	self.temp_actors = {}
 end
 
 function Player:resetStats()
