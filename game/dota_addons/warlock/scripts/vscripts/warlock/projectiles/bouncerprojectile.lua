@@ -63,10 +63,6 @@ function BouncerProjectile:onCollision(coll_info, cc)
 				self:nextTarget(coll_info.actor)
 				self:setLifetime(self.ttl)
 			else
-				-- Cancel the destroy timer
-				if(self.destroy_task ~= nil) then
-					self.destroy_task:cancel()
-				end
 				self:destroy()
 			end
 

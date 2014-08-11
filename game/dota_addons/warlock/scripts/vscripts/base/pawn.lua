@@ -270,8 +270,8 @@ function Pawn:receiveDamage(dmg_info)
 		-- Lifesteal
 		local lifesteal_factor = dmg_info.source.owner.mastery_factor[Player.MASTERY_LIFESTEAL]
 		if lifesteal_factor ~= 0 then
-			self:heal {
-				source = self,
+			dmg_info.source:heal {
+				source = dmg_info.source,
 				amount = dmg_info.amount * lifesteal_factor
 			}
 		end
