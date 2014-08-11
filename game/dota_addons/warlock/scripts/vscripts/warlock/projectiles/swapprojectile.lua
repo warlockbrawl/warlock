@@ -15,14 +15,18 @@ function SwapProjectile:init(def)
 
 	coll_mat[Player.ALLIANCE_ALLY][CollisionComponent.CHANNEL_PLAYER] = true
 	coll_mat[Player.ALLIANCE_ENEMY][CollisionComponent.CHANNEL_PLAYER] = true
-	coll_mat[Player.ALLIANCE_ENEMY][CollisionComponent.CHANNEL_OBSTACLE] = true
+	
+	-- Only enable swapping pillars in the actual game, not in shoptime
+	if GAME.combat then
+		coll_mat[Player.ALLIANCE_ENEMY][CollisionComponent.CHANNEL_OBSTACLE] = true
+	end
 
 	self.collision_components["projectile"].coll_mat = coll_mat
 
 	self.swapped = false
 end
 
-function SwapProjectile:onCollision(coll_info, cc)
+function SwapProjectile:onCollision(coll_info, cc)	
 	-- Swap the locations
 	local self_loc = self.instigator.location
 	self.instigator.location = coll_info.actor.location

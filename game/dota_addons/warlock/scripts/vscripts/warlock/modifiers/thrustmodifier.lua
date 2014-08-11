@@ -41,9 +41,9 @@ function ThrustModifier:hitPawn(pawn, normal, dmg_factor)
 end
 
 function ThrustModifier.calcDamageFactor(vel)
-	local factor = self.pawn.velocity:Dot(self.pawn.velocity) / 1690000 -- 1300*1300
+	local factor = vel:Dot(vel) / 1690000 -- 1300*1300
 	if factor < 0.8 then
-		factor = factor / 0.8
+		return factor / 0.8
 	else
 		return 1
 	end
