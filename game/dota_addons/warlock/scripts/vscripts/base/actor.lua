@@ -159,7 +159,7 @@ function Actor:onPostTick(dt)
 	end
 	
 	-- Remove timers marked for removal
-	for timer, _ in pairs(remove_timers) do
+	for _, timer in pairs(remove_timers) do
 		self.timers:remove(timer)
 	end
 end

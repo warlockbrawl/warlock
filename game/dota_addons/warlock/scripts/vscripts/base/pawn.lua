@@ -97,7 +97,7 @@ function Pawn:getBuffDuration(dur, buff_pawn)
 	
 	-- Other factor
 	if buff_pawn ~= self then
-		scaled_dur = buff_pawn.owner.mastery_factor[Player.MASTERY_DURATION]
+		scaled_dur = scaled_dur * buff_pawn.owner.mastery_factor[Player.MASTERY_DURATION]
 	end
 	
 	return scaled_dur
@@ -109,7 +109,7 @@ function Pawn:getDebuffDuration(dur, debuff_pawn)
 	local scaled_dur = dur * self.debuff_factor
 	
 	-- Other factor
-	scaled_dur = debuff_pawn.owner.mastery_factor[Player.MASTERY_DURATION]
+	scaled_dur = scaled_dur * debuff_pawn.owner.mastery_factor[Player.MASTERY_DURATION]
 	
 	return scaled_dur
 end
@@ -196,7 +196,7 @@ function Pawn:resetCooldowns()
 end
 
 function Pawn:_updateLocation()
-	self.unit:SetAbsOrigin(self.location + Config.PAWN_OFFSET )
+	self.unit:SetAbsOrigin(GetGroundPosition(self.location, self.unit))
 end
 
 function Pawn:increaseKBPoints(amount)

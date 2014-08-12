@@ -22,7 +22,6 @@ Config.PAWN_MAX_LIFE 				= 1000
 Config.PAWN_MOVE_SPEED				= 210
 Config.PAWN_HEALTH_REG				= 5.0
 Config.PAWN_MODEL_SCALE				= 0.75
-Config.PAWN_OFFSET 					= Vector(0, 0, -55)
 Config.KB_DMG_TO_VELOCITY 			= 10.0
 
 Config.LOCUST_UNIT 					= "npc_dummy_unit"
