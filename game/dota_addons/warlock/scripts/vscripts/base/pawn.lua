@@ -206,6 +206,10 @@ function Pawn:increaseKBPoints(amount)
 end
 
 function Pawn:heal(info)
+	if not self.enabled then
+		return
+	end
+	
 	self:setHealth(self.health + info.amount)
 	self:increaseKBPoints(-(info.dp_factor or 0.5) * info.amount)
 	
