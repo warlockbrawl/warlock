@@ -3,6 +3,13 @@
 
 Game = class()
 
+Game.TEAM_MODE_DEFAULT 	= 0
+Game.TEAM_MODE_TEAMS	= 1
+Game.TEAM_MODE_FFA	 	= 2
+Game.TEAM_MODE_SHUFFLE 	= 3
+
+Game.team_mode = Game.TEAM_MODE_FFA
+
 --- Game constructor, called from addon_game_mode.lua
 function Game:init()
 	log('Game:init')
@@ -31,10 +38,12 @@ function Game:init()
 	self.team_score = {}
 	self.team_name = {}
 	self.team_players = {}
-	self.team_players[DOTA_TEAM_GOODGUYS] = {}
-	self.team_players[DOTA_TEAM_BADGUYS] = {}
-	self.team_name[DOTA_TEAM_GOODGUYS] = 'Radiant'
-	self.team_name[DOTA_TEAM_BADGUYS] = 'Dire'
+	
+	for i = 0, 9 do
+		self.team_players[i] = {}
+		self.team_name[DOTA_TEAM_GOODGUYS] = 'Team ' .. tostring(i+1)
+	end
+
 	self.entityActor = {} --map enity to actor
 	self.obstacles = Set:new()
 
@@ -66,6 +75,36 @@ function Game:init()
 
 	-- Wait for the game to start
 	self.in_progress = false
+end
+
+function Game:winGame(winner_team)
+	local winner_count = 0
+	local winner_str = "Team " .. tostring(winner_team) .. "("
+
+	for _, player in pairs(GAME.players) do
+		if player.team == winner_team then
+			player:setTeam(DOTA_TEAM_GOODGUYS)
+			winner_str = winner_str .. player.name .. ", "
+			winner_count = winner_count + 1
+		else
+			player:setTeam(DOTA_TEAM_BADGUYS)
+		end
+	end
+	
+	-- Remove comma if necessary
+	if string.len(winner_str) > 2 then
+		winner_str = string.sub(winner_str, -2, 1)
+	end
+
+	winner_str = winner_str .. ") has won the game!"
+		
+	if winner_count > 0 then
+		display(winner_str)
+	else
+		display("The game ended in a draw!")
+	end
+	
+	GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
 end
 
 function Game:EventStateChanged(event)

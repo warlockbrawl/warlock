@@ -67,6 +67,7 @@ function Precache(context)
 	-- Misc
 	PrecacheResource("particle_folder", "particles/msg_fx", context)
 	PrecacheResource("model", "models/development/invisiblebox.vmdl", context)
+	PrecacheResource("particle", "particles/team_indicator.vpcf", context)
 	
 	-- Hero
 	PrecacheResource("particle_folder", "particles/units/heroes/hero_warlock", context)

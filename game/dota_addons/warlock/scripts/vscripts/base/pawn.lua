@@ -58,6 +58,26 @@ function Pawn:init(def)
 	add_start_item(self.unit, "item_warlock_scourge", 0, def.owner.id)
 	
 	self:respawn()
+	
+	if not self.effect_team_indicator and self.unit then
+		-- Create team color effect
+		self.effect_team_indicator = ParticleManager:CreateParticle("particles/team_indicator.vpcf", PATTACH_CUSTOMORIGIN, self.unit)
+		self:updateTeamColor()
+	end
+end
+
+function Pawn:updateTeamColor()
+	if self.owner and self.owner.team and self.effect_team_indicator then
+		-- Set team color
+		ParticleManager:SetParticleControl(self.effect_team_indicator, 1, Player.TEAM_COLOR[math.min(11, math.max(0, self.owner.team))])
+	end
+end
+
+function Pawn:onDestroy()
+	Pawn.super.onDestroy(self)
+	
+	-- Release particles
+	ParticleManager:ReleaseParticleIndex(self.effect_team_indicator)
 end
 
 function Pawn:enable()
@@ -196,7 +216,11 @@ function Pawn:resetCooldowns()
 end
 
 function Pawn:_updateLocation()
-	self.unit:SetAbsOrigin(GetGroundPosition(self.location, self.unit))
+	local loc = GetGroundPosition(self.location, self.unit)
+	self.unit:SetAbsOrigin(loc)
+	if self.effect_team_indicator then
+		ParticleManager:SetParticleControl(self.effect_team_indicator, 0, loc + Vector(0, 0, 10))
+	end
 end
 
 function Pawn:increaseKBPoints(amount)

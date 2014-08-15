@@ -218,7 +218,7 @@ end
 
 function Mode:onGameEnd()
 	-- find the winning team
-	local winner_team = nil
+	local winner_team = -1
 	local best_score = 0
 
 	for team, score in pairs(GAME.team_score) do
@@ -228,12 +228,8 @@ function Mode:onGameEnd()
 		end
 	end
 
-	if winner_team then
-		display("TEAM "..string.upper(GAME:teamName(winner_team)).." HAS WON THE GAME.")
-		GameRules:SetGameWinner(winner_team)
-	else
-		display("THE GAME ENDS IN A DRAW")
-	end
+	GameRules:SetGameWinner(winner_team)
+	GAME:winGame(winner_team)
 	
 	display("If you have found any bugs or have feedback please visit us at warlockbrawl.com or the d2modd.in forums.")
 end

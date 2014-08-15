@@ -16,6 +16,21 @@ Player.STATS_DAMAGE			= 0
 Player.STATS_HEALING		= 1
 Player.STATS_MAX_INDEX		= 1
 
+Player.TEAM_COLOR = {
+	Vector(0xFF, 0x03, 0x03) / 256,
+	Vector(0x00, 0x42, 0xFF) / 256,
+	Vector(0x54, 0x00, 0x81) / 256,
+	Vector(0xFF, 0xFC, 0x01) / 256,
+	Vector(0xFF, 0x88, 0x03) / 256,
+	Vector(0x20, 0xC0, 0x00) / 256,
+	Vector(0xE5, 0x5B, 0xB0) / 256,
+	Vector(0x95, 0x96, 0x97) / 256,
+	Vector(0x7E, 0xBF, 0xF1) / 256,
+	Vector(0x10, 0x62, 0x46) / 256,
+	Vector(0x4E, 0x2A, 0x04) / 256,
+	Vector(0x70, 0x70, 0x70) / 256 -- Observer
+}
+
 --- Create a player using the information
 -- from PreConnect event
 -- @param info Table received from PreConnect event.
@@ -162,18 +177,32 @@ function Player:EventDisconnect(info)
 end
 
 function Game:GetTeamForNewPlayer()
-	if (self.team_size[DOTA_TEAM_GOODGUYS] or 0) <= (self.team_size[DOTA_TEAM_BADGUYS] or 0) then
+	if GAME.team_mode == Game.TEAM_MODE_DEFAULT then
+		if (self.team_size[DOTA_TEAM_GOODGUYS] or 0) <= (self.team_size[DOTA_TEAM_BADGUYS] or 0) then
+			return DOTA_TEAM_GOODGUYS
+		else
+			return DOTA_TEAM_BADGUYS
+		end
+	elseif GAME.team_mode == Game.TEAM_MODE_TEAMS then
+		warning("Team mode not supported")
 		return DOTA_TEAM_GOODGUYS
-	else
-		return DOTA_TEAM_BADGUYS
+	elseif GAME.team_mode == Game.TEAM_MODE_FFA then
+		self.ffa_next_team = (self.ffa_next_team or 0) + 1
+		return self.ffa_next_team - 1
+	elseif GAME.team_mode == Game.TEAM_MODE_SHUFFLE then
+		warning("Team mode not supported")
+		return DOTA_TEAM_GOODGUYS
 	end
+	
+	warning("Invalid team mode")
+	return DOTA_TEAM_GOODGUYS
 end
 
 -- Native dota teams cannot be reassigned
 function Player:initTeam()
 	-- check for previous team
 	local start_team = self.playerEntity:GetTeam()
-
+	self.playerEntity:SetTeam(DOTA_TEAM_GOODGUYS)
 	log("initTeam " .. tostring(start_team))
 
 	-- if team is not assigned yet, assign a new one
@@ -200,7 +229,7 @@ function Player:setTeam(new_team)
 	-- Add to the team
 	GAME.team_size[self.team] = (GAME.team_size[self.team] or 0) + 1
 	for i = 0, 10 do
-		if GAME.team_players[self.team][i] == nil then
+		if not GAME.team_players[self.team][i] then
 			self.team_player_index = i
 			GAME.team_players[self.team][self.team_player_index] = self
 			break
@@ -208,10 +237,11 @@ function Player:setTeam(new_team)
 	end
 	
 	-- Set the native team
-	self.playerEntity:SetTeam(self.team)
+	--self.playerEntity:SetTeam(self.team)
 	
 	if self.pawn and self.pawn.unit then
 		self.pawn.unit:SetTeam(self.team)
+		self.pawn:updateTeamColor()
 	end
 	
 	-- The player will only have an id if this is not the first assignment
