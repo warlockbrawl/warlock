@@ -33,16 +33,6 @@ function Game:init()
 	self.player_count = 0
 	self.playersByUserid = {} -- contains also leavers waiting for reconnect
 	self.playersByIndex = {}
-	self.team_size = {}
-	self.team_alive_count = {}
-	self.team_score = {}
-	self.team_name = {}
-	self.team_players = {}
-	
-	for i = 0, 9 do
-		self.team_players[i] = {}
-		self.team_name[DOTA_TEAM_GOODGUYS] = 'Team ' .. tostring(i+1)
-	end
 
 	self.entityActor = {} --map enity to actor
 	self.obstacles = Set:new()
@@ -59,16 +49,9 @@ function Game:init()
 	self:initEvents()
 	self:initCommands()
 	self:initScriptedCashRefresh()
+	self:initTeams()
 	self:initArena()
 	self:initUserInterface()
-
-	-- self.task_start = self:addTask{
-	-- 	id='game start',
-	-- 	time=Config.GAME_START_TIME,
-	-- 	func=function()
-	-- 		self:start()
-	-- 	end
-	-- }
 
 	-- Initialize mode
 	self.mode = ModeLTS:new()
@@ -77,32 +60,47 @@ function Game:init()
 	self.in_progress = false
 end
 
-function Game:winGame(winner_team)
-	local winner_count = 0
-	local winner_str = "Team " .. tostring(winner_team) .. "("
+function Game:winGame()
+	local winner_str = ""
+	local winners, winner_count = GAME:getHighestScorePlayers()
 
-	for _, player in pairs(GAME.players) do
-		if player.team == winner_team then
-			player:setTeam(DOTA_TEAM_GOODGUYS)
-			winner_str = winner_str .. player.name .. ", "
-			winner_count = winner_count + 1
-		else
-			player:setTeam(DOTA_TEAM_BADGUYS)
-		end
-	end
-	
-	-- Remove comma if necessary
-	if string.len(winner_str) > 2 then
-		winner_str = string.sub(winner_str, -2, 1)
-	end
-
-	winner_str = winner_str .. ") has won the game!"
-		
 	if winner_count > 0 then
+		-- Setup winner team to goodguys
+		for _, player in pairs(GAME.players) do
+			local is_winner = false
+			for i = 1, winner_count do
+				if winners[i] == player then
+					is_winner = true
+					break
+				end
+			end
+			
+			if is_winner then
+				player.playerEntity:SetTeam(DOTA_TEAM_GOODGUYS)
+				winner_str = winner_str .. player.name .. ", "
+			else
+				player.playerEntity:SetTeam(DOTA_TEAM_BADGUYS)
+			end
+		end
+		
+		-- Remove comma if necessary
+		if string.len(winner_str) > 2 then
+			winner_str = string.sub(winner_str, -2, 1)
+		end
+
+		winner_str = winner_str .. " won the game!"
+		
 		display(winner_str)
 	else
+		-- Everyone's a winner!
+		for _, player in pairs(GAME.players) do
+			player.playerEntity:SetTeam(DOTA_TEAM_GOODGUYS)
+		end
+		
 		display("The game ended in a draw!")
 	end
+	
+	display("If you have found any bugs or have feedback please visit us at warlockbrawl.com")
 	
 	GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
 end
@@ -261,15 +259,6 @@ end
 --	* victim
 --	* killer (optional)
 function Game:PawnKilled(event)
-	-- recalc teams
-	self.team_alive_count = {}
-
-	for id, player in pairs(self.players) do
-		if player:isAlive() then
-			self.team_alive_count[player.team] = (self.team_alive_count[player.team] or 0) + 1
-		end
-	end
-
 	self.mode:onKill(event)
 
 	-- Modifier Stuff
@@ -286,23 +275,6 @@ end
 
 function Game:getRespawnLocation(pawn)
 	return self.mode:getRespawnLocation(pawn)
-end
-
-function Game:getTeamScore(team)
-	return (self.team_score[team] or 0)
-end
-
-function Game:setTeamScore(team, score)
-	self.team_score[team] = score
-	self.nativeMode:SetTopBarTeamValue(team, self.team_score[team])
-end
-
-function Game:addTeamScore(team, difference)
-	self:setTeamScore(team, difference + self:getTeamScore(team))
-end
-
-function Game:teamName(team)
-	return self.team_name[team] or tostring(team)
 end
 
 function Game:showMessage(text, duration)

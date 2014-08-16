@@ -79,7 +79,7 @@ function GravityProjectile:onPreTick(dt)
 			local dir = self.location - actor.location
 			local dist = dir:Length()
 
-			if(is_pawn and self.instigator.owner.team ~= actor.owner.team) then
+			if(is_pawn and self.instigator.owner:getAlliance(actor.owner) == Player.ALLIANCE_ENEMY) then
 				-- Apply velocity for pawns that are close
 				if(dist <= 450) then
 					dir = dir:Normalized()

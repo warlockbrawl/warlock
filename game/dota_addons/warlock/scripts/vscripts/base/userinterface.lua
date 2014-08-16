@@ -17,8 +17,8 @@ function UserInterface:update()
 	for id, pl in pairs(GAME.players) do
 		FireGameEvent("w_update_scoreboard", {
 			id		= id,
-			points	= GAME:getTeamScore(pl.team),
-			dmg		= pl.damage
+			points	= pl.team.score,
+			dmg		= pl.stats[Player.STATS_DAMAGE]
 		})
 	end
 end

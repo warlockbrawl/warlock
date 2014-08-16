@@ -159,7 +159,7 @@ function Mode:onRoundWon(winner_team)
 		end}
 
 	if winner_team then
-		display('Team '.. GAME:teamName(winner_team) .. ' has won the round')
+		display(winner_team.name .. ' has won the round')
 		
 		-- Get player that dealt the highest damage
 		local highest_dmg = -1
@@ -176,13 +176,11 @@ function Mode:onRoundWon(winner_team)
 			display(highest_dmg_player.name .. " has dealt the highest damage (" .. dmg_text .. ")")
 		end
 		
-		GAME:addTeamScore(winner_team, 1)
+		winner_team:addScore(1)
 
 		-- rewards for winning
-		for id, player in pairs(GAME.players) do
-			if player.team == winner_team then
-				player:addCash(Config.CASH_REWARD_WIN_ROUND)
-			end
+		for _, player in pairs(winner_team.players) do
+			player:addCash(Config.CASH_REWARD_WIN_ROUND)
 		end
 	else
 		display('Draw')
@@ -197,18 +195,7 @@ function Mode:onRoundEnd()
 		player:addCash(Config.CASH_EVERY_ROUND)
 	end
 
-	--if self.round < self.ROUND_NUMBER then
-
-	-- Best of X, first to win floor(X/2)+1 wins game (usually 11 and 6)
-	local game_end = false
-	for team, alives in pairs(GAME.team_alive_count) do
-		if GAME:getTeamScore(team) > math.floor(self.ROUND_NUMBER / 2) then
-			game_end = true
-			break
-		end
-	end
-
-	if not game_end then
+	if self.round < self.ROUND_NUMBER then
 		self:prepareForRound()
 	else
 		-- that was the last round, display end game
@@ -217,21 +204,7 @@ function Mode:onRoundEnd()
 end
 
 function Mode:onGameEnd()
-	-- find the winning team
-	local winner_team = -1
-	local best_score = 0
-
-	for team, score in pairs(GAME.team_score) do
-		if score > best_score then
-			winner_team = team
-			best_score = score
-		end
-	end
-
-	GameRules:SetGameWinner(winner_team)
-	GAME:winGame(winner_team)
-	
-	display("If you have found any bugs or have feedback please visit us at warlockbrawl.com or the d2modd.in forums.")
+	GAME:winGame()
 end
 
 function Mode:onKill(event)
@@ -250,14 +223,14 @@ function Mode:onKill(event)
 	end
 end
 
-function Mode:getRespawnLocation(pawn)	
-	--playerteams are 2 and 3, make them 0 and 1
-	local team = pawn.owner.team % 2
+function Mode:getRespawnLocation(pawn)
+	local angle_per_team = 2 * math.pi / GAME.active_team_count
+	
 	local radius = 650 + 50 * GAME.player_count
-
-	-- Spawn teams at top and bottom with an offset for each player
-	local angle = math.pi * team + math.pi / 2.0
-	local angle_offset = 0.2 * (pawn.owner.team_player_index - (GAME.team_size[pawn.owner.team]-1) / 2.0)
+	local angle = angle_per_team * pawn.owner.team.active_team_id
+	
+	-- Offset the individual players of a team
+	local angle_offset = 0.2 * (pawn.owner.team_player_index - (pawn.owner.team.size - 1) / 2.0)
 	angle = angle + angle_offset
 
 	return Vector(radius * math.cos(angle), radius * math.sin(angle), Config.GAME_Z)
@@ -270,22 +243,16 @@ ModeLTS.ROUND_NUMBER = 11
 function ModeLTS:onKill(event)
 	ModeLTS.super.onKill(self, event)
 
+	log("ModeLTS:onKill()")
+
 	if GAME.combat then
-		local winner_team = nil
-		local b_one_team_left = true
+		log("ModeLTS:onKill() inner")
+		local alive_teams = GAME:getAliveTeams()
+		local round_over = #alive_teams <= 1
 
-		for team, alives in pairs(GAME.team_alive_count) do
-			if alives > 0 then
-				if winner_team == nil then
-					winner_team = team
-				else
-					b_one_team_left = false
-				end
-			end
-		end
-
-		if b_one_team_left then
-			self:onRoundWon(winner_team)
+		if round_over then
+			-- alive_teams[1] can be nil = draw
+			self:onRoundWon(alive_teams[1])
 		end
 	end
 end

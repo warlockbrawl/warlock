@@ -57,6 +57,8 @@ function Pawn:init(def)
 	add_start_item(self.unit, "item_warlock_fireball", 1, def.owner.id)
 	add_start_item(self.unit, "item_warlock_scourge", 0, def.owner.id)
 	
+	self.unit:SetTeam(DOTA_TEAM_GOODGUYS)
+	
 	self:respawn()
 	
 	if not self.effect_team_indicator and self.unit then
@@ -69,7 +71,7 @@ end
 function Pawn:updateTeamColor()
 	if self.owner and self.owner.team and self.effect_team_indicator then
 		-- Set team color
-		ParticleManager:SetParticleControl(self.effect_team_indicator, 1, Player.TEAM_COLOR[math.min(11, math.max(0, self.owner.team))])
+		ParticleManager:SetParticleControl(self.effect_team_indicator, 1, Player.TEAM_COLOR[1 + math.min(11, math.max(0, self.owner.team.id))])
 	end
 end
 
@@ -159,22 +161,24 @@ function Pawn:respawn()
 	if not self.unit:IsAlive() then
 		log("Repsawning hero")
 		self.unit:RespawnHero(false, false, false)
-		--GAME.team_alive_count[self.owner.team] = (GAME.team_alive_count[self.owner.team] or 0) + 1
 	end
 
 	self.unit:SetMana(0)
 	self:resetCooldowns()
 	self.health = self.max_hp
 	self:applyStats()
+	
+	self.owner.team:updateAliveCount()
 end
 
 function Pawn:die(dmg_info)
 	local source_actor = nil
 	local source_unit = nil
 
+	log("Pawn:die()")
+
 	if dmg_info.source then
 		source_actor = dmg_info.source
-
 	elseif self.last_hitter then
 		-- lava damage - becasue it has not source
 		source_actor = self.last_hitter
@@ -192,7 +196,11 @@ function Pawn:die(dmg_info)
 
 	-- disable the actor
 	self:disable()
-
+	
+	-- Update team alive count
+	self.owner.team:updateAliveCount()
+	
+	-- Notify game
 	GAME:PawnKilled{victim=self, killer=source_actor}
 end
 

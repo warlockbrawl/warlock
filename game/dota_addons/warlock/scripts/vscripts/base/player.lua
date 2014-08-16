@@ -19,6 +19,7 @@ Player.STATS_MAX_INDEX		= 1
 Player.TEAM_COLOR = {
 	Vector(0xFF, 0x03, 0x03) / 256,
 	Vector(0x00, 0x42, 0xFF) / 256,
+	Vector(0x00, 0xFF, 0xFF) / 256,
 	Vector(0x54, 0x00, 0x81) / 256,
 	Vector(0xFF, 0xFC, 0x01) / 256,
 	Vector(0xFF, 0x88, 0x03) / 256,
@@ -29,6 +30,22 @@ Player.TEAM_COLOR = {
 	Vector(0x10, 0x62, 0x46) / 256,
 	Vector(0x4E, 0x2A, 0x04) / 256,
 	Vector(0x70, 0x70, 0x70) / 256 -- Observer
+}
+
+Player.COLOR_NAMES = {
+	"Red",
+	"Blue",
+	"Teal",
+	"Purple",
+	"Yellow",
+	"Orange",
+	"Green",
+	"Pink",
+	"Gray",
+	"Light Blue",
+	"Dark Green",
+	"Brown",
+	"Observer"
 }
 
 --- Create a player using the information
@@ -52,6 +69,8 @@ function Player:init()
 	
 	-- Owned actors, get destroyed on round restart etc
 	self.temp_actors = {}
+	
+	self.score = 0
 end
 
 function Player:resetStats()
@@ -178,40 +197,38 @@ end
 
 function Game:GetTeamForNewPlayer()
 	if GAME.team_mode == Game.TEAM_MODE_DEFAULT then
-		if (self.team_size[DOTA_TEAM_GOODGUYS] or 0) <= (self.team_size[DOTA_TEAM_BADGUYS] or 0) then
-			return DOTA_TEAM_GOODGUYS
+		if GAME.teams[0].size <= GAME.teams[1].size then
+			return GAME.teams[0]
 		else
-			return DOTA_TEAM_BADGUYS
+			return GAME.teams[1]
 		end
 	elseif GAME.team_mode == Game.TEAM_MODE_TEAMS then
 		warning("Team mode not supported")
-		return DOTA_TEAM_GOODGUYS
+		return GAME.teams[0]
 	elseif GAME.team_mode == Game.TEAM_MODE_FFA then
 		self.ffa_next_team = (self.ffa_next_team or 0) + 1
-		return self.ffa_next_team - 1
+		log("ffa_next_team=" .. tostring(self.ffa_next_team))
+		return GAME.teams[self.ffa_next_team - 1]
 	elseif GAME.team_mode == Game.TEAM_MODE_SHUFFLE then
 		warning("Team mode not supported")
-		return DOTA_TEAM_GOODGUYS
+		return GAME.teams[0]
 	end
 	
 	warning("Invalid team mode")
-	return DOTA_TEAM_GOODGUYS
+	return GAME.teams[0]
 end
 
 -- Native dota teams cannot be reassigned
 function Player:initTeam()
 	-- check for previous team
-	local start_team = self.playerEntity:GetTeam()
 	self.playerEntity:SetTeam(DOTA_TEAM_GOODGUYS)
-	log("initTeam " .. tostring(start_team))
+	
+	log("initTeam")
 
 	-- if team is not assigned yet, assign a new one
-	if start_team == -1 or start_team == 0 then
+	if not self.team then
 		log("Assigning new team")
 		self:setTeam(GAME:GetTeamForNewPlayer())
-	else
-		log("Assigning existing team")
-		self:setTeam(start_team)
 	end
 end
 
@@ -219,28 +236,13 @@ function Player:setTeam(new_team)
 	log("setTeam " .. tostring(new_team))
 	
 	-- Remove from old team
-	if self.team_joined then
-		GAME.team_size[self.team] = (GAME.team_size[self.team] or 0) - 1
-		GAME.team_players[self.team][self.team_player_index] = nil
+	if self.team then
+		self.team:playerLeft(self)
 	end
-	
-	self.team = new_team
-	
-	-- Add to the team
-	GAME.team_size[self.team] = (GAME.team_size[self.team] or 0) + 1
-	for i = 0, 10 do
-		if not GAME.team_players[self.team][i] then
-			self.team_player_index = i
-			GAME.team_players[self.team][self.team_player_index] = self
-			break
-		end
-	end
-	
-	-- Set the native team
-	--self.playerEntity:SetTeam(self.team)
-	
+
+	new_team:playerJoined(self)
+
 	if self.pawn and self.pawn.unit then
-		self.pawn.unit:SetTeam(self.team)
 		self.pawn:updateTeamColor()
 	end
 	
@@ -248,12 +250,6 @@ function Player:setTeam(new_team)
 	if self.id then
 		self:updateCash()
 	end
-	
-	self.team_joined = true
-end
-
-function Player:getTeam()
-	return self.team
 end
 
 function Player:getAlliance(other_player)
@@ -261,7 +257,7 @@ function Player:getAlliance(other_player)
 		return self.ALLIANCE_SELF
 	end
 
-	if self:getTeam() == other_player:getTeam() then
+	if self.team == other_player.team then
 		return self.ALLIANCE_ALLY
 	end
 
@@ -393,4 +389,25 @@ function Game:initScriptedCashRefresh()
 			end
 		end
 	}
+end
+
+function Game:getHighestScorePlayers()
+	local best_score = -1
+	local highest_count = 0
+	local players = {}
+	
+	for _, player in pairs(self.players) do
+		if player.score > best_score then
+			players = {}
+			best_score = player.score
+			highest_count = 0
+		end
+		
+		if player.score == best_score then
+			table.insert(players, player)
+			highest_count = highest_count + 1
+		end
+	end
+	
+	return players, highest_count
 end
