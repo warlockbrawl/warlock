@@ -10,7 +10,7 @@ function Team:init(def)
 end
 
 function Team:playerJoined(player)
-	if self.players[player] then
+	if player.team_player_index and self.players[player.team_player_index] == player then
 		log("Player tried to join team but was already in it.")
 		return
 	end
@@ -47,12 +47,13 @@ function Team:playerJoined(player)
 end
 
 function Team:playerLeft(player)
-	if not self.players[player] then
+	if self.players[player.team_player_index] ~= player then
 		log("Player tried to leave team but wasnt in it.")
 		return
 	end
 	
 	self.players[player.team_player_index] = nil
+	player.team_player_index = nil
 	self.size = self.size - 1
 	
 	-- Remove team from active teams if its empty
@@ -90,10 +91,14 @@ end
 -------------------------------------------------
 
 function Game:initTeams()
+	self.team_mode = TeamModeShuffle:new{}
 	GAME.teams = {}
+	
+	-- Active teams are teams with atleast one player
 	GAME.active_teams = {}
 	GAME.active_team_count = 0
-	
+
+	-- Create the teams
 	for i = 0, 11 do
 		local team = Team:new {
 			id = i,
@@ -131,26 +136,4 @@ function Game:getWinnerTeams()
 	end
 	
 	return best_teams
-end
-
-function Game:GetTeamForNewPlayer(player)
-	if GAME.team_mode == Game.TEAM_MODE_DEFAULT then
-		if GAME.teams[0].size <= GAME.teams[1].size then
-			return GAME.teams[0]
-		else
-			return GAME.teams[1]
-		end
-	elseif GAME.team_mode == Game.TEAM_MODE_TEAMS then
-		warning("Team mode not supported")
-		return GAME.teams[0]
-	elseif GAME.team_mode == Game.TEAM_MODE_FFA then
-		self.ffa_next_team = (self.ffa_next_team or 0) + 1
-		return GAME.teams[self.ffa_next_team - 1]
-	elseif GAME.team_mode == Game.TEAM_MODE_SHUFFLE then
-		warning("Team mode not supported")
-		return GAME.teams[0]
-	end
-	
-	warning("Invalid team mode")
-	return GAME.teams[0]
 end

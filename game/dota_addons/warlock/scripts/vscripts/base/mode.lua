@@ -112,6 +112,8 @@ function Mode:onRoundStart()
 	GAME:removeProjectiles()
 	GAME:destroyTempActors()
 	GAME:setCombat(true)
+	
+	GAME.team_mode:onNewRound()
 
 	for id, player in pairs(GAME.players) do
 		if player.pawn and player.active then

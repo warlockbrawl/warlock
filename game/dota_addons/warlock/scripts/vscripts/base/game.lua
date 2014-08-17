@@ -3,13 +3,6 @@
 
 Game = class()
 
-Game.TEAM_MODE_DEFAULT 	= 0
-Game.TEAM_MODE_TEAMS	= 1
-Game.TEAM_MODE_FFA	 	= 2
-Game.TEAM_MODE_SHUFFLE 	= 3
-
-Game.team_mode = Game.TEAM_MODE_FFA
-
 --- Game constructor, called from addon_game_mode.lua
 function Game:init()
 	log('Game:init')

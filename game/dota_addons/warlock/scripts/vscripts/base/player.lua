@@ -190,14 +190,14 @@ end
 -- Native dota teams cannot be reassigned
 function Player:initTeam()
 	-- check for previous team
-	self.playerEntity:SetTeam(DOTA_TEAM_GOODGUYS)
+	self.playerEntity:SetTeam(GAME.team_mode:getNativeTeamForNewPlayer(self))
 	
 	log("initTeam")
 
 	-- if team is not assigned yet, assign a new one
 	if not self.team then
 		log("Assigning new team")
-		self:setTeam(GAME:GetTeamForNewPlayer(self))
+		self:setTeam(GAME.team_mode:getTeamForNewPlayer(self))
 	end
 end
 

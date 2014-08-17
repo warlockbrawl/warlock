@@ -58,6 +58,7 @@ function createWarlockItem(player_id, slot)
 		mod_defs[i].hp_bonus = item_handle:GetLevelSpecialValueFor("hp_bonus", lvl) or 0
 		mod_defs[i].mass = item_handle:GetLevelSpecialValueFor("mass", lvl) or 0
 		mod_defs[i].hp_regen = item_handle:GetLevelSpecialValueFor("hp_regen", lvl) or 0
+		mod_defs[i].debuff_factor = item_handle:GetLevelSpecialValueFor("debuff_factor", lvl) or 0
 	end
 	
 	WarlockItems[player_id][slot] = ModifierItem:new {

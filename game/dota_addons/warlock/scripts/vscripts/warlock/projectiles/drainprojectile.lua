@@ -103,7 +103,7 @@ function DrainProjectile:onCollision(coll_info, cc)
 			GAME:addModifier(Modifier:new {
 				pawn = actor,
 				speed_bonus_abs = -50,
-				time = actor:getDebuffDuration(7.5, self.instigator),
+				time = actor:getDebuffDuration(self.buff_duration, self.instigator),
 				native_mod = self.enemy_mod
 			})
 		
