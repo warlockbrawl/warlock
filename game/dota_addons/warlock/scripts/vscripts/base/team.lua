@@ -31,8 +31,8 @@ function Team:playerJoined(player)
 	end
 	
 	-- Add team to active teams if it wasnt active
-	if not GAME.active_teams[self] then
-		for i = 0, 10 do
+	if not self.active_team_id then
+		for i = 0, 11 do
 			if not GAME.active_teams[i] then
 				self.active_team_id = i
 				GAME.active_teams[i] = self
@@ -59,7 +59,7 @@ function Team:playerLeft(player)
 	-- Remove team from active teams if its empty
 	if self.size == 0 then
 		GAME.active_teams[self.active_team_id] = nil
-		self.active_team_id = -1
+		self.active_team_id = nil
 		GAME.active_team_count = GAME.active_team_count - 1
 	end
 	

@@ -22,8 +22,10 @@ end
 function TeamMode:getNativeTeamForNewPlayer(player)
 	-- Native teams have to be evenly assigned else it will bug
 	if self.native_team_size[DOTA_TEAM_GOODGUYS] <= self.native_team_size[DOTA_TEAM_BADGUYS] then
+		self.native_team_size[DOTA_TEAM_GOODGUYS] = self.native_team_size[DOTA_TEAM_GOODGUYS] + 1
 		return DOTA_TEAM_GOODGUYS
 	else
+		self.native_team_size[DOTA_TEAM_BADGUYS] = self.native_team_size[DOTA_TEAM_BADGUYS] + 1
 		return DOTA_TEAM_BADGUYS
 	end
 end
@@ -64,29 +66,36 @@ function TeamModeShuffle:onNewRound()
 	
 	local player_count = #players
 	
-	local team_sizes = {}
+	local team_counts = {}
 	
-	-- Find all factors
-	for i = 1, math.ceil(player_count / 2) do
-		if player_count % i == 0 then
-			table.insert(team_sizes, i)
+	
+	if player_count == 1 then
+		-- Special case for 1 player: only 1 team
+		table.insert(team_counts, 1)
+	else
+		-- Find all factors, no single team case
+		for i = 2, player_count do
+			if player_count % i == 0 then
+				table.insert(team_counts, i)
+			end
 		end
 	end
 	
 	-- Get random team size
-	local team_size = team_sizes[math.random(1, #team_sizes)]
+	local team_count = team_counts[math.random(1, #team_counts)]
 	
 	-- Calculate team count
-	local team_count = player_count / team_size
+	local team_size = player_count / team_count
 	
-	display("Team size: " .. tostring(team_size) .. " / Team Count: " .. tostring(team_count))
+	display("Team size: " .. tostring(team_size) .. " / Team count: " .. tostring(team_count))
 	
 	-- Shuffle the players array
 	for i = 1, player_count do
 		local j = math.random(player_count)
 		local k = math.random(player_count)
+		local p = players[j] 
 		players[j] = players[k]
-		players[k] = players[j]
+		players[k] = p
 	end
 	
 	-- Assign teams
@@ -100,5 +109,10 @@ function TeamModeShuffle:onNewRound()
 		if team >= team_count then
 			team = 0
 		end
+	end
+	
+	-- Reset team scores
+	for i = 0, team_count - 1 do
+		GAME.teams[i].score = 0
 	end
 end
