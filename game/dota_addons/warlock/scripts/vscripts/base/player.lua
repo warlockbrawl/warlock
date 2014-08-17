@@ -110,34 +110,40 @@ function Player:EventConnect(info)
 		-- add to the permanent player table
 		GAME.playersByUserid[self.userid] = self
 		GAME.playersByIndex[self.index] = self
+		
+		-- Assign the ids
+		local id = self.playerEntity:GetPlayerID()
+		if id ~= -1 then
+			log("Assigned ID in connect")
+			self.id = id
+			self.steamId = PlayerResource:GetSteamAccountID(self.id)
+
+			GAME.players[self.id] = self
+		end
 	end
 end
 
 function Player:EventJoinedTeam(info)
-	if not self.active then
-		-- It is required to assign him to a team
-		self:initTeam()
-		
-		-- Assign the ids
-		self.id = self.playerEntity:GetPlayerID()
-		self.steamId = PlayerResource:GetSteamAccountID(self.id)
-		
-		-- Get the players name
-		self.name = PlayerResource:GetPlayerName(self.id)
-		
-		-- remove all unreliable gold
-		-- no cash before mode starts
-		PlayerResource:SetGold(self.id, 0, true)
-		PlayerResource:SetGold(self.id, 0, false)
+	self.userid = info.userid
+	
+	-- add to the permanent player table
+	GAME.playersByUserid[self.userid] = self
+	
+	self.name = info.name
+	self.is_bot = info.is_bot
+	
+	-- Assign the ids
+	if not self.id and self.playerEntity then
+		local id = self.playerEntity:GetPlayerID()
+		if id ~= -1 then
+			log("Assigned ID in joined team")
+			self.id = id
+			self.steamId = PlayerResource:GetSteamAccountID(self.id)
 
-		display(self.name .. ' has joined the game as player '..self.id)
-		
-		GAME.players[self.id] = self
-		GAME.player_count = (GAME.player_count or 0) + 1
-		
-		self:updateCash()
-		
-		self.active = true
+			GAME.players[self.id] = self
+		else
+			err("playerEntity was not nil in EventJoinedTeam but id was -1")
+		end
 	end
 end
 
@@ -146,6 +152,25 @@ function Player:HeroSpawned(hero)
 		log("HeroSpawned called but pawn already created (normal on respawn).")
 		return
 	end
+	
+	------- Player init ----------
+	log("Hero spawned, initializing player...")
+	
+	-- Assign a non-native team
+	self:initTeam()
+	
+	-- Get the players name
+	self.name = PlayerResource:GetPlayerName(self.id)
+
+	display(self.name .. ' has joined the game as player ' .. self.id)
+
+	self:updateCash()
+	
+	self.active = true
+	
+	log("Player initialized")
+	
+	------------------------------
 	
 	-- Set mana to zero
 	hero:SetMana(0)
@@ -159,7 +184,11 @@ function Player:HeroSpawned(hero)
 	}
 	
 	GAME.picked_count = (GAME.picked_count or 0) + 1
-	--self.pawn:disable()
+	GAME.player_count = GAME.player_count + 1
+	
+	if GAME.combat then
+		self.pawn:disable()
+	end
 end
 
 function Player:HeroRemoved()
@@ -283,6 +312,18 @@ function Game:findPlayerByEvent(event)
 	return nil
 end
 
+-- Called on connect and on team join
+function Game:getOrCreatePlayer(userid)
+	local p = GAME.playersByUserid[userid]
+	
+	if not p then
+		log("New player created")
+		p = Player:new()
+	end
+	
+	return p
+end
+
 function Game:EventPlayerConnected(event)
 	log('EventPlayerConnected')
 	PrintTable(event)
@@ -295,8 +336,7 @@ function Game:EventPlayerConnected(event)
 			warning("Existing player connected and is not reconnecting")
 		end
 	else
-		log("New player created")
-		p = Player:new()
+		p = self:getOrCreatePlayer(event.userid)
 	end
 	
 	p:EventConnect(event)
@@ -306,21 +346,17 @@ function Game:EventPlayerJoinedTeam(event)
 	log("EventPlayerJoinedTeam")
 	PrintTable(event)
 	
-	local p = GAME.playersByUserid[event.userid]
-	
-	if p then
-		if not p.native_team_set then
-			p.native_team_set = true
-			if p.playerEntity:GetTeam() ~= event.team then
-				p.playerEntity:SetTeam(event.team)
-			end
-			
-			p:EventJoinedTeam(event)
-		else
-			log("Ignoring join team, native_team_set = true")
+	local p = self:getOrCreatePlayer(event.userid)
+
+	if not p.native_team_set then
+		p.native_team_set = true
+		if p.playerEntity:GetTeam() ~= event.team then
+			p.playerEntity:SetTeam(event.team)
 		end
+		
+		p:EventJoinedTeam(event)
 	else
-		warning("Unknown player joined team")
+		log("Ignoring join team, native_team_set = true")
 	end
 end
 
