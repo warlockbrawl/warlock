@@ -83,14 +83,6 @@ function Player:changeStat(stat, num)
 	self.stats[stat] = self.stats[stat] + num
 end
 
-function oppositeTeam(team)
-	if team == DOTA_TEAM_GOODGUYS then
-		return DOTA_TEAM_BADGUYS
-	else
-		return DOTA_TEAM_GOODGUYS
-	end
-end
-
 -- player joins
 function Player:EventConnect(info)
 	self.playerEntity = EntIndexToHScript(info.index+1)
@@ -195,29 +187,6 @@ function Player:EventDisconnect(info)
 	self.active = false
 end
 
-function Game:GetTeamForNewPlayer()
-	if GAME.team_mode == Game.TEAM_MODE_DEFAULT then
-		if GAME.teams[0].size <= GAME.teams[1].size then
-			return GAME.teams[0]
-		else
-			return GAME.teams[1]
-		end
-	elseif GAME.team_mode == Game.TEAM_MODE_TEAMS then
-		warning("Team mode not supported")
-		return GAME.teams[0]
-	elseif GAME.team_mode == Game.TEAM_MODE_FFA then
-		self.ffa_next_team = (self.ffa_next_team or 0) + 1
-		log("ffa_next_team=" .. tostring(self.ffa_next_team))
-		return GAME.teams[self.ffa_next_team - 1]
-	elseif GAME.team_mode == Game.TEAM_MODE_SHUFFLE then
-		warning("Team mode not supported")
-		return GAME.teams[0]
-	end
-	
-	warning("Invalid team mode")
-	return GAME.teams[0]
-end
-
 -- Native dota teams cannot be reassigned
 function Player:initTeam()
 	-- check for previous team
@@ -228,7 +197,7 @@ function Player:initTeam()
 	-- if team is not assigned yet, assign a new one
 	if not self.team then
 		log("Assigning new team")
-		self:setTeam(GAME:GetTeamForNewPlayer())
+		self:setTeam(GAME:GetTeamForNewPlayer(self))
 	end
 end
 
