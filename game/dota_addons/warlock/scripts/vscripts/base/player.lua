@@ -202,7 +202,7 @@ function Player:initTeam()
 end
 
 function Player:setTeam(new_team)
-	log("setTeam " .. tostring(new_team))
+	log("setTeam " .. tostring(new_team.id))
 	
 	-- Remove from old team
 	if self.team then
