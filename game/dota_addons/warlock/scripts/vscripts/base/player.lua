@@ -100,23 +100,30 @@ function Player:EventConnect(info)
 			self.pawn:respawn()
 		end
 		
+		self.active = true
+		
 		log("Player " .. self.name .. " reconnected fully.")
 	else
+		self.index = info.index
+		self.userid = info.userid
+		
+		-- add to the permanent player table
+		GAME.playersByUserid[self.userid] = self
+		GAME.playersByIndex[self.index] = self
+	end
+end
+
+function Player:EventJoinedTeam(info)
+	if not self.active then
 		-- It is required to assign him to a team
 		self:initTeam()
 		
 		-- Assign the ids
 		self.id = self.playerEntity:GetPlayerID()
 		self.steamId = PlayerResource:GetSteamAccountID(self.id)
-		self.userid = info.userid
-		self.index = info.index
 		
 		-- Get the players name
 		self.name = PlayerResource:GetPlayerName(self.id)
-
-		-- add to the permanent player table
-		GAME.playersByUserid[self.userid] = self
-		GAME.playersByIndex[self.index] = self
 		
 		-- remove all unreliable gold
 		-- no cash before mode starts
@@ -127,10 +134,11 @@ function Player:EventConnect(info)
 		
 		GAME.players[self.id] = self
 		GAME.player_count = (GAME.player_count or 0) + 1
+		
+		self:updateCash()
+		
+		self.active = true
 	end
-
-	self.active = true
-	self:updateCash()
 end
 
 function Player:HeroSpawned(hero)	
@@ -189,11 +197,11 @@ end
 
 -- Native dota teams cannot be reassigned
 function Player:initTeam()
-	-- Assign native team
-	GAME.team_mode:assignNativeTeam(self)
-	
 	log("initTeam")
-
+	
+	print("Player ID:", self.playerEntity:GetPlayerID())
+	print("Native Team:", self.playerEntity:GetTeam())
+	
 	-- If team is not assigned yet, assign a new one
 	if not self.team then
 		log("Assigning new team")
@@ -292,6 +300,28 @@ function Game:EventPlayerConnected(event)
 	end
 	
 	p:EventConnect(event)
+end
+
+function Game:EventPlayerJoinedTeam(event)
+	log("EventPlayerJoinedTeam")
+	PrintTable(event)
+	
+	local p = GAME.playersByUserid[event.userid]
+	
+	if p then
+		if not p.native_team_set then
+			p.native_team_set = true
+			if p.playerEntity:GetTeam() ~= event.team then
+				p.playerEntity:SetTeam(event.team)
+			end
+			
+			p:EventJoinedTeam(event)
+		else
+			log("Ignoring join team, native_team_set = true")
+		end
+	else
+		warning("Unknown player joined team")
+	end
 end
 
 function Game:EventPlayerReconnected(event)

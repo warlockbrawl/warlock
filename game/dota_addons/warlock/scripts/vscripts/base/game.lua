@@ -175,6 +175,7 @@ function Game:initEvents()
 	
 	-- Events
 	ListenToGameEvent('player_connect_full', Dynamic_Wrap(self, 'EventPlayerConnected'), self)
+	ListenToGameEvent('player_team', Dynamic_Wrap(self, 'EventPlayerJoinedTeam'), self)
 	ListenToGameEvent('player_disconnect', Dynamic_Wrap(self, 'EventPlayerDisconnected'), self)
 	ListenToGameEvent('player_say', Dynamic_Wrap(self, 'EventPlayerChat'), self)
 

@@ -5,10 +5,6 @@ TeamMode = class()
 --------------------------------------
 
 function TeamMode:init(def)
-	-- Native team stuff
-	self.native_team_size = {}
-	self.native_team_size[DOTA_TEAM_GOODGUYS] = 0
-	self.native_team_size[DOTA_TEAM_BADGUYS] = 0
 end
 
 function TeamMode:getTeamForNewPlayer(player)
@@ -17,28 +13,6 @@ function TeamMode:getTeamForNewPlayer(player)
 	else
 		return GAME.teams[1]
 	end
-end
-
-function TeamMode:assignNativeTeam(player)
-	local native_team = player.playerEntity:GetTeam()
-	
-	log("Native team is " .. tostring(native_team))
-	
-	-- Only assign a antive team if none is already set
-	if native_team ~= DOTA_TEAM_GOODGUYS and native_team ~= DOTA_TEAM_BADGUYS then
-		-- If no team is already set, assign it evenly
-		if self.native_team_size[DOTA_TEAM_GOODGUYS] <= self.native_team_size[DOTA_TEAM_BADGUYS] then
-			native_team = DOTA_TEAM_GOODGUYS
-		else
-			native_team = DOTA_TEAM_BADGUYS
-		end
-		
-		log("Assigned native team to " .. tostring(native_team))
-		player.playerEntity:SetTeam(native_team)
-	end
-	
-	-- Increase native team size
-	self.native_team_size[native_team] = self.native_team_size[native_team] + 1
 end
 
 function TeamMode:onNewRound()

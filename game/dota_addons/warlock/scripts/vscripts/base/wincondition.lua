@@ -31,7 +31,7 @@ function WinCondition:isGameDrawn()
 			end
 			
 			if team.score == highest_score then
-				highest_score_count = highest_count_count + 1
+				highest_score_count = highest_score_count + 1
 			end
 		end
 	else
@@ -42,7 +42,7 @@ function WinCondition:isGameDrawn()
 			end
 			
 			if player.score == highest_score then
-				highest_score_count = highest_count_count + 1
+				highest_score_count = highest_score_count + 1
 			end
 		end
 	end
@@ -143,7 +143,7 @@ function ScoreWinCondition:getWinners()
 	if self.use_team_score then
 		for i, team in pairs(GAME.teams) do
 			-- Atleast max_score
-			if team.score > self.max_score then
+			if team.score >= self.max_score then
 				if team.score > highest_score then
 					highest_score = team.score
 					players = {}
@@ -160,7 +160,7 @@ function ScoreWinCondition:getWinners()
 	else
 		for i, player in pairs(GAME.players) do
 			-- Atleast max_score
-			if player.score > self.max_score then
+			if player.score >= self.max_score then
 				if player.score > highest_score then
 					highest_score = player.score
 				end
