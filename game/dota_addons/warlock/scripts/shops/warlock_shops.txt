@@ -7,9 +7,11 @@
 "attributes"
 {
 "item"	"item_warlock_ring_of_health"
+"item"	"item_warlock_cursed_ring"
 "item"	"item_warlock_cape"
 "item"	"item_warlock_armor"
 "item"	"item_warlock_boots"
+"item"	"item_warlock_pocket_watch"
 }
 "weapons_armor"
 {

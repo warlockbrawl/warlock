@@ -1194,9 +1194,150 @@
 }
 }
 }
-"item_warlock_cape"
+"item_warlock_cursed_ring"
 {
 "ID"	"1969"
+"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+"BaseClass"	"item_datadriven"
+"AbilityTextureName"	"warlock_cursed_ring"
+"ItemKillable"	"0"
+"ItemSellable"	"0"
+"ItemDroppable"	"0"
+"AbilityCastRange"	"0"
+"AbilityCastPoint"	"0.0"
+"AbilityCooldown"	"0.0"
+"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+"AbilityManaCost"	"0"
+"ItemCost"	6
+"ItemShopTags"	"consumable"
+"ItemQuality"	"consumable"
+"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
+"ItemPurchasable"	"1"
+"SideShop"	"1"
+"MaxUpgradeLevel"	2
+"ItemBaseLevel"	"1"
+"AbilitySpecial"
+{
+"01"
+{
+"var_type"	"FIELD_FLOAT"
+"maxlevel"	"2"
+}
+"02"
+{
+"var_type"	"FIELD_FLOAT"
+"mass"	"0 0"
+}
+"03"
+{
+"var_type"	"FIELD_FLOAT"
+"hp_bonus"	"100 200"
+}
+"04"
+{
+"var_type"	"FIELD_INTEGER"
+"type"	"0"
+}
+"05"
+{
+"var_type"	"FIELD_INTEGER"
+"kb_reduction"	"0.15 0.15"
+}
+"06"
+{
+"var_type"	"FIELD_INTEGER"
+"debuff_factor"	"0.25 0.30"
+}
+}
+}
+"item_warlock_cursed_ring1"
+{
+"ID"	"1970"
+"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+"BaseClass"	"item_datadriven"
+"AbilityTextureName"	"warlock_cursed_ring1"
+"ItemKillable"	"0"
+"ItemSellable"	"0"
+"ItemDroppable"	"0"
+"AbilityCastRange"	"1000"
+"AbilityCastPoint"	"0.0"
+"AbilityCooldown"	"0.0"
+"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+"AbilityManaCost"	"0"
+"ItemCost"	6
+"ItemShopTags"	"consumable"
+"ItemQuality"	"consumable"
+"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
+"ItemPurchasable"	"1"
+"SideShop"	"1"
+"MaxUpgradeLevel"	"2"
+"ItemBaseLevel"	"1"
+"AbilitySpecial"
+{
+"01"
+{
+"var_type"	"FIELD_FLOAT"
+"hp_bonus"	"100 200"
+}
+"02"
+{
+"var_type"	"FIELD_FLOAT"
+"kb_reduction"	"0.15 0.15"
+}
+"03"
+{
+"var_type"	"FIELD_FLOAT"
+"debuff_factor"	"0.25 0.30"
+}
+}
+}
+"item_warlock_cursed_ring2"
+{
+"ID"	"1971"
+"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+"BaseClass"	"item_datadriven"
+"AbilityTextureName"	"warlock_cursed_ring2"
+"ItemKillable"	"0"
+"ItemSellable"	"0"
+"ItemDroppable"	"0"
+"AbilityCastRange"	"1000"
+"AbilityCastPoint"	"0.0"
+"AbilityCooldown"	"0.0"
+"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+"AbilityManaCost"	"0"
+"ItemCost"	6
+"ItemShopTags"	"consumable"
+"ItemQuality"	"consumable"
+"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
+"ItemPurchasable"	"1"
+"SideShop"	"1"
+"MaxUpgradeLevel"	"2"
+"ItemBaseLevel"	"2"
+"AbilitySpecial"
+{
+"01"
+{
+"var_type"	"FIELD_FLOAT"
+"hp_bonus"	"100 200"
+}
+"02"
+{
+"var_type"	"FIELD_FLOAT"
+"kb_reduction"	"0.15 0.15"
+}
+"03"
+{
+"var_type"	"FIELD_FLOAT"
+"debuff_factor"	"0.25 0.30"
+}
+}
+}
+"item_warlock_cape"
+{
+"ID"	"1972"
 "AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 "BaseClass"	"item_datadriven"
 "AbilityTextureName"	"warlock_cape"
@@ -1243,7 +1384,7 @@
 }
 "item_warlock_cape1"
 {
-"ID"	"1970"
+"ID"	"1973"
 "AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 "BaseClass"	"item_datadriven"
 "AbilityTextureName"	"warlock_cape1"
@@ -1275,7 +1416,7 @@
 }
 "item_warlock_cape2"
 {
-"ID"	"1971"
+"ID"	"1974"
 "AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 "BaseClass"	"item_datadriven"
 "AbilityTextureName"	"warlock_cape2"
@@ -1307,7 +1448,7 @@
 }
 "item_warlock_cape3"
 {
-"ID"	"1972"
+"ID"	"1975"
 "AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 "BaseClass"	"item_datadriven"
 "AbilityTextureName"	"warlock_cape3"
@@ -1339,7 +1480,7 @@
 }
 "item_warlock_armor"
 {
-"ID"	"1973"
+"ID"	"1976"
 "AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 "BaseClass"	"item_datadriven"
 "AbilityTextureName"	"warlock_armor"
@@ -1386,7 +1527,7 @@
 }
 "item_warlock_armor1"
 {
-"ID"	"1974"
+"ID"	"1977"
 "AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 "BaseClass"	"item_datadriven"
 "AbilityTextureName"	"warlock_armor1"
@@ -1418,7 +1559,7 @@
 }
 "item_warlock_armor2"
 {
-"ID"	"1975"
+"ID"	"1978"
 "AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 "BaseClass"	"item_datadriven"
 "AbilityTextureName"	"warlock_armor2"
@@ -1450,7 +1591,7 @@
 }
 "item_warlock_armor3"
 {
-"ID"	"1976"
+"ID"	"1979"
 "AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 "BaseClass"	"item_datadriven"
 "AbilityTextureName"	"warlock_armor3"
@@ -1482,7 +1623,7 @@
 }
 "item_warlock_boots"
 {
-"ID"	"1977"
+"ID"	"1980"
 "AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 "BaseClass"	"item_datadriven"
 "AbilityTextureName"	"warlock_boots"
@@ -1529,7 +1670,7 @@
 }
 "item_warlock_boots1"
 {
-"ID"	"1978"
+"ID"	"1981"
 "AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 "BaseClass"	"item_datadriven"
 "AbilityTextureName"	"warlock_boots1"
@@ -1561,7 +1702,7 @@
 }
 "item_warlock_boots2"
 {
-"ID"	"1979"
+"ID"	"1982"
 "AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 "BaseClass"	"item_datadriven"
 "AbilityTextureName"	"warlock_boots2"
@@ -1593,7 +1734,7 @@
 }
 "item_warlock_boots3"
 {
-"ID"	"1980"
+"ID"	"1983"
 "AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 "BaseClass"	"item_datadriven"
 "AbilityTextureName"	"warlock_boots3"
@@ -1623,9 +1764,120 @@
 }
 }
 }
+"item_warlock_pocket_watch"
+{
+"ID"	"1984"
+"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+"BaseClass"	"item_datadriven"
+"AbilityTextureName"	"warlock_pocket_watch"
+"ItemKillable"	"0"
+"ItemSellable"	"0"
+"ItemDroppable"	"0"
+"AbilityCastRange"	"0"
+"AbilityCastPoint"	"0.0"
+"AbilityCooldown"	"0.0"
+"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+"AbilityManaCost"	"0"
+"ItemCost"	4
+"ItemShopTags"	"consumable"
+"ItemQuality"	"consumable"
+"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
+"ItemPurchasable"	"1"
+"SideShop"	"1"
+"MaxUpgradeLevel"	2
+"ItemBaseLevel"	"1"
+"AbilitySpecial"
+{
+"01"
+{
+"var_type"	"FIELD_FLOAT"
+"maxlevel"	"2"
+}
+"02"
+{
+"var_type"	"FIELD_FLOAT"
+"mass"	"0 0"
+}
+"03"
+{
+"var_type"	"FIELD_FLOAT"
+"debuff_factor"	"-0.35 -0.45"
+}
+"04"
+{
+"var_type"	"FIELD_INTEGER"
+"type"	"0"
+}
+}
+}
+"item_warlock_pocket_watch1"
+{
+"ID"	"1985"
+"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+"BaseClass"	"item_datadriven"
+"AbilityTextureName"	"warlock_pocket_watch1"
+"ItemKillable"	"0"
+"ItemSellable"	"0"
+"ItemDroppable"	"0"
+"AbilityCastRange"	"1000"
+"AbilityCastPoint"	"0.0"
+"AbilityCooldown"	"0.0"
+"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+"AbilityManaCost"	"0"
+"ItemCost"	4
+"ItemShopTags"	"consumable"
+"ItemQuality"	"consumable"
+"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
+"ItemPurchasable"	"1"
+"SideShop"	"1"
+"MaxUpgradeLevel"	"2"
+"ItemBaseLevel"	"1"
+"AbilitySpecial"
+{
+"01"
+{
+"var_type"	"FIELD_FLOAT"
+"debuff_factor"	"-0.35 -0.45"
+}
+}
+}
+"item_warlock_pocket_watch2"
+{
+"ID"	"1986"
+"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+"BaseClass"	"item_datadriven"
+"AbilityTextureName"	"warlock_pocket_watch2"
+"ItemKillable"	"0"
+"ItemSellable"	"0"
+"ItemDroppable"	"0"
+"AbilityCastRange"	"1000"
+"AbilityCastPoint"	"0.0"
+"AbilityCooldown"	"0.0"
+"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+"AbilityManaCost"	"0"
+"ItemCost"	4
+"ItemShopTags"	"consumable"
+"ItemQuality"	"consumable"
+"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
+"ItemPurchasable"	"1"
+"SideShop"	"1"
+"MaxUpgradeLevel"	"2"
+"ItemBaseLevel"	"2"
+"AbilitySpecial"
+{
+"01"
+{
+"var_type"	"FIELD_FLOAT"
+"debuff_factor"	"-0.35 -0.45"
+}
+}
+}
 "item_warlock_duration_mastery"
 {
-"ID"	"1981"
+"ID"	"1987"
 "AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 "BaseClass"	"item_datadriven"
 "AbilityTextureName"	"warlock_duration_mastery"
@@ -1677,7 +1929,7 @@
 }
 "item_warlock_range_mastery"
 {
-"ID"	"1982"
+"ID"	"1988"
 "AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 "BaseClass"	"item_datadriven"
 "AbilityTextureName"	"warlock_range_mastery"
@@ -1729,7 +1981,7 @@
 }
 "item_warlock_life_steal_mastery"
 {
-"ID"	"1983"
+"ID"	"1989"
 "AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 "BaseClass"	"item_datadriven"
 "AbilityTextureName"	"warlock_life_steal_mastery"
@@ -1781,7 +2033,7 @@
 }
 "item_warlock_jack_of_all_trades"
 {
-"ID"	"1984"
+"ID"	"1990"
 "AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 "BaseClass"	"item_datadriven"
 "AbilityTextureName"	"warlock_jack_of_all_trades"
