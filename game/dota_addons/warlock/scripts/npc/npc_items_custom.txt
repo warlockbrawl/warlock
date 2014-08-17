@@ -1241,12 +1241,12 @@
 }
 "05"
 {
-"var_type"	"FIELD_INTEGER"
+"var_type"	"FIELD_FLOAT"
 "kb_reduction"	"0.15 0.15"
 }
 "06"
 {
-"var_type"	"FIELD_INTEGER"
+"var_type"	"FIELD_FLOAT"
 "debuff_factor"	"0.25 0.30"
 }
 }
