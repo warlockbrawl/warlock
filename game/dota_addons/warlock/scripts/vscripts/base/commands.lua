@@ -97,6 +97,24 @@ function Game:initCommands()
 				end
 			end
 		end)
+	
+		self:registerCommand("stats", function()
+			for i, player in pairs(GAME.players) do
+				if player.pawn then
+					local p = player.pawn
+					log("-- Stats for player " .. player.name .. " --")
+					log("move_speed: " .. tostring(p.move_speed))
+					log("max_hp: " .. tostring(p.max_hp))
+					log("hp_regen: " .. tostring(p.hp_regen))
+					log("mass: " .. tostring(p.mass))
+					log("dmg_factor: " .. tostring(p.dmg_factor))
+					log("kb_factor: " .. tostring(p.kb_factor))
+					log("dmg_reduction: " .. tostring(p.dmg_reduction))
+					log("debuff_factor: " .. tostring(p.debuff_factor))
+					log("--------------------------")
+				end
+			end
+		end)
 	end
 end
 
