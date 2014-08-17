@@ -19,7 +19,6 @@ function Mode:init()
 		max_score = 5,
 		use_team_score = false
 	}
-	display("Win condition: first to 5 score wins")
 end
 
 function Mode:onStart()
