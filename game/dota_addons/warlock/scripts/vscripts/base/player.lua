@@ -347,17 +347,8 @@ function Game:EventPlayerJoinedTeam(event)
 	PrintTable(event)
 	
 	local p = self:getOrCreatePlayer(event.userid)
-
-	if not p.native_team_set then
-		p.native_team_set = true
-		if p.playerEntity:GetTeam() ~= event.team then
-			p.playerEntity:SetTeam(event.team)
-		end
-		
-		p:EventJoinedTeam(event)
-	else
-		log("Ignoring join team, native_team_set = true")
-	end
+	
+	p:EventJoinedTeam(event)
 end
 
 function Game:EventPlayerReconnected(event)
