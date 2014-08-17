@@ -186,8 +186,9 @@ function Player:HeroSpawned(hero)
 	GAME.picked_count = (GAME.picked_count or 0) + 1
 	GAME.player_count = GAME.player_count + 1
 	
+	-- Kill pawn if not in combat
 	if GAME.combat then
-		self.pawn:disable()
+		self.pawn:die{}
 	end
 end
 
