@@ -64,7 +64,7 @@ function Game:winGame(winners)
 		end
 		
 		-- Remove comma and whitespace
-		winner_str = string.sub(winner_str, -2, 1)
+		winner_str = string.sub(winner_str, 1, -3)
 
 		winner_str = winner_str .. " won the game!"
 		

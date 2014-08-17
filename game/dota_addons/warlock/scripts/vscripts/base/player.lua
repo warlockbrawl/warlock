@@ -252,11 +252,6 @@ function Player:setTeam(new_team)
 	if self.pawn and self.pawn.unit then
 		self.pawn:updateTeamColor()
 	end
-	
-	-- The player will only have an id if this is not the first assignment
-	if self.id then
-		self:updateCash()
-	end
 end
 
 function Player:getAlliance(other_player)
@@ -287,8 +282,8 @@ end
 
 --- Set the displayed cash to match the script value
 function Player:updateCash()
-	--print(self.name, " - update cash: ", self.cash)
 	PlayerResource:SetGold(self.id, self.cash, true)
+	PlayerResource:SetGold(self.id, 0, false)
 end
 
 function Player:setCash(amount)

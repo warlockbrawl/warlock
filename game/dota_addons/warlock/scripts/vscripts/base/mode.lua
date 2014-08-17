@@ -16,9 +16,10 @@ function Mode:init()
 	self.win_condition = ScoreWinCondition:new {
 		detect_early_end = true,
 		no_draws = true,
-		max_score = 3,
+		max_score = 5,
 		use_team_score = false
 	}
+	display("Win condition: first to 5 score wins")
 end
 
 function Mode:onStart()
