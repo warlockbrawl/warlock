@@ -110,4 +110,9 @@ function TeamModeShuffle:onNewRound()
 			team = 0
 		end
 	end
+	
+	-- Reset team scores
+	for i = 0, team_count - 1 do
+		GAME.teams[i].score = 0
+	end
 end
