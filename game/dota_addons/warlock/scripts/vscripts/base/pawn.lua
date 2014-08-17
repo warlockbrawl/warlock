@@ -69,7 +69,7 @@ end
 function Pawn:updateTeamColor()
 	if self.owner and self.owner.team and self.effect_team_indicator then
 		-- Set team color
-		ParticleManager:SetParticleControl(self.effect_team_indicator, 1, Player.TEAM_COLOR[1 + math.min(11, math.max(0, self.owner.team.id))])
+		--ParticleManager:SetParticleControl(self.effect_team_indicator, 1, Player.TEAM_COLOR[1 + math.min(11, math.max(0, self.owner.team.id))])
 	end
 end
 
@@ -223,7 +223,7 @@ function Pawn:_updateLocation()
 	local loc = GetGroundPosition(self.location, self.unit)
 	self.unit:SetAbsOrigin(loc)
 	if self.effect_team_indicator then
-		ParticleManager:SetParticleControl(self.effect_team_indicator, 0, loc + Vector(0, 0, 10))
+		--ParticleManager:SetParticleControl(self.effect_team_indicator, 0, loc + Vector(0, 0, 10))
 	end
 end
 
