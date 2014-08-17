@@ -149,8 +149,6 @@ function Pawn:removeNativeModifier(mod_name)
 end
 
 function Pawn:respawn()
-	log("respawn")
-	
 	self.velocity = Vector(0, 0, 0)
 	self.walk_velocity = Vector(0, 0, 0)
 	self.location = GAME:getRespawnLocation(self)
@@ -159,7 +157,7 @@ function Pawn:respawn()
 	self:enable()
 
 	if not self.unit:IsAlive() then
-		log("Repsawning hero")
+		log("Respawning hero")
 		self.unit:RespawnHero(false, false, false)
 	end
 

@@ -91,7 +91,10 @@ end
 -------------------------------------------------
 
 function Game:initTeams()
-	self.team_mode = TeamModeShuffle:new{}
+	self.team_mode = TeamModeShuffle:new {
+		max = true 
+	}
+	
 	GAME.teams = {}
 	
 	-- Active teams are teams with atleast one player

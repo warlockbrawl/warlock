@@ -53,43 +53,24 @@ function Game:init()
 	self.in_progress = false
 end
 
-function Game:winGame()
+-- Ends the game and sets winners
+function Game:winGame(winners)
 	local winner_str = ""
-	local winners, winner_count = GAME:getHighestScorePlayers()
 
-	if winner_count > 0 then
-		-- Setup winner team to goodguys
-		for _, player in pairs(GAME.players) do
-			local is_winner = false
-			for i = 1, winner_count do
-				if winners[i] == player then
-					is_winner = true
-					break
-				end
-			end
-			
-			if is_winner then
-				player.playerEntity:SetTeam(DOTA_TEAM_GOODGUYS)
-				winner_str = winner_str .. player.name .. ", "
-			else
-				player.playerEntity:SetTeam(DOTA_TEAM_BADGUYS)
-			end
+	if #winners > 0 then
+		-- Create winner string
+		for _, player in pairs(winners) do
+			winner_str = winner_str .. player.name .. ", "
 		end
 		
-		-- Remove comma if necessary
-		if string.len(winner_str) > 2 then
-			winner_str = string.sub(winner_str, -2, 1)
-		end
+		-- Remove comma and whitespace
+		winner_str = string.sub(winner_str, -2, 1)
 
 		winner_str = winner_str .. " won the game!"
 		
+		-- Display winner text
 		display(winner_str)
-	else
-		-- Everyone's a winner!
-		for _, player in pairs(GAME.players) do
-			player.playerEntity:SetTeam(DOTA_TEAM_GOODGUYS)
-		end
-		
+	else		
 		display("The game ended in a draw!")
 	end
 	
@@ -165,38 +146,33 @@ function Game:initGameRules()
 	-- Disable first blood event (and its cash reward)
 	GameRules:SetFirstBloodActive(false)
 
-	self:async(function()
-		-- GetGameModeEntity returns nil during addon_game_mode.lua
-		-- Needs to be executed on the event loop
+	self.nativeMode = GameRules:GetGameModeEntity()
 
-		self.nativeMode = GameRules:GetGameModeEntity()
+	-- Disables recommended items...though I don't think it works
+	self.nativeMode:SetRecommendedItemsDisabled( true )
 
-		-- Disables recommended items...though I don't think it works
-		self.nativeMode:SetRecommendedItemsDisabled( true )
+	-- Set the cam distance
+	self.nativeMode:SetCameraDistanceOverride( Config.GAME_CAMERA_DISTANCE )
 
-		-- Set the cam distance
-		self.nativeMode:SetCameraDistanceOverride( Config.GAME_CAMERA_DISTANCE )
+	--
+	self.nativeMode:SetCustomBuybackCostEnabled( true )
+	self.nativeMode:SetCustomBuybackCooldownEnabled( true )
+	self.nativeMode:SetBuybackEnabled( false )
+	-- Override the top bar values to show your own settings instead of total deaths
+	self.nativeMode:SetTopBarTeamValuesOverride ( true )
+	-- Use custom hero level maximum and your own XP per level
+	self.nativeMode:SetUseCustomHeroLevels ( true )
+	self.nativeMode:SetCustomHeroMaxLevel ( Config.MAX_LEVEL )
+	self.nativeMode:SetFogOfWarDisabled( true )
 
-		--
-		self.nativeMode:SetCustomBuybackCostEnabled( true )
-		self.nativeMode:SetCustomBuybackCooldownEnabled( true )
-		self.nativeMode:SetBuybackEnabled( false )
-		-- Override the top bar values to show your own settings instead of total deaths
-		self.nativeMode:SetTopBarTeamValuesOverride ( true )
-		-- Use custom hero level maximum and your own XP per level
-		self.nativeMode:SetUseCustomHeroLevels ( true )
-		self.nativeMode:SetCustomHeroMaxLevel ( Config.MAX_LEVEL )
-		self.nativeMode:SetFogOfWarDisabled( true )
-
-		--self.nativeMode:SetCustomXPRequiredToReachNextLevel( 1 )
-	end)
+	--self.nativeMode:SetCustomXPRequiredToReachNextLevel( 1 )
 end
 
 --- Connect to events (including the tick loop)
 function Game:initEvents()
 	-- Tick loop
-	Entities:FindAllByClassname('dota_base_game_mode')[1]:SetThink('_Tick', '', Config.GAME_TICK_RATE, self)
-
+	self.nativeMode:SetThink("_Tick", self, "_Tick", Config.GAME_TICK_RATE)
+	
 	-- Events
 	ListenToGameEvent('player_connect_full', Dynamic_Wrap(self, 'EventPlayerConnected'), self)
 	ListenToGameEvent('player_disconnect', Dynamic_Wrap(self, 'EventPlayerDisconnected'), self)
@@ -222,6 +198,11 @@ function Game:_Tick()
 	if GameRules:State_Get() >= DOTA_GAMERULES_STATE_POST_GAME then
 		self.in_progress = false
 		return
+	end
+	
+	-- dt = 0 means the game is paused
+	if dt == 0 then
+		return Config.GAME_TICK_RATE
 	end
 
 	-- Tasks

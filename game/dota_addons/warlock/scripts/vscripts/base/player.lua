@@ -189,12 +189,12 @@ end
 
 -- Native dota teams cannot be reassigned
 function Player:initTeam()
-	-- check for previous team
-	self.playerEntity:SetTeam(GAME.team_mode:getNativeTeamForNewPlayer(self))
+	-- Assign native team
+	GAME.team_mode:assignNativeTeam(self)
 	
 	log("initTeam")
 
-	-- if team is not assigned yet, assign a new one
+	-- If team is not assigned yet, assign a new one
 	if not self.team then
 		log("Assigning new team")
 		self:setTeam(GAME.team_mode:getTeamForNewPlayer(self))
@@ -358,25 +358,4 @@ function Game:initScriptedCashRefresh()
 			end
 		end
 	}
-end
-
-function Game:getHighestScorePlayers()
-	local best_score = -1
-	local highest_count = 0
-	local players = {}
-	
-	for _, player in pairs(self.players) do
-		if player.score > best_score then
-			players = {}
-			best_score = player.score
-			highest_count = 0
-		end
-		
-		if player.score == best_score then
-			table.insert(players, player)
-			highest_count = highest_count + 1
-		end
-	end
-	
-	return players, highest_count
 end

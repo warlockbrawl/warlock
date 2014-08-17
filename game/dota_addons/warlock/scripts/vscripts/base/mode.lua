@@ -13,6 +13,12 @@ end
 
 function Mode:init()
 	self.round = 0
+	self.win_condition = ScoreWinCondition:new {
+		detect_early_end = true,
+		no_draws = true,
+		max_score = 3,
+		use_team_score = false
+	}
 end
 
 function Mode:onStart()
@@ -38,6 +44,7 @@ function Mode:prepareForRound()
 	GAME.arena:setLayer(16) -- corresponding to 1 player
 	GAME:addRandomObstacles(math.random(Mode.OBSTACLE_COUNT_MIN, Mode.OBSTACLE_COUNT_MAX))
 
+	-- Respawn players and make them able to upgrade spells
 	for id, player in pairs(GAME.players) do
 		if player.pawn and player.active then
 			player.pawn:respawn()
@@ -45,6 +52,7 @@ function Mode:prepareForRound()
 		end
 	end
 
+	-- Start the round start timer
 	GAME:addTask{
 		id='round start',
 		time=self.SHOP_TIME,
@@ -104,6 +112,7 @@ function Mode:prepareForRound()
 	GAME:showMessage("SHOPTIME", self.SHOP_TIME - 5)
 end
 
+-- Called when a round starts
 function Mode:onRoundStart()
 	self.round = self.round + 1
 	display(self:roundName())
@@ -150,15 +159,18 @@ function Mode:onRoundStart()
 	GAME:modOnReset()
 end
 
+-- Called when a round was won
 function Mode:onRoundWon(winner_team)
 	GAME:setCombat(false)
 
-	GAME:addTask{
-		id='round end',
-		time=2,
-		func=function()
+	-- Leave some time to end the round, end it later
+	GAME:addTask {
+		id = 'round end',
+		time = 2,
+		func = function()
 			self:onRoundEnd()
-		end}
+		end
+	}
 
 	if winner_team then
 		display(winner_team.name .. ' has won the round')
@@ -189,26 +201,24 @@ function Mode:onRoundWon(winner_team)
 	end
 end
 
+-- Called when a round ended
 function Mode:onRoundEnd()
 	display(self:roundName()..' has ended')
 
-	-- rewards for ending the round
+	-- Rewards for ending the round
 	for id, player in pairs(GAME.players) do
 		player:addCash(Config.CASH_EVERY_ROUND)
 	end
 
-	if self.round < self.ROUND_NUMBER then
+	-- Check the win condition if the game is over
+	if not self.win_condition:isGameOver() then
 		self:prepareForRound()
 	else
-		-- that was the last round, display end game
-		self:onGameEnd()
+		GAME:winGame(self.win_condition:getWinners())
 	end
 end
 
-function Mode:onGameEnd()
-	GAME:winGame()
-end
-
+-- Called when a player was killed
 function Mode:onKill(event)
 	-- give reward for kill
 	if event.killer and event.killer.owner and event.killer ~= event.victim then
@@ -225,6 +235,7 @@ function Mode:onKill(event)
 	end
 end
 
+-- Called when a pawn wants to respawn
 function Mode:getRespawnLocation(pawn)
 	local angle_per_team = 2 * math.pi / GAME.active_team_count
 	
@@ -239,16 +250,12 @@ function Mode:getRespawnLocation(pawn)
 end
 
 ModeLTS = class(Mode)
-ModeLTS.ROUND_NUMBER = 11
 
 -- check for victory conditions
 function ModeLTS:onKill(event)
 	ModeLTS.super.onKill(self, event)
 
-	log("ModeLTS:onKill()")
-
 	if GAME.combat then
-		log("ModeLTS:onKill() inner")
 		local alive_teams = GAME:getAliveTeams()
 		local round_over = #alive_teams <= 1
 

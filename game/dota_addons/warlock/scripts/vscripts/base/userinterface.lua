@@ -15,9 +15,18 @@ end
 
 function UserInterface:update()
 	for id, pl in pairs(GAME.players) do
+		local score = pl.score
+		
+		-- Display team score instead of team score if use_team_score is set
+		if GAME.mode and GAME.mode.win_condition and GAME.mode.win_condition.use_team_score then
+			if pl.team then
+				score = pl.team.score
+			end
+		end
+		
 		FireGameEvent("w_update_scoreboard", {
 			id		= id,
-			points	= pl.score,
+			points	= score,
 			dmg		= pl.stats[Player.STATS_DAMAGE]
 		})
 	end

@@ -19,15 +19,26 @@ function TeamMode:getTeamForNewPlayer(player)
 	end
 end
 
-function TeamMode:getNativeTeamForNewPlayer(player)
-	-- Native teams have to be evenly assigned else it will bug
-	if self.native_team_size[DOTA_TEAM_GOODGUYS] <= self.native_team_size[DOTA_TEAM_BADGUYS] then
-		self.native_team_size[DOTA_TEAM_GOODGUYS] = self.native_team_size[DOTA_TEAM_GOODGUYS] + 1
-		return DOTA_TEAM_GOODGUYS
-	else
-		self.native_team_size[DOTA_TEAM_BADGUYS] = self.native_team_size[DOTA_TEAM_BADGUYS] + 1
-		return DOTA_TEAM_BADGUYS
+function TeamMode:assignNativeTeam(player)
+	local native_team = player.playerEntity:GetTeam()
+	
+	log("Native team is " .. tostring(native_team))
+	
+	-- Only assign a antive team if none is already set
+	if native_team ~= DOTA_TEAM_GOODGUYS and native_team ~= DOTA_TEAM_BADGUYS then
+		-- If no team is already set, assign it evenly
+		if self.native_team_size[DOTA_TEAM_GOODGUYS] <= self.native_team_size[DOTA_TEAM_BADGUYS] then
+			native_team = DOTA_TEAM_GOODGUYS
+		else
+			native_team = DOTA_TEAM_BADGUYS
+		end
+		
+		log("Assigned native team to " .. tostring(native_team))
+		player.playerEntity:SetTeam(native_team)
 	end
+	
+	-- Increase native team size
+	self.native_team_size[native_team] = self.native_team_size[native_team] + 1
 end
 
 function TeamMode:onNewRound()
@@ -56,6 +67,12 @@ end
 
 TeamModeShuffle = class(TeamMode)
 
+function TeamModeShuffle:init(def)
+	TeamModeShuffle.super.init(self, def)
+	
+	self.max = def.max
+end
+
 function TeamModeShuffle:onNewRound()
 	local players = {}
 	
@@ -65,9 +82,7 @@ function TeamModeShuffle:onNewRound()
 	end
 	
 	local player_count = #players
-	
 	local team_counts = {}
-	
 	
 	if player_count == 1 then
 		-- Special case for 1 player: only 1 team
@@ -79,6 +94,12 @@ function TeamModeShuffle:onNewRound()
 				table.insert(team_counts, i)
 			end
 		end
+	end
+	
+	-- Biggest teams possible if max is set
+	if self.max then
+		local max_team = team_counts[1]
+		team_count = { max_team }
 	end
 	
 	-- Get random team size
