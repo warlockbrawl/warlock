@@ -56,9 +56,7 @@ function Pawn:init(def)
 
 	add_start_item(self.unit, "item_warlock_fireball", 1, def.owner.id)
 	add_start_item(self.unit, "item_warlock_scourge", 0, def.owner.id)
-	
-	self.unit:SetTeam(DOTA_TEAM_GOODGUYS)
-	
+
 	self:respawn()
 	
 	if not self.effect_team_indicator and self.unit then
