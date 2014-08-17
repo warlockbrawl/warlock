@@ -66,10 +66,16 @@ function TeamModeShuffle:onNewRound()
 	
 	local team_sizes = {}
 	
-	-- Find all factors
-	for i = 1, math.ceil(player_count / 2) do
-		if player_count % i == 0 then
-			table.insert(team_sizes, i)
+	
+	if player_count == 1 then
+		-- Special case for 1 player: only 1 team
+		table.insert(team_sizes, 1)
+	else
+		-- Find all factors, no single team case
+		for i = 2, player_count do
+			if player_count % i == 0 then
+				table.insert(team_sizes, i)
+			end
 		end
 	end
 	
