@@ -132,3 +132,25 @@ function Game:getWinnerTeams()
 	
 	return best_teams
 end
+
+function Game:GetTeamForNewPlayer(player)
+	if GAME.team_mode == Game.TEAM_MODE_DEFAULT then
+		if GAME.teams[0].size <= GAME.teams[1].size then
+			return GAME.teams[0]
+		else
+			return GAME.teams[1]
+		end
+	elseif GAME.team_mode == Game.TEAM_MODE_TEAMS then
+		warning("Team mode not supported")
+		return GAME.teams[0]
+	elseif GAME.team_mode == Game.TEAM_MODE_FFA then
+		self.ffa_next_team = (self.ffa_next_team or 0) + 1
+		return GAME.teams[self.ffa_next_team - 1]
+	elseif GAME.team_mode == Game.TEAM_MODE_SHUFFLE then
+		warning("Team mode not supported")
+		return GAME.teams[0]
+	end
+	
+	warning("Invalid team mode")
+	return GAME.teams[0]
+end
