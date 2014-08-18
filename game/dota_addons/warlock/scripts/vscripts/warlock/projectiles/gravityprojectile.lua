@@ -6,6 +6,10 @@ function GravityProjectile:init(def)
 	self.strength = def.strength
 	self.damage = def.damage
 
+	-- Default to range mastery = true, duration = false
+	self.range_mastery = not def.no_range_mastery
+	self.duration_mastery = def.duration_mastery
+
 	if self.instigator then
 		def.owner = self.instigator.owner
 	end
