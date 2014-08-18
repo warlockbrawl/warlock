@@ -11,9 +11,9 @@ function Mode:roundName(round_to_print)
 	return 'Round ' .. (round_to_print or self.round or 0)
 end
 
-function Mode:init()
+function Mode:init(def)
 	self.round = 0
-	self.win_condition = ScoreWinCondition:new {
+	self.win_condition = def.win_condition or ScoreWinCondition:new {
 		detect_early_end = true,
 		no_draws = true,
 		max_score = 5,

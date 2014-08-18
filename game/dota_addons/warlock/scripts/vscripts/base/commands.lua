@@ -6,6 +6,22 @@ function Game:initCommands()
 
 	self.commands = {}
 
+	self:registerCommand("set_mode", function(name, p)
+		local pl = Convars:GetCommandClient()
+		local player = GAME.players[pl:GetPlayerID()]
+		if player.index == 0 and p[1] and p[2] then
+			GAME:setMode(p[1], p[2])
+		end
+	end)
+
+	self:registerCommand("select_mode", function(name, p)
+		local pl = Convars:GetCommandClient()
+		local player = GAME.players[pl:GetPlayerID()]
+		if player.index == 0 then
+			GAME:selectModes()
+		end
+	end)
+
 	-- Development only commands
 	if Config.DEVELOPMENT then
 		self:registerCommand('f', function()
@@ -38,15 +54,15 @@ function Game:initCommands()
 				log("Projectile Count: " .. count)
 		end)
 
-		self:registerCommand('resetcd', function(words, pl)
+		self:registerCommand('resetcd', function()
 			GAME.pawns:foreach(function(pawn)
 				pawn:resetCooldowns()
 			end)
 		end)
 
-		self:registerCommand('cam', function(words, pl)
-			if(words[2]) then
-				GAME.nativeMode:SetCameraDistanceOverride(tonumber(words[2]))
+		self:registerCommand('cam', function(name, p)
+			if(p[2]) then
+				GAME.nativeMode:SetCameraDistanceOverride(tonumber(p[2]))
 			end
 		end)
 
@@ -118,48 +134,7 @@ function Game:initCommands()
 	end
 end
 
-function Game:_command(cmd, pl)
-	local words = {}
-	for word in cmd:gmatch("%S+") do
-		table.insert(words, word)
-	end
-
-	if self.commands[words[1]] then
-		self.commands[words[1]](words, pl)
-	end
-end
-
--- Called when a player says sth in chat
-function Game:onChat(pl, text)
-	if text:len() > 1 then
-		local cmd = text:sub(2)
-		-- host can use console commands from here with prefix /
-		if text:sub(1,1) == '/' and pl.index == 0 then
-			SendToServerConsole(cmd)
-		-- standard commands start with -
-		elseif text:sub(1,1) == '-' then
-			self:_command(cmd, pl)
-		end
-	end
-end
-
-function Game:EventPlayerChat(event)
-	-- print('EventPlayerChat ')
-	-- PrintTable(event)
-
-	-- Find the player who said that
-	local pl =  self.playersByUserid[event.userid]
-
-	if pl ~= nil then
-		self:onChat(pl, event.text)
-	end
-end
-
 function Game:registerCommand(cmd, func)
-	self.commands[cmd] = func
-	
-	if Config.DEVELOPMENT then
-		Convars:RegisterCommand("wl_" .. cmd, func, cmd, 0)
-	end
+	Convars:RegisterCommand("wl_" .. cmd, func, cmd, 0)
 end
 

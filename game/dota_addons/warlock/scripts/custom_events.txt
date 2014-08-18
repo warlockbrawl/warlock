@@ -26,4 +26,14 @@
 		"points"   	"short"
 		"dmg"		"float"	
 	}
+	
+	"w_start_mode_selection"
+	{
+	
+	}
+	
+	"w_modes_selected"
+	{
+	
+	}
 }

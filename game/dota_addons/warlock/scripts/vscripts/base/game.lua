@@ -46,9 +46,6 @@ function Game:init()
 	self:initArena()
 	self:initUserInterface()
 
-	-- Initialize mode
-	self.mode = ModeLTS:new()
-
 	-- Wait for the game to start
 	self.in_progress = false
 end
@@ -101,7 +98,7 @@ function Game:EventStateChanged(event)
 					self.in_progress = true
 					self.task_start:cancel()
 					self.task_start = nil
-					self:start()
+					self:startModeSelection()
 				else
 					log("Waiting for at least 1 player")
 				end
@@ -114,6 +111,11 @@ function Game:start()
 	self.in_progress = true
 
 	display("Welcome to Warlock")
+	
+	-- Assign teams
+	for _, player in pairs(GAME.players) do
+		player:initTeam()
+	end
 
 	self.mode:onStart()
 end
@@ -249,6 +251,10 @@ function Game:setShop(b_shop)
 end
 
 function Game:getRespawnLocation(pawn)
+	if not self.mode then
+		return Vector(0, 0, Config.GAME_Z)
+	end
+	
 	return self.mode:getRespawnLocation(pawn)
 end
 

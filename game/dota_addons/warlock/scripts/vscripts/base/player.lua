@@ -232,10 +232,11 @@ function Player:initTeam()
 	print("Player ID:", self.playerEntity:GetPlayerID())
 	print("Native Team:", self.playerEntity:GetTeam())
 	
-	-- If team is not assigned yet, assign a new one
-	if not self.team then
-		log("Assigning new team")
+	log("Assigning new team")
+	if GAME.team_mode then
 		self:setTeam(GAME.team_mode:getTeamForNewPlayer(self))
+	else
+		self:setTeam(GAME.teams[0])
 	end
 end
 
