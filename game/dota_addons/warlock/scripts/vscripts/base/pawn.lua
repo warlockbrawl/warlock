@@ -324,7 +324,7 @@ function Pawn:receiveDamage(dmg_info)
 	-- Set life
 	local life = self.health - dmg_info.amount
 
-	if life > 0 then
+	if life > 1 then
 		self.health = life
 		self.unit:SetHealth(life)
 	else
