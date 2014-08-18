@@ -13,7 +13,7 @@
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"0"
-		"AbilityCastPoint"				"1.0"
+		"AbilityCastPoint"				"0.7"
 		"AbilityCooldown"				"3.0"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
 		"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
@@ -1896,14 +1896,14 @@
 "ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
 "ItemPurchasable"	"1"
 "SideShop"	"1"
-"MaxUpgradeLevel"	5
+"MaxUpgradeLevel"	6
 "ItemBaseLevel"	"1"
 "AbilitySpecial"
 {
 "01"
 {
 "var_type"	"FIELD_FLOAT"
-"maxlevel"	"5"
+"maxlevel"	"6"
 }
 "02"
 {
@@ -1913,7 +1913,7 @@
 "03"
 {
 "var_type"	"FIELD_FLOAT"
-"stats"	"10 9 8 7 6"
+"stats"	"10 8 7 6 5 4"
 }
 "04"
 {
@@ -1948,14 +1948,14 @@
 "ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
 "ItemPurchasable"	"1"
 "SideShop"	"1"
-"MaxUpgradeLevel"	5
+"MaxUpgradeLevel"	6
 "ItemBaseLevel"	"1"
 "AbilitySpecial"
 {
 "01"
 {
 "var_type"	"FIELD_FLOAT"
-"maxlevel"	"5"
+"maxlevel"	"6"
 }
 "02"
 {
@@ -1965,7 +1965,7 @@
 "03"
 {
 "var_type"	"FIELD_FLOAT"
-"stats"	"12 11 10 9 8"
+"stats"	"12 10 9 8 7 6"
 }
 "04"
 {
@@ -2000,14 +2000,14 @@
 "ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
 "ItemPurchasable"	"1"
 "SideShop"	"1"
-"MaxUpgradeLevel"	5
+"MaxUpgradeLevel"	6
 "ItemBaseLevel"	"1"
 "AbilitySpecial"
 {
 "01"
 {
 "var_type"	"FIELD_FLOAT"
-"maxlevel"	"5"
+"maxlevel"	"6"
 }
 "02"
 {
@@ -2017,7 +2017,7 @@
 "03"
 {
 "var_type"	"FIELD_FLOAT"
-"stats"	"10 9 8 7 6"
+"stats"	"9 8 7 6 5 4"
 }
 "04"
 {
@@ -2052,14 +2052,14 @@
 "ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
 "ItemPurchasable"	"1"
 "SideShop"	"1"
-"MaxUpgradeLevel"	15
+"MaxUpgradeLevel"	18
 "ItemBaseLevel"	"1"
 "AbilitySpecial"
 {
 "01"
 {
 "var_type"	"FIELD_FLOAT"
-"maxlevel"	"15"
+"maxlevel"	"18"
 }
 "02"
 {
@@ -2069,7 +2069,7 @@
 "03"
 {
 "var_type"	"FIELD_FLOAT"
-"stats"	"10 9 8 7 6 12 11 10 9 8 10 9 8 7 6"
+"stats"	"10 8 7 6 5 4 12 10 9 8 7 6 9 8 7 6 5 4"
 }
 "04"
 {

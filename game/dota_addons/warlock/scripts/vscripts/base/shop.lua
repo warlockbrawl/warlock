@@ -177,9 +177,9 @@ function purchase(event)
 		if index == 3 then -- jack of all trades. Hardcoded
 			local do_upgrade = true
 				
-			-- If a mastery level is >= 5 then you cant upgrade, refund gold
+			-- If a mastery level is >= 6 then you cant upgrade, refund gold
 			for i = 0, Player.MASTERY_MAX_INDEX do
-				if MasteryLevel[id][i] >= 5 then
+				if MasteryLevel[id][i] >= 6 then
 					do_upgrade = false
 					break
 				end
