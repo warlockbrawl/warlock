@@ -968,7 +968,7 @@
 	{
 		"ID"							"8823"
 		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"emptyslot"
+		"AbilityTextureName"			"rubick_empty1"
 		"AbilityCastRange"				"0"
 		"AbilityCastPoint"				"0"
 		"AbilityCooldown"				"0"
@@ -979,7 +979,7 @@
 	{
 		"ID"							"8824"
 		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"emptyslot"
+		"AbilityTextureName"			"rubick_empty1"
 		"AbilityCastRange"				"0"
 		"AbilityCastPoint"				"0"
 		"AbilityCooldown"				"0"
@@ -990,7 +990,7 @@
 	{
 		"ID"							"8825"
 		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"emptyslot"
+		"AbilityTextureName"			"rubick_empty1"
 		"AbilityCastRange"				"0"
 		"AbilityCastPoint"				"0"
 		"AbilityCooldown"				"0"
@@ -1001,7 +1001,7 @@
 	{
 		"ID"							"8826"
 		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"emptyslot"
+		"AbilityTextureName"			"rubick_empty1"
 		"AbilityCastRange"				"0"
 		"AbilityCastPoint"				"0"
 		"AbilityCooldown"				"0"
@@ -1012,7 +1012,7 @@
 	{
 		"ID"							"8827"
 		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"emptyslot"
+		"AbilityTextureName"			"rubick_empty1"
 		"AbilityCastRange"				"0"
 		"AbilityCastPoint"				"0"
 		"AbilityCooldown"				"0"
@@ -1023,7 +1023,7 @@
 	{
 		"ID"							"8828"
 		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"emptyslot"
+		"AbilityTextureName"			"rubick_empty1"
 		"AbilityCastRange"				"0"
 		"AbilityCastPoint"				"0"
 		"AbilityCooldown"				"0"

@@ -6,6 +6,12 @@
 		"File" 	"w_Leaderboard"
 		"Depth" "11"
 	}
+
+	"2"
+	{
+		"File"	"WLModeSelect"
+		"Depth"	"10"
+	}
 }
 
 // =============================================

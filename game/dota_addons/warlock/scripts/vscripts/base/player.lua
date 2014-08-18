@@ -159,9 +159,6 @@ function Player:HeroSpawned(hero)
 	-- Assign a non-native team
 	self:initTeam()
 	
-	-- Get the players name
-	self.name = PlayerResource:GetPlayerName(self.id)
-
 	display(self.name .. ' has joined the game as player ' .. self.id)
 
 	self:updateCash()

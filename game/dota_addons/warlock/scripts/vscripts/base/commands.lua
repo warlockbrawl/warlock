@@ -6,18 +6,22 @@ function Game:initCommands()
 
 	self.commands = {}
 
-	self:registerCommand("set_mode", function(name, p)
+	self:registerCommand("set_mode", function(name, a, b)
 		local pl = Convars:GetCommandClient()
 		local player = GAME.players[pl:GetPlayerID()]
-		if player.index == 0 and p[1] and p[2] then
-			GAME:setMode(p[1], p[2])
+		
+		-- Check if its the player selecting the mode
+		if player == GAME.mode_selecting_player and a and b then
+			GAME:setMode(tonumber(a), tonumber(b))
 		end
 	end)
 
-	self:registerCommand("select_mode", function(name, p)
+	self:registerCommand("select_mode", function()
 		local pl = Convars:GetCommandClient()
 		local player = GAME.players[pl:GetPlayerID()]
-		if player.index == 0 then
+		
+		-- Check if its the player selecting the mode
+		if player == GAME.mode_selecting_player then
 			GAME:selectModes()
 		end
 	end)
@@ -60,9 +64,9 @@ function Game:initCommands()
 			end)
 		end)
 
-		self:registerCommand('cam', function(name, p)
-			if(p[2]) then
-				GAME.nativeMode:SetCameraDistanceOverride(tonumber(p[2]))
+		self:registerCommand('cam', function(name, dist)
+			if(arg[1]) then
+				GAME.nativeMode:SetCameraDistanceOverride(tonumber(dist))
 			end
 		end)
 

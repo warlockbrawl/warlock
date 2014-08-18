@@ -7,6 +7,10 @@ TeamMode = class()
 function TeamMode:init(def)
 end
 
+function TeamMode:getDescription()
+	return "Teams (selected in lobby)"
+end
+
 function TeamMode:getTeamForNewPlayer(player)
 	if GAME.teams[0].size <= GAME.teams[1].size then
 		return GAME.teams[0]
@@ -30,6 +34,10 @@ function TeamModeFFA:init(def)
 	self.ffa_next_team = 0
 end
 
+function TeamModeFFA:getDescription()
+	return "Free for all"
+end
+
 function TeamModeFFA:getTeamForNewPlayer(player)
 	self.ffa_next_team = self.ffa_next_team + 1
 	return GAME.teams[self.ffa_next_team - 1]
@@ -45,6 +53,10 @@ function TeamModeShuffle:init(def)
 	TeamModeShuffle.super.init(self, def)
 	
 	self.max = def.max
+end
+
+function TeamModeShuffle:getDescription()
+	return "Shuffle (random teams every round)"
 end
 
 function TeamModeShuffle:onNewRound()

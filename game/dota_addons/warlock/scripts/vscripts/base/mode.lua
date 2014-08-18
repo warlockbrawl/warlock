@@ -21,6 +21,10 @@ function Mode:init(def)
 	}
 end
 
+function Mode:getDescription()
+	return "Default"
+end
+
 function Mode:onStart()
 	for id, player in pairs(GAME.players) do
 		player:setCash(Config.CASH_ON_START)
@@ -250,6 +254,10 @@ function Mode:getRespawnLocation(pawn)
 end
 
 ModeLTS = class(Mode)
+
+function ModeLTS:getDescription()
+	return "Rounds"
+end
 
 -- check for victory conditions
 function ModeLTS:onKill(event)

@@ -10,6 +10,10 @@ function WinCondition:init(def)
 	end
 end
 
+function WinCondition:getDescription()
+	return "Default"
+end
+
 function WinCondition:isGameOver()
 	return false
 end
@@ -60,6 +64,10 @@ function RoundWinCondition:init(def)
 	RoundWinCondition.super.init(self, def)
 	
 	self.round_count = def.round_count or 11
+end
+
+function RoundWinCondition:getDescription()
+	return "Up to " .. tostring(self.round_count) .. " rounds"
 end
 
 -- Game is over when max round count is reached
@@ -119,6 +127,10 @@ function ScoreWinCondition:init(def)
 	ScoreWinCondition.super.init(self, def)
 	
 	self.max_score = def.max_score or 11
+end
+
+function ScoreWinCondition:getDescription()
+	return "Up to " .. tostring(self.max_score) .. " score"
 end
 
 -- Game is over when max round count is reached

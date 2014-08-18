@@ -29,11 +29,11 @@
 	
 	"w_start_mode_selection"
 	{
-	
+		"id"		"byte"
 	}
 	
 	"w_modes_selected"
 	{
-	
+		"id"		"byte"
 	}
 }

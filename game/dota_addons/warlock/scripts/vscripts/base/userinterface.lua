@@ -75,27 +75,38 @@ function Game:initUserInterface()
 	self.mode_sel_data = {}
 	self.mode_sel_data[MODE_SEL_TEAM] = MODE_SEL_TEAM_SHUFFLE
 	self.mode_sel_data[MODE_SEL_GAME] = MODE_SEL_GAME_ROUNDS
-	self.mode_sel_data[MODE_SEL_WINC] = MODE_SEL_WINC_SCORE
+	self.mode_sel_data[MODE_SEL_WINC] = MODE_SEL_WINC_ROUNDS
 	self.mode_sel_data[MODE_SEL_MAXSCORE] = 11
 	self.mode_sel_data[MODE_SEL_ROUNDCOUNT] = 11
 	self.mode_sel_data[MODE_SEL_NODRAWS] = true
 	self.mode_sel_data[MODE_SEL_TEAMSCORE] = false
-	
-	FireGameEvent("w_start_mode_selection", {
-			
-	})
 end
 
 function Game:setMode(index, value)
+	log("setMode " .. tostring(index) .. " " .. tostring(value))
 	self.mode_sel_data[index] = value
 end
 
 -- Shows the selection screen and starts the timer to select modes
 function Game:startModeSelection()
-	display("Waiting for player 1 to select modes up to 20 seconds.")
+	local player
+	
+	for _, p in pairs(GAME.players) do
+		log("Player " .. p.name .. " id " .. tostring(p.id))
+		
+		if not player or player.id > p.id then
+			player = p
+		end
+	end
+	
+	self.mode_selecting_player = player
+	
+	display("Waiting for " .. self.mode_selecting_player.name .. " to select modes for up to " .. tostring(Config.MODE_PICK_TIME) .. " seconds.")
+	
+	FireGameEvent("w_start_mode_selection", { id = self.mode_selecting_player.id })
 	
 	self.mode_task = self:addTask {
-		time = 20.0,
+		time = Config.MODE_PICK_TIME,
 		func = function()
 			self.mode_task = nil
 			self:selectModes()
@@ -109,11 +120,9 @@ function Game:selectModes()
 		self.mode_task:cancel()
 		self.mode_task = nil
 	end
-		
-	PrintTable(self.mode_sel_data)
-	print("-------")
-	PrintTable(MODE_SEL_TEAM_MODES)
-		
+	
+	FireGameEvent("w_modes_selected", { id = self.mode_selecting_player.id })
+	
 	self.team_mode = MODE_SEL_TEAM_MODES[self.mode_sel_data[MODE_SEL_TEAM]]:new {
 		
 	}
@@ -129,12 +138,11 @@ function Game:selectModes()
 	self.mode = MODE_SEL_GAME_MODES[self.mode_sel_data[MODE_SEL_GAME]]:new {
 		win_condition = win_cond
 	}
-	
-	FireGameEvent("w_modes_selected", {
-		
-	})
 
-	display("Modes have been selected.")
+	display("-- Modes have been selected")
+	display("Mode: " .. self.mode:getDescription())
+	display("Team Mode: " .. self.team_mode:getDescription())
+	display("Win Condition: " .. self.mode.win_condition:getDescription())
 	
 	self:addTask {
 		time = 3.0,
