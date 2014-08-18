@@ -700,7 +700,7 @@
 	"warlock_teleport"
 	{
 		"ID"							"8860"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_TURN"
 		"BaseClass"						"ability_datadriven"
 		"AbilityTextureName"			"rubick_telekinesis"
 
@@ -759,7 +759,7 @@
 	"warlock_swap"
 	{
 		"ID"							"8861"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_TURN"
 		"BaseClass"						"ability_datadriven"
 		"AbilityTextureName"			"vengefulspirit_nether_swap"
 
@@ -806,7 +806,7 @@
 	"warlock_thrust"
 	{
 		"ID"							"8862"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_TURN"
 		"BaseClass"						"ability_datadriven"
 		"AbilityTextureName"			"disruptor_glimpse"
 
