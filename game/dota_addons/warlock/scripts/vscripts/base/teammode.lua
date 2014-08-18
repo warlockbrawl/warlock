@@ -73,7 +73,7 @@ function TeamModeShuffle:onNewRound()
 	-- Biggest teams possible if max is set
 	if self.max then
 		local max_team = team_counts[1]
-		team_count = { max_team }
+		team_counts = { max_team }
 	end
 	
 	-- Get random team size
