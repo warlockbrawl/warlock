@@ -70,11 +70,7 @@ function Projectile:setLifetime(lifetime)
 	if self.range_mastery then
 		scaled_lifetime = scaled_lifetime * self.instigator.owner.mastery_factor[Player.MASTERY_RANGE]
 	end
-	
-	print("Projectile time: " .. tostring(lifetime))
-	print("Scaled time: " .. tostring(scaled_lifetime))
-	print("Range factor: " .. tostring(self.instigator.owner.mastery_factor[Player.MASTERY_RANGE]))
-	
+
 	Projectile.super.setLifetime(self, scaled_lifetime)
 end
 

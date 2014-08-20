@@ -38,7 +38,6 @@ end
 -- effects
 Effect:register('gravity_projectile', {
 	class 				= ProjectileParticleEffect,
-	effect_name 		= 'particles/units/heroes/hero_lich/lich_base_attack.vpcf',
+	effect_name 		= 'particles/gravity/pugna_base_attack.vpcf',
 	destruction_sound 	= "Gravity.Destroyed"
-	})
-	--'lich_chain_frost',
+})

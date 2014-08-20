@@ -72,7 +72,6 @@ function Precache(context)
 	
 	-- Hero
 	PrecacheResource("particle_folder", "particles/units/heroes/hero_warlock", context)
-	PrecacheResource("sound", "scripts/game_sounds_heroes/game_sounds_warlock.txt", context)
 	PrecacheUnitByNameAsync("npc_dota_hero_warlock", context)
 	
 	-- Arena
@@ -149,7 +148,7 @@ function Precache(context)
 	PrecacheResource("particle_folder", "particles/units/heroes/hero_dazzle", context)
 	PrecacheResource("particle_folder", "particles/units/heroes/hero_wisp", context)
 	PrecacheResource("particle_folder", "particles/units/heroes/hero_phantom_assassin", context)
-	PrecacheResource("particle_folder", "particles/units/heroes/hero_lich", context)
+	PrecacheResource("particle_folder", "particles/gravity", context)
 	PrecacheResource("particle", "particles/warpzone.vpcf", context)
 
 	-- custom effects
