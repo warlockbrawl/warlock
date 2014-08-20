@@ -151,6 +151,10 @@ function Precache(context)
 	PrecacheResource("particle_folder", "particles/units/heroes/hero_phantom_assassin", context)
 	PrecacheResource("particle_folder", "particles/units/heroes/hero_lich", context)
 	PrecacheResource("particle", "particles/warpzone.vpcf", context)
+
+	-- custom effects
+	PrecacheResource("particle_folder", "particles/fireball", context)
+	PrecacheResource("particle_folder", "particles/homing", context)
 end
 
 function Activate()
