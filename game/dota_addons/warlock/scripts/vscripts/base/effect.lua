@@ -177,6 +177,10 @@ function ParticleEffect:destroy()
 	ParticleEffect.super.destroy(self)
 end
 
+function ParticleEffect:setControlPoint(cp, value)
+	ParticleManager:SetParticleControl(self.particleId, cp, value)
+end
+
 -------------------------------------------------------------------------------
 --- For 'projectile' particle emitters which do not want to follow their owners
 -------------------------------------------------------------------------------

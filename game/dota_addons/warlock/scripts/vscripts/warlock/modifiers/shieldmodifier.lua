@@ -26,7 +26,7 @@ function ShieldModifier:onToggle(apply)
 			radius = 120,
 			ellastic = false,
 			class = ShieldCollisionComponent,
-			coll_initiative = -2,
+			coll_initiative = -3,
 			accept_damage = false
 		}
 	else

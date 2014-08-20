@@ -113,7 +113,7 @@ function ThrustModifier:onToggle(apply)
 				{CollisionComponent.CHANNEL_PLAYER}),
 			radius = self.radius,
 			ellastic = false,
-			coll_initiative = -3,
+			coll_initiative = -4,
 			accept_damage = false
 		}
 	else

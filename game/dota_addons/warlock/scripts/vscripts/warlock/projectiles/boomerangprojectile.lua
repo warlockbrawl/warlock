@@ -8,6 +8,8 @@ function BoomerangProjectile:init(def)
 
 	BoomerangProjectile.super.init(self, def)
 	
+	local cc = self.collision_components["projectile"]
+	
 	-- Set the correct coll matrix
 	local coll_mat = { }
 	coll_mat[Player.ALLIANCE_SELF] = {}
@@ -17,7 +19,8 @@ function BoomerangProjectile:init(def)
 	coll_mat[Player.ALLIANCE_ENEMY][CollisionComponent.CHANNEL_PLAYER] = true
 	coll_mat[Player.ALLIANCE_ENEMY][CollisionComponent.CHANNEL_OBSTACLE] = true
 
-	self.collision_components["projectile"].coll_mat = coll_mat
+	cc.coll_mat = coll_mat
+	cc.coll_initiative = -2
 
 	--Calculate initial acceleration and velocity and the time for the timers
 
@@ -79,7 +82,9 @@ function BoomerangProjectile:onCollision(coll_info, cc)
 
 	if coll_info.actor:instanceof(Pawn) then
 		-- Spawn an effect
-		Effect:create(self.hit_effect, { location=coll_info.actor.location })
+		local effect = Effect:create(self.hit_effect, { location=coll_info.actor.location })
+		effect:setControlPoint(0, coll_info.actor.location)
+		effect:setControlPoint(1, coll_info.actor.location)
 
 		-- Play a sound
 		-- TODO: maybe not use the effects locust
