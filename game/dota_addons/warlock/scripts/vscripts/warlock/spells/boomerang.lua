@@ -46,5 +46,5 @@ Effect:register('boomerang_projectile', {
 
 Effect:register('boomerang_hit', {
 	class = ParticleEffect,
-	effect_name = "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+	effect_name = "particles/units/heroes/hero_sniper/sniper_assassinate_impact_blood.vpcf"
 })
