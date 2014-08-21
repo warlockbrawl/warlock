@@ -22,8 +22,7 @@
 
 		"precache"
 		{
-			"soundfile"					"soundevents/game_sounds_custom.vsndevts"
-			"particle_folder"			"particles/econ/generic/generic_aoe_explosion_sphere_1"
+			"particle"	"particles/econ/generic/generic_aoe_explosion_sphere_1/generic_aoe_explosion_sphere_1.vpcf"
 		}
 
 		"OnSpellStart"
@@ -98,8 +97,7 @@
 
 		"precache"
 		{
-			"soundfile"					"soundevents/game_sounds_custom.vsndevts"
-			"particle_folder"		"particles/econ/generic/generic_aoe_explosion_sphere_1"
+			"particle"	"particles/econ/generic/generic_aoe_explosion_sphere_1/generic_aoe_explosion_sphere_1.vpcf"
 		}
 
 		"OnSpellStart"
@@ -174,8 +172,7 @@
 
 		"precache"
 		{
-			"soundfile"					"soundevents/game_sounds_custom.vsndevts"
-			"particle_folder"		"particles/econ/generic/generic_aoe_explosion_sphere_1"
+			"particle"	"particles/econ/generic/generic_aoe_explosion_sphere_1/generic_aoe_explosion_sphere_1.vpcf"
 		}
 
 		"OnSpellStart"

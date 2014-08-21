@@ -26,12 +26,6 @@ Config.PAWN_MODEL_SCALE				= 0.75
 Config.KB_DMG_TO_VELOCITY 			= 10.0
 
 Config.LOCUST_UNIT 					= "npc_dummy_unit"
---Config.ABILITY_KILL 				= "warlock_tech_kill"
-
--- see killUnitWithNativeDamage in base/pawn
-Config.ABILITY_KILL 				= "doom_bringer_doom"
-Config.ABILITY_KILL_MODIFIER		= "modifier_doom_bringer_doom"
-
 
 Config.DEVELOPMENT 					= true
 Config.MAX_LEVEL					= 100
