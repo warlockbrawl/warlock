@@ -32,6 +32,25 @@ function Mode:onStart()
 	self:prepareForRound()
 end
 
+function Mode:respawnPlayers(shop_time)
+	-- Respawn players and make them un/able to upgrade spells
+	for id, player in pairs(GAME.players) do
+		if player.active and player.pawn then
+			player.pawn:respawn()
+			if shop_time then
+				player.pawn.unit:SetAbilityPoints(1)
+			else
+				player.pawn.unit:SetAbilityPoints(0)
+			end
+		end
+		
+		-- Reset player stats (kills etc.)
+		if not shop_time then
+			player:resetStats()
+		end
+	end
+end
+
 function Mode:prepareForRound()
 	GAME:setCombat(false)
 	GAME:removeProjectiles()
@@ -47,13 +66,7 @@ function Mode:prepareForRound()
 	GAME.arena:setLayer(16) -- corresponding to 1 player
 	GAME:addRandomObstacles(math.random(Mode.OBSTACLE_COUNT_MIN, Mode.OBSTACLE_COUNT_MAX))
 
-	-- Respawn players and make them able to upgrade spells
-	for id, player in pairs(GAME.players) do
-		if player.pawn and player.active then
-			player.pawn:respawn()
-			player.pawn.unit:SetAbilityPoints(1)
-		end
-	end
+	self:respawnPlayers(true)
 
 	-- Start the round start timer
 	GAME:addTask{
@@ -127,15 +140,7 @@ function Mode:onRoundStart()
 	
 	GAME.team_mode:onNewRound()
 
-	for id, player in pairs(GAME.players) do
-		if player.pawn and player.active then
-			player.pawn:respawn()
-			player.pawn.unit:SetAbilityPoints(0)
-		end
-		
-		-- Reset round stats (damage, heal, etc.)
-		player:resetStats()
-	end
+	self:respawnPlayers(false)
 	
 	-- initial invul
 	for pawn, _ in pairs(GAME.pawns) do

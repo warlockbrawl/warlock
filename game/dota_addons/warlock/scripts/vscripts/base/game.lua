@@ -26,6 +26,7 @@ function Game:init()
 	self.player_count = 0
 	self.playersByUserid = {} -- contains also leavers waiting for reconnect
 	self.playersByIndex = {}
+	self.active_players = {}
 
 	self.entityActor = {} --map enity to actor
 	self.obstacles = Set:new()

@@ -63,7 +63,7 @@ function TeamModeShuffle:onNewRound()
 	local players = {}
 	
 	-- Copy players table
-	for _, player in pairs(GAME.players) do
+	for player, _ in pairs(GAME.active_players) do
 		table.insert(players, player)
 	end
 	
