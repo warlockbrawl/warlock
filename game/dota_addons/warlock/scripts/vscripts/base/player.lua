@@ -101,7 +101,7 @@ function Player:EventConnect(info)
 		end
 		
 		self.active = true
-		self.active_players[self] = true
+		GAME.active_players[self] = true
 		
 		log("Player " .. self.name .. " reconnected fully.")
 	else
@@ -165,7 +165,7 @@ function Player:HeroSpawned(hero)
 	self:updateCash()
 	
 	self.active = true
-	self.active_players[self] = true
+	GAME.active_players[self] = true
 	
 	log("Player initialized")
 	
@@ -222,7 +222,7 @@ function Player:EventDisconnect(info)
 	-- the entity will be removed from c++ anyway
 	self.playerEntity = nil
 	self.active = false
-	self.active_players[self] = nil
+	GAME.active_players[self] = nil
 end
 
 -- Native dota teams cannot be reassigned
