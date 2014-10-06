@@ -72,13 +72,6 @@ function Game:winGame(winners)
 		display("The game ended in a draw!")
 	end
 	
-	-- Stats collection
-	statcollection.addStats {
-		modID = '9152c24014a8f693a6a213f5f832438f'
-	}
-	
-	statcollection.sendStats { }
-	
 	display("If you have found any bugs or have feedback please visit us at warlockbrawl.com")
 	
 	GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
@@ -208,6 +201,18 @@ function Game:_Tick()
 
 	if GameRules:State_Get() >= DOTA_GAMERULES_STATE_POST_GAME then
 		self.in_progress = false
+		
+		-- Stats collection
+		if not self.stats_sent then
+			self.stats_sent = true
+
+			statcollection.addStats {
+				modID = '9152c24014a8f693a6a213f5f832438f'
+			}
+			
+			statcollection.sendStats { }
+		end
+		
 		return
 	end
 	
