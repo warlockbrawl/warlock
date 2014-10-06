@@ -12,6 +12,12 @@
 		"File"	"WLModeSelect"
 		"Depth"	"10"
 	}
+    
+    "3"
+    {
+        "File"  "StatsCollection"
+        "Depth" "1"
+    }
 }
 
 // =============================================

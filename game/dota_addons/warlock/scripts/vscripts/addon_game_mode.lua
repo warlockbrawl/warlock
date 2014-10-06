@@ -34,6 +34,8 @@ BASE_MODULES		= {
 	'warlock/modifiers/windwalkmodifier', 'warlock/modifiers/shieldmodifier',
 	'warlock/modifiers/rushmodifier', 'warlock/modifiers/gripmodifier',
 	'warlock/modifiers/thrustmodifier',
+	
+	'stats/statcollection',
 
 	'triggers'
 }

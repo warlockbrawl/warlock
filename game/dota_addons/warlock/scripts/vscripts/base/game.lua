@@ -72,6 +72,13 @@ function Game:winGame(winners)
 		display("The game ended in a draw!")
 	end
 	
+	-- Stats collection
+	statcollection.addStats {
+		modID = '9152c24014a8f693a6a213f5f832438f'
+	}
+	
+	statcollection.sendStats { }
+	
 	display("If you have found any bugs or have feedback please visit us at warlockbrawl.com")
 	
 	GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
