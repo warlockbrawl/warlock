@@ -73,14 +73,15 @@ function BoomerangProjectile:stopAcceleration()
 end
 
 function BoomerangProjectile:onCollision(coll_info, cc)
-	coll_info.actor:receiveDamage{
-		source		= self.instigator or self,
-		hit_normal	= coll_info.hit_normal,
-		amount = self.damage or 0,
-		knockback_factor = 0.95
-	}
-
 	if coll_info.actor:instanceof(Pawn) then
+		-- Deal damage
+		coll_info.actor:receiveDamage{
+			source		= self.instigator or self,
+			hit_normal	= coll_info.hit_normal,
+			amount = self.damage or 0,
+			knockback_factor = 0.95
+		}
+		
 		-- Spawn an effect
 		local effect = Effect:create(self.hit_effect, { location=coll_info.actor.location })
 		effect:setControlPoint(0, coll_info.actor.location)

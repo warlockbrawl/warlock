@@ -8,6 +8,11 @@ Obstacle.owner = {
 	team = DOTA_TEAM_NEUTRALS,
 	userid = -1
 }
+Obstacle.max_health		= 40
+Obstacle.explode_effect = 'obstacle_explode'
+Obstacle.explode_radius = 300
+Obstacle.explode_dmg_min= 5
+Obstacle.explode_dmg_gain = 5
 setmetatable(Obstacle.owner, Player)
 
 -- List of list with definitions
@@ -37,6 +42,11 @@ Obstacle.variations =
 
 Obstacle.variation_count = #Obstacle.variations
 Obstacle.variation = 1 -- The current variation set
+
+Effect:register('obstacle_explode', {
+	class = ParticleEffect,
+	effect_name = 'particles/units/heroes/hero_jakiro/jakiro_liquid_fire_explosion.vpcf'
+})
 
 --- Params
 -- Actor params (location)
@@ -70,6 +80,8 @@ function Obstacle:init(def)
 	-- effect
 	self.model_unit = CreateUnitByName(Config.LOCUST_UNIT, self.location, false, nil, nil, DOTA_TEAM_NOTEAM)
 	self.model_unit:SetModel(obstacle_def.model)
+	
+	self.health = def.max_health or Obstacle.max_health
 
 	self:_updateLocation()
 end
@@ -86,7 +98,69 @@ function Obstacle:_updateLocation()
 end
 
 function Obstacle:receiveDamage(dmg_info)
-	-- Hahaha, your primitive weapons are useless against me!
+	if not GAME.combat then
+		return
+	end
+	
+	log("Obstacle damaged amount = " .. tostring(dmg_info.amount))
+	
+	-- Take damage
+	self.health = self.health - dmg_info.amount
+	if(self.health < 0) then
+		self.health = 0
+	end
+	
+	-- Set the dummy's health
+	self.model_unit:SetMaxHealth(self.max_health)
+	self.model_unit:SetHealth(self.health)
+	
+	-- Explode the pillar if its health is too low
+	if(self.health <= 0) then
+		self:explode(dmg_info)
+	end
+end
+
+function Obstacle:explode(destroyer_dmg_info)
+	local destroyer = nil
+	
+	log("Obstacle exploded")
+	
+	-- Set the damage source if any
+	if destroyer_dmg_info.source then
+		destroyer = destroyer_dmg_info.source.owner
+	end
+	
+	-- The damage info used to deal the damage
+	local dmg_info = { source = self }
+	
+	for pawn, _ in pairs(GAME.pawns) do
+		if pawn.enabled then
+			local diff = pawn.location - self.location
+			diff.z = 0
+
+			local dst = diff:Length()
+
+			-- Only hit targets in the explode radius
+			if dst < Obstacle.explode_radius then
+				dmg_info.hit_normal = diff:Normalized()
+
+				-- Deal damage depending on the distance
+				dmg_info.amount = Obstacle.explode_dmg_min + Obstacle.explode_dmg_gain * (1 - dst / Obstacle.explode_radius)
+
+				-- No KB points for allies
+				if destroyer and pawn.owner:getAlliance(destroyer) == Player.ALLIANCE_ALLY then
+					dmg_info.knockback_vulnerability_factor = 0
+				else
+					dmg_info.knockback_vulnerability_factor = 1
+				end
+				
+				pawn:receiveDamage(dmg_info)
+			end
+		end
+	end
+	
+	Effect:create(self.explode_effect, { location = self.location })
+	self:destroy()
 end
 
 function Obstacle:onDestroy()
