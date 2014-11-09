@@ -8,7 +8,7 @@ Obstacle.owner = {
 	team = DOTA_TEAM_NEUTRALS,
 	userid = -1
 }
-Obstacle.max_health		= 40
+Obstacle.max_health		= 400
 Obstacle.explode_effect = 'obstacle_explode'
 Obstacle.explode_radius = 300
 Obstacle.explode_dmg_min= 5
@@ -82,6 +82,10 @@ function Obstacle:init(def)
 	self.model_unit:SetModel(obstacle_def.model)
 	
 	self.health = def.max_health or Obstacle.max_health
+	
+	-- Set the dummy's health
+	self.model_unit:SetMaxHealth(Obstacle.max_health)
+	self.model_unit:SetHealth(self.health)
 
 	self:_updateLocation()
 end
@@ -98,7 +102,7 @@ function Obstacle:_updateLocation()
 end
 
 function Obstacle:receiveDamage(dmg_info)
-	if not GAME.combat then
+	if not GAME.combat or not self.exists then
 		return
 	end
 	
@@ -111,8 +115,10 @@ function Obstacle:receiveDamage(dmg_info)
 	end
 	
 	-- Set the dummy's health
-	self.model_unit:SetMaxHealth(self.max_health)
-	self.model_unit:SetHealth(self.health)
+	if self.model_unit then
+		self.model_unit:SetMaxHealth(Obstacle.max_health)
+		self.model_unit:SetHealth(self.health)
+	end
 	
 	-- Explode the pillar if its health is too low
 	if(self.health <= 0) then
@@ -166,6 +172,7 @@ end
 function Obstacle:onDestroy()
 	if self.model_unit then
 		self.model_unit:RemoveSelf()
+		self.model_unit = nil
 	end
 
 	Obstacle.super.onDestroy(self)
