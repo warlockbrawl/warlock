@@ -295,11 +295,9 @@ function Pawn:receiveDamage(dmg_info)
 
 	dmg_info.amount = dmg_info.amount + GAME:modDamagePostKB(self, dmg_info)
 
-	if dmg_info.source and dmg_info.source.owner then
-		-- Increase damage statistics for players
-		if not(dmg_info.source.owner.team and dmg_info.source.owner.team == DOTA_TEAM_NEUTRALS) then
-			dmg_info.source.owner:changeStat(Player.STATS_DAMAGE, dmg_info.amount)
-		end
+	if dmg_info.source and dmg_info.source.owner and not is_neutral then
+		-- Increase damage statistics
+		dmg_info.source.owner:changeStat(Player.STATS_DAMAGE, dmg_info.amount)
 		
 		-- Lifesteal
 		local lifesteal_factor = dmg_info.source.owner.mastery_factor[Player.MASTERY_LIFESTEAL]

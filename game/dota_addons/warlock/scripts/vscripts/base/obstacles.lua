@@ -137,7 +137,7 @@ function Obstacle:explode(destroyer_dmg_info)
 	end
 	
 	-- The damage info used to deal the damage
-	local dmg_info = { source = self }
+	local dmg_info = { }
 	
 	for pawn, _ in pairs(GAME.pawns) do
 		if pawn.enabled then
