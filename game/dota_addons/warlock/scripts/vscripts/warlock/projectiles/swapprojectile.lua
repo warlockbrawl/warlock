@@ -40,10 +40,7 @@ function SwapProjectile:onCollision(coll_info, cc)
 	Effect:create(self.swap_effect, { location=self_loc })
 	Effect:create(self.swap_effect, { location=self.instigator.location })
 
-	if not self.scheduled_destruction then
-		self.scheduled_destruction = true
-		self:setLifetime(0)
-	end
+	self:setLifetime(0)
 end
 
 function SwapProjectile:onDestroy()

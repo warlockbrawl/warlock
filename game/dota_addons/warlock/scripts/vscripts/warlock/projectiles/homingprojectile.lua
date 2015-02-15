@@ -65,10 +65,7 @@ function HomingProjectile:onCollision(coll_info, cc)
 	end
 	
 	-- destroy
-	if not self.scheduled_destruction then
-		self.scheduled_destruction = true
-		self:setLifetime(0)
-	end
+	self:setLifetime(0)
 end
 
 -- Tries to find a new target closest to loc

@@ -46,10 +46,7 @@ end
 
 -- by default projectiles are destroyed when they receive damage
 function Projectile:receiveDamage(dmg_info)
-	if not self.scheduled_destruction then
-		self.scheduled_destruction = true
-		self:setLifetime(0)
-	end
+	self:setLifetime(0)
 end
 
 function Projectile:onDestroy()
@@ -94,9 +91,6 @@ function SimpleProjectile:onCollision(coll_info, cc)
 		knockback_factor = self.knockback_factor or 1
 	}
 
-	if not self.scheduled_destruction then
-		self.scheduled_destruction = true
-		self:setLifetime(0)
-	end
+	self:setLifetime(0)
 end
 
