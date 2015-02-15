@@ -191,7 +191,7 @@ end
 -- Called before kb is dealt, returns dmg change
 function Game:modDamageTaken(pawn, dmg_info)
 	if(modifiers[pawn]) then
-		dmg_change = 0
+		local dmg_change = 0
 
 		modifiers[pawn]:foreach(function(mod)
 			dmg_change = dmg_change + mod:modifyDamageTaken(dmg_info)
@@ -206,7 +206,7 @@ end
 -- Called after kb was dealt, returns dmg change
 function Game:modDamagePostKB(pawn, dmg_info)
 	if(modifiers[pawn]) then
-		dmg_change = 0
+		local dmg_change = 0
 
 		modifiers[pawn]:foreach(function(mod)
 			dmg_change = dmg_change + mod:modifyDamagePostKB(dmg_info)
