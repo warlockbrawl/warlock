@@ -38,8 +38,6 @@ function Projectile:init(def)
 			{CollisionComponent.CHANNEL_PLAYER , CollisionComponent.CHANNEL_PROJECTILE, CollisionComponent.CHANNEL_OBSTACLE}),
 		radius 				= (def.coll_radius or 1)
 	}
-
-    log("Spawned projectile: " .. self.name)
 end
 
 function Projectile:_updateLocation()
@@ -54,8 +52,6 @@ function Projectile:receiveDamage(dmg_info)
 end
 
 function Projectile:onDestroy()
-    log("Projectile:onDestroy " .. self.name)
-
 	if self.effect then
 		self.effect:destroy()
 	end

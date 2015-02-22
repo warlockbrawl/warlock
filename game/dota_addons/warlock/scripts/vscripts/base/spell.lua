@@ -121,8 +121,6 @@ function CastInfo:fromEvent(cast_info)
 	-- give the class to the cast_info without creating a new object
 	setmetatable(cast_info, CastInfo)
 
-    log("Cast spell: " .. cast_info.ability_name)
-
 	return cast_info
 end
 

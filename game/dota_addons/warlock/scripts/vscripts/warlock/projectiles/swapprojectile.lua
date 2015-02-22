@@ -27,8 +27,6 @@ function SwapProjectile:init(def)
 end
 
 function SwapProjectile:onCollision(coll_info, cc)	
-    log("SwapProjectile:onCollision start")
-
 	-- Swap the locations
 	local self_loc = self.instigator.location
 	self.instigator.location = coll_info.actor.location
@@ -43,13 +41,9 @@ function SwapProjectile:onCollision(coll_info, cc)
 	Effect:create(self.swap_effect, { location=self.instigator.location })
 
 	self:setLifetime(0)
-
-    log("SwapProjectile:onCollision end")
 end
 
 function SwapProjectile:onDestroy()
-    log("SwapProjectile:onDestroy start")
-
 	SwapProjectile.super.onDestroy(self)
 
 	-- Play a sound
@@ -65,6 +59,4 @@ function SwapProjectile:onDestroy()
 
 		Effect:create(self.swap_effect, { location=self.instigator.location })
 	end
-
-    log("SwapProjectile:onDestroy end")
 end
