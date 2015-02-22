@@ -256,7 +256,7 @@ function Pawn:heal(info)
 end
 
 function Pawn:receiveDamage(dmg_info)
-	--print("DMG receive from ", dmg_info.source, " unit = ", dmg_info.source.unit)
+    log("Pawn:receiveDamage")
 
 	if not GAME.combat then
 		return

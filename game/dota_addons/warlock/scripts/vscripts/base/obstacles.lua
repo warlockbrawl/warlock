@@ -116,8 +116,10 @@ function Obstacle:receiveDamage(dmg_info)
 	
 	-- Set the dummy's health
 	if self.model_unit then
+        log("Obstacle SetHealth start")
 		self.model_unit:SetMaxHealth(Obstacle.max_health)
 		self.model_unit:SetHealth(self.health)
+        log("Obstacle SetHealth end")
 	end
 	
 	-- Explode the pillar if its health is too low
@@ -167,6 +169,8 @@ function Obstacle:explode(destroyer_dmg_info)
 	
 	Effect:create(self.explode_effect, { location = self.location })
 	self:destroy()
+
+    log("Obstacle:explode end")
 end
 
 function Obstacle:onDestroy()
@@ -193,6 +197,8 @@ function Game:clearObstacles()
 	for obst, _ in pairs(self.obstacles) do
 		obst:destroy()
 	end
+
+    self.obstacles = Set:new()
 end
 
 function Game:setRandomObstacleVariation()

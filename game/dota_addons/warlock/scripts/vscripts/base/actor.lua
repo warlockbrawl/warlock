@@ -6,6 +6,8 @@
 -------------------------------------------------------------------------------
 Actor = class()
 
+ActorCount = 0
+
 function Actor:init(def)
 	self.name 		= def.name or 'actor'
 	self.unit		= def.unit
@@ -16,6 +18,9 @@ function Actor:init(def)
 	self.static		= def.static or false -- static means its vel will allways be zero
 	self.time_scale	= def.time_scale or 1
 	self.collision_components = {}
+
+    self.name = self.name .. "_" .. tostring(ActorCount)
+    ActorCount = ActorCount + 1
 	
 	self.timers = Set:new()
 
@@ -209,6 +214,8 @@ function Game:_addCC(cc)
 end
 
 function Game:_removeActor(actor)
+    log("Game:_removeActor " .. actor.name)
+
 	self.actors:remove(actor)
 
 	for id, cc in pairs(actor.collision_components) do
