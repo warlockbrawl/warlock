@@ -2,6 +2,7 @@
 -- @author Krzysztof Lis (Adynathos)
 
 Obstacle = class(Actor)
+Obstacle.dummy_unit = "npc_obstacle"
 Obstacle.mass 			= 10000
 Obstacle.z				= -94
 Obstacle.owner = {
@@ -78,7 +79,7 @@ function Obstacle:init(def)
 	}
 
 	-- effect
-	self.model_unit = CreateUnitByName(Config.LOCUST_UNIT, self.location, false, nil, nil, DOTA_TEAM_NOTEAM)
+	self.model_unit = CreateUnitByName(Obstacle.dummy_unit, self.location, false, nil, nil, DOTA_TEAM_NOTEAM)
 	self.model_unit:SetModel(obstacle_def.model)
 	
 	self.health = def.max_health or Obstacle.max_health
