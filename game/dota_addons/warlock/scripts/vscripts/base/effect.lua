@@ -159,22 +159,14 @@ function ParticleEffect:init(def)
 	ParticleEffect.super.init(self, def)
 
 	-- a unit is needed to initially attach the effect
-	self:spawnLocustProp()
+	-- self:spawnLocustProp() -- Calling :Destroy on props causes the game to crash while they collide something
+    self:spawnLocustUnit()
 
 	if def.effect_name then
 		self.particleId = ParticleManager:CreateParticle(self.effect_name, PATTACH_ABSORIGIN_FOLLOW , self.locust)
 	end
 
 	self:setLocation(self.location, 0)
-end
-
-function ParticleEffect:destroy()
-	if self.particleId then
-		ParticleManager:ReleaseParticleIndex(self.particleId)
-		self.particleId = nil
-	end
-
-	ParticleEffect.super.destroy(self)
 end
 
 function ParticleEffect:setControlPoint(cp, value)
@@ -200,8 +192,10 @@ function ProjectileParticleEffect:setLocation(new_location, velocity_size)
 end
 
 function ProjectileParticleEffect:destroy()
-	-- move becasue we may be playing a death sound
-	self.locust:SetAbsOrigin(self.location)
+    if self.locust then
+        -- move because we may be playing a death sound
+	    self.locust:SetAbsOrigin(self.location)
+    end
 
 	ProjectileParticleEffect.super.destroy(self)
 end
