@@ -106,9 +106,7 @@ function Obstacle:receiveDamage(dmg_info)
 	if not GAME.combat or not self.exists then
 		return
 	end
-	
-	log("Obstacle damaged amount = " .. tostring(dmg_info.amount))
-	
+
 	-- Take damage
 	self.health = self.health - dmg_info.amount
 	if(self.health < 0) then

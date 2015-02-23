@@ -214,8 +214,6 @@ function Game:_addCC(cc)
 end
 
 function Game:_removeActor(actor)
-    log("Game:_removeActor " .. actor.name)
-
 	self.actors:remove(actor)
 
 	for id, cc in pairs(actor.collision_components) do

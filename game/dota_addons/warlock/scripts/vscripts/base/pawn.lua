@@ -59,25 +59,15 @@ function Pawn:init(def)
 
 	self:respawn()
 	
-	if not self.effect_team_indicator and self.unit then
-		-- Create team color effect
-		self.effect_team_indicator = ParticleManager:CreateParticle("particles/team_indicator.vpcf", PATTACH_CUSTOMORIGIN, self.unit)
-		self:updateTeamColor()
-	end
+	self:updateTeamColor()
 end
 
 function Pawn:updateTeamColor()
-	if self.owner and self.owner.team and self.effect_team_indicator then
-		-- Set team color
-		ParticleManager:SetParticleControl(self.effect_team_indicator, 1, Player.TEAM_COLOR[1 + math.min(11, math.max(0, self.owner.team.id))])
-	end
-end
+    if self.owner and self.owner.team then
+        local color_id = 1 + math.min(11, math.max(0, self.owner.team.id))
 
-function Pawn:onDestroy()
-	Pawn.super.onDestroy(self)
-	
-	-- Release particles
-	ParticleManager:ReleaseParticleIndex(self.effect_team_indicator)
+        self.unit:SetCustomHealthLabel("Team " .. Player.COLOR_NAMES[color_id], Player.TEAM_COLOR[color_id][1], Player.TEAM_COLOR[color_id][2], Player.TEAM_COLOR[color_id][3])
+    end
 end
 
 function Pawn:enable()
@@ -222,9 +212,6 @@ end
 function Pawn:_updateLocation()
 	local loc = GetGroundPosition(self.location, self.unit)
 	self.unit:SetAbsOrigin(loc)
-	if self.effect_team_indicator then
-		ParticleManager:SetParticleControl(self.effect_team_indicator, 0, loc + Vector(0, 0, 10))
-	end
 end
 
 function Pawn:increaseKBPoints(amount)

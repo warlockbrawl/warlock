@@ -110,7 +110,8 @@ function Arena:setTileStatus(grid_x, grid_y, status)
 
 		tile = Entities:CreateByClassname("prop_dynamic")
 		tile:SetAbsOrigin(Vector(grid_x*self.ARENA_TILE_SIZE, grid_y*self.ARENA_TILE_SIZE, self.ARENA_TILE_Z ))
-		tile:SetAngles(0,math.random(0, 3)*90,0)
+		-- tile:SetAngles(0,math.random(0, 3)*90,0)
+        tile:SetAngles(90,0,0)
 		tile:SetModel(self.tile_model)
 
 		self.tiles[grid_x][grid_y] = tile
