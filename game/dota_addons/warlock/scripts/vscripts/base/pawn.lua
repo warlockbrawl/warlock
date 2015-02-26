@@ -243,8 +243,6 @@ function Pawn:heal(info)
 end
 
 function Pawn:receiveDamage(dmg_info)
-    log("Pawn:receiveDamage")
-
 	if not GAME.combat then
 		return
 	end

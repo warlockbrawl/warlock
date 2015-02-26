@@ -278,1806 +278,1826 @@
 		}
 	}
 	
-	
-	
+	"item_warlock_lightning"
+	{
+		"ID"					"1900"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_lightning"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"11"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"1"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"column"	"0"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"type"		"1"
+			}
+		}
+	}
 
-"item_warlock_lightning"
-{
-"ID"	"1900"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_lightning"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	11
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"1"
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_INTEGER"
-"column"	"0"
-}
-"02"
-{
-"var_type"	"FIELD_INTEGER"
-"type"	"1"
-}
-}
-}
-"item_warlock_boomerang"
-{
-"ID"	"1901"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_boomerang"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	11
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"1"
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_INTEGER"
-"column"	"0"
-}
-"02"
-{
-"var_type"	"FIELD_INTEGER"
-"type"	"1"
-}
-}
-}
-"item_warlock_homing"
-{
-"ID"	"1902"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_homing"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	11
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"1"
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_INTEGER"
-"column"	"0"
-}
-"02"
-{
-"var_type"	"FIELD_INTEGER"
-"type"	"1"
-}
-}
-}
-"item_warlock_teleport"
-{
-"ID"	"1910"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_teleport"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	11
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"1"
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_INTEGER"
-"column"	"1"
-}
-"02"
-{
-"var_type"	"FIELD_INTEGER"
-"type"	"1"
-}
-}
-}
-"item_warlock_thrust"
-{
-"ID"	"1911"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_thrust"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	11
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"1"
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_INTEGER"
-"column"	"1"
-}
-"02"
-{
-"var_type"	"FIELD_INTEGER"
-"type"	"1"
-}
-}
-}
-"item_warlock_swap"
-{
-"ID"	"1912"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_swap"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	11
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"1"
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_INTEGER"
-"column"	"1"
-}
-"02"
-{
-"var_type"	"FIELD_INTEGER"
-"type"	"1"
-}
-}
-}
-"item_warlock_drain"
-{
-"ID"	"1920"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_drain"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	14
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"1"
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_INTEGER"
-"column"	"2"
-}
-"02"
-{
-"var_type"	"FIELD_INTEGER"
-"type"	"1"
-}
-}
-}
-"item_warlock_cluster"
-{
-"ID"	"1921"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_cluster"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	14
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"1"
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_INTEGER"
-"column"	"2"
-}
-"02"
-{
-"var_type"	"FIELD_INTEGER"
-"type"	"1"
-}
-}
-}
-"item_warlock_bouncer"
-{
-"ID"	"1922"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_bouncer"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	14
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"1"
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_INTEGER"
-"column"	"2"
-}
-"02"
-{
-"var_type"	"FIELD_INTEGER"
-"type"	"1"
-}
-}
-}
-"item_warlock_meteor"
-{
-"ID"	"1930"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_meteor"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	14
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"1"
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_INTEGER"
-"column"	"3"
-}
-"02"
-{
-"var_type"	"FIELD_INTEGER"
-"type"	"1"
-}
-}
-}
-"item_warlock_windwalk"
-{
-"ID"	"1931"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_windwalk"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	14
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"1"
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_INTEGER"
-"column"	"3"
-}
-"02"
-{
-"var_type"	"FIELD_INTEGER"
-"type"	"1"
-}
-}
-}
-"item_warlock_rush"
-{
-"ID"	"1940"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_rush"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	12
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"1"
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_INTEGER"
-"column"	"4"
-}
-"02"
-{
-"var_type"	"FIELD_INTEGER"
-"type"	"1"
-}
-}
-}
-"item_warlock_shield"
-{
-"ID"	"1941"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_shield"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	12
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"1"
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_INTEGER"
-"column"	"4"
-}
-"02"
-{
-"var_type"	"FIELD_INTEGER"
-"type"	"1"
-}
-}
-}
-"item_warlock_grip"
-{
-"ID"	"1951"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_grip"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	12
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"1"
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_INTEGER"
-"column"	"5"
-}
-"02"
-{
-"var_type"	"FIELD_INTEGER"
-"type"	"1"
-}
-}
-}
-"item_warlock_gravity"
-{
-"ID"	"1952"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_gravity"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	12
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"1"
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_INTEGER"
-"column"	"5"
-}
-"02"
-{
-"var_type"	"FIELD_INTEGER"
-"type"	"1"
-}
-}
-}
-"item_warlock_warpzone"
-{
-"ID"	"1953"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_warpzone"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	12
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"1"
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_INTEGER"
-"column"	"5"
-}
-"02"
-{
-"var_type"	"FIELD_INTEGER"
-"type"	"1"
-}
-}
-}
-"item_warlock_scourge_incarnation"
-{
-"ID"	"1960"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_scourge_incarnation"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"0"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	7
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	2
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_FLOAT"
-"maxlevel"	"2"
-}
-"02"
-{
-"var_type"	"FIELD_FLOAT"
-"mass"	""
-}
-"03"
-{
-"var_type"	"FIELD_FLOAT"
-"damage"	"110 120"
-}
-"04"
-{
-"var_type"	"FIELD_INTEGER"
-"type"	"0"
-}
-}
-}
-"item_warlock_scourge_incarnation1"
-{
-"ID"	"1961"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_scourge_incarnation1"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	7
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"2"
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_FLOAT"
-"damage"	"110 120"
-}
-}
-}
-"item_warlock_scourge_incarnation2"
-{
-"ID"	"1962"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_scourge_incarnation2"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	7
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"2"
-"ItemBaseLevel"	"2"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_FLOAT"
-"damage"	"110 120"
-}
-}
-}
-"item_warlock_ring_of_health"
-{
-"ID"	"1963"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_ring_of_health"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"0"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	4
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	5
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_FLOAT"
-"maxlevel"	"5"
-}
-"02"
-{
-"var_type"	"FIELD_FLOAT"
-"mass"	"0 0 0 0 0"
-}
-"03"
-{
-"var_type"	"FIELD_FLOAT"
-"hp_bonus"	"100 190 270 340 400"
-}
-"04"
-{
-"var_type"	"FIELD_INTEGER"
-"type"	"0"
-}
-}
-}
-"item_warlock_ring_of_health1"
-{
-"ID"	"1964"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_ring_of_health1"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	4
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"5"
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_FLOAT"
-"hp_bonus"	"100 190 270 340 400"
-}
-}
-}
-"item_warlock_ring_of_health2"
-{
-"ID"	"1965"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_ring_of_health2"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	4
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"5"
-"ItemBaseLevel"	"2"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_FLOAT"
-"hp_bonus"	"100 190 270 340 400"
-}
-}
-}
-"item_warlock_ring_of_health3"
-{
-"ID"	"1966"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_ring_of_health3"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	4
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"5"
-"ItemBaseLevel"	"3"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_FLOAT"
-"hp_bonus"	"100 190 270 340 400"
-}
-}
-}
-"item_warlock_ring_of_health4"
-{
-"ID"	"1967"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_ring_of_health4"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	4
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"5"
-"ItemBaseLevel"	"4"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_FLOAT"
-"hp_bonus"	"100 190 270 340 400"
-}
-}
-}
-"item_warlock_ring_of_health5"
-{
-"ID"	"1968"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_ring_of_health5"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	4
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"5"
-"ItemBaseLevel"	"5"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_FLOAT"
-"hp_bonus"	"100 190 270 340 400"
-}
-}
-}
-"item_warlock_cursed_ring"
-{
-"ID"	"1969"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_cursed_ring"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"0"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	6
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	2
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_FLOAT"
-"maxlevel"	"2"
-}
-"02"
-{
-"var_type"	"FIELD_FLOAT"
-"mass"	"0 0"
-}
-"03"
-{
-"var_type"	"FIELD_FLOAT"
-"hp_bonus"	"100 200"
-}
-"04"
-{
-"var_type"	"FIELD_INTEGER"
-"type"	"0"
-}
-"05"
-{
-"var_type"	"FIELD_FLOAT"
-"kb_reduction"	"0.15 0.15"
-}
-"06"
-{
-"var_type"	"FIELD_FLOAT"
-"debuff_factor"	"0.25 0.30"
-}
-}
-}
-"item_warlock_cursed_ring1"
-{
-"ID"	"1970"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_cursed_ring1"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	6
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"2"
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_FLOAT"
-"hp_bonus"	"100 200"
-}
-"02"
-{
-"var_type"	"FIELD_FLOAT"
-"kb_reduction"	"0.15 0.15"
-}
-"03"
-{
-"var_type"	"FIELD_FLOAT"
-"debuff_factor"	"0.25 0.30"
-}
-}
-}
-"item_warlock_cursed_ring2"
-{
-"ID"	"1971"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_cursed_ring2"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	6
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"2"
-"ItemBaseLevel"	"2"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_FLOAT"
-"hp_bonus"	"100 200"
-}
-"02"
-{
-"var_type"	"FIELD_FLOAT"
-"kb_reduction"	"0.15 0.15"
-}
-"03"
-{
-"var_type"	"FIELD_FLOAT"
-"debuff_factor"	"0.25 0.30"
-}
-}
-}
-"item_warlock_cape"
-{
-"ID"	"1972"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_cape"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"0"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	3
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	3
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_FLOAT"
-"maxlevel"	"3"
-}
-"02"
-{
-"var_type"	"FIELD_FLOAT"
-"mass"	"0 0 0"
-}
-"03"
-{
-"var_type"	"FIELD_FLOAT"
-"hp_regen"	"2.0 3.5 4.5"
-}
-"04"
-{
-"var_type"	"FIELD_INTEGER"
-"type"	"0"
-}
-}
-}
-"item_warlock_cape1"
-{
-"ID"	"1973"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_cape1"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	3
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"3"
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_FLOAT"
-"hp_regen"	"2.0 3.5 4.5"
-}
-}
-}
-"item_warlock_cape2"
-{
-"ID"	"1974"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_cape2"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	3
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"3"
-"ItemBaseLevel"	"2"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_FLOAT"
-"hp_regen"	"2.0 3.5 4.5"
-}
-}
-}
-"item_warlock_cape3"
-{
-"ID"	"1975"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_cape3"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	3
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"3"
-"ItemBaseLevel"	"3"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_FLOAT"
-"hp_regen"	"2.0 3.5 4.5"
-}
-}
-}
-"item_warlock_armor"
-{
-"ID"	"1976"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_armor"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"0"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	6
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	3
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_FLOAT"
-"maxlevel"	"3"
-}
-"02"
-{
-"var_type"	"FIELD_FLOAT"
-"mass"	"0 0 0"
-}
-"03"
-{
-"var_type"	"FIELD_FLOAT"
-"kb_reduction"	"0.12 0.18 0.22"
-}
-"04"
-{
-"var_type"	"FIELD_INTEGER"
-"type"	"0"
-}
-}
-}
-"item_warlock_armor1"
-{
-"ID"	"1977"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_armor1"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	6
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"3"
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_FLOAT"
-"kb_reduction"	"0.12 0.18 0.22"
-}
-}
-}
-"item_warlock_armor2"
-{
-"ID"	"1978"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_armor2"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	6
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"3"
-"ItemBaseLevel"	"2"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_FLOAT"
-"kb_reduction"	"0.12 0.18 0.22"
-}
-}
-}
-"item_warlock_armor3"
-{
-"ID"	"1979"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_armor3"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	6
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"3"
-"ItemBaseLevel"	"3"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_FLOAT"
-"kb_reduction"	"0.12 0.18 0.22"
-}
-}
-}
-"item_warlock_boots"
-{
-"ID"	"1980"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_boots"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"0"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	5
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	3
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_FLOAT"
-"maxlevel"	"3"
-}
-"02"
-{
-"var_type"	"FIELD_FLOAT"
-"mass"	"0 0 0"
-}
-"03"
-{
-"var_type"	"FIELD_FLOAT"
-"speed_bonus_abs"	"18 29 40"
-}
-"04"
-{
-"var_type"	"FIELD_INTEGER"
-"type"	"0"
-}
-}
-}
-"item_warlock_boots1"
-{
-"ID"	"1981"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_boots1"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	5
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"3"
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_FLOAT"
-"speed_bonus_abs"	"18 29 40"
-}
-}
-}
-"item_warlock_boots2"
-{
-"ID"	"1982"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_boots2"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	5
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"3"
-"ItemBaseLevel"	"2"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_FLOAT"
-"speed_bonus_abs"	"18 29 40"
-}
-}
-}
-"item_warlock_boots3"
-{
-"ID"	"1983"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_boots3"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	5
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"3"
-"ItemBaseLevel"	"3"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_FLOAT"
-"speed_bonus_abs"	"18 29 40"
-}
-}
-}
-"item_warlock_pocket_watch"
-{
-"ID"	"1984"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_pocket_watch"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"0"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	4
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	2
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_FLOAT"
-"maxlevel"	"2"
-}
-"02"
-{
-"var_type"	"FIELD_FLOAT"
-"mass"	"0 0"
-}
-"03"
-{
-"var_type"	"FIELD_FLOAT"
-"debuff_factor"	"-0.35 -0.45"
-}
-"04"
-{
-"var_type"	"FIELD_INTEGER"
-"type"	"0"
-}
-}
-}
-"item_warlock_pocket_watch1"
-{
-"ID"	"1985"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_pocket_watch1"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	4
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"2"
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_FLOAT"
-"debuff_factor"	"-0.35 -0.45"
-}
-}
-}
-"item_warlock_pocket_watch2"
-{
-"ID"	"1986"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_pocket_watch2"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"1000"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	4
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	"2"
-"ItemBaseLevel"	"2"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_FLOAT"
-"debuff_factor"	"-0.35 -0.45"
-}
-}
-}
-"item_warlock_duration_mastery"
-{
-"ID"	"1987"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_duration_mastery"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"0"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	5
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	6
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_FLOAT"
-"maxlevel"	"6"
-}
-"02"
-{
-"var_type"	"FIELD_FLOAT"
-"mass"	""
-}
-"03"
-{
-"var_type"	"FIELD_FLOAT"
-"stats"	"10 8 7 6 5 4"
-}
-"04"
-{
-"var_type"	"FIELD_INTEGER"
-"type"	"2"
-}
-"05"
-{
-"var_type"	"FIELD_INTEGER"
-"index"	"0"
-}
-}
-}
-"item_warlock_range_mastery"
-{
-"ID"	"1988"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_range_mastery"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"0"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	5
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	6
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_FLOAT"
-"maxlevel"	"6"
-}
-"02"
-{
-"var_type"	"FIELD_FLOAT"
-"mass"	""
-}
-"03"
-{
-"var_type"	"FIELD_FLOAT"
-"stats"	"12 10 9 8 7 6"
-}
-"04"
-{
-"var_type"	"FIELD_INTEGER"
-"type"	"2"
-}
-"05"
-{
-"var_type"	"FIELD_INTEGER"
-"index"	"1"
-}
-}
-}
-"item_warlock_life_steal_mastery"
-{
-"ID"	"1989"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_life_steal_mastery"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"0"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	5
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	6
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_FLOAT"
-"maxlevel"	"6"
-}
-"02"
-{
-"var_type"	"FIELD_FLOAT"
-"mass"	""
-}
-"03"
-{
-"var_type"	"FIELD_FLOAT"
-"stats"	"9 8 7 6 5 4"
-}
-"04"
-{
-"var_type"	"FIELD_INTEGER"
-"type"	"2"
-}
-"05"
-{
-"var_type"	"FIELD_INTEGER"
-"index"	"2"
-}
-}
-}
-"item_warlock_jack_of_all_trades"
-{
-"ID"	"1990"
-"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-"BaseClass"	"item_datadriven"
-"AbilityTextureName"	"warlock_jack_of_all_trades"
-"ItemKillable"	"0"
-"ItemSellable"	"0"
-"ItemDroppable"	"0"
-"AbilityCastRange"	"0"
-"AbilityCastPoint"	"0.0"
-"AbilityCooldown"	"0.0"
-"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
-"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
-"AbilityManaCost"	"0"
-"ItemCost"	13
-"ItemShopTags"	"consumable"
-"ItemQuality"	"consumable"
-"ItemDeclarations"	"DECLARE_PURCHASES_TO_SPECTATORS"
-"ItemPurchasable"	"1"
-"SideShop"	"1"
-"MaxUpgradeLevel"	18
-"ItemBaseLevel"	"1"
-"AbilitySpecial"
-{
-"01"
-{
-"var_type"	"FIELD_FLOAT"
-"maxlevel"	"18"
-}
-"02"
-{
-"var_type"	"FIELD_FLOAT"
-"mass"	""
-}
-"03"
-{
-"var_type"	"FIELD_FLOAT"
-"stats"	"10 8 7 6 5 4 12 10 9 8 7 6 9 8 7 6 5 4"
-}
-"04"
-{
-"var_type"	"FIELD_INTEGER"
-"type"	"2"
-}
-"05"
-{
-"var_type"	"FIELD_INTEGER"
-"index"	"3"
-}
-}
-}
+	"item_warlock_teleport"
+	{
+		"ID"					"1901"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_teleport"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"11"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"1"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"column"	"1"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"type"		"1"
+			}
+		}
+	}
+
+	"item_warlock_drain"
+	{
+		"ID"					"1902"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_drain"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"14"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"1"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"column"	"2"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"type"		"1"
+			}
+		}
+	}
+
+	"item_warlock_meteor"
+	{
+		"ID"					"1903"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_meteor"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"14"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"1"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"column"	"3"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"type"		"1"
+			}
+		}
+	}
+
+	"item_warlock_rush"
+	{
+		"ID"					"1904"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_rush"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"12"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"1"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"column"	"4"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"type"		"1"
+			}
+		}
+	}
+
+	"item_warlock_boomerang"
+	{
+		"ID"					"1905"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_boomerang"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"11"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"1"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"column"	"0"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"type"		"1"
+			}
+		}
+	}
+
+	"item_warlock_thrust"
+	{
+		"ID"					"1906"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_thrust"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"11"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"1"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"column"	"1"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"type"		"1"
+			}
+		}
+	}
+
+	"item_warlock_cluster"
+	{
+		"ID"					"1907"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_cluster"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"14"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"1"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"column"	"2"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"type"		"1"
+			}
+		}
+	}
+
+	"item_warlock_windwalk"
+	{
+		"ID"					"1908"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_windwalk"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"14"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"1"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"column"	"3"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"type"		"1"
+			}
+		}
+	}
+
+	"item_warlock_shield"
+	{
+		"ID"					"1909"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_shield"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"12"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"1"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"column"	"4"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"type"		"1"
+			}
+		}
+	}
+
+	"item_warlock_grip"
+	{
+		"ID"					"1910"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_grip"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"12"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"1"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"column"	"5"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"type"		"1"
+			}
+		}
+	}
+
+	"item_warlock_homing"
+	{
+		"ID"					"1911"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_homing"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"11"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"1"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"column"	"0"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"type"		"1"
+			}
+		}
+	}
+
+	"item_warlock_swap"
+	{
+		"ID"					"1912"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_swap"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"11"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"1"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"column"	"1"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"type"		"1"
+			}
+		}
+	}
+
+	"item_warlock_bouncer"
+	{
+		"ID"					"1913"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_bouncer"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"14"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"1"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"column"	"2"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"type"		"1"
+			}
+		}
+	}
+
+	"item_warlock_gravity"
+	{
+		"ID"					"1914"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_gravity"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"12"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"1"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"column"	"5"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"type"		"1"
+			}
+		}
+	}
+
+	"item_warlock_warpzone"
+	{
+		"ID"					"1915"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_warpzone"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"12"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"1"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"column"	"5"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"type"		"1"
+			}
+		}
+	}
+
+	"item_warlock_scourge_incarnation"
+	{
+		"ID"					"1916"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_scourge_incarnation"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"0"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"7"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"2"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"maxlevel"	"2"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"type"	"0"
+			}
+			"03"
+			{
+				"var_type" "FIELD_FLOAT"
+				"damage" "110 120"
+			}
+
+		}
+	}
+
+	"item_warlock_scourge_incarnation1"
+	{
+		"ID"					"1917"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_scourge_incarnation1"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"7"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"2"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"damage" "110 120"
+			}
+
+		}
+	}
+
+	"item_warlock_scourge_incarnation2"
+	{
+		"ID"					"1918"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_scourge_incarnation2"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"7"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"2"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"damage" "110 120"
+			}
+
+		}
+	}
+
+	"item_warlock_ring_of_health"
+	{
+		"ID"					"1919"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_ring_of_health"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"0"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"4"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"5"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"maxlevel"	"5"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"type"	"0"
+			}
+			"03"
+			{
+				"var_type" "FIELD_FLOAT"
+				"hp_bonus" "100 190 270 340 400"
+			}
+
+		}
+	}
+
+	"item_warlock_ring_of_health1"
+	{
+		"ID"					"1920"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_ring_of_health1"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"4"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"5"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"hp_bonus" "100 190 270 340 400"
+			}
+
+		}
+	}
+
+	"item_warlock_ring_of_health2"
+	{
+		"ID"					"1921"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_ring_of_health2"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"4"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"5"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"hp_bonus" "100 190 270 340 400"
+			}
+
+		}
+	}
+
+	"item_warlock_ring_of_health3"
+	{
+		"ID"					"1922"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_ring_of_health3"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"4"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"5"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"hp_bonus" "100 190 270 340 400"
+			}
+
+		}
+	}
+
+	"item_warlock_ring_of_health4"
+	{
+		"ID"					"1923"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_ring_of_health4"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"4"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"5"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"hp_bonus" "100 190 270 340 400"
+			}
+
+		}
+	}
+
+	"item_warlock_ring_of_health5"
+	{
+		"ID"					"1924"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_ring_of_health5"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"4"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"5"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"hp_bonus" "100 190 270 340 400"
+			}
+
+		}
+	}
+
+	"item_warlock_cursed_ring"
+	{
+		"ID"					"1925"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_cursed_ring"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"0"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"6"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"2"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"maxlevel"	"2"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"type"	"0"
+			}
+			"03"
+			{
+				"var_type" "FIELD_FLOAT"
+				"hp_bonus" "100 200"
+			}
+			"04"
+			{
+				"var_type" "FIELD_FLOAT"
+				"debuff_factor" "0.25 0.30"
+			}
+			"05"
+			{
+				"var_type" "FIELD_FLOAT"
+				"kb_reduction" "0.15 0.15"
+			}
+
+		}
+	}
+
+	"item_warlock_cursed_ring1"
+	{
+		"ID"					"1926"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_cursed_ring1"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"6"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"2"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"hp_bonus" "100 200"
+			}
+			"02"
+			{
+				"var_type" "FIELD_FLOAT"
+				"debuff_factor" "0.25 0.30"
+			}
+			"03"
+			{
+				"var_type" "FIELD_FLOAT"
+				"kb_reduction" "0.15 0.15"
+			}
+
+		}
+	}
+
+	"item_warlock_cursed_ring2"
+	{
+		"ID"					"1927"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_cursed_ring2"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"6"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"2"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"hp_bonus" "100 200"
+			}
+			"02"
+			{
+				"var_type" "FIELD_FLOAT"
+				"debuff_factor" "0.25 0.30"
+			}
+			"03"
+			{
+				"var_type" "FIELD_FLOAT"
+				"kb_reduction" "0.15 0.15"
+			}
+
+		}
+	}
+
+	"item_warlock_cape"
+	{
+		"ID"					"1928"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_cape"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"0"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"3"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"3"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"maxlevel"	"3"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"type"	"0"
+			}
+			"03"
+			{
+				"var_type" "FIELD_FLOAT"
+				"hp_regen" "2.0 3.5 4.5"
+			}
+
+		}
+	}
+
+	"item_warlock_cape1"
+	{
+		"ID"					"1929"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_cape1"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"3"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"3"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"hp_regen" "2.0 3.5 4.5"
+			}
+
+		}
+	}
+
+	"item_warlock_cape2"
+	{
+		"ID"					"1930"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_cape2"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"3"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"3"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"hp_regen" "2.0 3.5 4.5"
+			}
+
+		}
+	}
+
+	"item_warlock_cape3"
+	{
+		"ID"					"1931"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_cape3"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"3"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"3"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"hp_regen" "2.0 3.5 4.5"
+			}
+
+		}
+	}
+
+	"item_warlock_armor"
+	{
+		"ID"					"1932"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_armor"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"0"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"6"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"3"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"maxlevel"	"3"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"type"	"0"
+			}
+			"03"
+			{
+				"var_type" "FIELD_FLOAT"
+				"kb_reduction" "0.12 0.18 0.22"
+			}
+
+		}
+	}
+
+	"item_warlock_armor1"
+	{
+		"ID"					"1933"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_armor1"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"6"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"3"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"kb_reduction" "0.12 0.18 0.22"
+			}
+
+		}
+	}
+
+	"item_warlock_armor2"
+	{
+		"ID"					"1934"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_armor2"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"6"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"3"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"kb_reduction" "0.12 0.18 0.22"
+			}
+
+		}
+	}
+
+	"item_warlock_armor3"
+	{
+		"ID"					"1935"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_armor3"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"6"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"3"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"kb_reduction" "0.12 0.18 0.22"
+			}
+
+		}
+	}
+
+	"item_warlock_boots"
+	{
+		"ID"					"1936"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_boots"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"0"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"5"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"3"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"maxlevel"	"3"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"type"	"0"
+			}
+			"03"
+			{
+				"var_type" "FIELD_FLOAT"
+				"speed_bonus_abs" "18 29 40"
+			}
+
+		}
+	}
+
+	"item_warlock_boots1"
+	{
+		"ID"					"1937"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_boots1"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"5"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"3"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"speed_bonus_abs" "18 29 40"
+			}
+
+		}
+	}
+
+	"item_warlock_boots2"
+	{
+		"ID"					"1938"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_boots2"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"5"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"3"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"speed_bonus_abs" "18 29 40"
+			}
+
+		}
+	}
+
+	"item_warlock_boots3"
+	{
+		"ID"					"1939"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_boots3"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"5"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"3"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"speed_bonus_abs" "18 29 40"
+			}
+
+		}
+	}
+
+	"item_warlock_pocket_watch"
+	{
+		"ID"					"1940"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_pocket_watch"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"0"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"4"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"2"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"maxlevel"	"2"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"type"	"0"
+			}
+			"03"
+			{
+				"var_type" "FIELD_FLOAT"
+				"debuff_factor" "-0.35 -0.45"
+			}
+
+		}
+	}
+
+	"item_warlock_pocket_watch1"
+	{
+		"ID"					"1941"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_pocket_watch1"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"4"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"2"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"debuff_factor" "-0.35 -0.45"
+			}
+
+		}
+	}
+
+	"item_warlock_pocket_watch2"
+	{
+		"ID"					"1942"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_pocket_watch2"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"4"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"2"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type" "FIELD_FLOAT"
+				"debuff_factor" "-0.35 -0.45"
+			}
+
+		}
+	}
+
+	"item_warlock_duration_mastery"
+	{
+		"ID"					"1943"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_duration_mastery"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"0"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"5"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"6"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"maxlevel"	"6"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"type"	"2"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"index" "0"
+			}
+			"04"
+			{
+				"var_type" "FIELD_FLOAT"
+				"stats" "10 8 7 6 5 4"
+			}
+
+		}
+	}
+
+	"item_warlock_range_mastery"
+	{
+		"ID"					"1944"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_range_mastery"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"0"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"5"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"6"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"maxlevel"	"6"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"type"	"2"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"index" "1"
+			}
+			"04"
+			{
+				"var_type" "FIELD_FLOAT"
+				"stats" "12 10 9 8 7 6"
+			}
+
+		}
+	}
+
+	"item_warlock_life_steal_mastery"
+	{
+		"ID"					"1945"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_life_steal_mastery"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"0"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"5"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"6"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"maxlevel"	"6"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"type"	"2"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"index" "2"
+			}
+			"04"
+			{
+				"var_type" "FIELD_FLOAT"
+				"stats" "9 8 7 6 5 4"
+			}
+
+		}
+	}
+
+	"item_warlock_jack_of_all_trades"
+	{
+		"ID"					"1946"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_jack_of_all_trades"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"0"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"13"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"18"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_FLOAT"
+				"maxlevel"	"18"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"type"	"2"
+			}
+			"03"
+			{
+				"var_type" "FIELD_INTEGER"
+				"index" "3"
+			}
+			"04"
+			{
+				"var_type" "FIELD_FLOAT"
+				"stats" "10 8 7 6 5 4 12 10 9 8 7 6 9 8 7 6 5 4"
+			}
+
+		}
+	}
+
 }

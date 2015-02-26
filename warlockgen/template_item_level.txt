@@ -1,0 +1,29 @@
+	"item_warlock_%(item_name)s%(level)s"
+	{
+		"ID"					"%(id)s"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_%(item_name)s%(level)s"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"%(cost)s"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"%(levels)s"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+%(stats)s
+		}
+	}
+
