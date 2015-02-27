@@ -1,3 +1,5 @@
+from shutil import copyfile
+
 class WarlockSpell:
 	def __init__(self, name, icon_name, description, cost, column):
 		self.name = name
@@ -70,6 +72,7 @@ spells.append(WarlockSpell("swap", "vengefulspirit_nether_swap", "Cast missile t
 spells.append(WarlockSpell("bouncer", "viper_poison_attack", "Cast missile which will bounce between nearby Warlocks", 14, 2))
 spells.append(WarlockSpell("gravity", "enigma_black_hole", "Cast an enchanted orb that will pull enemies with gravitational forces", 12, 5))
 spells.append(WarlockSpell("warpzone", "antimage_spell_shield", "Create a time sphere that slows time in an area for any missiles", 12, 5))
+spells.append(WarlockSpell("magnetize", "antimage_spell_shield", "Creates a missile that magnetizes its target repelling or attracting enemy projectiles", 12, 5))
 
 # Items		
 items.append(WarlockItem("scourge_incarnation", "", 7, 2, { "damage": "110 120" }, "consumables"))
@@ -92,6 +95,7 @@ template_spell = ""
 template_spell_item = ""
 template_item = ""
 template_item_level = ""
+template_addon_english = ""
 	
 with open("base_npc_items_custom.txt", "r") as f:
 	base_npc_items_custom = f.read()
@@ -105,9 +109,12 @@ with open("template_item.txt", "r") as f:
 with open("template_item_level.txt", "r") as f:
 	template_item_level = f.read()
 
+with open("template_addon_english.txt", "r") as f:
+	template_addon_english = f.read()
 	
+# Create items file
 	
-with open("npc_items_custom.txt", "w") as f:
+with open("../game/dota_addons/warlock/scripts/npc/npc_items_custom.txt", "w") as f:
 	f.write(base_npc_items_custom + "\n")
 	
 	id = 1900
@@ -152,11 +159,14 @@ with open("npc_items_custom.txt", "w") as f:
 	
 	f.write("}\n")
 	
+
+# Create shops file	
+
 item_categories = [ "misc", "consumables", "attributes" ]
 spell_categories = [ "basics", "support", "magics", "weapons", "defense", "artifacts" ]
 unused_categories = [ "weapons_armor", "sideshop1", "sideshop2", "secretshop1" ]
 	
-with open("warlock_shops.txt", "w") as f:
+with open("../game/dota_addons/warlock/scripts/shops/warlock_shops.txt", "w") as f:
 	f.write('"dota_shops"\n')
 	f.write('{\n')
 	
@@ -183,3 +193,42 @@ with open("warlock_shops.txt", "w") as f:
 	
 	f.write('}\n')
 
+
+# Create localization file
+
+with open("../game/dota_addons/warlock/resource/addon_english.txt", "w", encoding = 'utf-16-le') as f:
+	strings = ""
+	
+	for spell in spells:
+		prefix = '		"DOTA_Tooltip_ability_warlock_' + spell.name
+		strings += '		"DOTA_Tooltip_ability_item_warlock_' + spell.name + '" "Learn ' + spell.name + '"\n'
+		strings += '		"DOTA_Tooltip_ability_item_warlock_' + spell.name + '_Description" "' + spell.description + '"\n'
+		strings += prefix + '" "' + spell.name + '"\n'
+		strings += prefix + '_Description" "' + spell.description + '"\n'
+		strings += prefix + '_Note0" ""\n'
+		strings += prefix + '_damage" "Damage:"\n'
+		strings += prefix + '_damage_max" "Max damage:"\n'
+		strings += prefix + '_radius" "AoE:"\n'
+		strings += prefix + '_time_scale" "Time scale:"\n'
+		strings += prefix + '_duration" "duration:"\n'
+		strings += prefix + '_strength" "Force:"\n'
+		strings += prefix + '_cooldown2" "Cooldown:"\n'
+		strings += prefix + '_upgrade_cost" "Upgrade cost:"\n'
+		strings += prefix + '_range" "Range:"\n'
+		strings += prefix + '_absorb_max" "Max absorb:"\n'
+		
+	for item in items:
+		prefix = '		"DOTA_Tooltip_ability_item_warlock_' + item.name
+		strings += prefix + '" "' + item.name + '"\n'
+		strings += prefix + '_Description" "' + item.description + '"\n'
+		
+		for level in range(1, item.levels+1):
+			prefix = '		"DOTA_Tooltip_ability_item_warlock_' + item.name + str(level)
+			strings += prefix + '" "' + item.name + '"\n'
+			strings += prefix + '_Description" "' + item.description + '"\n'
+			for stat_key, stat_val in item.stats.items():
+				strings += prefix + '_' + stat_key + '" "' + stat_key + ':"\n'
+	
+	f.write('\ufeff')
+	f.write(template_addon_english % { "strings": strings })
+	

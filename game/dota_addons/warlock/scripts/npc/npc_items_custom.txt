@@ -886,9 +886,47 @@
 		}
 	}
 
-	"item_warlock_scourge_incarnation"
+	"item_warlock_magnetize"
 	{
 		"ID"					"1916"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"				"item_datadriven"
+		"AbilityTextureName"	"warlock_magnetize"
+		"ItemKillable"			"0"
+		"ItemSellable"			"0"
+		"ItemDroppable"			"0"
+		"AbilityCastRange"		"1000"
+		"AbilityCastPoint"		"0.0"
+		"AbilityCooldown"		"0.0"
+		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
+		"AbilityManaCost"		"0"
+		"ItemCost"				"12"
+		"ItemShopTags"			"consumable"
+		"ItemQuality"			"consumable"
+		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemPurchasable"		"1"
+		"SideShop"				"1"
+		"MaxUpgradeLevel"		"1"
+		"ItemBaseLevel"			"1"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"column"	"5"
+			}
+			"02"
+			{
+				"var_type"	"FIELD_INTEGER"
+				"type"		"1"
+			}
+		}
+	}
+
+	"item_warlock_scourge_incarnation"
+	{
+		"ID"					"1917"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"				"item_datadriven"
 		"AbilityTextureName"	"warlock_scourge_incarnation"
@@ -932,7 +970,7 @@
 
 	"item_warlock_scourge_incarnation1"
 	{
-		"ID"					"1917"
+		"ID"					"1918"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"				"item_datadriven"
 		"AbilityTextureName"	"warlock_scourge_incarnation1"
@@ -966,7 +1004,7 @@
 
 	"item_warlock_scourge_incarnation2"
 	{
-		"ID"					"1918"
+		"ID"					"1919"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"				"item_datadriven"
 		"AbilityTextureName"	"warlock_scourge_incarnation2"
@@ -1000,7 +1038,7 @@
 
 	"item_warlock_ring_of_health"
 	{
-		"ID"					"1919"
+		"ID"					"1920"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"				"item_datadriven"
 		"AbilityTextureName"	"warlock_ring_of_health"
@@ -1044,7 +1082,7 @@
 
 	"item_warlock_ring_of_health1"
 	{
-		"ID"					"1920"
+		"ID"					"1921"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"				"item_datadriven"
 		"AbilityTextureName"	"warlock_ring_of_health1"
@@ -1078,7 +1116,7 @@
 
 	"item_warlock_ring_of_health2"
 	{
-		"ID"					"1921"
+		"ID"					"1922"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"				"item_datadriven"
 		"AbilityTextureName"	"warlock_ring_of_health2"
@@ -1112,7 +1150,7 @@
 
 	"item_warlock_ring_of_health3"
 	{
-		"ID"					"1922"
+		"ID"					"1923"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"				"item_datadriven"
 		"AbilityTextureName"	"warlock_ring_of_health3"
@@ -1146,7 +1184,7 @@
 
 	"item_warlock_ring_of_health4"
 	{
-		"ID"					"1923"
+		"ID"					"1924"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"				"item_datadriven"
 		"AbilityTextureName"	"warlock_ring_of_health4"
@@ -1180,7 +1218,7 @@
 
 	"item_warlock_ring_of_health5"
 	{
-		"ID"					"1924"
+		"ID"					"1925"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"				"item_datadriven"
 		"AbilityTextureName"	"warlock_ring_of_health5"
@@ -1214,7 +1252,7 @@
 
 	"item_warlock_cursed_ring"
 	{
-		"ID"					"1925"
+		"ID"					"1926"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"				"item_datadriven"
 		"AbilityTextureName"	"warlock_cursed_ring"
@@ -1250,17 +1288,17 @@
 			"03"
 			{
 				"var_type" "FIELD_FLOAT"
-				"hp_bonus" "100 200"
+				"kb_reduction" "0.15 0.15"
 			}
 			"04"
 			{
 				"var_type" "FIELD_FLOAT"
-				"debuff_factor" "0.25 0.30"
+				"hp_bonus" "100 200"
 			}
 			"05"
 			{
 				"var_type" "FIELD_FLOAT"
-				"kb_reduction" "0.15 0.15"
+				"debuff_factor" "0.25 0.30"
 			}
 
 		}
@@ -1268,7 +1306,7 @@
 
 	"item_warlock_cursed_ring1"
 	{
-		"ID"					"1926"
+		"ID"					"1927"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"				"item_datadriven"
 		"AbilityTextureName"	"warlock_cursed_ring1"
@@ -1294,17 +1332,17 @@
 			"01"
 			{
 				"var_type" "FIELD_FLOAT"
-				"hp_bonus" "100 200"
+				"kb_reduction" "0.15 0.15"
 			}
 			"02"
 			{
 				"var_type" "FIELD_FLOAT"
-				"debuff_factor" "0.25 0.30"
+				"hp_bonus" "100 200"
 			}
 			"03"
 			{
 				"var_type" "FIELD_FLOAT"
-				"kb_reduction" "0.15 0.15"
+				"debuff_factor" "0.25 0.30"
 			}
 
 		}
@@ -1312,7 +1350,7 @@
 
 	"item_warlock_cursed_ring2"
 	{
-		"ID"					"1927"
+		"ID"					"1928"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"				"item_datadriven"
 		"AbilityTextureName"	"warlock_cursed_ring2"
@@ -1338,17 +1376,17 @@
 			"01"
 			{
 				"var_type" "FIELD_FLOAT"
-				"hp_bonus" "100 200"
+				"kb_reduction" "0.15 0.15"
 			}
 			"02"
 			{
 				"var_type" "FIELD_FLOAT"
-				"debuff_factor" "0.25 0.30"
+				"hp_bonus" "100 200"
 			}
 			"03"
 			{
 				"var_type" "FIELD_FLOAT"
-				"kb_reduction" "0.15 0.15"
+				"debuff_factor" "0.25 0.30"
 			}
 
 		}
@@ -1356,7 +1394,7 @@
 
 	"item_warlock_cape"
 	{
-		"ID"					"1928"
+		"ID"					"1929"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"				"item_datadriven"
 		"AbilityTextureName"	"warlock_cape"
@@ -1400,7 +1438,7 @@
 
 	"item_warlock_cape1"
 	{
-		"ID"					"1929"
+		"ID"					"1930"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"				"item_datadriven"
 		"AbilityTextureName"	"warlock_cape1"
@@ -1434,7 +1472,7 @@
 
 	"item_warlock_cape2"
 	{
-		"ID"					"1930"
+		"ID"					"1931"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"				"item_datadriven"
 		"AbilityTextureName"	"warlock_cape2"
@@ -1468,7 +1506,7 @@
 
 	"item_warlock_cape3"
 	{
-		"ID"					"1931"
+		"ID"					"1932"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"				"item_datadriven"
 		"AbilityTextureName"	"warlock_cape3"
@@ -1502,7 +1540,7 @@
 
 	"item_warlock_armor"
 	{
-		"ID"					"1932"
+		"ID"					"1933"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"				"item_datadriven"
 		"AbilityTextureName"	"warlock_armor"
@@ -1546,7 +1584,7 @@
 
 	"item_warlock_armor1"
 	{
-		"ID"					"1933"
+		"ID"					"1934"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"				"item_datadriven"
 		"AbilityTextureName"	"warlock_armor1"
@@ -1580,7 +1618,7 @@
 
 	"item_warlock_armor2"
 	{
-		"ID"					"1934"
+		"ID"					"1935"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"				"item_datadriven"
 		"AbilityTextureName"	"warlock_armor2"
@@ -1614,7 +1652,7 @@
 
 	"item_warlock_armor3"
 	{
-		"ID"					"1935"
+		"ID"					"1936"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"				"item_datadriven"
 		"AbilityTextureName"	"warlock_armor3"
@@ -1648,7 +1686,7 @@
 
 	"item_warlock_boots"
 	{
-		"ID"					"1936"
+		"ID"					"1937"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"				"item_datadriven"
 		"AbilityTextureName"	"warlock_boots"
@@ -1692,7 +1730,7 @@
 
 	"item_warlock_boots1"
 	{
-		"ID"					"1937"
+		"ID"					"1938"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"				"item_datadriven"
 		"AbilityTextureName"	"warlock_boots1"
@@ -1726,7 +1764,7 @@
 
 	"item_warlock_boots2"
 	{
-		"ID"					"1938"
+		"ID"					"1939"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"				"item_datadriven"
 		"AbilityTextureName"	"warlock_boots2"
@@ -1760,7 +1798,7 @@
 
 	"item_warlock_boots3"
 	{
-		"ID"					"1939"
+		"ID"					"1940"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"				"item_datadriven"
 		"AbilityTextureName"	"warlock_boots3"
@@ -1794,7 +1832,7 @@
 
 	"item_warlock_pocket_watch"
 	{
-		"ID"					"1940"
+		"ID"					"1941"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"				"item_datadriven"
 		"AbilityTextureName"	"warlock_pocket_watch"
@@ -1838,7 +1876,7 @@
 
 	"item_warlock_pocket_watch1"
 	{
-		"ID"					"1941"
+		"ID"					"1942"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"				"item_datadriven"
 		"AbilityTextureName"	"warlock_pocket_watch1"
@@ -1872,7 +1910,7 @@
 
 	"item_warlock_pocket_watch2"
 	{
-		"ID"					"1942"
+		"ID"					"1943"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"				"item_datadriven"
 		"AbilityTextureName"	"warlock_pocket_watch2"
@@ -1906,7 +1944,7 @@
 
 	"item_warlock_duration_mastery"
 	{
-		"ID"					"1943"
+		"ID"					"1944"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"				"item_datadriven"
 		"AbilityTextureName"	"warlock_duration_mastery"
@@ -1955,7 +1993,7 @@
 
 	"item_warlock_range_mastery"
 	{
-		"ID"					"1944"
+		"ID"					"1945"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"				"item_datadriven"
 		"AbilityTextureName"	"warlock_range_mastery"
@@ -2004,7 +2042,7 @@
 
 	"item_warlock_life_steal_mastery"
 	{
-		"ID"					"1945"
+		"ID"					"1946"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"				"item_datadriven"
 		"AbilityTextureName"	"warlock_life_steal_mastery"
@@ -2053,7 +2091,7 @@
 
 	"item_warlock_jack_of_all_trades"
 	{
-		"ID"					"1946"
+		"ID"					"1947"
 		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"				"item_datadriven"
 		"AbilityTextureName"	"warlock_jack_of_all_trades"

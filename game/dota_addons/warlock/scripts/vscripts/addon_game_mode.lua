@@ -20,6 +20,7 @@ BASE_MODULES		= {
 	'warlock/projectiles/swapprojectile', 'warlock/projectiles/gripprojectile',
 	'warlock/projectiles/fireballprojectile', 'warlock/projectiles/drainprojectile',
 	'warlock/projectiles/drainhealprojectile', 'warlock/projectiles/homingprojectile',
+    'warlock/projectiles/magnetizeprojectile',
 
 	'warlock/spells/fireball', 'warlock/spells/scourge',
 	'warlock/spells/boomerang', 'warlock/spells/lightning',
@@ -30,10 +31,11 @@ BASE_MODULES		= {
 	'warlock/spells/rush', 'warlock/spells/grip',
 	'warlock/spells/drain', 'warlock/spells/homing',
 	'warlock/spells/thrust', 'warlock/spells/warpzone',
+    'warlock/spells/magnetize',
 
 	'warlock/modifiers/windwalkmodifier', 'warlock/modifiers/shieldmodifier',
 	'warlock/modifiers/rushmodifier', 'warlock/modifiers/gripmodifier',
-	'warlock/modifiers/thrustmodifier',
+	'warlock/modifiers/thrustmodifier', 'warlock/modifiers/magnetizemodifier',
 	
 	'stats/statcollection',
 

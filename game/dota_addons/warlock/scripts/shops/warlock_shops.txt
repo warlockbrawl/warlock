@@ -53,6 +53,7 @@
 		"item" "item_warlock_grip"
 		"item" "item_warlock_gravity"
 		"item" "item_warlock_warpzone"
+		"item" "item_warlock_magnetize"
 	}
 	"weapons_armor"
 	{
