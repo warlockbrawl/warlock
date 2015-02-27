@@ -1,9 +1,8 @@
 from shutil import copyfile
 
 class WarlockSpell:
-	def __init__(self, name, icon_name, description, cost, column):
+	def __init__(self, name, description, cost, column):
 		self.name = name
-		self.icon_name = icon_name
 		self.description = description
 		self.cost = cost
 		self.column = column
@@ -56,23 +55,23 @@ class WarlockMastery(WarlockItem):
 spells = []
 items = []
 
-spells.append(WarlockSpell("lightning", "lina_laguna_blade", "Cast a lightning that instantly strikes the first obstacle on its path", 11, 0))
-spells.append(WarlockSpell("teleport", "rubick_telekinesis", "Instantly alter your location", 11, 1))
-spells.append(WarlockSpell("drain", "necrolyte_death_pulse", "Cast a projectile that can change direction, grant a slow debuff and steal life of its target", 14, 2))
-spells.append(WarlockSpell("meteor", "invoker_chaos_meteor", "Summons a meteor to strike from the skies", 14, 3))
-spells.append(WarlockSpell("rush", "ogre_magi_bloodlust", "Enter a focused state where half damage taken is absorbed and converted into movement speed", 12, 4))
-spells.append(WarlockSpell("boomerang", "bounty_hunter_shuriken_toss", "Cast a magically enhanced shuriken which will return to its caster", 11, 0))
-spells.append(WarlockSpell("thrust", "disruptor_glimpse", "Charge toward target point and deal damage to enemies on impact", 11, 1))
-spells.append(WarlockSpell("cluster", "ember_spirit_searing_chains", "Cast four lesser fireballs simultaneously", 14, 2))
-spells.append(WarlockSpell("windwalk", "elder_titan_echo_stomp_spirit", "Fade and gain high movement speed, enabling a charge attack for a short duration", 14, 3))
-spells.append(WarlockSpell("shield", "faceless_void_chronosphere", "Activates a shield that will deflect projectile spells", 12, 4))
-spells.append(WarlockSpell("grip", "nevermore_shadowraze3", "Cast a missile that immobilizes its target", 12, 5))
-spells.append(WarlockSpell("homing", "puck_illusory_orb", "Cast a bolt of energy which will homes in on its target", 11, 0))
-spells.append(WarlockSpell("swap", "vengefulspirit_nether_swap", "Cast missile that swaps location with its target", 11, 1))
-spells.append(WarlockSpell("bouncer", "viper_poison_attack", "Cast missile which will bounce between nearby Warlocks", 14, 2))
-spells.append(WarlockSpell("gravity", "enigma_black_hole", "Cast an enchanted orb that will pull enemies with gravitational forces", 12, 5))
-spells.append(WarlockSpell("warpzone", "antimage_spell_shield", "Create a time sphere that slows time in an area for any missiles", 12, 5))
-spells.append(WarlockSpell("magnetize", "antimage_spell_shield", "Creates a missile that magnetizes its target repelling or attracting enemy projectiles", 12, 5))
+spells.append(WarlockSpell("lightning", "Cast a lightning that instantly strikes the first obstacle on its path", 11, 0))
+spells.append(WarlockSpell("teleport", "Instantly alter your location", 11, 1))
+spells.append(WarlockSpell("drain", "Cast a projectile that can change direction, grant a slow debuff and steal life of its target", 14, 2))
+spells.append(WarlockSpell("meteor", "Summons a meteor to strike from the skies", 14, 3))
+spells.append(WarlockSpell("rush", "Enter a focused state where half damage taken is absorbed and converted into movement speed", 12, 4))
+spells.append(WarlockSpell("boomerang", "Cast a magically enhanced shuriken which will return to its caster", 11, 0))
+spells.append(WarlockSpell("thrust", "Charge toward target point and deal damage to enemies on impact", 11, 1))
+spells.append(WarlockSpell("cluster", "Cast four lesser fireballs simultaneously", 14, 2))
+spells.append(WarlockSpell("windwalk", "Fade and gain high movement speed, enabling a charge attack for a short duration", 14, 3))
+spells.append(WarlockSpell("shield", "Activates a shield that will deflect projectile spells", 12, 4))
+spells.append(WarlockSpell("grip", "Cast a missile that immobilizes its target", 12, 5))
+spells.append(WarlockSpell("homing", "Cast a bolt of energy which will homes in on its target", 11, 0))
+spells.append(WarlockSpell("swap", "Cast missile that swaps location with its target", 11, 1))
+spells.append(WarlockSpell("bouncer", "Cast missile which will bounce between nearby Warlocks", 14, 2))
+spells.append(WarlockSpell("gravity", "Cast an enchanted orb that will pull enemies with gravitational forces", 12, 5))
+spells.append(WarlockSpell("warpzone", "Create a time sphere that slows time in an area for any missiles", 12, 5))
+spells.append(WarlockSpell("magnetize", "Creates a missile that magnetizes its target repelling or attracting enemy projectiles", 14, 5))
 
 # Items		
 items.append(WarlockItem("scourge_incarnation", "", 7, 2, { "damage": "110 120" }, "consumables"))
@@ -131,7 +130,6 @@ with open("../game/dota_addons/warlock/scripts/npc/npc_items_custom.txt", "w") a
 		id += 1
 			
 	for item in items:
-		# TODO: Icons
 		f.write(template_item % {
 			"item_name": item.name,
 			"id": id,
@@ -144,7 +142,6 @@ with open("../game/dota_addons/warlock/scripts/npc/npc_items_custom.txt", "w") a
 		id += 1
 		
 		if not item.is_mastery:
-			# TODO: Icons
 			for level in range(1, item.levels+1):
 				f.write(template_item_level % {
 					"item_name": item.name,

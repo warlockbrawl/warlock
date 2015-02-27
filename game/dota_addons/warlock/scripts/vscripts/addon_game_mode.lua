@@ -101,8 +101,6 @@ function Precache(context)
 	PrecacheResource("model", "models/props_debris/wooden_pole_02.vmdl", context)
 	PrecacheResource("model", "models/props_debris/merchant_debris_chest001.vmdl", context)
 	
-	-- Check: drain buff, drain debuff, grip hit
-	
 	-- Spells
 	PrecacheResource("particle_folder", "particles/units/heroes/hero_omniknight", context)
 	PrecacheResource("particle", "particles/econ/generic/generic_aoe_explosion_sphere_1/generic_aoe_explosion_sphere_1.vpcf", context)
@@ -112,6 +110,7 @@ function Precache(context)
 	PrecacheResource("particle", "particles/units/heroes/hero_stormspirit/stormspirit_overload_discharge.vpcf", context)
 	PrecacheResource("particle", "particles/units/heroes/hero_vengeful/vengeful_nether_swap.vpcf", context)
 	PrecacheResource("particle", "particles/units/heroes/hero_vengeful/vengeful_nether_swap_blue.vpcf", context)
+    PrecacheResource("particle", "particles/units/heroes/hero_vengeful/vengeful_base_attack.vpcf", context)
 	PrecacheResource("particle", "particles/units/heroes/hero_lina/lina_spell_laguna_blade.vpcf", context)
 	PrecacheResource("particle", "particles/units/heroes/hero_venomancer/venomancer_base_attack.vpcf", context)
 	PrecacheResource("particle", "particles/units/heroes/hero_dark_seer/dark_seer_ion_shell.vpcf", context)

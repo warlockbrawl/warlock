@@ -964,13 +964,13 @@
 		"ID"							"8872"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
 		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"nevermore_shadowraze3"
+		"AbilityTextureName"			"earth_spirit_magnetize"
 
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"GLOBAL"
 		"AbilityCastPoint"				"0.2"
-		"AbilityCooldown"				"24 20 17 15 13 12 10.5"
+		"AbilityCooldown"				"22 21 20 19 18 17 16"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
 		"MaxLevel"						"7"
@@ -996,17 +996,17 @@
 			"01"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"duration"				"4.50 4.75 5.00 5.25 5.50 5.75 6.00"
+				"duration"				"3.00 3.50 4.00 4.50 5.00 5.50 6.00"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"cooldown2"				"24 20 17 15 13 12 10.5"
+				"cooldown2"				"22 21 20 19 18 17 16"
 			}
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"upgrade_cost"			"6 7 8 9 10 11"
+				"upgrade_cost"			"5 6 7 8 9 10"
 			}
 		}
 	}
