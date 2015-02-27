@@ -44,6 +44,29 @@ function Modifier:init(def)
 		}
 	end
 
+    if def.loop_sound then
+        self.loop_sound = def.loop_sound
+        local loop_duration = def.loop_duration or 1.0
+
+        -- Play the sound
+        if self.pawn.unit then
+            self.pawn.unit:EmitSound(self.loop_sound)
+        end
+
+        self.sound_loop_task = GAME:addTask {
+            period = loop_duration,
+            --period = sound_duration,
+            func = function()
+                log("In loop")
+
+                if self.pawn.unit then
+                    self.pawn.unit:EmitSound(self.loop_sound)
+                end
+            end
+        }
+    end
+
+
 	self.dmg_reduction_rel = def.dmg_reduction_rel or 0
 	self.dmg_reduction_abs = def.dmg_reduction_abs or 0
 	self.speed_bonus_abs = def.speed_bonus_abs or 0
@@ -83,6 +106,14 @@ function Modifier:onToggle(apply)
 			if self.native_mod then
 				p:removeNativeModifier(self.native_mod)
 			end
+
+            if self.sound_loop_task then
+                -- Cancel the sound loop timer
+                self.sound_loop_task:cancel()
+
+                -- Stop the currently playing loop sound
+                u:StopSound(self.loop_sound)
+            end
 		end
 		
 		p.move_speed = p.move_speed + sign * self.speed_bonus_abs

@@ -94,23 +94,25 @@ function Game:initCommands()
 
         self:registerCommand('magnetize', function()
 			for pawn, _ in pairs(GAME.pawns) do
-				GAME:addModifier(MagnetizeModifier:new {
-					pawn = pawn,
-					time = 10,
-					sign = -1,
-					native_mod = Magnetize.native_mod
-				})
+		        GAME:addModifier(MagnetizeModifier:new {
+			        pawn = pawn,
+			        time = 20,
+			        sign = -1,
+			        end_sound = Magnetize.end_sound,
+                    native_mod = Magnetize.native_mod
+		        })
 			end
 		end)
 
         self:registerCommand('magnetize2', function()
 			for pawn, _ in pairs(GAME.pawns) do
 				GAME:addModifier(MagnetizeModifier:new {
-					pawn = pawn,
-					time = 10,
-					sign = 1,
-					native_mod = Magnetize.native_mod
-				})
+			        pawn = pawn,
+			        time = 20,
+			        sign = 1,
+			        end_sound = Magnetize.end_sound,
+                    native_mod = Magnetize.native_mod
+		        })
 			end
 		end)
 	

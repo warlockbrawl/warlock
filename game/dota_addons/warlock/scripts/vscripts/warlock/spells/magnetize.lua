@@ -6,8 +6,8 @@ Magnetize.projectile_effect = 'magnetize_projectile'
 Magnetize.radius = 36
 Magnetize.speed = 800
 Magnetize.lifetime = 1.2
-Magnetize.hit_sound = "Grip.Hit" -- Sound played when projectile hits
-Magnetize.end_sound = "Grip.End" -- Sound played when effect ends
+Magnetize.hit_sound = "Magnetize.Hit" -- Sound played when projectile hits
+Magnetize.end_sound = "Magnetize.End" -- Sound played when effect ends
 Magnetize.native_mod = "modifier_earth_spirit_magnetize"
 
 function Magnetize:onCast(cast_info)

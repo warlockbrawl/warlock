@@ -4,6 +4,7 @@ MagnetizeProjectile = class(Projectile)
 -- hit_sound
 -- end_sound
 -- duration
+-- native_mod
 
 function MagnetizeProjectile:init(def)
 	MagnetizeProjectile.super.init(self, def)
@@ -12,6 +13,7 @@ function MagnetizeProjectile:init(def)
 	self.hit_sound = def.hit_sound
 	self.end_sound = def.end_sound
 	self.duration = def.duration
+    self.native_mod = def.native_mod
 
     -- Enable collision with allies and obstacles
     local cc = self.collision_components["projectile"]
@@ -20,6 +22,8 @@ end
 
 function MagnetizeProjectile:onCollision(coll_info, cc)
 	local actor = coll_info.actor
+
+    log("Coll")
 
 	if actor:instanceof(Pawn) then
 		-- Play a hit sound
@@ -37,8 +41,11 @@ function MagnetizeProjectile:onCollision(coll_info, cc)
 			pawn = actor,
 			time = actor:getDebuffDuration(self.duration, self.instigator),
 			sign = sign,
-			end_sound = self.end_sound
+			end_sound = self.end_sound,
+            native_mod = self.native_mod,
 		})
+
+        log("Added")
 	end
 
 	-- destroy

@@ -207,7 +207,7 @@ with open("../game/dota_addons/warlock/resource/addon_english.txt", "w", encodin
 		strings += prefix + '_damage_max" "Max damage:"\n'
 		strings += prefix + '_radius" "AoE:"\n'
 		strings += prefix + '_time_scale" "Time scale:"\n'
-		strings += prefix + '_duration" "duration:"\n'
+		strings += prefix + '_duration" "Duration:"\n'
 		strings += prefix + '_strength" "Force:"\n'
 		strings += prefix + '_cooldown2" "Cooldown:"\n'
 		strings += prefix + '_upgrade_cost" "Upgrade cost:"\n'
