@@ -224,7 +224,7 @@ with open("../game/dota_addons/warlock/resource/addon_english.txt", "w", encodin
 			strings += prefix + '" "' + item.name + '"\n'
 			strings += prefix + '_Description" "' + item.description + '"\n'
 			for stat_key, stat_val in item.stats.items():
-				strings += prefix + '_' + stat_key + '" "' + stat_key + ':"\n'
+				strings += prefix + '_' + stat_key + '" "' + stat_key.replace("_", " ").capitalize() + ':"\n'
 	
 	f.write('\ufeff')
 	f.write(template_addon_english % { "strings": strings })
