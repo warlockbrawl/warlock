@@ -2,6 +2,8 @@ ShieldModifier = class(Modifier)
 
 --- Params
 -- reflect_sound
+-- reflect_effect
+-- radius
 
 function ShieldModifier:init(def)
 	ShieldModifier.super.init(self, def)

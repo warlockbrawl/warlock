@@ -32,10 +32,12 @@ BASE_MODULES		= {
 	'warlock/spells/drain', 'warlock/spells/homing',
 	'warlock/spells/thrust', 'warlock/spells/warpzone',
     'warlock/spells/magnetize', 'warlock/spells/rockpillar',
+    'warlock/spells/alteration',
 
 	'warlock/modifiers/windwalkmodifier', 'warlock/modifiers/shieldmodifier',
 	'warlock/modifiers/rushmodifier', 'warlock/modifiers/gripmodifier',
 	'warlock/modifiers/thrustmodifier', 'warlock/modifiers/magnetizemodifier',
+    'warlock/modifiers/alterationmodifier',
 	
 	'stats/statcollection',
 
@@ -141,6 +143,8 @@ function Precache(context)
     PrecacheResource("particle", "particles/units/heroes/hero_earth_spirit/espirit_stoneismagnetized_xpld.vpcf", context)
     PrecacheResource("particle", "particles/econ/items/undying/undying_manyone/undying_pale_tower_destruction_dust_hit.vpcf", context)
     PrecacheResource("particle", "particles/econ/items/tinker/boots_of_travel/teleport_start_bots_dust.vpcf", context)
+    PrecacheResource("particle", "particles/prototype_fx/item_linkens_buff_explosion.vpcf", context)
+    PrecacheResource("particle", "particles/units/heroes/hero_treant/treant_livingarmor.vpcf", context)
 
 	-- custom effects
 	PrecacheResource("particle_folder", "particles/fireball", context)

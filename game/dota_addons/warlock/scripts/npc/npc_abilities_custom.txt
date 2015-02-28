@@ -697,6 +697,115 @@
 		}
 	}
 	
+	"warlock_magnetize"
+	{
+		"ID"							"8853"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"earth_spirit_magnetize"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"GLOBAL"
+		"AbilityCastPoint"				"0.2"
+		"AbilityCooldown"				"22 21 20 19 18 17 16"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
+		"MaxLevel"						"7"
+		"AbilityManaCost"				"0"
+
+		"precache"
+		{
+		}
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"				"POINT"
+				"ScriptFile"			"scripts/vscripts/triggers.lua"
+				"Function"				"cast"
+			}
+		}
+
+		// Attributes
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"3.00 3.50 4.00 4.50 5.00 5.50 6.00"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"cooldown2"				"22 21 20 19 18 17 16"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"upgrade_cost"			"5 6 7 8 9 10"
+			}
+		}
+	}
+	
+	"warlock_rockpillar"
+	{
+		"ID"							"8854"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"earth_spirit_rolling_boulder"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"GLOBAL"
+		"AbilityCastPoint"				"0.2"
+		"AbilityCooldown"				"18.0 17.5 16.0 15.5 14.0 13.5"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
+		"MaxLevel"						"7"
+		"AbilityManaCost"				"0"
+
+		"precache"
+		{
+		}
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"				"POINT"
+				"ScriptFile"			"scripts/vscripts/triggers.lua"
+				"Function"				"cast"
+			}
+		}
+
+		// Attributes
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"3.50 3.75 4.00 4.25 4.50 4.75"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"cooldown2"				"18.0 17.5 16.0 15.5 14.0 13.5"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"range"					"600 650 700 750 800 850"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"upgrade_cost"			"6 7 8 9 10 11"
+			}
+		}
+	}
+	
 	"warlock_teleport"
 	{
 		"ID"							"8860"
@@ -866,10 +975,10 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"0"
 		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"16.0 14.5 13.0 11.5 10.0 8.5"
+		"AbilityCooldown"				"14.0 13.0 12.0 11.0 10.0 9.0 8.0"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
 		"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
-		"MaxLevel"						"6"
+		"MaxLevel"						"7"
 		"AbilityManaCost"				"0"
 
 		"OnSpellStart"
@@ -887,22 +996,22 @@
 			"01"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"cooldown2"				"16.0 14.5 13.0 11.5 10.0 8.5"
+				"cooldown2"				"14.0 13.0 12.0 11.0 10.0 9.0 8.0"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"duration"				"1.2 1.2 1.2 1.2 1.2 1.2"
+				"duration"				"1.2 1.2 1.2 1.2 1.2 1.2 1.2"
 			}
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"radius"				"200 210 220 230 240 250"
+				"radius"				"200 210 220 230 240 250 260"
 			}
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"upgrade_cost"			"6 7 8 9 10 11"
+				"upgrade_cost"			"6 7 8 9 10 11 12"
 			}
 		}
 	}
@@ -962,111 +1071,54 @@
 		}
 	}
 	
-	"warlock_magnetize"
+	"warlock_alteration"
 	{
 		"ID"							"8872"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"earth_spirit_magnetize"
+		"AbilityTextureName"			"modifier_illusion"
 
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"GLOBAL"
-		"AbilityCastPoint"				"0.2"
-		"AbilityCooldown"				"22 21 20 19 18 17 16"
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"15 14 13 12 11 10 9"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
+		"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
 		"MaxLevel"						"7"
 		"AbilityManaCost"				"0"
-
-		"precache"
-		{
-		}
 
 		"OnSpellStart"
 		{
 			"RunScript"
 			{
-				"Target"				"POINT"
 				"ScriptFile"			"scripts/vscripts/triggers.lua"
 				"Function"				"cast"
 			}
 		}
-
+		
 		// Attributes
 		"AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"duration"				"3.00 3.50 4.00 4.50 5.00 5.50 6.00"
+				"cooldown2"				"15 14 13 12 11 10 9"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"cooldown2"				"22 21 20 19 18 17 16"
+				"duration"				"2.4 2.6 2.8 3.2 3.4 3.6 3.8"
 			}
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"upgrade_cost"			"5 6 7 8 9 10"
-			}
-		}
-	}
-	
-	"warlock_rockpillar"
-	{
-		"ID"							"8873"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
-		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"earth_spirit_rolling_boulder"
-
-		// Stats
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"GLOBAL"
-		"AbilityCastPoint"				"0.2"
-		"AbilityCooldown"				"18.0 17.5 16.0 15.5 14.0 13.5"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
-		"MaxLevel"						"7"
-		"AbilityManaCost"				"0"
-
-		"precache"
-		{
-		}
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"				"POINT"
-				"ScriptFile"			"scripts/vscripts/triggers.lua"
-				"Function"				"cast"
-			}
-		}
-
-		// Attributes
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"3.50 3.75 4.00 4.25 4.50 4.75"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"cooldown2"				"18.0 17.5 16.0 15.5 14.0 13.5"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"range"					"600 650 700 750 800 850"
+				"radius"				"120 120 120 120 120 120 120"
 			}
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"upgrade_cost"			"6 7 8 9 10 11"
+				"upgrade_cost"			"5 6 7 8 9 10 11"
 			}
 		}
 	}

@@ -73,6 +73,7 @@ spells.append(WarlockSpell("gravity", "Cast an enchanted orb that will pull enem
 spells.append(WarlockSpell("warpzone", "Create a time sphere that slows time in an area for any missiles", 12, 5))
 spells.append(WarlockSpell("magnetize", "Creates a missile that magnetizes its target repelling or attracting enemy projectiles", 14, 5))
 spells.append(WarlockSpell("rockpillar", "Spawn a rock pillar at the target location that blocks players and projectiles", 13, 5))
+spells.append(WarlockSpell("alteration", "Alters the position with the next enemy projectile coming close to hitting you", 11, 4))
 
 # Items		
 items.append(WarlockItem("scourge_incarnation", "", 7, 2, { "damage": "110 120" }, "consumables"))

@@ -47,6 +47,7 @@
 	{
 		"item" "item_warlock_rush"
 		"item" "item_warlock_shield"
+		"item" "item_warlock_alteration"
 	}
 	"artifacts"
 	{
