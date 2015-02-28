@@ -1060,13 +1060,13 @@
 			}
 			"03"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"upgrade_cost"			"6 7 8 9 10 11"
+				"var_type"				"FIELD_FLOAT"
+				"range"					"600 650 700 750 800 850"
 			}
 			"04"
 			{
-				"var_type"				"FIELD_FLOAT"
-				"range"					"600 650 700 750 800 850"
+				"var_type"				"FIELD_INTEGER"
+				"upgrade_cost"			"6 7 8 9 10 11"
 			}
 		}
 	}
