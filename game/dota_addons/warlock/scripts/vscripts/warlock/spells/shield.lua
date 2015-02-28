@@ -15,7 +15,8 @@ function Shield:onCast(cast_info)
 		time = actor:getBuffDuration(cast_info:attribute("duration"), actor),
 		reflect_sound = cast_info:attribute("reflect_sound"),
 		reflect_effect = cast_info:attribute("reflect_effect"),
-		native_mod = cast_info:attribute("modifier_name")
+		native_mod = cast_info:attribute("modifier_name"),
+        radius = cast_info:attribute("radius")
 	})
 end
 

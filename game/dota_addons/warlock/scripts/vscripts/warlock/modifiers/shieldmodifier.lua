@@ -8,6 +8,7 @@ function ShieldModifier:init(def)
 
 	self.reflect_sound = def.reflect_sound
 	self.reflect_effect = def.reflect_effect
+    self.radius = def.radius
 end
 
 -- Called when the modifier is turned on or off
@@ -23,7 +24,7 @@ function ShieldModifier:onToggle(apply)
 			coll_mat = CollisionComponent.createCollMatSimple(
 				{Player.ALLIANCE_ENEMY},
 				{CollisionComponent.CHANNEL_PROJECTILE}),
-			radius = 120,
+			radius = self.radius,
 			ellastic = false,
 			class = ShieldCollisionComponent,
 			coll_initiative = -3,
