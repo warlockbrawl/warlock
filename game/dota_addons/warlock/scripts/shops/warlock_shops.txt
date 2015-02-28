@@ -54,6 +54,7 @@
 		"item" "item_warlock_gravity"
 		"item" "item_warlock_warpzone"
 		"item" "item_warlock_magnetize"
+		"item" "item_warlock_rockpillar"
 	}
 	"weapons_armor"
 	{

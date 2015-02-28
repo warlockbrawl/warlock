@@ -31,7 +31,7 @@ BASE_MODULES		= {
 	'warlock/spells/rush', 'warlock/spells/grip',
 	'warlock/spells/drain', 'warlock/spells/homing',
 	'warlock/spells/thrust', 'warlock/spells/warpzone',
-    'warlock/spells/magnetize',
+    'warlock/spells/magnetize', 'warlock/spells/rockpillar',
 
 	'warlock/modifiers/windwalkmodifier', 'warlock/modifiers/shieldmodifier',
 	'warlock/modifiers/rushmodifier', 'warlock/modifiers/gripmodifier',
@@ -100,6 +100,7 @@ function Precache(context)
 	PrecacheResource("model", "models/props_debris/wooden_pole_01.vmdl", context)
 	PrecacheResource("model", "models/props_debris/wooden_pole_02.vmdl", context)
 	PrecacheResource("model", "models/props_debris/merchant_debris_chest001.vmdl", context)
+    PrecacheResource("model", "models/props_rock/riveredge_rock006a.vmdl", context) -- Used for rock pillar
 	
 	-- Spells
 	PrecacheResource("particle_folder", "particles/units/heroes/hero_omniknight", context)
@@ -138,6 +139,8 @@ function Precache(context)
     PrecacheResource("particle", "particles/units/heroes/hero_earth_spirit/espirit_magnetize_target_rocks.vpcf", context)
     PrecacheResource("particle", "particles/units/heroes/hero_earth_spirit/espirit_magnetized_ring.vpcf", context)
     PrecacheResource("particle", "particles/units/heroes/hero_earth_spirit/espirit_stoneismagnetized_xpld.vpcf", context)
+    PrecacheResource("particle", "particles/econ/items/undying/undying_manyone/undying_pale_tower_destruction_dust_hit.vpcf", context)
+    PrecacheResource("particle", "particles/econ/items/tinker/boots_of_travel/teleport_start_bots_dust.vpcf", context)
 
 	-- custom effects
 	PrecacheResource("particle_folder", "particles/fireball", context)

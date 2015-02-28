@@ -1984,3 +1984,157 @@
 		}
 	}
 }
+
+"RockPillar.Spawn"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"		"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/weapons/hero/earth_spirit/magnetize_cast.vsnd"
+						}
+					}
+					"volume_min"
+					{
+						"value"		"1.000000"
+					}
+					"volume_max"
+					{
+						"value"		"1.000000"
+					}
+					"pitch_min"
+					{
+						"value"		"0.950000"
+					}
+					"pitch_max"
+					{
+						"value"		"1.050000"
+					}
+					"chan_type"
+					{
+						"value"		"6"
+					}
+					"memory_type"
+					{
+						"value"		"0"
+					}
+					"soundlevel_min"
+					{
+						"value"		"81.000000"
+					}
+					"soundlevel_max"
+					{
+						"value"		"81.000000"
+					}
+					"mixgroup"
+					{
+						"value"		"Ultimates"
+					}
+					"spread_radius"
+					{
+						"value"		"300.000000"
+					}
+				}
+			}
+		}
+	}
+}
+
+"RockPillar.Death"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"		"sos_reference_stack"
+				"reference_stack"		"dota_update_default"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/weapons/hero/earth_spirit/magnetize_end.vsnd"
+						}
+					}
+					"volume_min"
+					{
+						"value"		"1.000000"
+					}
+					"volume_max"
+					{
+						"value"		"1.000000"
+					}
+					"pitch_min"
+					{
+						"value"		"0.950000"
+					}
+					"pitch_max"
+					{
+						"value"		"1.050000"
+					}
+					"chan_type"
+					{
+						"value"		"6"
+					}
+					"memory_type"
+					{
+						"value"		"0"
+					}
+					"soundlevel_min"
+					{
+						"value"		"81.000000"
+					}
+					"soundlevel_max"
+					{
+						"value"		"81.000000"
+					}
+					"mixgroup"
+					{
+						"value"		"Weapons"
+					}
+					"spread_radius"
+					{
+						"value"		"300.000000"
+					}
+					"limiter_on"
+					{
+						"value"		"1.000000"
+					}
+					"limiter_event_name"
+					{
+						"value"		"Hero_EarthSpirit.Magnetize.End"
+					}
+					"limiter_max"
+					{
+						"value"		"1.000000"
+					}
+					"limiter_match_type"
+					{
+						"value"		"0.000000"
+					}
+					"limiter_match_entity"
+					{
+						"value"		"0.000000"
+					}
+					"limiter_match_substring"
+					{
+						"value"		"0.000000"
+					}
+				}
+			}
+		}
+	}
+}

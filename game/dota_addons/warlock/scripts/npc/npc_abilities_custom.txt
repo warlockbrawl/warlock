@@ -1010,6 +1010,63 @@
 			}
 		}
 	}
+	
+	"warlock_rockpillar"
+	{
+		"ID"							"8873"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"earth_spirit_rolling_boulder"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"GLOBAL"
+		"AbilityCastPoint"				"0.2"
+		"AbilityCooldown"				"18.0 17.5 16.0 15.5 14.0 13.5"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
+		"MaxLevel"						"7"
+		"AbilityManaCost"				"0"
+
+		"precache"
+		{
+		}
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"				"POINT"
+				"ScriptFile"			"scripts/vscripts/triggers.lua"
+				"Function"				"cast"
+			}
+		}
+
+		// Attributes
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"3.50 3.75 4.00 4.25 4.50 4.75"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"cooldown2"				"18.0 17.5 16.0 15.5 14.0 13.5"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"upgrade_cost"			"6 7 8 9 10 11"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"range"					"600 650 700 750 800 850"
+			}
+		}
+	}
 
 	//-------------------------------------------------------------------------------------------------------------
 	//-- Warlock technology

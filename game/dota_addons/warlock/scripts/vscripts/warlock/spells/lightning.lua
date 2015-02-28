@@ -1,7 +1,7 @@
 --- Spell: warlock_lightning
 -- @author Krzysztof Lis (Adynathos)
 
---- Spell warlock_fireball
+--- Spell warlock_lightning
 Lightning = Spell:new{id='warlock_lightning'}
 
 Lightning.radius 				= 25

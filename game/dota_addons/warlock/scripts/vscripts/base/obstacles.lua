@@ -178,7 +178,20 @@ function Obstacle:onDestroy()
 end
 
 function Game:addObstacle(loc)
-	self.obstacles:add(Obstacle:new{location=loc})
+    local obstacle = Obstacle:new{ location=loc }
+	self.obstacles:add(obstacle)
+    return obstacle
+end
+
+function Game:addObstacleByDef(def)
+    local obstacle = Obstacle:new(def)
+    self.obstacles:add(obstacle)
+    return obstacle
+end
+
+function Game:removeObstacle(obstacle)
+    self.obstacles:remove(obstacle)
+    obstacle:destroy()
 end
 
 function Game:addRandomObstacles(count)
