@@ -39,7 +39,7 @@ function RockPillar:onCast(cast_info)
 
     -- Add a timer to destroy the obstacle
     GAME:addTask {
-        time = cast_info:attribute('duration'),
+        time = cast_info:attribute('duration') * cast_info.caster_actor.owner.mastery_factor[Player.MASTERY_DURATION],
         func = function()
             GAME:removeObstacle(obstacle)
 

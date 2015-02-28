@@ -377,9 +377,6 @@ function Game:EventPlayerReconnected(event)
 end
 
 function Game:EventNPCSpawned(event)
-	log("EventNPCSpawned")
-	PrintTable(event)
-	
 	local spawned_unit = EntIndexToHScript(event.entindex)
 	
 	-- Ignore non-hero units

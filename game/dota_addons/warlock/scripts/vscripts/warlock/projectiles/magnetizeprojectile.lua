@@ -23,29 +23,30 @@ end
 function MagnetizeProjectile:onCollision(coll_info, cc)
 	local actor = coll_info.actor
 
-    log("Coll")
-
 	if actor:instanceof(Pawn) then
 		-- Play a hit sound
 		if self.hit_sound then
 			actor.unit:EmitSound(self.hit_sound)
 		end
 
-        local sign = 1
+        local time = 0
+        local sign = 0
         if actor.owner:getAlliance(self.instigator.owner) == Player.ALLIANCE_ALLY then
             sign = -1
+            time = actor:getBuffDuration(self.duration, self.instigator)
+        else
+            sign = -1
+            time = actor:getDebuffDuration(self.duration, self.instigator)
         end
 
 		-- Add the grip modifier
 		GAME:addModifier(MagnetizeModifier:new {
 			pawn = actor,
-			time = actor:getDebuffDuration(self.duration, self.instigator),
+			time = time,
 			sign = sign,
 			end_sound = self.end_sound,
             native_mod = self.native_mod,
 		})
-
-        log("Added")
 	end
 
 	-- destroy

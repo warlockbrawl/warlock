@@ -240,8 +240,7 @@ function Game:EventTick(dt)
 end
 
 function Game:EventEntityKilled(event)
-	print('EventEntityKilled')
-	PrintTable(event)
+
 end
 
 -- Custom events
