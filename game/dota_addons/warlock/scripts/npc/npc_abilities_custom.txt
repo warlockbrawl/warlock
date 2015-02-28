@@ -869,7 +869,7 @@
 		"AbilityCooldown"				"16 15 14 13 12 11"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
 		"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
-		"MaxLevel"						"7"
+		"MaxLevel"						"6"
 		"AbilityManaCost"				"0"
 
 		"OnSpellStart"
