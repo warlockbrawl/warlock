@@ -1100,7 +1100,7 @@
 		"ItemPurchasable"		"1"
 		"SideShop"				"1"
 		"MaxUpgradeLevel"		"2"
-		"ItemBaseLevel"			"1"
+		"ItemBaseLevel"			"2"
 		"AbilitySpecial"
 		{
 			"01"
@@ -1212,7 +1212,7 @@
 		"ItemPurchasable"		"1"
 		"SideShop"				"1"
 		"MaxUpgradeLevel"		"5"
-		"ItemBaseLevel"			"1"
+		"ItemBaseLevel"			"2"
 		"AbilitySpecial"
 		{
 			"01"
@@ -1246,7 +1246,7 @@
 		"ItemPurchasable"		"1"
 		"SideShop"				"1"
 		"MaxUpgradeLevel"		"5"
-		"ItemBaseLevel"			"1"
+		"ItemBaseLevel"			"3"
 		"AbilitySpecial"
 		{
 			"01"
@@ -1280,7 +1280,7 @@
 		"ItemPurchasable"		"1"
 		"SideShop"				"1"
 		"MaxUpgradeLevel"		"5"
-		"ItemBaseLevel"			"1"
+		"ItemBaseLevel"			"4"
 		"AbilitySpecial"
 		{
 			"01"
@@ -1314,7 +1314,7 @@
 		"ItemPurchasable"		"1"
 		"SideShop"				"1"
 		"MaxUpgradeLevel"		"5"
-		"ItemBaseLevel"			"1"
+		"ItemBaseLevel"			"5"
 		"AbilitySpecial"
 		{
 			"01"
@@ -1369,12 +1369,12 @@
 			"04"
 			{
 				"var_type" "FIELD_FLOAT"
-				"hp_bonus" "100 200"
+				"debuff_factor" "0.25 0.30"
 			}
 			"05"
 			{
 				"var_type" "FIELD_FLOAT"
-				"debuff_factor" "0.25 0.30"
+				"hp_bonus" "100 200"
 			}
 
 		}
@@ -1413,12 +1413,12 @@
 			"02"
 			{
 				"var_type" "FIELD_FLOAT"
-				"hp_bonus" "100 200"
+				"debuff_factor" "0.25 0.30"
 			}
 			"03"
 			{
 				"var_type" "FIELD_FLOAT"
-				"debuff_factor" "0.25 0.30"
+				"hp_bonus" "100 200"
 			}
 
 		}
@@ -1446,7 +1446,7 @@
 		"ItemPurchasable"		"1"
 		"SideShop"				"1"
 		"MaxUpgradeLevel"		"2"
-		"ItemBaseLevel"			"1"
+		"ItemBaseLevel"			"2"
 		"AbilitySpecial"
 		{
 			"01"
@@ -1457,12 +1457,12 @@
 			"02"
 			{
 				"var_type" "FIELD_FLOAT"
-				"hp_bonus" "100 200"
+				"debuff_factor" "0.25 0.30"
 			}
 			"03"
 			{
 				"var_type" "FIELD_FLOAT"
-				"debuff_factor" "0.25 0.30"
+				"hp_bonus" "100 200"
 			}
 
 		}
@@ -1568,7 +1568,7 @@
 		"ItemPurchasable"		"1"
 		"SideShop"				"1"
 		"MaxUpgradeLevel"		"3"
-		"ItemBaseLevel"			"1"
+		"ItemBaseLevel"			"2"
 		"AbilitySpecial"
 		{
 			"01"
@@ -1602,7 +1602,7 @@
 		"ItemPurchasable"		"1"
 		"SideShop"				"1"
 		"MaxUpgradeLevel"		"3"
-		"ItemBaseLevel"			"1"
+		"ItemBaseLevel"			"3"
 		"AbilitySpecial"
 		{
 			"01"
@@ -1714,7 +1714,7 @@
 		"ItemPurchasable"		"1"
 		"SideShop"				"1"
 		"MaxUpgradeLevel"		"3"
-		"ItemBaseLevel"			"1"
+		"ItemBaseLevel"			"2"
 		"AbilitySpecial"
 		{
 			"01"
@@ -1748,7 +1748,7 @@
 		"ItemPurchasable"		"1"
 		"SideShop"				"1"
 		"MaxUpgradeLevel"		"3"
-		"ItemBaseLevel"			"1"
+		"ItemBaseLevel"			"3"
 		"AbilitySpecial"
 		{
 			"01"
@@ -1860,7 +1860,7 @@
 		"ItemPurchasable"		"1"
 		"SideShop"				"1"
 		"MaxUpgradeLevel"		"3"
-		"ItemBaseLevel"			"1"
+		"ItemBaseLevel"			"2"
 		"AbilitySpecial"
 		{
 			"01"
@@ -1894,7 +1894,7 @@
 		"ItemPurchasable"		"1"
 		"SideShop"				"1"
 		"MaxUpgradeLevel"		"3"
-		"ItemBaseLevel"			"1"
+		"ItemBaseLevel"			"3"
 		"AbilitySpecial"
 		{
 			"01"
@@ -2006,7 +2006,7 @@
 		"ItemPurchasable"		"1"
 		"SideShop"				"1"
 		"MaxUpgradeLevel"		"2"
-		"ItemBaseLevel"			"1"
+		"ItemBaseLevel"			"2"
 		"AbilitySpecial"
 		{
 			"01"

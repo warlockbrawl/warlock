@@ -20,7 +20,7 @@
 		"ItemPurchasable"		"1"
 		"SideShop"				"1"
 		"MaxUpgradeLevel"		"%(levels)s"
-		"ItemBaseLevel"			"1"
+		"ItemBaseLevel"			"%(level)s"
 		"AbilitySpecial"
 		{
 %(stats)s

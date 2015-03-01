@@ -374,7 +374,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"0"
 		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"29	26 23.5 21 19.5 18.5 17.5"
+		"AbilityCooldown"				"29.0 26.0 23.5 21.0 19.5 18.5 17.5"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
 		"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
 		"MaxLevel"						"7"
@@ -401,7 +401,7 @@
 			"02"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"cooldown2"			"29	26 23.5 21 19.5 18.5 17.5"
+				"cooldown2"				"29.0 26.0 23.5 21.0 19.5 18.5 17.5"
 			}
 			
 			"03"
