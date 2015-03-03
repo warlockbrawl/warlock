@@ -150,9 +150,9 @@ function Game:initGameRules()
 	GameRules:SetFirstBloodActive(false)
 
 	self.nativeMode = GameRules:GetGameModeEntity()
-
-	-- Disables recommended items...though I don't think it works
-	self.nativeMode:SetRecommendedItemsDisabled( true )
+    
+    -- Disable recommended items
+    self.nativeMode:SetHUDVisible(DOTA_HUD_VISIBILITY_SHOP_SUGGESTEDITEMS, false)
 
 	-- Set the cam distance
 	self.nativeMode:SetCameraDistanceOverride( Config.GAME_CAMERA_DISTANCE )
