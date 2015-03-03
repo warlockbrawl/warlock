@@ -45,6 +45,7 @@ Arena.TILE_MODELS = {
 	"models/tile02.vmdl",
 	"models/tile03.vmdl"
 }
+Arena.LAVA_MODIFIER = "modifier_phoenix_icarus_dive_burn"
 
 Arena.tile_model = Arena.TILE_MODELS[1]
 
@@ -75,10 +76,10 @@ function Arena:init()
 				local on_lava = not self:isLocationSafe(pawn.location)
 				if(pawn.on_lava and not on_lava) then
 					pawn.on_lava = false
-					pawn:removeNativeModifier("modifier_jakiro_dual_breath_burn")
+					pawn:removeNativeModifier(Arena.LAVA_MODIFIER)
 				elseif(not pawn.on_lava and on_lava) then
 					pawn.on_lava = true
-					pawn:addNativeModifier("modifier_jakiro_dual_breath_burn")
+					pawn:addNativeModifier(Arena.LAVA_MODIFIER)
 				end
 				
 				if pawn.enabled and on_lava then

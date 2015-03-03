@@ -274,7 +274,16 @@ function Pawn:receiveDamage(dmg_info)
 	if dmg_info.hit_normal then
 		-- Knockback
 		local kb_points = self.unit:GetMana()
-		local kb_amount = math.max(0, self.kb_factor) * dmg_info.amount * Config.KB_DMG_TO_VELOCITY * (1 + kb_points/1000) * (dmg_info.knockback_factor or 1)
+
+        local dmg_kb_factor = dmg_info.amount
+
+        -- Smaller slope when damage is over 100
+        if dmg_kb_factor > 100 then
+            dmg_kb_factor = math.sqrt(100 * dmg_kb_factor)
+        end
+
+		local kb_amount = math.max(0, self.kb_factor) * dmg_kb_factor * Config.KB_DMG_TO_VELOCITY * (1 + kb_points/1000) * (dmg_info.knockback_factor or 1)
+
 		self:applyMomentum(kb_amount*dmg_info.hit_normal*self.mass)
 	end
 

@@ -85,8 +85,8 @@ function Precache(context)
 	PrecacheResource("model", "models/tile01.vmdl", context)
 	PrecacheResource("model", "models/tile02.vmdl", context)
 	PrecacheResource("model", "models/tile03.vmdl", context)
-	PrecacheResource("particle_folder", "particles/units/heroes/hero_jakiro", context)
-	
+	PrecacheResource("particle", "particles/units/heroes/hero_phoenix/phoenix_icarus_dive_burn_debuff.vpcf", context)
+
 	-- Obstacles
 	PrecacheResource("model", "models/props_stone/stone_ruins001a.vmdl", context)
 	PrecacheResource("model", "models/props_stone/stone_ruins002a.vmdl", context)
@@ -145,7 +145,7 @@ function Precache(context)
     PrecacheResource("particle", "particles/econ/items/tinker/boots_of_travel/teleport_start_bots_dust.vpcf", context)
     PrecacheResource("particle", "particles/prototype_fx/item_linkens_buff_explosion.vpcf", context)
     PrecacheResource("particle", "particles/units/heroes/hero_treant/treant_livingarmor.vpcf", context)
-
+   
 	-- custom effects
 	PrecacheResource("particle_folder", "particles/fireball", context)
 	PrecacheResource("particle_folder", "particles/homing", context)
