@@ -44,10 +44,10 @@ function MagnetizeProjectile:onCollision(coll_info, cc)
         local sign = 0 -- Repel or attract
 
         if alliance == Player.ALLIANCE_ENEMY then
-            sign = -1
+            sign = 1
             time = actor:getDebuffDuration(self.duration, self.instigator)
         else
-            sign = 1
+            sign = -1
             time = actor:getBuffDuration(self.duration, self.instigator)
         end
 
