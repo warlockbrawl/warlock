@@ -87,8 +87,6 @@ function Obstacle:init(def)
 	-- Set the dummy's health
 	self.model_unit:SetMaxHealth(Obstacle.max_health)
 	self.model_unit:SetHealth(self.health)
-
-	self:_updateLocation()
 end
 
 function Obstacle.getRandomDefinition()
@@ -100,6 +98,11 @@ function Obstacle:_updateLocation()
 	if self.model_unit ~= nil then
 		self.model_unit:SetAbsOrigin(Vector(self.location.x, self.location.y, Obstacle.z))
 	end
+end
+
+-- TEMPORARY FIX: Update the location on every tick, else the Z won't get updated
+function Obstacle:onPreTick()
+	self:_updateLocation()
 end
 
 function Obstacle:receiveDamage(dmg_info)

@@ -92,6 +92,8 @@ end
 --- Spawn a default locust unit for this effect
 -- location needs to be initialized
 function Effect:spawnLocustProp()
+	log("Warning: spawnLocustProp called (deprecated")
+
 	self:removeLocust()
 
 	self.locust = Entities:CreateByClassname("prop_dynamic")

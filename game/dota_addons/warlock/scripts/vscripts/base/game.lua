@@ -11,7 +11,7 @@ function Game:init()
 	if Config.DEVELOPMENT then
 		display("DEVELOPMENT MODE")
 	end
-	
+
 	-- Seed RNG randomly
 	local time_txt = string.gsub(string.gsub(GetSystemTime(), ':', ''), '0','')
 	log("RNG Seed:" .. time_txt)
@@ -201,22 +201,14 @@ function Game:_Tick()
 
 	if GameRules:State_Get() >= DOTA_GAMERULES_STATE_POST_GAME then
 		self.in_progress = false
-		
-		-- Stats collection
-		if not self.stats_sent then
-			self.stats_sent = true
-
-			statcollection.addStats {
-				modID = '9152c24014a8f693a6a213f5f832438f'
-			}
-			
-			statcollection.sendStats { }
-		end
-		
 		return
 	end
+
+	-- New way to check if a game is paused instead of dt == 0 does not work yet
+	--if GameRules:IsGamePaused() then
 	
 	-- dt = 0 means the game is paused
+	-- Do nothing when game was paused
 	if dt == 0 then
 		return Config.GAME_TICK_RATE
 	end
