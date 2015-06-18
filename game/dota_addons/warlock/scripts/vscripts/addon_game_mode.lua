@@ -74,7 +74,6 @@ function Precache(context)
 	-- Misc
 	PrecacheResource("particle", "particles/msg_fx/msg_evade.vpcf", context)
 	PrecacheResource("model", "models/development/invisiblebox.vmdl", context)
-	PrecacheResource("particle", "particles/team_indicator.vpcf", context)
 	
 	
 	-- Hero
