@@ -15,14 +15,29 @@
 		</Panel>
 		<Panel id="ModeSelection">
       <Label text="Modes" id="ModesLabel" />
+      
 			<Panel class="FlowRight">
-				<Label id="TeamModeLabel" text="Team Mode:" />
+				<Label id="TeamModeLabel" class="ModeItemLabel" text="Team Mode:" />
 				<DropDown id="TeamModeDropDown" oninputsubmit="onTeamModeChanged()">
 					<Label id="TeamModeTeams" text="Teams" />
 					<Label id="TeamModeFFA" text="FFA" />
 					<Label id="TeamModeShuffle" text="Shuffle" />
 				</DropDown>
 			</Panel>
+      
+      <Panel class="FlowRight">
+        <Label id="ModeLabel" class="ModeItemLabel" text="Mode:" />
+        <DropDown id="ModeDropDown">
+          <Label id="ModeRounds" text="Rounds" />
+        </DropDown>
+      </Panel>
+
+      <Panel class="FlowRight">
+        <Label id="WinConditionLabel" class="ModeItemLabel" text="Win condition:" />
+        <RadioButton checked="checked" group="WinCondition" id="WinConditionScore" text="Score" />
+        <RadioButton group="WinCondition" id="WinConditionRounds" text="Rounds" />
+      </Panel>
+      
       <Button id="StartButton" class="ButtonBevel" onactivate="onStartGame()">
         <Label text="Start" />
       </Button>

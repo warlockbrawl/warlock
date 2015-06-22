@@ -79,6 +79,6 @@ function onTeamModeChanged() {
 
 function onStartGame() {
     if(isHost()) {
-        Game.SetRemainingSetupTime(0);
+        Game.SetRemainingSetupTime(80000);
     }
 }
