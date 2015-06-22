@@ -1,0 +1,25 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/warlockstyles.css" />
+    <include src="s2r://panorama/styles/dotastyles.vcss_c" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/warlock_player.js" />
+	</scripts>
+	<Panel class="Player">
+    <DOTAAvatarImage id="PlayerAvatar" />
+    <DOTAUserName id="PlayerName" />
+		<DropDown id="#TeamDropDown">
+			<Label text="Team 1" id="team1" />
+			<Label text="Team 2" id="team2" />
+			<Label text="Team 3" id="team3" />
+			<Label text="Team 4" id="team4" />
+			<Label text="Team 5" id="team5" />
+			<Label text="Team 6" id="team6" />
+			<Label text="Team 7" id="team7" />
+			<Label text="Team 8" id="team8" />
+			<Label text="Team 9" id="team9" />
+			<Label text="Team 10" id="team10" />
+		</DropDown>
+	</Panel>
+</root>

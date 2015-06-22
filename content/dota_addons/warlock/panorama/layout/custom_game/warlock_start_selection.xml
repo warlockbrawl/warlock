@@ -1,0 +1,31 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/warlockstyles.css" />
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/warlock_start_selection.js" />
+	</scripts>
+	<Panel class="SelectionRoot">
+		<Panel id="PlayerList">
+			<Panel id="PlayerListHeader">
+				<Label id="PlayerListHeaderName" text="Player Name" />
+				<Label id="PlayerListHeaderTeam" text="Team" />
+			</Panel>
+		</Panel>
+		<Panel id="ModeSelection">
+      <Label text="Modes" id="ModesLabel" />
+			<Panel class="FlowRight">
+				<Label id="TeamModeLabel" text="Team Mode:" />
+				<DropDown id="TeamModeDropDown" oninputsubmit="onTeamModeChanged()">
+					<Label id="TeamModeTeams" text="Teams" />
+					<Label id="TeamModeFFA" text="FFA" />
+					<Label id="TeamModeShuffle" text="Shuffle" />
+				</DropDown>
+			</Panel>
+      <Button id="StartButton" class="ButtonBevel" onactivate="onStartGame()">
+        <Label text="Start" />
+      </Button>
+		</Panel>
+	</Panel>
+</root>

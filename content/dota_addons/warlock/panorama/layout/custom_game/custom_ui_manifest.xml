@@ -1,0 +1,8 @@
+<root>
+	<script>
+		GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_HERO_SELECTION_TEAMS, false);
+	</script>
+	<Panel>
+		<CustomUIElement type="GameSetup" layoutfile="file://{resources}/layout/custom_game/warlock_start_selection.xml"/>
+	</Panel>
+</root>

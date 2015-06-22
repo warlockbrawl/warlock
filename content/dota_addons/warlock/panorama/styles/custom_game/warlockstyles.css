@@ -1,0 +1,116 @@
+.SelectionRoot
+{
+    horizontal-align: center;
+    vertical-align: center;
+    flow-children: right;
+    height: 80%;
+}
+
+.FlowRight
+{
+    flow-children: right;
+}
+
+.FlowDown
+{
+    flow-children: down;
+}
+
+/*----------------------
+
+       Player List
+
+----------------------*/
+
+@define PlayerNameWidth: 150px;
+@define PlayerAvatarSize: 40px;
+@define PlayerRowHeight: 40px;
+
+#PlayerList
+{
+	background-color: #333333;
+	flow-children: down;
+    padding: 10px 40px;
+    margin-right: 50px;
+}
+
+#PlayerListHeader
+{
+    flow-children: right;
+}
+
+#PlayerListHeaderName
+{
+    width: PlayerNameWidth;
+    margin-left: 60px;
+}
+
+#PlayerListHeaderTeam
+{
+    width: 200px;
+}
+
+.Player
+{
+	width: 500px;
+	color: #FF0000;
+	height: PlayerRowHeight;
+	flow-children: right;
+}
+
+#PlayerName
+{
+	font-size: 24px;
+	width: PlayerNameWidth;
+    vertical-align: middle;
+}
+
+#PlayerAvatar
+{
+    width: PlayerAvatarSize;
+    height: PlayerAvatarSize;
+    vertical-align: middle;
+    margin-right: 20px;
+}
+
+#TeamDropDown
+{
+}
+
+/*----------------------
+
+      Mode Selection
+
+-----------------------*/
+
+#ModeSelection
+{
+    background-color: #333333;
+	flow-children: down;
+    padding: 10px 40px;
+    width: 500px;
+}
+
+#ModesLabel
+{
+    font-size: 36px;
+    horizontal-align: center;
+}
+
+#TeamModeLabel
+{
+    font-size: 24px;
+    vertical-align: center;
+    margin-right: 20px;
+}
+
+#TeamModeDropDown
+{
+}
+
+#StartButton
+{
+    height: 40px;
+    horizontal-align: center;
+    margin-top: 30px;
+}
