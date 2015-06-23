@@ -99,7 +99,7 @@ function Game:EventStateChanged(event)
 					self.in_progress = true
 					self.task_start:cancel()
 					self.task_start = nil
-					self:startModeSelection()
+					self:selectModes()
 				else
 					log("Waiting for at least 1 player")
 				end

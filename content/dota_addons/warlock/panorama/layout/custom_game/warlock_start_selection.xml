@@ -14,8 +14,8 @@
 			</Panel>
 		</Panel>
 		<Panel id="ModeSelection">
-      <Label text="Modes" id="ModesLabel" />
-      
+			<Label text="Modes" id="ModesLabel" />
+
 			<Panel class="FlowRight">
 				<Label id="TeamModeLabel" class="ModeItemLabel" text="Team Mode:" />
 				<DropDown id="TeamModeDropDown" oninputsubmit="onTeamModeChanged()">
@@ -24,23 +24,30 @@
 					<Label id="TeamModeShuffle" text="Shuffle" />
 				</DropDown>
 			</Panel>
-      
-      <Panel class="FlowRight">
-        <Label id="ModeLabel" class="ModeItemLabel" text="Mode:" />
-        <DropDown id="ModeDropDown" oninputsubmit="onModeChanged()">
-          <Label id="ModeRounds" text="Rounds" />
-        </DropDown>
-      </Panel>
 
-      <Panel class="FlowRight">
-        <Label id="WinConditionLabel" class="ModeItemLabel" text="Win condition:" />
-        <RadioButton checked="checked" group="WinCondition" id="WinConditionScore" text="Score" />
-        <RadioButton group="WinCondition" id="WinConditionRounds" text="Rounds" />
-      </Panel>
-      
-      <Button id="StartButton" class="ButtonBevel" onactivate="onStartGame()">
-        <Label text="Start" />
-      </Button>
+			<Panel class="FlowRight">
+				<Label id="ModeLabel" class="ModeItemLabel" text="Mode:" />
+				<DropDown id="ModeDropDown" oninputsubmit="onModeChanged()">
+					<Label id="ModeRounds" text="Rounds" />
+				</DropDown>
+			</Panel>
+
+			<Panel class="FlowRight">
+				<Label id="WinConditionLabel" class="ModeItemLabel" text="Win condition:" />
+				<DropDown id="WinConditionDropDown" oninputsubmit="onWinConditionChanged()">
+					<Label id="WinConditionScore" text="Score" />
+					<Label id="WinConditionRounds" text="Rounds" />
+				</DropDown>
+			</Panel>
+			
+			<Panel class="FlowRight">
+				<Label id="WinCondMaxLabel" class="ModeItemLabel" text="Max Score:" />
+				<TextEntry id="WinCondMaxText" oninputsubmit="onWinCondMaxChanged()" text="11" />
+			</Panel>
+
+			<Button id="StartButton" class="ButtonBevel" onactivate="onStartGame()">
+				<Label text="Start" />
+			</Button>
 		</Panel>
 	</Panel>
 </root>
