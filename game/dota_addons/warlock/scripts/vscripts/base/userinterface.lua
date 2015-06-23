@@ -4,6 +4,12 @@ UserInterface = class()
 UserInterface.update_period = 2.0
 
 function UserInterface:init()
+	CustomGameEventManager:RegisterListener("set_team", Dynamic_Wrap(self, "onSetTeam"))
+	CustomGameEventManager:RegisterListener("set_team_mode", Dynamic_Wrap(self, "onSetTeamMode"))
+	CustomGameEventManager:RegisterListener("set_mode", Dynamic_Wrap(self, "onSetMode"))
+	CustomGameEventManager:RegisterListener("start_game", Dynamic_Wrap(self, "onStartGame"))
+	print("UI initialized")
+	
 	GAME:addTask {
 		id		='ui update',
 		period	= UserInterface.update_period,
@@ -11,6 +17,31 @@ function UserInterface:init()
 			self:update()
 		end
 	}
+end
+
+function UserInterface:onSetTeam(args)
+	-- TODO: Check if source player is the host
+	print("onSetTeam called")
+	DeepPrintTable(args)
+	local source_player_id = args.PlayerID;
+	local player_id = args.player_id
+	local new_team_id = args.new_team_id
+	PlayerResource:SetCustomTeamAssignment(player_id, new_team_id)
+end
+
+function UserInterface:onSetTeamMode(args)
+	print("onSetTeamMode called")
+	DeepPrintTable(args)
+end
+
+function UserInterface:onSetMode(args)
+	print("onSetMode called")
+	DeepPrintTable(args)
+end
+
+function UserInterface:onStartGame(args)
+	print("onStartGame called")
+	DeepPrintTable(args)
 end
 
 function UserInterface:update()
