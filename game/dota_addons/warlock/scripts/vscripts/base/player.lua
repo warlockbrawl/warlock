@@ -16,38 +16,6 @@ Player.STATS_DAMAGE			= 0
 Player.STATS_HEALING		= 1
 Player.STATS_MAX_INDEX		= 1
 
-Player.TEAM_COLOR = {
-	Vector(0xFF, 0x03, 0x03),
-	Vector(0x00, 0x42, 0xFF),
-	Vector(0x00, 0xFF, 0xFF),
-	Vector(0x54, 0x00, 0x81),
-	Vector(0xFF, 0xFC, 0x01),
-	Vector(0xFF, 0x88, 0x03),
-	Vector(0x20, 0xC0, 0x00),
-	Vector(0xE5, 0x5B, 0xB0),
-	Vector(0x95, 0x96, 0x97),
-	Vector(0x7E, 0xBF, 0xF1),
-	Vector(0x10, 0x62, 0x46),
-	Vector(0x4E, 0x2A, 0x04),
-	Vector(0x70, 0x70, 0x70) -- Observer
-}
-
-Player.COLOR_NAMES = {
-	"Red",
-	"Blue",
-	"Teal",
-	"Purple",
-	"Yellow",
-	"Orange",
-	"Green",
-	"Pink",
-	"Gray",
-	"Light Blue",
-	"Dark Green",
-	"Brown",
-	"Observer"
-}
-
 --- Create a player using the information
 -- from PreConnect event
 -- @param info Table received from PreConnect event.
@@ -134,10 +102,10 @@ function Player:EventJoinedTeam(info)
 	self.is_bot = info.is_bot
 	
 	-- Assign the ids
-	if not self.id and self.playerEntity then
+	if self.playerEntity then
 		local id = self.playerEntity:GetPlayerID()
 		if id ~= -1 then
-			log("Assigned ID in joined team")
+			log("Assigned ID in joined team: " .. tostring(id))
 			self.id = id
 			self.steamId = PlayerResource:GetSteamAccountID(self.id)
 
@@ -145,6 +113,8 @@ function Player:EventJoinedTeam(info)
 		else
 			err("playerEntity was not nil in EventJoinedTeam but id was -1")
 		end
+	else
+		err("playerEntity was nil in EventJoinedTeam")
 	end
 end
 
@@ -232,30 +202,31 @@ function Player:initTeam()
 	print("Player ID:", self.playerEntity:GetPlayerID())
 	print("Native Team:", self.playerEntity:GetTeam())
 	
-	log("Assigning new team")
-	if GAME.team_mode then
-		self:setTeam(GAME.team_mode:getTeamForNewPlayer(self))
-	else
-		self:setTeam(GAME.teams[0])
-	end
+	local team_id = PlayerResource:GetCustomTeamAssignment(self.id)
+	print("Assigning new team in initTeam", team_id, "for player with id", self.id)
+	self:setTeam(GAME.teams[team_id])
 end
 
 function Player:setTeam(new_team)
 	log("setTeam " .. tostring(new_team.id))
 	
-    -- Assign native custom team
-    --PlayerResource:SetCustomTeamAssignment(self.id, new_team.id)
+    -- Assign native custom team if it's changed
+	local native_team = PlayerResource:GetCustomTeamAssignment(self.id)
+	if native_team ~= new_team.id then
+		log("Reassigning native custom team")
+		PlayerResource:SetCustomTeamAssignment(self.id, new_team.id)
+	end
 
 	-- Remove from old team
 	if self.team then
 		self.team:playerLeft(self)
 	end
+	
+	if self.heroEntity then
+		self.heroEntity:SetTeam(new_team.id)
+	end
 
 	new_team:playerJoined(self)
-
-	if self.pawn and self.pawn.unit then
-		self.pawn:updateTeamColor()
-	end
 end
 
 function Player:getAlliance(other_player)
@@ -348,18 +319,7 @@ function Game:EventPlayerJoinedTeam(event)
 	
 	local p = self:getOrCreatePlayer(event.userid)
 
-	if not p.event_joined_called then
-		p.event_joined_called = true
-		
-		-- Set native team for players that already have a player entity here (ie. the host)
-		if p.playerEntity and p.playerEntity:GetTeam() ~= event.team then
-			p.playerEntity:SetTeam(event.team)
-		end
-		
-		p:EventJoinedTeam(event)
-	else
-		log("Ignoring join team, event_joined_called = true")
-	end
+	p:EventJoinedTeam(event)
 end
 
 function Game:EventPlayerReconnected(event)

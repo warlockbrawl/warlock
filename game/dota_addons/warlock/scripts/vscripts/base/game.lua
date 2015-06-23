@@ -112,6 +112,7 @@ function Game:start()
 	self.in_progress = true
 
 	display("Welcome to Warlock")
+	display("Created by Toraxxx, Adynathos, Zymoran")
 	
 	-- Assign teams
 	for _, player in pairs(GAME.players) do

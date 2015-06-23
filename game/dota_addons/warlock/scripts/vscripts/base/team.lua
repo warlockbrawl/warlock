@@ -1,5 +1,27 @@
 Team = class()
 
+Team.TEAM_COLOR = {
+	Vector(0xFF, 0xFF, 0xFF), -- 01 Unused
+	Vector(0xFF, 0xFF, 0xFF), -- 02 Unused
+	Vector(0xFF, 0x03, 0x03), -- 03 DOTA_TEAM_GOODGUYS (Used)
+	Vector(0x00, 0x42, 0xFF), -- 04 DOTA_TEAM_BADGUYS (Used)
+	Vector(0xFF, 0xFF, 0xFF), -- 05 DOTA_TEAM_NEUTRALS
+	Vector(0xFF, 0xFF, 0xFF), -- 06 DOTA_TEAM_NOTEAM
+	Vector(0x00, 0xFF, 0xFF), -- 07 DOTA_TEAM_CUSTOM_1 (Used)
+	Vector(0x54, 0x00, 0x81), -- 08 DOTA_TEAM_CUSTOM_2 (Used)
+	Vector(0xFF, 0xFC, 0x01), -- 09 DOTA_TEAM_CUSTOM_3 (Used)
+	Vector(0xFF, 0x88, 0x03), -- 10 DOTA_TEAM_CUSTOM_4 (Used)
+	Vector(0x20, 0xC0, 0x00), -- 11 DOTA_TEAM_CUSTOM_5 (Used)
+	Vector(0xE5, 0x5B, 0xB0), -- 12 DOTA_TEAM_CUSTOM_6 (Used)
+	Vector(0x95, 0x96, 0x97), -- 13 DOTA_TEAM_CUSTOM_7 (Used)
+	Vector(0x7E, 0xBF, 0xF1)  -- 14 DOTA_TEAM_CUSTOM_8 (Used)
+	-- Vector(0x10, 0x62, 0x46), -- 15 Unused
+	-- Vector(0x4E, 0x2A, 0x04)  -- 16 Unused
+	-- Vector(0x70, 0x70, 0x70)  -- 17 Unused
+}
+
+Team.TEAM_IDS = { 2, 3, 6, 7, 8, 9, 10, 11, 12, 13 }
+
 function Team:init(def)
 	self.id = def.id
 	self.size = 0
@@ -22,7 +44,7 @@ function Team:playerJoined(player)
 	self.size = self.size + 1
 	
 	-- Add player to team at lowest possible index
-	for i = 0, 10 do
+	for i = 0, DOTA_MAX_TEAM_PLAYERS - 1 do
 		if not self.players[i] then
 			player.team_player_index = i
 			self.players[i] = player
@@ -32,7 +54,7 @@ function Team:playerJoined(player)
 	
 	-- Add team to active teams if it wasnt active
 	if not self.active_team_id then
-		for i = 0, 11 do
+		for i = 0, DOTA_TEAM_COUNT - 1 do
 			if not GAME.active_teams[i] then
 				self.active_team_id = i
 				GAME.active_teams[i] = self
@@ -98,14 +120,19 @@ function Game:initTeams()
 	GAME.active_team_count = 0
 
 	-- Create the teams
-	for i = 0, 11 do
+	for i = 0, DOTA_TEAM_COUNT - 1 do
+		GameRules:SetCustomGameTeamMaxPlayers(i, DOTA_MAX_TEAM_PLAYERS)
+		SetTeamCustomHealthbarColor(i, Team.TEAM_COLOR[i+1][1], Team.TEAM_COLOR[i+1][2], Team.TEAM_COLOR[i+1][3])
+		
 		local team = Team:new {
 			id = i,
-			name = "Team " .. Player.COLOR_NAMES[i+1]
+			name = "Team " .. tostring(i)
 		}
 		
 		GAME.teams[team.id] = team
 	end
+	
+	log("Initialized Teams")
 end
 
 function Game:getAliveTeams()

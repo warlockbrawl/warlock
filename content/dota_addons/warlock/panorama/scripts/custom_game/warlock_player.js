@@ -1,11 +1,14 @@
 var g_PlayerId;
 var g_PlayerInfo;
 
+//Unassigned, GoodGuys, BadGuys, Custom1 - Custom8 (# = 13)
+var g_DotaTeamList = [ 5, 2, 3, 6, 7, 8, 9, 10, 11, 12, 13 ];
+
 function getUITeam() {
 	var root = $.GetContextPanel();
 	var dropDown = root.FindChildTraverse("#TeamDropDown");
 	var selectedText = dropDown.GetSelected().id;
-	return parseInt(selectedText.substring(4));
+	return g_DotaTeamList[parseInt(selectedText.substring(4))];
 }
 
 function sendSetTeam(playerId, newTeam) {

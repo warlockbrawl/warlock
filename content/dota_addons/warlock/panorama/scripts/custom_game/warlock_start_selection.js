@@ -17,14 +17,10 @@ function addNewPlayers() {
 	var playerListRoot = $("#PlayerList");
 	
 	var playerIds = Game.GetAllPlayerIDs();
-	
-	$.Msg(playerIds);
 
 	for(var playerId of playerIds) {
-		$.Msg("Player", playerId);
-		
 		if(g_PlayerIds.indexOf(playerId) == -1) {
-			$.Msg("New player");
+			$.Msg("New player with id ", playerId);
 			var playerNode = $.CreatePanel("Panel", playerListRoot, "");
 			playerNode.AddClass("Player");
 			playerNode.SetAttributeInt("player_id", playerId);

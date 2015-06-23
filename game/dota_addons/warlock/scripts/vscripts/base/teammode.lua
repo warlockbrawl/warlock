@@ -1,7 +1,7 @@
 TeamMode = class()
 
 --------------------------------------
--- Default (teams like in lobby)
+-- Default (teams like in setup)
 --------------------------------------
 
 function TeamMode:init(def)
@@ -11,15 +11,10 @@ function TeamMode:getDescription()
 	return "Teams (selected in lobby)"
 end
 
-function TeamMode:getTeamForNewPlayer(player)
-	if GAME.teams[0].size <= GAME.teams[1].size then
-		return GAME.teams[0]
-	else
-		return GAME.teams[1]
-	end
-end
-
 function TeamMode:onNewRound()
+	for player, _ in pairs(GAME.active_players) do
+		player:setTeam(player.team)
+	end
 end
 
 --------------------------------------
@@ -38,9 +33,13 @@ function TeamModeFFA:getDescription()
 	return "Free for all"
 end
 
-function TeamModeFFA:getTeamForNewPlayer(player)
-	self.ffa_next_team = self.ffa_next_team + 1
-	return GAME.teams[self.ffa_next_team - 1]
+function TeamModeFFA:onNewRound()
+	local i = 1
+	for player, _ in pairs(GAME.active_players) do
+		print("FFA:", i, Team.TEAM_IDS[i])
+		player:setTeam(GAME.teams[Team.TEAM_IDS[i]])
+		i = i + 1
+	end
 end
 
 --------------------------------------
@@ -110,7 +109,9 @@ function TeamModeShuffle:onNewRound()
 	for _, player in pairs(players) do
 		display(player.name .. " in team " .. tostring(team))
 		
-		player:setTeam(GAME.teams[team])
+		local team_id = Team.TEAM_IDS[team+1]
+		
+		player:setTeam(GAME.teams[team_id])
 		
 		team = team + 1
 		if team >= team_count then

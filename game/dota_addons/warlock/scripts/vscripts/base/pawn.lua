@@ -58,16 +58,6 @@ function Pawn:init(def)
 	add_start_item(self.unit, "item_warlock_scourge", 0, def.owner.id)
 
 	self:respawn()
-	
-	self:updateTeamColor()
-end
-
-function Pawn:updateTeamColor()
-    if self.owner and self.owner.team then
-        local color_id = 1 + math.min(11, math.max(0, self.owner.team.id))
-
-        self.unit:SetCustomHealthLabel("Team " .. Player.COLOR_NAMES[color_id], Player.TEAM_COLOR[color_id][1], Player.TEAM_COLOR[color_id][2], Player.TEAM_COLOR[color_id][3])
-    end
 end
 
 function Pawn:enable()

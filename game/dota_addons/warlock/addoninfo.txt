@@ -1,5 +1,14 @@
 "AddonInfo"
 {
-	maps			"warlock"
-	"IsPlayable"	"1"
+	"addontitle" "Warlock Brawl"
+	"addonversion" "1.00"
+	"addontagline" "Warlock Brawl"
+	"addonDescription" "Warlock Brawl is the official Dota 2 mod based on the Warcraft 3 map Warlock developed by its original creators. In short it's a physics based arena game."
+	"maps" "warlock"
+	"IsPlayable" "1"
+	"TeamCount" "10"
+	"warlock"
+	{
+		"MaxPlayers" "10"
+	}
 }
