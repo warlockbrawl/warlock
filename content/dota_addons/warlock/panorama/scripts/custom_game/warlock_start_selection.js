@@ -58,12 +58,17 @@ function enableTeamSelection(enable) {
 
 function setupSelection() {
     Game.SetAutoLaunchEnabled(false);
-    Game.SetRemainingSetupTime(40);
+    Game.SetRemainingSetupTime(100000);
     Game.SetTeamSelectionLocked(true);
 }
 
 setupSelection();
 playerSelectLoop();
+
+function sendSetTeamMode(newTeamMode) {
+	//TODO: convert team mode string to int
+	GameEvents.SendCustomGameEventToServer("set_team_mode", { "new_team_mode": newTeamMode });
+}
 
 /* -------------
 
@@ -73,12 +78,19 @@ playerSelectLoop();
 
 function onTeamModeChanged() {
     var dropDown = $("#TeamModeDropDown");
-    var teamSelectionEnabled = dropDown.GetSelected().text == "Teams";
+	var newTeamMode = dropDown.GetSelected().text
+    var teamSelectionEnabled = newTeamMode == "Teams";
     enableTeamSelection(teamSelectionEnabled);
+	
+	sendSetTeamMode(newTeamMode);
+}
+
+function onModeChanged() {
+
 }
 
 function onStartGame() {
     if(isHost()) {
-        Game.SetRemainingSetupTime(80000);
+        Game.SetRemainingSetupTime(0);
     }
 }

@@ -27,7 +27,7 @@
       
       <Panel class="FlowRight">
         <Label id="ModeLabel" class="ModeItemLabel" text="Mode:" />
-        <DropDown id="ModeDropDown">
+        <DropDown id="ModeDropDown" oninputsubmit="onModeChanged()">
           <Label id="ModeRounds" text="Rounds" />
         </DropDown>
       </Panel>

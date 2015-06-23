@@ -1,13 +1,33 @@
+var g_PlayerId;
+var g_PlayerInfo;
+
+function getUITeam() {
+	var root = $.GetContextPanel();
+	var dropDown = root.FindChildTraverse("#TeamDropDown");
+	var selectedText = dropDown.GetSelected().id;
+	return parseInt(selectedText.substring(4));
+}
+
+function sendSetTeam(playerId, newTeam) {
+	GameEvents.SendCustomGameEventToServer("set_team", { "player_id": playerId, "new_team_id": newTeam });
+	$.Msg("Sent set team for", playerId, "to", newTeam);
+}
+
+function onPlayerTeamChanged() {
+	var uiTeam = getUITeam();
+	sendSetTeam(g_PlayerId, uiTeam);
+}
+
 (function() {
 	var rootPanel = $.GetContextPanel();
 	
-	var playerId = rootPanel.GetAttributeInt("player_id", -1);
-	var playerInfo = Game.GetPlayerInfo(playerId);
-	if(!playerInfo) {
+	g_PlayerId = rootPanel.GetAttributeInt("player_id", -1);
+	g_PlayerInfo = Game.GetPlayerInfo(g_PlayerId);
+	if(!g_PlayerInfo) {
 		$.Msg("PlayerInfo was null");
 		return;
 	}
 		
-	$("#PlayerAvatar").steamid = playerInfo.player_steamid;
-	$("#PlayerName").steamid = playerInfo.player_steamid;
+	$("#PlayerAvatar").steamid = g_PlayerInfo.player_steamid;
+	$("#PlayerName").steamid = g_PlayerInfo.player_steamid;
 })();

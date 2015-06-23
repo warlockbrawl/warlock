@@ -9,7 +9,7 @@
 	<Panel class="Player">
     <DOTAAvatarImage id="PlayerAvatar" />
     <DOTAUserName id="PlayerName" />
-		<DropDown id="#TeamDropDown">
+		<DropDown id="#TeamDropDown" oninputsubmit="onPlayerTeamChanged()">
 			<Label text="Team 1" id="team1" />
 			<Label text="Team 2" id="team2" />
 			<Label text="Team 3" id="team3" />
