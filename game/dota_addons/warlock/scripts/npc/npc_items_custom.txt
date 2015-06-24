@@ -9,6 +9,7 @@
 		"ItemKillable"					"0"
 		"ItemSellable"					"0"
 		"ItemDroppable"					"0"
+		"ItemPurchasable"				"0"
 		
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -84,6 +85,7 @@
 		"ItemKillable"					"0"
 		"ItemSellable"					"0"
 		"ItemDroppable"					"0"
+		"ItemPurchasable"				"0"
 		
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -159,6 +161,7 @@
 		"ItemKillable"					"0"
 		"ItemSellable"					"0"
 		"ItemDroppable"					"0"
+		"ItemPurchasable"				"0"
 		
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -235,6 +238,7 @@
 		"ItemKillable"					"0"
 		"ItemSellable"					"0"
 		"ItemDroppable"					"0"
+		"ItemPurchasable"				"0"
 
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -1063,8 +1067,8 @@
 		"ItemShopTags"			"consumable"
 		"ItemQuality"			"consumable"
 		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemPurchasable"		"1"
-		"SideShop"				"1"
+		"ItemPurchasable"		"0"
+		"SideShop"				"0"
 		"MaxUpgradeLevel"		"2"
 		"ItemBaseLevel"			"1"
 		"AbilitySpecial"
@@ -1097,8 +1101,8 @@
 		"ItemShopTags"			"consumable"
 		"ItemQuality"			"consumable"
 		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemPurchasable"		"1"
-		"SideShop"				"1"
+		"ItemPurchasable"		"0"
+		"SideShop"				"0"
 		"MaxUpgradeLevel"		"2"
 		"ItemBaseLevel"			"2"
 		"AbilitySpecial"
@@ -1175,8 +1179,8 @@
 		"ItemShopTags"			"consumable"
 		"ItemQuality"			"consumable"
 		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemPurchasable"		"1"
-		"SideShop"				"1"
+		"ItemPurchasable"		"0"
+		"SideShop"				"0"
 		"MaxUpgradeLevel"		"5"
 		"ItemBaseLevel"			"1"
 		"AbilitySpecial"
@@ -1209,8 +1213,8 @@
 		"ItemShopTags"			"consumable"
 		"ItemQuality"			"consumable"
 		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemPurchasable"		"1"
-		"SideShop"				"1"
+		"ItemPurchasable"		"0"
+		"SideShop"				"0"
 		"MaxUpgradeLevel"		"5"
 		"ItemBaseLevel"			"2"
 		"AbilitySpecial"
@@ -1243,8 +1247,8 @@
 		"ItemShopTags"			"consumable"
 		"ItemQuality"			"consumable"
 		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemPurchasable"		"1"
-		"SideShop"				"1"
+		"ItemPurchasable"		"0"
+		"SideShop"				"0"
 		"MaxUpgradeLevel"		"5"
 		"ItemBaseLevel"			"3"
 		"AbilitySpecial"
@@ -1277,8 +1281,8 @@
 		"ItemShopTags"			"consumable"
 		"ItemQuality"			"consumable"
 		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemPurchasable"		"1"
-		"SideShop"				"1"
+		"ItemPurchasable"		"0"
+		"SideShop"				"0"
 		"MaxUpgradeLevel"		"5"
 		"ItemBaseLevel"			"4"
 		"AbilitySpecial"
@@ -1311,8 +1315,8 @@
 		"ItemShopTags"			"consumable"
 		"ItemQuality"			"consumable"
 		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemPurchasable"		"1"
-		"SideShop"				"1"
+		"ItemPurchasable"		"0"
+		"SideShop"				"0"
 		"MaxUpgradeLevel"		"5"
 		"ItemBaseLevel"			"5"
 		"AbilitySpecial"
@@ -1364,17 +1368,17 @@
 			"03"
 			{
 				"var_type" "FIELD_FLOAT"
-				"kb_reduction" "0.15 0.15"
+				"hp_bonus" "100 200"
 			}
 			"04"
 			{
 				"var_type" "FIELD_FLOAT"
-				"debuff_factor" "0.25 0.30"
+				"kb_reduction" "0.15 0.15"
 			}
 			"05"
 			{
 				"var_type" "FIELD_FLOAT"
-				"hp_bonus" "100 200"
+				"debuff_factor" "0.25 0.30"
 			}
 
 		}
@@ -1399,8 +1403,8 @@
 		"ItemShopTags"			"consumable"
 		"ItemQuality"			"consumable"
 		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemPurchasable"		"1"
-		"SideShop"				"1"
+		"ItemPurchasable"		"0"
+		"SideShop"				"0"
 		"MaxUpgradeLevel"		"2"
 		"ItemBaseLevel"			"1"
 		"AbilitySpecial"
@@ -1408,17 +1412,17 @@
 			"01"
 			{
 				"var_type" "FIELD_FLOAT"
-				"kb_reduction" "0.15 0.15"
+				"hp_bonus" "100 200"
 			}
 			"02"
 			{
 				"var_type" "FIELD_FLOAT"
-				"debuff_factor" "0.25 0.30"
+				"kb_reduction" "0.15 0.15"
 			}
 			"03"
 			{
 				"var_type" "FIELD_FLOAT"
-				"hp_bonus" "100 200"
+				"debuff_factor" "0.25 0.30"
 			}
 
 		}
@@ -1443,8 +1447,8 @@
 		"ItemShopTags"			"consumable"
 		"ItemQuality"			"consumable"
 		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemPurchasable"		"1"
-		"SideShop"				"1"
+		"ItemPurchasable"		"0"
+		"SideShop"				"0"
 		"MaxUpgradeLevel"		"2"
 		"ItemBaseLevel"			"2"
 		"AbilitySpecial"
@@ -1452,17 +1456,17 @@
 			"01"
 			{
 				"var_type" "FIELD_FLOAT"
-				"kb_reduction" "0.15 0.15"
+				"hp_bonus" "100 200"
 			}
 			"02"
 			{
 				"var_type" "FIELD_FLOAT"
-				"debuff_factor" "0.25 0.30"
+				"kb_reduction" "0.15 0.15"
 			}
 			"03"
 			{
 				"var_type" "FIELD_FLOAT"
-				"hp_bonus" "100 200"
+				"debuff_factor" "0.25 0.30"
 			}
 
 		}
@@ -1531,8 +1535,8 @@
 		"ItemShopTags"			"consumable"
 		"ItemQuality"			"consumable"
 		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemPurchasable"		"1"
-		"SideShop"				"1"
+		"ItemPurchasable"		"0"
+		"SideShop"				"0"
 		"MaxUpgradeLevel"		"3"
 		"ItemBaseLevel"			"1"
 		"AbilitySpecial"
@@ -1565,8 +1569,8 @@
 		"ItemShopTags"			"consumable"
 		"ItemQuality"			"consumable"
 		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemPurchasable"		"1"
-		"SideShop"				"1"
+		"ItemPurchasable"		"0"
+		"SideShop"				"0"
 		"MaxUpgradeLevel"		"3"
 		"ItemBaseLevel"			"2"
 		"AbilitySpecial"
@@ -1599,8 +1603,8 @@
 		"ItemShopTags"			"consumable"
 		"ItemQuality"			"consumable"
 		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemPurchasable"		"1"
-		"SideShop"				"1"
+		"ItemPurchasable"		"0"
+		"SideShop"				"0"
 		"MaxUpgradeLevel"		"3"
 		"ItemBaseLevel"			"3"
 		"AbilitySpecial"
@@ -1677,8 +1681,8 @@
 		"ItemShopTags"			"consumable"
 		"ItemQuality"			"consumable"
 		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemPurchasable"		"1"
-		"SideShop"				"1"
+		"ItemPurchasable"		"0"
+		"SideShop"				"0"
 		"MaxUpgradeLevel"		"3"
 		"ItemBaseLevel"			"1"
 		"AbilitySpecial"
@@ -1711,8 +1715,8 @@
 		"ItemShopTags"			"consumable"
 		"ItemQuality"			"consumable"
 		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemPurchasable"		"1"
-		"SideShop"				"1"
+		"ItemPurchasable"		"0"
+		"SideShop"				"0"
 		"MaxUpgradeLevel"		"3"
 		"ItemBaseLevel"			"2"
 		"AbilitySpecial"
@@ -1745,8 +1749,8 @@
 		"ItemShopTags"			"consumable"
 		"ItemQuality"			"consumable"
 		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemPurchasable"		"1"
-		"SideShop"				"1"
+		"ItemPurchasable"		"0"
+		"SideShop"				"0"
 		"MaxUpgradeLevel"		"3"
 		"ItemBaseLevel"			"3"
 		"AbilitySpecial"
@@ -1823,8 +1827,8 @@
 		"ItemShopTags"			"consumable"
 		"ItemQuality"			"consumable"
 		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemPurchasable"		"1"
-		"SideShop"				"1"
+		"ItemPurchasable"		"0"
+		"SideShop"				"0"
 		"MaxUpgradeLevel"		"3"
 		"ItemBaseLevel"			"1"
 		"AbilitySpecial"
@@ -1857,8 +1861,8 @@
 		"ItemShopTags"			"consumable"
 		"ItemQuality"			"consumable"
 		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemPurchasable"		"1"
-		"SideShop"				"1"
+		"ItemPurchasable"		"0"
+		"SideShop"				"0"
 		"MaxUpgradeLevel"		"3"
 		"ItemBaseLevel"			"2"
 		"AbilitySpecial"
@@ -1891,8 +1895,8 @@
 		"ItemShopTags"			"consumable"
 		"ItemQuality"			"consumable"
 		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemPurchasable"		"1"
-		"SideShop"				"1"
+		"ItemPurchasable"		"0"
+		"SideShop"				"0"
 		"MaxUpgradeLevel"		"3"
 		"ItemBaseLevel"			"3"
 		"AbilitySpecial"
@@ -1969,8 +1973,8 @@
 		"ItemShopTags"			"consumable"
 		"ItemQuality"			"consumable"
 		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemPurchasable"		"1"
-		"SideShop"				"1"
+		"ItemPurchasable"		"0"
+		"SideShop"				"0"
 		"MaxUpgradeLevel"		"2"
 		"ItemBaseLevel"			"1"
 		"AbilitySpecial"
@@ -2003,8 +2007,8 @@
 		"ItemShopTags"			"consumable"
 		"ItemQuality"			"consumable"
 		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemPurchasable"		"1"
-		"SideShop"				"1"
+		"ItemPurchasable"		"0"
+		"SideShop"				"0"
 		"MaxUpgradeLevel"		"2"
 		"ItemBaseLevel"			"2"
 		"AbilitySpecial"

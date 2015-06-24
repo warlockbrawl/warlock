@@ -6,26 +6,6 @@ function Game:initCommands()
 
 	self.commands = {}
 
-	self:registerCommand("set_mode", function(name, a, b)
-		local pl = Convars:GetCommandClient()
-		local player = GAME.players[pl:GetPlayerID()]
-		
-		-- Check if its the player selecting the mode
-		if player == GAME.mode_selecting_player and a and b then
-			GAME:setMode(tonumber(a), tonumber(b))
-		end
-	end)
-
-	self:registerCommand("select_mode", function()
-		local pl = Convars:GetCommandClient()
-		local player = GAME.players[pl:GetPlayerID()]
-		
-		-- Check if its the player selecting the mode
-		if player == GAME.mode_selecting_player then
-			GAME:selectModes()
-		end
-	end)
-
 	-- Development only commands
 	if Config.DEVELOPMENT then
 		self:registerCommand('f', function()
