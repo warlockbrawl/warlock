@@ -7,50 +7,78 @@
 		<include src="file://{resources}/scripts/custom_game/warlock_start_selection.js" />
 	</scripts>
 	<Panel class="SelectionRoot">
-		<Panel id="PlayerList">
-			<Panel id="PlayerListHeader">
-				<Label id="PlayerListHeaderName" text="Player Name" />
-				<Label id="PlayerListHeaderTeam" text="Team" />
-			</Panel>
-		</Panel>
-		<Panel id="ModeSelection">
-			<Label text="Modes" id="ModesLabel" />
-
-			<Panel class="FlowRight">
-				<Label id="TeamModeLabel" class="ModeItemLabel" text="Team Mode:" />
-				<DropDown id="TeamModeDropDown" oninputsubmit="onTeamModeChanged()">
-					<Label id="TeamModeTeams" text="Teams" />
-					<Label id="TeamModeFFA" text="FFA" />
-					<Label id="TeamModeShuffle" text="Shuffle" />
-				</DropDown>
-			</Panel>
-
-			<Panel class="FlowRight">
-				<Label id="ModeLabel" class="ModeItemLabel" text="Mode:" />
-				<DropDown id="ModeDropDown" oninputsubmit="onModeChanged()">
-					<Label id="ModeRounds" text="Rounds" />
-				</DropDown>
-			</Panel>
-
-			<Panel class="FlowRight">
-				<Label id="WinConditionLabel" class="ModeItemLabel" text="Win condition:" />
-				<DropDown id="WinConditionDropDown" oninputsubmit="onWinConditionChanged()">
-					<Label id="WinConditionScore" text="Score" />
-					<Label id="WinConditionRounds" text="Rounds" />
-				</DropDown>
+		<Panel class="SelectionPanel">
+			<Panel id="PlayerList" class="SelectionSubPanel">
+				<Label text="Players" class="SelectionPanelTitle" />
+			
+				<Panel id="PlayerListHeader">
+					<Label id="PlayerListHeaderName" text="Player Name" />
+					<Label id="PlayerListHeaderTeam" text="Team" />
+				</Panel>
 			</Panel>
 			
-			<Panel class="FlowRight">
-				<Label id="WinCondMaxLabel" class="ModeItemLabel" text="Max Score:" />
-				<TextEntry id="WinCondMaxText" text="11" />
+			<Panel class="SelectionSubPanel">
+				<Label text="Waiting for the host to start the game for up to one minute." id="HostLabel" />
+			</Panel>
+		</Panel>
+		<Panel id="OptionsList" class="SelectionPanel">
+			<Panel id="ModeSelection" class="SelectionSubPanel">
+				<Label text="Modes" class="SelectionPanelTitle" />
+
+				<Panel class="ModeItem">
+					<Label id="TeamModeLabel" class="ModeItemLabel" text="Team Mode:" />
+					<DropDown id="TeamModeDropDown" class="ModeItemValue" oninputsubmit="onDropDownValueChanged()">
+						<Label id="TeamModeShuffle" text="Shuffle" />
+						<Label id="TeamModeFFA" text="FFA" />
+						<Label id="TeamModeTeams" text="Teams" />
+					</DropDown>
+				</Panel>
+
+				<Panel class="ModeItem">
+					<Label id="ModeLabel" class="ModeItemLabel" text="Mode:" />
+					<DropDown id="ModeDropDown" class="ModeItemValue" oninputsubmit="onDropDownValueChanged()">
+						<Label id="ModeRounds" text="Rounds" />
+					</DropDown>
+				</Panel>
+
+				<Panel class="ModeItem">
+					<Label id="WinConditionLabel" class="ModeItemLabel" text="Win condition:" />
+					<DropDown id="WinConditionDropDown" class="ModeItemValue" oninputsubmit="onDropDownValueChanged()">
+						<Label id="WinConditionRounds" text="Rounds" />
+						<Label id="WinConditionScore" text="Score" />
+					</DropDown>
+				</Panel>
+				
+				<Panel class="ModeItem">
+					<Label id="WinCondMaxLabel" class="ModeItemLabel" text="Max Rounds/Score:" />
+					<TextEntry id="WinCondMaxText" class="ModeItemValue" text="11" />
+				</Panel>
 			</Panel>
 
-            <Panel class="FlowRight">
-              <Label class="ModeItemLabel" text="Start Gold:" />
-              <TextEntry id="StartGoldText" text="30" />
-            </Panel>
-          
-          
+			<Panel id="ConstantsSelection" class="SelectionSubPanel SelectionSubPanelMarginTop">
+				<Label text="Constants" class="SelectionPanelTitle" />
+				
+				<Panel class="ModeItem">
+					<Label class="ModeItemLabel" text="Round Gold:" />
+					<TextEntry id="RoundGoldText" class="ModeItemValue" text="10" />
+				</Panel>
+				
+				<Panel class="ModeItem">
+					<Label class="ModeItemLabel" text="Start Gold:" />
+					<TextEntry id="StartGoldText" class="ModeItemValue" text="30" />
+				</Panel>
+				
+				<Panel class="ModeItem">
+					<Label class="ModeItemLabel" text="Kill Gold:" />
+					<TextEntry id="KillGoldText" class="ModeItemValue" text="0" />
+				</Panel>
+				
+				<Panel class="ModeItem">
+					<Label class="ModeItemLabel" text="Win Gold:" />
+					<TextEntry id="WinGoldText" class="ModeItemValue" text="0" />
+				</Panel>
+			</Panel>
+			
 			<Button id="StartButton" class="ButtonBevel" onactivate="onStartGame()">
 				<Label text="Start" />
 			</Button>

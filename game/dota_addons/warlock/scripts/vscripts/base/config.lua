@@ -13,11 +13,6 @@ Config.GAME_Z 						= 120
 Config.GAME_ARENA_RADIUS 			= 5910
 Config.GAME_ARENA_RADIUS_SQ 		= Config.GAME_ARENA_RADIUS*Config.GAME_ARENA_RADIUS
 
-Config.CASH_REWARD_KILL 			= 0
-Config.CASH_REWARD_WIN_ROUND		= 0
-Config.CASH_EVERY_ROUND				= 10
-Config.CASH_ON_START				= 30
-
 Config.PAWN_HERO 					= 'npc_dota_hero_warlock' --'npc_dota_hero_invoker'
 Config.PAWN_MAX_LIFE 				= 1000
 Config.PAWN_MOVE_SPEED				= 210

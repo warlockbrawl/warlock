@@ -31,8 +31,8 @@ function Pawn:init(def)
 	self.walk_velocity = Vector(0, 0, 0)
 
 	-- Prepare unit
-	self.unit:SetMinimumGoldBounty(Config.CASH_REWARD_KILL)
-	self.unit:SetMaximumGoldBounty(Config.CASH_REWARD_KILL)
+	self.unit:SetMinimumGoldBounty(0)
+	self.unit:SetMaximumGoldBounty(0)
 
 	-- Set max level
 	for i = 1, Config.MAX_LEVEL do

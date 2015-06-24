@@ -3,7 +3,7 @@ var g_PlayerInfo;
 var g_PlayerTeam;
 
 //Unassigned, GoodGuys, BadGuys, Custom1 - Custom8 (# = 13)
-var g_DotaTeamList = [ 5, 2, 3, 6, 7, 8, 9, 10, 11, 12, 13 ];
+//var g_DotaTeamList = [ 5, 2, 3, 6, 7, 8, 9, 10, 11, 12, 13 ];
 
 function isHost() {
     var player = Game.GetLocalPlayerInfo();
@@ -20,7 +20,7 @@ function getUITeam() {
 	var root = $.GetContextPanel();
 	var dropDown = root.FindChildTraverse("#TeamDropDown");
 	var selectedText = dropDown.GetSelected().id;
-	return g_DotaTeamList[parseInt(selectedText.substring(4))];
+	return parseInt(selectedText.substring(4));
 }
 
 function setUITeam(teamId) {
@@ -35,12 +35,18 @@ function sendSetTeam(playerId, newTeam) {
 }
 
 function onPlayerTeamChanged() {
-	var uiTeam = getUITeam();
-	sendSetTeam(g_PlayerId, uiTeam);
+	if(isHost()) {
+		var uiTeam = getUITeam();
+		sendSetTeam(g_PlayerId, uiTeam);
+	}
 }
 
 (function() {
 	var rootPanel = $.GetContextPanel();
+	
+	if(!isHost()) {
+		rootPanel.FindChildTraverse("#TeamDropDown").enabled = false;
+	}
 	
 	g_PlayerId = rootPanel.GetAttributeInt("player_id", -1);
 	g_PlayerTeam = rootPanel.GetAttributeInt("player_team", -1);

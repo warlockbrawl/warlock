@@ -2,9 +2,34 @@ var g_PlayerPanels = [];
 var g_PlayerIds = [];
 var g_PlayerCount = 0;
 
-var g_TeamModes = [ "Teams", "FFA", "Shuffle" ];
+var g_TeamModes = [ "Shuffle", "FFA", "Teams" ];
 var g_Modes = [ "Rounds" ];
-var g_WinConditions = [ "Score", "Rounds" ];
+var g_WinConditions = [ "Rounds", "Score" ];
+
+var GAME_OPT_TEAM		= 1;
+var GAME_OPT_GAME		= 2;
+var GAME_OPT_WINC		= 3;
+var GAME_OPT_WINC_MAX	= 4;
+var GAME_OPT_NODRAWS	= 5;
+var GAME_OPT_TEAMSCORE	= 6;
+var GAME_OPT_CASH_ROUND = 7;
+var GAME_OPT_CASH_START = 8;
+var GAME_OPT_CASH_KILL  = 9;
+var GAME_OPT_CASH_WIN   = 10;
+
+var g_TextBoxIntIds = {
+	4: "#WinCondMaxText",
+	7: "#RoundGoldText",
+	8: "#StartGoldText",
+	9: "#KillGoldText",
+	10: "#WinGoldText"
+};
+
+var g_DropDownIntIds = {
+	1: { id: "#TeamModeDropDown", values: [ "Teams", "FFA", "Shuffle" ], valueIdPrefix: "TeamMode" },
+	2: { id: "#ModeDropDown", values: ["Rounds" ], valueIdPrefix: "Mode" },
+	3: { id: "#WinConditionDropDown", values: [ "Score", "Rounds" ], valueIdPrefix: "WinCondition" }
+};
 
 function isHost() {
     var player = Game.GetLocalPlayerInfo();
@@ -14,9 +39,11 @@ function isHost() {
         return false;
     }
 
-	$.Msg("isHost: ", player.player_has_host_privileges);
-	
     return player.player_has_host_privileges;
+}
+
+function isGameSetup() {
+	return Game.GameStateIsBefore(DOTA_GameState.DOTA_GAMERULES_STATE_HERO_SELECTION);
 }
 
 function addNewPlayers() {
@@ -47,31 +74,70 @@ function updatePlayers() {
 function playerSelectLoop() {
 	addNewPlayers();
 	updatePlayers();
-	$.Schedule(0.5, playerSelectLoop);
+	if(isGameSetup()) {
+		$.Schedule(0.5, playerSelectLoop);
+	}
 }
 
-//Enables or disables (grays out) the team selection on the players
-function enableTeamSelection(enable) {
+function enableAll(enable) {
+	for(var index in g_TextBoxIntIds) {
+		$(g_TextBoxIntIds[index]).enabled = enable;
+	}
+	
+	for(var index in g_DropDownIntIds) {
+		$(g_DropDownIntIds[index].id).enabled = enable;
+	}
+	
+	$("#StartButton").enabled = enable;
+}
+
+function sendSetGameOption(index, value) {
+	GameEvents.SendCustomGameEventToServer("set_game_option", { "index": index, "value": value });
+}
+
+/* -------------
+      
+   Send Functions
+   
+----------------- */
+
+function sendTextBoxIntValue(index, textBoxId) {
 	if(isHost()) {
-		for(var i = 0; i < g_PlayerCount; i++) {
-			var root = g_PlayerPanels[i];
-			var teamDropDown = root.FindChildTraverse("#TeamDropDown");
-			teamDropDown.enabled = enable;
+		index = parseInt(index);
+		var textBox = $(textBoxId);
+
+		var n = ~~textBox.text;
+		
+		if(String(n) === textBox.text && n >= 0) {
+			sendSetGameOption(index, n);
+		} else {
+			$.Msg("in sendTextBoxIntValue: was not a positive integer for index ", index, " and box id ", textBoxId);
 		}
 	}
 }
 
-function setupSelection() {
-    Game.SetAutoLaunchEnabled(false);
-    Game.SetRemainingSetupTime(40);
-    Game.SetTeamSelectionLocked(true);
+function sendDropDownIntValue(index, dropDownId) {
+	if(isHost()) {
+		index = parseInt(index);
+		var dropDown = $(dropDownId);
+		var newValue = dropDown.GetSelected().text;
+		var valueList = g_DropDownIntIds[index].values;
+		
+		sendSetGameOption(index, valueList.indexOf(newValue)+1);
+	}
 }
 
-setupSelection();
-playerSelectLoop();
+function sendDropDownValues() {
+	for(var index in g_DropDownIntIds) {
+		$.Msg("Index:", index);
+		sendDropDownIntValue(index, g_DropDownIntIds[index].id);
+	}
+}
 
-function sendSetGameOption(index, value) {
-	GameEvents.SendCustomGameEventToServer("set_game_option", { "index": index, "value": value });
+function sendTextBoxValues() {
+	for(var index in g_TextBoxIntIds) {
+		sendTextBoxIntValue(index, g_TextBoxIntIds[index]);
+	}
 }
 
 /* -------------
@@ -80,66 +146,100 @@ function sendSetGameOption(index, value) {
 
 ---------------*/
 
-function onTeamModeChanged() {
+//Send the text box values every few seconds
+function onSendTextBoxValues() {
 	if(isHost()) {
-		var dropDown = $("#TeamModeDropDown");
-		var newTeamMode = dropDown.GetSelected().text;
-
-		sendSetGameOption(1, g_TeamModes.indexOf(newTeamMode)+1);
-		
-		var teamSelectionEnabled = newTeamMode == "Teams";
-		enableTeamSelection(teamSelectionEnabled);
-	}
-}
-
-function onModeChanged() {
-	if(isHost()) {
-		var dropDown = $("#ModeDropDown");
-		var newMode = dropDown.GetSelected().text;
-		
-		sendSetGameOption(2, g_Modes.indexOf(newMode)+1);
-	}
-}
-
-function onWinConditionChanged() {
-	if(isHost()) {
-		var dropDown = $("#WinConditionDropDown");
-		var newWinCondition = dropDown.GetSelected().text;
-		
-		sendSetGameOption(3, g_WinConditions.indexOf(newWinCondition)+1);
-	}
-}
-
-function updateWinCondMax() {
-	if(isHost()) {
-		var winCondMaxText = $("#WinCondMaxText");
-
-		var n = ~~winCondMaxText.text;
-		
-		if(String(n) === winCondMaxText.text && n >= 0) {
-			sendSetGameOption(4, n);
-		} else {
-			$.Msg("Win Cond Max was not a positive integer", winCondMaxText.team);
+		$.Msg("Updating text box values");
+		sendTextBoxValues();
+		if(isGameSetup()) {
+			$.Schedule(1.0, onSendTextBoxValues);
 		}
 	}
 }
 
-function updateStartGold() {
-  if(isHost()) {
-      var startGoldText = $("#StartGoldText");
-      
-      var n = ~~startGoldText.text;
-    
-      if(String(n) === startGoldText.text && n >= 0) {
-          sendSetGameOption(7, n);
-      }
-  }
+function onDropDownValueChanged() {
+	//Send the values of all dropdowns to the server when it changes
+	if(isHost()) {
+		sendDropDownValues();
+	}
 }
+
+function onNetTableChanged(tableName, key, data) {
+	if(tableName != "wl_game_options") {
+		$.Msg("Selection UI received non game options net table update");
+		return;
+	}
+	
+	//Only update clients' values
+	if(isHost()) {
+		return;
+	}
+
+	var index = parseInt(key);
+	var value = data.value;
+	
+	//Set the text box text
+	if(index in g_TextBoxIntIds) {
+		var textBoxId = g_TextBoxIntIds[index];
+		var textBox = $(textBoxId);
+		textBox.text = value.toString();
+	}
+	
+	//Set the selected dropdown item
+	if(index in g_DropDownIntIds) {
+		var dropDownId = g_DropDownIntIds[index].id;
+		var dropDown = $(dropDownId);
+		var prefix = g_DropDownIntIds[index].valueIdPrefix;
+		var selectedId = prefix + g_DropDownIntIds[index].values[value-1];
+		$.Msg("Selected ID: ", selectedId);
+		dropDown.SetSelected(selectedId);
+	}
+}
+
+//Called when a team of any player changes
+/*function onTeamChanged() {
+	if(isHost()) {
+		return;
+	}
+	
+	//Update all selected dropdown items of the teams
+	for(var i = 0; i < g_PlayerCount; i++) {
+		var playerId = g_PlayerIds[i];
+		var panel = g_PlayerPanels[i];
+		var teamId = Game.GetPlayerInfo(playerId).team;
+		
+		panel.FindChildTraverse("#TeamDropDown").SetSelected("team" + teamId.toString());
+	}
+}*/
 
 function onStartGame() {
     if(isHost()) {
-		updateWinCondMax(); //Update it manually before starting since it only updates on submits
-        updateStartGold();
+		sendTextBoxValues(); //Send the text box's values before the game started
         Game.SetRemainingSetupTime(0);
     }
 }
+
+function setupSelection() {
+	//GameEvents.Subscribe("dota_team_player_list_changed", onTeamChanged);
+	CustomNetTables.SubscribeNetTableListener("wl_game_options", onNetTableChanged);
+    Game.SetAutoLaunchEnabled(false);
+    Game.SetRemainingSetupTime(60);
+    Game.SetTeamSelectionLocked(true);
+	
+	var host = isHost();
+	$.Msg("Start host: ", host);
+	if(host) {
+		$("#HostLabel").text = "You are the host!\n\nChoose the settings and start the game within one minute.";
+		
+		onSendTextBoxValues();
+	} else {
+		enableAll(false);
+	}
+	
+	playerSelectLoop();
+}
+
+(function() {
+	$.Msg("Start host: started");
+	$.Schedule(1.0, setupSelection);
+})();

@@ -18,6 +18,12 @@ function Mode:init(def)
 		max_score = 5,
 		use_team_score = false
 	}
+
+    -- Set cash constants
+    self.cash_every_round = def.cash_every_round
+    self.cash_on_start = def.cash_on_start
+    self.cash_per_kill = def.cash_per_kill
+    self.cash_per_win = def.cash_per_win
 end
 
 function Mode:getDescription()
@@ -26,7 +32,7 @@ end
 
 function Mode:onStart()
 	for id, player in pairs(GAME.players) do
-		player:setCash(Config.CASH_ON_START)
+		player:setCash(self.cash_on_start)
 	end
 	
 	self:prepareForRound()
@@ -202,7 +208,7 @@ function Mode:onRoundWon(winner_team)
 
 		-- rewards for winning
 		for _, player in pairs(winner_team.players) do
-			player:addCash(Config.CASH_REWARD_WIN_ROUND)
+			player:addCash(self.cash_per_win)
 		end
 	else
 		display('Draw')
@@ -215,7 +221,7 @@ function Mode:onRoundEnd()
 
 	-- Rewards for ending the round
 	for id, player in pairs(GAME.players) do
-		player:addCash(Config.CASH_EVERY_ROUND)
+		player:addCash(self.cash_every_round)
 	end
 
 	-- Check the win condition if the game is over
@@ -237,7 +243,7 @@ function Mode:onKill(event)
 		GAME:addTask{
 			time = 1,
 			func = function()
-				player_to_reward:addCash(Config.CASH_REWARD_KILL)
+				player_to_reward:addCash(self.cash_per_kill)
 			end
 		}
 	end

@@ -16,6 +16,19 @@
     flow-children: down;
 }
 
+#HostLabel
+{
+	width: 500px;
+	text-align: center;
+	color: #FF0000;
+	font-size: 22px;
+	padding: 0px;
+	margin-top: 22px;
+	padding: 10px;
+	margin-bottom: 20px;
+	border-top: 2px solid black;
+}
+
 /*----------------------
 
        Player List
@@ -26,12 +39,33 @@
 @define PlayerAvatarSize: 40px;
 @define PlayerRowHeight: 40px;
 
-#PlayerList
+.SelectionPanel
 {
-	background-color: #333333;
 	flow-children: down;
-    padding: 10px 40px;
-    margin-right: 50px;
+    padding: 10px 50px;
+    margin-right: 20px;
+	background-color: rgba(51, 51, 51, 245);
+}
+
+.SelectionSubPanel
+{
+	flow-children: down;
+}
+
+.SelectionSubPanelMarginTop
+{
+	margin-top: 20px;
+}
+
+.SelectionPanelTitle
+{
+	color: white;
+	font-size: 40px;
+	font-weight: Bold;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	horizontal-align: center;
+	vertical-align: center;
 }
 
 #PlayerListHeader
@@ -79,25 +113,24 @@
 
 -----------------------*/
 
-#ModeSelection
+.ModeItem
 {
-    background-color: #333333;
-	flow-children: down;
-    padding: 10px 40px;
-    width: 500px;
-}
-
-#ModesLabel
-{
-    font-size: 36px;
-    horizontal-align: center;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	flow-children: right;
 }
 
 .ModeItemLabel
 {
     font-size: 24px;
+	width: 150px;
     vertical-align: center;
     margin-right: 20px;
+}
+
+.ModeItemValue
+{
+	width: 300px;
 }
 
 #StartButton
