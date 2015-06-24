@@ -110,7 +110,7 @@ function onWinConditionChanged() {
 	}
 }
 
-function onWinCondMaxChanged() {
+function updateWinCondMax() {
 	if(isHost()) {
 		var winCondMaxText = $("#WinCondMaxText");
 
@@ -124,9 +124,22 @@ function onWinCondMaxChanged() {
 	}
 }
 
+function updateStartGold() {
+  if(isHost()) {
+      var startGoldText = $("#StartGoldText");
+      
+      var n = ~~startGoldText.text;
+    
+      if(String(n) === startGoldText.text && n >= 0) {
+          sendSetGameOption(7, n);
+      }
+  }
+}
+
 function onStartGame() {
     if(isHost()) {
-		onWinCondMaxChanged(); //Update it manually before starting since it only updates on submits
+		updateWinCondMax(); //Update it manually before starting since it only updates on submits
+        updateStartGold();
         Game.SetRemainingSetupTime(0);
     }
 }

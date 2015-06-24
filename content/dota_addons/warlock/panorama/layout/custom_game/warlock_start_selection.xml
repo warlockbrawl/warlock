@@ -42,9 +42,15 @@
 			
 			<Panel class="FlowRight">
 				<Label id="WinCondMaxLabel" class="ModeItemLabel" text="Max Score:" />
-				<TextEntry id="WinCondMaxText" oninputsubmit="onWinCondMaxChanged()" text="11" />
+				<TextEntry id="WinCondMaxText" text="11" />
 			</Panel>
 
+            <Panel class="FlowRight">
+              <Label class="ModeItemLabel" text="Start Gold:" />
+              <TextEntry id="StartGoldText" text="30" />
+            </Panel>
+          
+          
 			<Button id="StartButton" class="ButtonBevel" onactivate="onStartGame()">
 				<Label text="Start" />
 			</Button>
