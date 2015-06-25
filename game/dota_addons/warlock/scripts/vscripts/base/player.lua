@@ -60,6 +60,24 @@ function Player:EventConnect(info)
 		return
 	end
 	
+	-- Set index and userid (userid changes with reconnects)
+	self.index = info.index
+	self.userid = info.userid
+	
+	-- add to the permanent player table
+	GAME.playersByUserid[self.userid] = self
+	GAME.playersByIndex[self.index] = self
+
+	-- Assign the ids
+	local id = self.playerEntity:GetPlayerID()
+	if id ~= -1 then
+		log("Assigned ID in connect")
+		self.id = id
+		self.steamId = PlayerResource:GetSteamAccountID(self.id)
+
+		GAME.players[self.id] = self
+	end
+	
 	-- Reconnect, set in EventReconnect
 	if self.reconnect then
 		self.reconnect = false
@@ -72,23 +90,6 @@ function Player:EventConnect(info)
 		GAME.active_players[self] = true
 		
 		log("Player " .. self.name .. " reconnected fully.")
-	else
-		self.index = info.index
-		self.userid = info.userid
-		
-		-- add to the permanent player table
-		GAME.playersByUserid[self.userid] = self
-		GAME.playersByIndex[self.index] = self
-		
-		-- Assign the ids
-		local id = self.playerEntity:GetPlayerID()
-		if id ~= -1 then
-			log("Assigned ID in connect")
-			self.id = id
-			self.steamId = PlayerResource:GetSteamAccountID(self.id)
-
-			GAME.players[self.id] = self
-		end
 	end
 end
 
