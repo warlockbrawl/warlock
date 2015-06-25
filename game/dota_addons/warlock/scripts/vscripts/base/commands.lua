@@ -7,10 +7,13 @@ function Game:initCommands()
 	self.commands = {}
 
     self:registerCommand("actorlist", function()
+        local total_actors = 0
         for actor, _ in pairs(GAME.actors) do
             print(actor.name)
+            total_actors = total_actors + 1
         end
-        print("Actor count:", ActorCount)
+        print("Total actors:", total_actors)
+        print("Actor counter:", ActorCount)
     end)
 
 	-- Development only commands

@@ -60,6 +60,7 @@ function Obstacle:init(def)
 	def.owner 	= def.owner or Obstacle.owner
 	def.mass	= def.mass or Obstacle.mass
 	def.location.z = Config.GAME_Z
+    def.name = "Obstacle"
 	
 	local obstacle_def = def.obstacle_def or Obstacle.getRandomDefinition()
 
