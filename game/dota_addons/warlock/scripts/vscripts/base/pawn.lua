@@ -61,15 +61,17 @@ function Pawn:init(def)
 end
 
 function Pawn:enable()
-	Pawn.super.enable(self)
-
-	GAME.pawns:add(self)
+	if not self.enabled then
+        Pawn.super.enable(self)
+	    GAME.pawns:add(self)
+    end
 end
 
 function Pawn:disable()
-	Pawn.super.disable(self)
-
-	GAME.pawns:remove(self)
+    if self.enabled then
+	    Pawn.super.disable(self)
+	    GAME.pawns:remove(self)
+    end
 end
 
 function Pawn:applyStats()

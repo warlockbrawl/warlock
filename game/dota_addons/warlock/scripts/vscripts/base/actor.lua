@@ -38,13 +38,17 @@ function Actor:init(def)
 end
 
 function Actor:enable()
-	self.enabled = true
-	GAME:_addActor(self)
+    if not self.enabled then
+	    self.enabled = true
+	    GAME:_addActor(self)
+    end
 end
 
 function Actor:disable()
-	self.enabled = false
-	GAME:_removeActor(self)
+    if self.enabled then
+	    self.enabled = false
+	    GAME:_removeActor(self)
+    end
 end
 
 function Actor:addCollisionComponent(cc_def)

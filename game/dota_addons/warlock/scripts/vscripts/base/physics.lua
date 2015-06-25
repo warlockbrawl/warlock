@@ -261,7 +261,6 @@ function Game:_physFindCollisions(dt)
 	-- CCs which are considered for collision in this area
 	local ccs_here = Set:new()
 	local cc_heap = self.phys_cc_extent_heap
-	local coll_heap = self.phys_collisions
 
 	while not cc_heap:empty() do
 		local x, cc = cc_heap:pop()
