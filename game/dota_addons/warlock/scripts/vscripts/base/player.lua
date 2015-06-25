@@ -260,7 +260,7 @@ function Player:isAllied(other_player)
 end
 
 function Player:isAlive()
-	return self.pawn and self.pawn.enabled
+	return self.pawn ~= nil and self.pawn.enabled
 end
 
 function Player:getCash(reliable)
@@ -332,12 +332,6 @@ function Game:EventPlayerJoinedTeam(event)
     local p = self:getOrCreatePlayer(event.userid)
 
     if event.disconnect == 1 then
-        -- Remove from team if any
-        if p and p.team then
-            p.team:playerLeft(p)
-            log("Removed from old team")
-        end
-
         log("Not calling EventJoinedTeam because disconnect was set")
         return
     end
