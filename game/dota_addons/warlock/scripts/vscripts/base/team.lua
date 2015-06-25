@@ -66,6 +66,10 @@ function Team:playerJoined(player)
 	end
 	
 	player.team = self
+
+    -- Set the player's color
+    local color = Team.TEAM_COLOR[self.id+1]
+    PlayerResource:SetCustomPlayerColor(player.id, color[1], color[2], color[3])
 end
 
 function Team:playerLeft(player)
