@@ -317,8 +317,8 @@ function Game:EventPlayerJoinedTeam(event)
 	log("EventPlayerJoinedTeam")
 	PrintTable(event)
 	
-    if event.disconnect then
-        log("Ignoring because disconenct was set")
+    if event.disconnect == 1 then
+        log("Ignoring because disconnect was set")
         return
     end
 
