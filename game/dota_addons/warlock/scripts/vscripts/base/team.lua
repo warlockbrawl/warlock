@@ -80,9 +80,20 @@ function Team:playerLeft(player)
 	
 	-- Remove team from active teams if its empty
 	if self.size == 0 then
-		GAME.active_teams[self.active_team_id] = nil
+		local a = self.active_team_id
+        
+        GAME.active_teams[self.active_team_id] = nil
 		self.active_team_id = nil
 		GAME.active_team_count = GAME.active_team_count - 1
+
+        -- Move up teams after this one
+        for i = a+1, DOTA_TEAM_COUNT - 1 do
+            if GAME.active_teams[i] then
+                GAME.active_teams[i-1] = GAME.active_teams[i]
+                GAME.active_teams[i].active_team_id = i-1
+                GAME.active_teams[i] = nil
+            end
+        end
 	end
 	
 	player.team = nil
