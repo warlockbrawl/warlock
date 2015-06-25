@@ -160,7 +160,7 @@ function Player:HeroSpawned(hero)
 		self.pawn:die{}
 	end
 
-    -- Remove staff
+    -- Remove staff and lantern
     local child= hero:FirstMoveChild()
     while child ~= nil do
         if child:GetClassname() == "dota_item_wearable" then

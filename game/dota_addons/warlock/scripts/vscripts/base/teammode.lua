@@ -36,8 +36,8 @@ end
 function TeamModeFFA:onNewRound()
 	local i = 1
 	for player, _ in pairs(GAME.active_players) do
-		print("FFA:", i, Team.TEAM_IDS[i])
-		player:setTeam(GAME.teams[Team.TEAM_IDS[i]])
+		print("FFA:", i-1)
+		player:setTeam(GAME.teams[i-1])
 		i = i + 1
 	end
 end
@@ -108,10 +108,8 @@ function TeamModeShuffle:onNewRound()
 	local team = 0
 	for _, player in pairs(players) do
 		display(player.name .. " in team " .. tostring(team))
-		
-		local team_id = Team.TEAM_IDS[team+1]
-		
-		player:setTeam(GAME.teams[team_id])
+
+		player:setTeam(GAME.teams[team])
 		
 		team = team + 1
 		if team >= team_count then
