@@ -329,12 +329,18 @@ function Game:EventPlayerJoinedTeam(event)
 	log("EventPlayerJoinedTeam")
 	PrintTable(event)
 	
+    local p = self:getOrCreatePlayer(event.userid)
+
     if event.disconnect == 1 then
-        log("Ignoring because disconnect was set")
+        -- Remove from team if any
+        if p and p.team then
+            p.team:playerLeft(p)
+            log("Removed from old team")
+        end
+
+        log("Not calling EventJoinedTeam because disconnect was set")
         return
     end
-
-	local p = self:getOrCreatePlayer(event.userid)
 
 	p:EventJoinedTeam(event)
 end
