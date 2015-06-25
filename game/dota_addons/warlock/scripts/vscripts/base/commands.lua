@@ -6,6 +6,13 @@ function Game:initCommands()
 
 	self.commands = {}
 
+    self:registerCommand("actorlist", function()
+        for actor, _ in pairs(GAME.actors) do
+            print(actor.name)
+        end
+        print("Actor count:", ActorCount)
+    end)
+
 	-- Development only commands
 	if Config.DEVELOPMENT then
 		self:registerCommand('f', function()
