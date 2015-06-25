@@ -20,10 +20,5 @@
 
 "CustomEvents"
 {
-	"w_update_scoreboard"
-	{
-		"id"		"byte"
-		"points"   	"short"
-		"dmg"		"float"	
-	}
+
 }
