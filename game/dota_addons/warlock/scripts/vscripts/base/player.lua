@@ -317,6 +317,11 @@ function Game:EventPlayerJoinedTeam(event)
 	log("EventPlayerJoinedTeam")
 	PrintTable(event)
 	
+    if event.disconnect then
+        log("Ignoring because disconenct was set")
+        return
+    end
+
 	local p = self:getOrCreatePlayer(event.userid)
 
 	p:EventJoinedTeam(event)
