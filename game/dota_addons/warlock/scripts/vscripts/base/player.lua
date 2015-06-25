@@ -159,6 +159,18 @@ function Player:HeroSpawned(hero)
 	if GAME.combat then
 		self.pawn:die{}
 	end
+
+    -- Remove staff
+    local child= hero:FirstMoveChild()
+    while child ~= nil do
+        if child:GetClassname() == "dota_item_wearable" then
+            if string.match(child:GetModelName():lower(), "staff") or string.match(child:GetModelName():lower(), "lantern") then
+                child:RemoveSelf()
+            end
+        end
+
+        child = child:NextMovePeer()
+    end
 end
 
 function Player:HeroRemoved()
