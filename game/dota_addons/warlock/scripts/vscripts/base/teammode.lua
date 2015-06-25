@@ -36,8 +36,8 @@ end
 function TeamModeFFA:onNewRound()
 	local i = 1
 	for player, _ in pairs(GAME.active_players) do
-		print("FFA:", i-1)
-		player:setTeam(GAME.teams[i-1])
+		print("FFA:", i, Team.TEAM_IDS[i])
+		player:setTeam(GAME.teams[Team.TEAM_IDS[i]])
 		i = i + 1
 	end
 end
@@ -108,8 +108,10 @@ function TeamModeShuffle:onNewRound()
 	local team = 0
 	for _, player in pairs(players) do
 		display(player.name .. " in team " .. tostring(team))
-
-		player:setTeam(GAME.teams[team])
+		
+		local team_id = Team.TEAM_IDS[team+1]
+		
+		player:setTeam(GAME.teams[team_id])
 		
 		team = team + 1
 		if team >= team_count then
@@ -118,7 +120,7 @@ function TeamModeShuffle:onNewRound()
 	end
 	
 	-- Reset team scores
-	for i = 0, team_count - 1 do
+	for i = 0, DOTA_TEAM_COUNT - 1 do
 		GAME.teams[i].score = 0
 	end
 end
