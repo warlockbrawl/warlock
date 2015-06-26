@@ -16,6 +16,17 @@ function Game:initCommands()
         print("Actor counter:", ActorCount)
     end)
 
+    self:registerCommand("tasklist", function()
+        local tasks = self.taskSet:toList()
+
+        for idx, task in pairs(tasks) do
+            print("Task", idx, ":", task.id)
+        end
+
+        print("Task heap:", self.taskHeap:getSize())
+        print("Task set:", #tasks)
+    end)
+
 	-- Development only commands
 	if Config.DEVELOPMENT then
 		self:registerCommand('f', function()

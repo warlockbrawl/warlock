@@ -8,7 +8,7 @@
 	</scripts>
 	<Panel>
 		<Panel class="ScoreRow">
-		    <DOTAAvatarImage id="ScoreAvatar" class="ScoreColumn" />
+		    <DOTAAvatarImage id="ScoreAvatar" class="ScoreAvatarColumn" />
 			<DOTAUserName id="ScoreName" class="ScoreColumn" />
 			<Label id="ScoreKills" class="ScoreColumn" text="0" />
 			<Label id="ScoreDeaths" class="ScoreColumn" text="0" />

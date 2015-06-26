@@ -40,7 +40,7 @@
 
 		"StatusHealth"				"981"									// Base health.
 		"StatusHealthRegen"			"4.97"									// Health regeneration rate.
-		"StatusMana"				"4988"									// Base mana.
+		"StatusMana"				"4987"									// Base mana.
 		"StatusManaRegen"			"-0.04"										// Mana regeneration rate.
 
 		"VisionNighttimeRange"		"1800"									// Range of vision at night time.

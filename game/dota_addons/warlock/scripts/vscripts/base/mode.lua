@@ -2,7 +2,7 @@
 -- @author Krzysztof Lis (Adynathos)
 
 Mode = class()
-Mode.SHOP_TIME = 20
+Mode.SHOP_TIME = 30
 Mode.OBSTACLE_COUNT_MIN = 2
 Mode.OBSTACLE_COUNT_MAX = 8
 

@@ -45,7 +45,8 @@ function Game:init()
 	self:initScriptedCashRefresh()
 	self:initTeams()
 	self:initArena()
-	self:initUserInterface()
+	self:initGameSetup()
+    self:initScoreboard()
 
 	-- Wait for the game to start
 	self.in_progress = false

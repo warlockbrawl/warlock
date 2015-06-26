@@ -37,8 +37,8 @@ end
 function Set:toList()
 	local elements = {}
 
-	for elem in pairs(self) do
-		table.insert(elem)
+	for elem, _ in pairs(self) do
+		table.insert(elements, elem)
 	end
 
 	return elements

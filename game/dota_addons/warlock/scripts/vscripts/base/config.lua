@@ -5,7 +5,6 @@
 Config = {}
 
 Config.GAME_START_TIME				= 10
-Config.MODE_PICK_TIME				= 30
 
 Config.GAME_TICK_RATE 				= 0.035
 Config.GAME_CAMERA_DISTANCE 		= 1100

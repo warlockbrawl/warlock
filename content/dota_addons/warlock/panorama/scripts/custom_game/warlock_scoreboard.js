@@ -2,6 +2,8 @@ var g_PlayerPanels = [];
 var g_PlayerIds = [];
 var g_PlayerCount = 0;
 
+var g_ScoreBoard;
+
 function addNewPlayers() {
 	var playerListRoot = $("#ScorePlayerList");
 	
@@ -26,4 +28,13 @@ function playerSelectLoop() {
 	$.Schedule(1.0, playerSelectLoop);
 }
 
+function SetScoreboardVisible(visible)
+{
+	$.Msg("Called:", visible);
+	g_ScoreBoard.SetHasClass("ScoreboardVisible", visible);
+}
+
+g_ScoreBoard = $.GetContextPanel();
+SetScoreboardVisible(false);
+$.RegisterEventHandler("DOTACustomUI_SetFlyoutScoreboardVisible", g_ScoreBoard, SetScoreboardVisible);
 playerSelectLoop();

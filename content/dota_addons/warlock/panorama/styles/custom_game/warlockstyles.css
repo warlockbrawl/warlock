@@ -139,3 +139,102 @@
     horizontal-align: center;
     margin-top: 30px;
 }
+
+/*---------------------
+
+     Scoreboard
+	 
+----------------------*/
+
+#ScorePlayerList
+{
+	margin-left: 60px;
+	margin-top: 60px;
+	flow-children: down;
+	background-color: rgba(0, 0, 0, 200);
+}
+
+.ScoreboardRoot
+{
+	transform: translatex(-600px);
+	transition-property: transform;
+	transition-duration: 0.1s;
+	vertical-align: top;
+	horizontal-align: left;
+	padding: 10px;
+	flow-children: down;
+}
+
+.ScoreboardRoot.ScoreboardVisible
+{
+	transform: translatex(0px);
+}
+
+.HeaderScoreRow
+{
+	flow-children: right;
+	height: 40px;
+	border-bottom: 2px solid black;
+	margin-bottom: 1px;
+	background-color: black;
+	padding: 8px;
+	vertical-align: middle;
+}
+
+.ScoreRow
+{
+	flow-children: right;
+	height: 40px;
+	border-bottom: 2px solid black;
+	background-color: black;
+	padding: 8px;
+	vertical-align: middle;
+}
+
+#HeaderScoreName
+{
+	text-align: left;
+	width: 150px;
+}
+
+#ScoreName
+{
+	text-align: left;
+	width: 150px;
+}
+
+.HeaderScoreColumn
+{
+	width: 60px;
+	flow-children: down;
+	vertical-align: middle;
+	text-align: center;
+	color: white;
+}
+
+.HeaderScoreAvatarColumn
+{
+	width: 30px;
+	flow-children: down;
+	vertical-align: middle;
+	text-align: center;
+	color: white;
+}
+
+.ScoreAvatarColumn
+{
+	width: 30px;
+	flow-children: down;
+	vertical-align: middle;
+	text-align: center;
+	color: white;
+}
+
+.ScoreColumn
+{
+	width: 60px;
+	flow-children: down;
+	vertical-align: middle;
+	text-align: center;
+	color: white;
+}

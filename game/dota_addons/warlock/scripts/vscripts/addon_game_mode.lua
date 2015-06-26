@@ -13,7 +13,7 @@ BASE_MODULES		= {
 	'base/config', 'base/game', 'base/tasks', 'base/player', 'base/commands', 'base/effect', 'base/actor',
 	'base/physics', 'base/projectile', 'base/pawn', 'base/spell', 'base/arena', 'base/obstacles',
 	'base/mode', 'base/shop', 'base/modifier', 'base/item', 'base/wincondition',
-	'base/teammode', 'base/team', 'base/userinterface',
+	'base/teammode', 'base/team', 'base/gamesetup', 'base/scoreboard',
 
 	'warlock/projectiles/boomerangprojectile', 'warlock/projectiles/gravityprojectile',
 	'warlock/projectiles/meteorprojectile', 'warlock/projectiles/bouncerprojectile',

@@ -107,8 +107,6 @@ function TeamModeShuffle:onNewRound()
 	-- Assign teams
 	local team = 0
 	for _, player in pairs(players) do
-		display(player.name .. " in team " .. tostring(team))
-		
 		local team_id = Team.TEAM_IDS[team+1]
 		
 		player:setTeam(GAME.teams[team_id])

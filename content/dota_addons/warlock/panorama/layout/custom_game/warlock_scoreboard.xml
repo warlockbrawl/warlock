@@ -6,9 +6,16 @@
 	<scripts>
 		<include src="file://{resources}/scripts/custom_game/warlock_scoreboard.js" />
 	</scripts>
-	<Panel>
-		<Panel id="PlayerList">
-		
+	<Panel hittest="false" class="ScoreboardRoot">
+		<Panel id="ScorePlayerList">
+			<Panel class="HeaderScoreRow">
+				<Label id="HeaderScoreAvatar" class="HeaderScoreAvatarColumn" />
+				<Label id="HeaderScoreName" class="HeaderScoreColumn" text="Name" />
+				<Label id="HeaderScoreKills" class="HeaderScoreColumn" text="Kills" />
+				<Label id="HeaderScoreDeaths" class="HeaderScoreColumn" text="Deaths" />
+				<Label id="HeaderScoreScore" class="HeaderScoreColumn" text="Score" />
+				<Label id="HeaderScoreDamage" class="HeaderScoreColumn" text="Damage" />
+			</Panel>
 		</Panel>
 	</Panel>
 </root>

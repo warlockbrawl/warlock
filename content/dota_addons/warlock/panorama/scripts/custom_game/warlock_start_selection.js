@@ -1,3 +1,5 @@
+var g_IsHost = false;
+
 var g_PlayerPanels = [];
 var g_PlayerIds = [];
 var g_PlayerCount = 0;
@@ -27,21 +29,25 @@ var g_DropDownIntIds = {
 	3: { id: "#WinConditionDropDown", values: [ "Rounds", "Score" ], valueIdPrefix: "WinCondition" }
 };
 
-function isHost() {
-    var player = Game.GetLocalPlayerInfo();
-    
-    if(!player)
-    {
-        return false;
-    }
-
-    return player.player_has_host_privileges;
+//Enables or disables all controls
+function enableAll(enable) {
+	for(var index in g_TextBoxIntIds) {
+		$(g_TextBoxIntIds[index]).enabled = enable;
+	}
+	
+	for(var index in g_DropDownIntIds) {
+		$(g_DropDownIntIds[index].id).enabled = enable;
+	}
+	
+	$("#StartButton").enabled = enable;
 }
 
+//Checks whether we are past game setup or not
 function isGameSetup() {
 	return Game.GameStateIsBefore(DOTA_GameState.DOTA_GAMERULES_STATE_HERO_SELECTION);
 }
 
+//Adds all new players to the player list and creates a panel for them
 function addNewPlayers() {
 	var playerListRoot = $("#PlayerList");
 	
@@ -63,6 +69,7 @@ function addNewPlayers() {
 	}
 }
 
+//Finds the new players periodically
 function playerSelectLoop() {
 	addNewPlayers();
 	if(isGameSetup()) {
@@ -70,18 +77,7 @@ function playerSelectLoop() {
 	}
 }
 
-function enableAll(enable) {
-	for(var index in g_TextBoxIntIds) {
-		$(g_TextBoxIntIds[index]).enabled = enable;
-	}
-	
-	for(var index in g_DropDownIntIds) {
-		$(g_DropDownIntIds[index].id).enabled = enable;
-	}
-	
-	$("#StartButton").enabled = enable;
-}
-
+//Sends a set game option event
 function sendSetGameOption(index, value) {
 	GameEvents.SendCustomGameEventToServer("set_game_option", { "index": index, "value": value });
 }
@@ -92,42 +88,35 @@ function sendSetGameOption(index, value) {
    
 ----------------- */
 
+//Sends the value of a text box
 function sendTextBoxIntValue(index, textBoxId) {
-	if(isHost()) {
-		index = parseInt(index);
-		var textBox = $(textBoxId);
+	index = parseInt(index);
+	var textBox = $(textBoxId);
 
-		var n = ~~textBox.text;
-		
-		if(String(n) === textBox.text && n >= 0) {
-			sendSetGameOption(index, n);
-		} else {
-			$.Msg("in sendTextBoxIntValue: was not a positive integer for index ", index, " and box id ", textBoxId);
-		}
+	var n = ~~textBox.text;
+	
+	if(String(n) === textBox.text && n >= 0) {
+		sendSetGameOption(index, n);
+	} else {
+		$.Msg("in sendTextBoxIntValue: was not a positive integer for index ", index, " and box id ", textBoxId);
 	}
 }
 
+//Sends the value of a drop down
 function sendDropDownIntValue(index, dropDownId) {
-	if(isHost()) {
-		index = parseInt(index);
-		var dropDown = $(dropDownId);
-		var newValue = dropDown.GetSelected().text;
-		var valueList = g_DropDownIntIds[index].values;
-		
-		sendSetGameOption(index, valueList.indexOf(newValue)+1);
-	}
+	index = parseInt(index);
+	var dropDown = $(dropDownId);
+	var newValue = dropDown.GetSelected().text;
+	var valueList = g_DropDownIntIds[index].values;
+	
+	sendSetGameOption(index, valueList.indexOf(newValue)+1);
 }
 
+//Sends the values of all drop downs
 function sendDropDownValues() {
 	for(var index in g_DropDownIntIds) {
 		$.Msg("Index:", index);
 		sendDropDownIntValue(index, g_DropDownIntIds[index].id);
-	}
-}
-
-function sendTextBoxValues() {
-	for(var index in g_TextBoxIntIds) {
-		sendTextBoxIntValue(index, g_TextBoxIntIds[index]);
 	}
 }
 
@@ -137,26 +126,41 @@ function sendTextBoxValues() {
 
 ---------------*/
 
-//Send the text box values every few seconds
-function onSendTextBoxValues() {
-	if(isHost()) {
-		$.Msg("Updating text box values");
-		sendTextBoxValues();
-	}
+//Called when the host was detected in the loop
+function onHostDetected() {
+	enableAll(true);
 	
-	//Call again even if not the host, because the host can be changed later
+	$("#HostLabel").text = "You are the host!\n\nChoose the settings and start the game within one minute.";
+	
 	if(isGameSetup()) {
-		$.Schedule(1.0, onSendTextBoxValues);
-	}
-}
-
-function onDropDownValueChanged() {
-	//Send the values of all dropdowns to the server when it changes
-	if(isHost()) {
+		sendTextBoxValues();
 		sendDropDownValues();
 	}
 }
 
+//Send the text box values every few seconds
+function sendTextBoxValues() {
+	$.Msg("Updating text box values");
+	
+	for(var index in g_TextBoxIntIds) {
+		sendTextBoxIntValue(index, g_TextBoxIntIds[index]);
+	}
+	
+	//Call again even if not the host, because the host can be changed later
+	if(isGameSetup()) {
+		$.Schedule(1.0, sendTextBoxValues);
+	}
+}
+
+//Called when a drop down value changes
+function onDropDownValueChanged() {
+	//Send the values of all dropdowns to the server when it changes
+	if(g_IsHost) {
+		sendDropDownValues();
+	}
+}
+
+//Called when the score net table changes
 function onNetTableChanged(tableName, key, data) {
 	if(tableName != "wl_game_options") {
 		$.Msg("Selection UI received non game options net table update");
@@ -164,7 +168,7 @@ function onNetTableChanged(tableName, key, data) {
 	}
 	
 	//Only update clients' values
-	if(isHost()) {
+	if(g_IsHost) {
 		return;
 	}
 
@@ -205,11 +209,34 @@ function onNetTableChanged(tableName, key, data) {
 	}
 }*/
 
+//Called when the start game button was pressed
 function onStartGame() {
-    if(isHost()) {
+    if(g_IsHost) {
 		sendTextBoxValues(); //Send the text box's values before the game started
         Game.SetRemainingSetupTime(0);
     }
+}
+
+//Check if we are the host every second
+function hostCheckLoop() {
+	if(!isGameSetup()) {
+		return;
+	}
+	
+	if(!g_IsHost) {
+		var player = Game.GetLocalPlayerInfo();
+
+		if(player) {
+			if(player.player_has_host_privileges) {
+				g_IsHost = true;
+				$.Msg("Host detected!");
+				onHostDetected();
+				return;
+			}
+		}
+	}
+	
+	$.Schedule(1.0, hostCheckLoop);
 }
 
 function setupSelection() {
@@ -219,20 +246,10 @@ function setupSelection() {
     Game.SetRemainingSetupTime(60);
     Game.SetTeamSelectionLocked(true);
 	
-	var host = isHost();
-	$.Msg("Start host: ", host);
-	if(host) {
-		$("#HostLabel").text = "You are the host!\n\nChoose the settings and start the game within one minute.";
-		
-		onSendTextBoxValues();
-	} else {
-		enableAll(false);
-	}
+	enableAll(false);
 	
+	hostCheckLoop();
 	playerSelectLoop();
 }
 
-(function() {
-	$.Msg("Start host: started");
-	$.Schedule(1.0, setupSelection);
-})();
+setupSelection();
