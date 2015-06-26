@@ -142,9 +142,11 @@ function onSendTextBoxValues() {
 	if(isHost()) {
 		$.Msg("Updating text box values");
 		sendTextBoxValues();
-		if(isGameSetup()) {
-			$.Schedule(1.0, onSendTextBoxValues);
-		}
+	}
+	
+	//Call again even if not the host, because the host can be changed later
+	if(isGameSetup()) {
+		$.Schedule(1.0, onSendTextBoxValues);
 	}
 }
 
