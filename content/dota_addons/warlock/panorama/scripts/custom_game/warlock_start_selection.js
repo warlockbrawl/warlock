@@ -2,10 +2,6 @@ var g_PlayerPanels = [];
 var g_PlayerIds = [];
 var g_PlayerCount = 0;
 
-var g_TeamModes = [ "Shuffle", "FFA", "Teams" ];
-var g_Modes = [ "Rounds" ];
-var g_WinConditions = [ "Rounds", "Score" ];
-
 var GAME_OPT_TEAM		= 1;
 var GAME_OPT_GAME		= 2;
 var GAME_OPT_WINC		= 3;
@@ -67,13 +63,8 @@ function addNewPlayers() {
 	}
 }
 
-function updatePlayers() {
-	
-}
-
 function playerSelectLoop() {
 	addNewPlayers();
-	updatePlayers();
 	if(isGameSetup()) {
 		$.Schedule(0.5, playerSelectLoop);
 	}
