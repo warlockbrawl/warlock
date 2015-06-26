@@ -247,6 +247,11 @@ function Mode:onKill(event)
 			end
 		}
 	end
+
+    -- Update the amount of alive players in each team
+    for _, team in pairs(GAME.teams) do
+        team:updateAliveCount()
+    end
 end
 
 -- Called when a pawn wants to respawn

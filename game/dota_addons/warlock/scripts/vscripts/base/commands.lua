@@ -27,6 +27,32 @@ function Game:initCommands()
         print("Task set:", #tasks)
     end)
 
+    self:registerCommand("teamlist", function()
+        print("#START TEAM REPORT")
+        print("#Teams")
+        for team_id, team in pairs(self.teams) do
+            print("##Team", team_id, team.id)
+            print("##Alive count:", team.alive_count)
+            print("##Size:", team.size)
+            print("## Players")
+
+            for _, player in pairs(team.players) do
+                print("###ID:", player.id)
+                print("###IsAlive:", player:isAlive())
+            end
+        end
+
+        print("#Active Teams")
+
+        for i, team in pairs(self.active_teams) do
+            print("##Team ID:", team.id)
+        end
+
+        print("#Active team count:", self.active_team_count)
+        print("#AliveTeamCount:", #self:getAliveTeams())
+        print("#END TEAM REPORT")
+    end)
+
 	-- Development only commands
 	if Config.DEVELOPMENT then
 		self:registerCommand('f', function()

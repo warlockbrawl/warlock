@@ -146,7 +146,8 @@ function Pawn:respawn()
 	self.health = self.max_hp
 	self:applyStats()
 	
-	self.owner.team:updateAliveCount()
+    -- Already done in mode on kill
+	-- self.owner.team:updateAliveCount()
 end
 
 function Pawn:die(dmg_info)
@@ -175,8 +176,9 @@ function Pawn:die(dmg_info)
 	-- disable the actor
 	self:disable()
 	
+    -- Already done in mode on kill
 	-- Update team alive count
-	self.owner.team:updateAliveCount()
+	--self.owner.team:updateAliveCount()
 	
 	-- Notify game
 	GAME:PawnKilled{victim=self, killer=source_actor}
