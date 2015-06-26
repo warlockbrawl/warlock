@@ -1,0 +1,19 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/warlockstyles.css" />
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/warlock_scoreboard_player.js" />
+	</scripts>
+	<Panel>
+		<Panel class="ScoreRow">
+		    <DOTAAvatarImage id="ScoreAvatar" class="ScoreColumn" />
+			<DOTAUserName id="ScoreName" class="ScoreColumn" />
+			<Label id="ScoreKills" class="ScoreColumn" text="0" />
+			<Label id="ScoreDeaths" class="ScoreColumn" text="0" />
+			<Label id="ScoreScore" class="ScoreColumn" text="0" />
+			<Label id="ScoreDamage" class="ScoreColumn" text="0" />
+		</Panel>
+	</Panel>
+</root>
