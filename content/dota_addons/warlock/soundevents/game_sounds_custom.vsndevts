@@ -17,35 +17,19 @@
                             "value0"		"sounds/weapons/hero/zuus/lightning_bolt.vsnd"
                         }
                     }
-                    "volume_min"
+                    "volume"
                     {
                         "value"		"1.000000"
                     }
-                    "volume_max"
+                    "pitch"
                     {
                         "value"		"1.000000"
-                    }
-                    "pitch_min"
-                    {
-                        "value"		"1.000000"
-                    }
-                    "pitch_max"
-                    {
-                        "value"		"1.000000"
-                    }
-                    "chan_type"
-                    {
-                        "value"		"6"
                     }
                     "memory_type"
                     {
                         "value"		"0"
                     }
-                    "soundlevel_min"
-                    {
-                        "value"		"81.000000"
-                    }
-                    "soundlevel_max"
+                    "soundlevel"
                     {
                         "value"		"81.000000"
                     }
@@ -82,35 +66,19 @@
                             "value0"		"sounds/weapons/hero/zuus/gods_wrath_cast.vsnd"
                         }
                     }
-                    "volume_min"
+                    "volume"
                     {
                         "value"		"1.000000"
                     }
-                    "volume_max"
-                    {
-                        "value"		"1.000000"
-                    }
-                    "pitch_min"
-                    {
-                        "value"		"0.950000"
-                    }
-                    "pitch_max"
+                    "pitch"
                     {
                         "value"		"1.050000"
-                    }
-                    "chan_type"
-                    {
-                        "value"		"6"
                     }
                     "memory_type"
                     {
                         "value"		"0"
                     }
-                    "soundlevel_min"
-                    {
-                        "value"		"81.000000"
-                    }
-                    "soundlevel_max"
+                    "soundlevel"
                     {
                         "value"		"81.000000"
                     }
@@ -151,35 +119,19 @@
                             "value0"		"sounds/weapons/hero/abaddon/shield_detonate.vsnd"
                         }
                     }
-                    "volume_min"
+                    "volume"
                     {
                         "value"		"0.750000"
                     }
-                    "volume_max"
+                    "pitch"
                     {
-                        "value"		"0.750000"
-                    }
-                    "pitch_min"
-                    {
-                        "value"		"0.950000"
-                    }
-                    "pitch_max"
-                    {
-                        "value"		"1.050000"
-                    }
-                    "chan_type"
-                    {
-                        "value"		"6"
+                        "value"		"1.000000"
                     }
                     "memory_type"
                     {
                         "value"		"0"
                     }
-                    "soundlevel_min"
-                    {
-                        "value"		"81.000000"
-                    }
-                    "soundlevel_max"
+                    "soundlevel"
                     {
                         "value"		"81.000000"
                     }
@@ -218,35 +170,19 @@
                             "wave2"		"sounds/weapons/hero/bloodseeker/attack03.vsnd"
                         }
                     }
-                    "volume_min"
+                    "volume"
                     {
                         "value"		"1.000000"
                     }
-                    "volume_max"
+                    "pitch"
                     {
                         "value"		"1.000000"
-                    }
-                    "pitch_min"
-                    {
-                        "value"		"0.950000"
-                    }
-                    "pitch_max"
-                    {
-                        "value"		"1.050000"
-                    }
-                    "chan_type"
-                    {
-                        "value"		"1"
                     }
                     "memory_type"
                     {
                         "value"		"0"
                     }
-                    "soundlevel_min"
-                    {
-                        "value"		"75.000000"
-                    }
-                    "soundlevel_max"
+                    "soundlevel"
                     {
                         "value"		"75.000000"
                     }
@@ -279,35 +215,19 @@
                             "value0"		"sounds/weapons/hero/ogre_magi/fireblast_target.vsnd"
                         }
                     }
-                    "volume_min"
+                    "volume"
                     {
                         "value"		"1.000000"
                     }
-                    "volume_max"
-                    {
-                        "value"		"1.000000"
-                    }
-                    "pitch_min"
+                    "pitch"
                     {
                         "value"		"0.950000"
-                    }
-                    "pitch_max"
-                    {
-                        "value"		"1.050000"
-                    }
-                    "chan_type"
-                    {
-                        "value"		"1"
                     }
                     "memory_type"
                     {
                         "value"		"0"
                     }
-                    "soundlevel_min"
-                    {
-                        "value"		"84.000000"
-                    }
-                    "soundlevel_max"
+                    "soundlevel"
                     {
                         "value"		"84.000000"
                     }
@@ -344,35 +264,19 @@
                             "value0"		"sounds/weapons/hero/ogre_magi/fireblast_target.vsnd"
                         }
                     }
-                    "volume_min"
+                    "volume"
                     {
                         "value"		"0.250000"
                     }
-                    "volume_max"
+                    "pitch"
                     {
-                        "value"		"0.250000"
-                    }
-                    "pitch_min"
-                    {
-                        "value"		"0.950000"
-                    }
-                    "pitch_max"
-                    {
-                        "value"		"1.050000"
-                    }
-                    "chan_type"
-                    {
-                        "value"		"1"
+                        "value"		"1.000000"
                     }
                     "memory_type"
                     {
                         "value"		"0"
                     }
-                    "soundlevel_min"
-                    {
-                        "value"		"84.000000"
-                    }
-                    "soundlevel_max"
+                    "soundlevel"
                     {
                         "value"		"84.000000"
                     }
@@ -409,35 +313,19 @@
                             "value0"		"sounds/weapons/hero/medusa/snake_return.vsnd"
                         }
                     }
-                    "volume_min"
+                    "volume"
                     {
                         "value"		"0.750000"
                     }
-                    "volume_max"
-                    {
-                        "value"		"0.750000"
-                    }
-                    "pitch_min"
+                    "pitch"
                     {
                         "value"		"1.000000"
-                    }
-                    "pitch_max"
-                    {
-                        "value"		"1.000000"
-                    }
-                    "chan_type"
-                    {
-                        "value"		"6"
                     }
                     "memory_type"
                     {
                         "value"		"0"
                     }
-                    "soundlevel_min"
-                    {
-                        "value"		"75.000000"
-                    }
-                    "soundlevel_max"
+                    "soundlevel"
                     {
                         "value"		"75.000000"
                     }
@@ -475,35 +363,19 @@
                             "wave1"		"sounds/weapons/hero/lich/impact02.vsnd"
                         }
                     }
-                    "volume_min"
+                    "volume"
                     {
                         "value"		"1.000000"
                     }
-                    "volume_max"
+                    "pitch"
                     {
                         "value"		"1.000000"
-                    }
-                    "pitch_min"
-                    {
-                        "value"		"0.950000"
-                    }
-                    "pitch_max"
-                    {
-                        "value"		"1.050000"
-                    }
-                    "chan_type"
-                    {
-                        "value"		"1"
                     }
                     "memory_type"
                     {
                         "value"		"0"
                     }
-                    "soundlevel_min"
-                    {
-                        "value"		"72.000000"
-                    }
-                    "soundlevel_max"
+                    "soundlevel"
                     {
                         "value"		"72.000000"
                     }
@@ -536,35 +408,19 @@
                             "value0"		"sounds/weapons/hero/invoker/meteor_cast.vsnd"
                         }
                     }
-                    "volume_min"
+                    "volume"
                     {
                         "value"		"1.000000"
                     }
-                    "volume_max"
+                    "pitch"
                     {
                         "value"		"1.000000"
-                    }
-                    "pitch_min"
-                    {
-                        "value"		"1.000000"
-                    }
-                    "pitch_max"
-                    {
-                        "value"		"1.000000"
-                    }
-                    "chan_type"
-                    {
-                        "value"		"6"
                     }
                     "memory_type"
                     {
                         "value"		"0"
                     }
-                    "soundlevel_min"
-                    {
-                        "value"		"81.000000"
-                    }
-                    "soundlevel_max"
+                    "soundlevel"
                     {
                         "value"		"81.000000"
                     }
@@ -601,35 +457,19 @@
                             "value0"		"sounds/weapons/hero/invoker/meteor_impact.vsnd"
                         }
                     }
-                    "volume_min"
+                    "volume"
                     {
                         "value"		"1.000000"
                     }
-                    "volume_max"
+                    "pitch"
                     {
                         "value"		"1.000000"
-                    }
-                    "pitch_min"
-                    {
-                        "value"		"0.950000"
-                    }
-                    "pitch_max"
-                    {
-                        "value"		"1.050000"
-                    }
-                    "chan_type"
-                    {
-                        "value"		"6"
                     }
                     "memory_type"
                     {
                         "value"		"0"
                     }
-                    "soundlevel_min"
-                    {
-                        "value"		"81.000000"
-                    }
-                    "soundlevel_max"
+                    "soundlevel"
                     {
                         "value"		"81.000000"
                     }
@@ -666,35 +506,19 @@
                             "value0"		"sounds/weapons/hero/bane/brain_sap.vsnd"
                         }
                     }
-                    "volume_min"
+                    "volume"
                     {
                         "value"		"0.799805"
                     }
-                    "volume_max"
-                    {
-                        "value"		"0.799805"
-                    }
-                    "pitch_min"
+                    "pitch"
                     {
                         "value"		"0.950000"
-                    }
-                    "pitch_max"
-                    {
-                        "value"		"1.050000"
-                    }
-                    "chan_type"
-                    {
-                        "value"		"6"
                     }
                     "memory_type"
                     {
                         "value"		"0"
                     }
-                    "soundlevel_min"
-                    {
-                        "value"		"81.000000"
-                    }
-                    "soundlevel_max"
+                    "soundlevel"
                     {
                         "value"		"81.000000"
                     }
@@ -731,35 +555,19 @@
                             "value0"		"sounds/weapons/hero/templar_assassin/meld_end.vsnd"
                         }
                     }
-                    "volume_min"
+                    "volume"
                     {
                         "value"		"1.000000"
                     }
-                    "volume_max"
+                    "pitch"
                     {
                         "value"		"1.000000"
-                    }
-                    "pitch_min"
-                    {
-                        "value"		"0.950000"
-                    }
-                    "pitch_max"
-                    {
-                        "value"		"1.050000"
-                    }
-                    "chan_type"
-                    {
-                        "value"		"6"
                     }
                     "memory_type"
                     {
                         "value"		"0"
                     }
-                    "soundlevel_min"
-                    {
-                        "value"		"78.000000"
-                    }
-                    "soundlevel_max"
+                    "soundlevel"
                     {
                         "value"		"78.000000"
                     }
@@ -797,35 +605,19 @@
                             "wave1"		"sounds/weapons/hero/terrorblade/ranged_impacts_02.vsnd"
                         }
                     }
-                    "volume_min"
+                    "volume"
                     {
                         "value"		"1.000000"
                     }
-                    "volume_max"
+                    "pitch"
                     {
                         "value"		"1.000000"
-                    }
-                    "pitch_min"
-                    {
-                        "value"		"0.950000"
-                    }
-                    "pitch_max"
-                    {
-                        "value"		"1.050000"
-                    }
-                    "chan_type"
-                    {
-                        "value"		"6"
                     }
                     "memory_type"
                     {
                         "value"		"0"
                     }
-                    "soundlevel_min"
-                    {
-                        "value"		"78.000000"
-                    }
-                    "soundlevel_max"
+                    "soundlevel"
                     {
                         "value"		"78.000000"
                     }
@@ -862,35 +654,19 @@
                             "value0"		"sounds/weapons/hero/axe/berserkers_shoutmask.vsnd"
                         }
                     }
-                    "volume_min"
+                    "volume"
                     {
                         "value"		"1.000000"
                     }
-                    "volume_max"
+                    "pitch"
                     {
                         "value"		"1.000000"
-                    }
-                    "pitch_min"
-                    {
-                        "value"		"0.950000"
-                    }
-                    "pitch_max"
-                    {
-                        "value"		"1.050000"
-                    }
-                    "chan_type"
-                    {
-                        "value"		"6"
                     }
                     "memory_type"
                     {
                         "value"		"0"
                     }
-                    "soundlevel_min"
-                    {
-                        "value"		"81.000000"
-                    }
-                    "soundlevel_max"
+                    "soundlevel"
                     {
                         "value"		"81.000000"
                     }
@@ -931,35 +707,19 @@
                             "value0"		"sounds/weapons/hero/clinkz/windwalk.vsnd"
                         }
                     }
-                    "volume_min"
+                    "volume"
                     {
                         "value"		"1.000000"
                     }
-                    "volume_max"
+                    "pitch"
                     {
                         "value"		"1.000000"
-                    }
-                    "pitch_min"
-                    {
-                        "value"		"0.900000"
-                    }
-                    "pitch_max"
-                    {
-                        "value"		"1.100000"
-                    }
-                    "chan_type"
-                    {
-                        "value"		"1"
                     }
                     "memory_type"
                     {
                         "value"		"0"
                     }
-                    "soundlevel_min"
-                    {
-                        "value"		"81.000000"
-                    }
-                    "soundlevel_max"
+                    "soundlevel"
                     {
                         "value"		"81.000000"
                     }
@@ -996,35 +756,19 @@
                             "value0"		"sounds/weapons/hero/invoker/alacrity.vsnd"
                         }
                     }
-                    "volume_min"
+                    "volume"
                     {
                         "value"		"1.000000"
                     }
-                    "volume_max"
+                    "pitch"
                     {
                         "value"		"1.000000"
-                    }
-                    "pitch_min"
-                    {
-                        "value"		"0.950000"
-                    }
-                    "pitch_max"
-                    {
-                        "value"		"1.050000"
-                    }
-                    "chan_type"
-                    {
-                        "value"		"6"
                     }
                     "memory_type"
                     {
                         "value"		"0"
                     }
-                    "soundlevel_min"
-                    {
-                        "value"		"81.000000"
-                    }
-                    "soundlevel_max"
+                    "soundlevel"
                     {
                         "value"		"81.000000"
                     }
@@ -1066,35 +810,19 @@
                             "wave5"		"sounds/weapons/hero/leshrac/diabolic_edict06.vsnd"
                         }
                     }
-                    "volume_min"
+                    "volume"
                     {
-                        "value"		"0.399902"
+                        "value"		"0.500000"
                     }
-                    "volume_max"
+                    "pitch"
                     {
-                        "value"		"0.599854"
-                    }
-                    "pitch_min"
-                    {
-                        "value"		"0.950000"
-                    }
-                    "pitch_max"
-                    {
-                        "value"		"1.100000"
-                    }
-                    "chan_type"
-                    {
-                        "value"		"6"
+                        "value"		"1.000000"
                     }
                     "memory_type"
                     {
                         "value"		"0"
                     }
-                    "soundlevel_min"
-                    {
-                        "value"		"81.000000"
-                    }
-                    "soundlevel_max"
+                    "soundlevel"
                     {
                         "value"		"81.000000"
                     }
@@ -1131,35 +859,19 @@
                             "value0"		"sounds/weapons/hero/vengeful_spirit/nether_swap.vsnd"
                         }
                     }
-                    "volume_min"
+                    "volume"
                     {
                         "value"		"1.000000"
                     }
-                    "volume_max"
+                    "pitch"
                     {
                         "value"		"1.000000"
-                    }
-                    "pitch_min"
-                    {
-                        "value"		"0.950000"
-                    }
-                    "pitch_max"
-                    {
-                        "value"		"1.050000"
-                    }
-                    "chan_type"
-                    {
-                        "value"		"6"
                     }
                     "memory_type"
                     {
                         "value"		"0"
                     }
-                    "soundlevel_min"
-                    {
-                        "value"		"81.000000"
-                    }
-                    "soundlevel_max"
+                    "soundlevel"
                     {
                         "value"		"81.000000"
                     }
@@ -1196,35 +908,19 @@
                             "value0"		"sounds/weapons/hero/ember_spirit/searing_chains_cast.vsnd"
                         }
                     }
-                    "volume_min"
+                    "volume"
                     {
                         "value"		"1.000000"
                     }
-                    "volume_max"
+                    "pitch"
                     {
                         "value"		"1.000000"
-                    }
-                    "pitch_min"
-                    {
-                        "value"		"0.950000"
-                    }
-                    "pitch_max"
-                    {
-                        "value"		"1.050000"
-                    }
-                    "chan_type"
-                    {
-                        "value"		"6"
                     }
                     "memory_type"
                     {
                         "value"		"0"
                     }
-                    "soundlevel_min"
-                    {
-                        "value"		"75.000000"
-                    }
-                    "soundlevel_max"
+                    "soundlevel"
                     {
                         "value"		"75.000000"
                     }
@@ -1261,35 +957,19 @@
                             "value0"		"sounds/weapons/hero/bane/nightmare.vsnd"
                         }
                     }
-                    "volume_min"
+                    "volume"
                     {
                         "value"		"1.000000"
                     }
-                    "volume_max"
+                    "pitch"
                     {
                         "value"		"1.000000"
-                    }
-                    "pitch_min"
-                    {
-                        "value"		"1.000000"
-                    }
-                    "pitch_max"
-                    {
-                        "value"		"1.000000"
-                    }
-                    "chan_type"
-                    {
-                        "value"		"6"
                     }
                     "memory_type"
                     {
                         "value"		"0"
                     }
-                    "soundlevel_min"
-                    {
-                        "value"		"81.000000"
-                    }
-                    "soundlevel_max"
+                    "soundlevel"
                     {
                         "value"		"81.000000"
                     }
@@ -1326,35 +1006,19 @@
                             "value0"		"sounds/weapons/hero/bane/nightmare_end.vsnd"
                         }
                     }
-                    "volume_min"
+                    "volume"
                     {
                         "value"		"1.000000"
                     }
-                    "volume_max"
+                    "pitch"
                     {
                         "value"		"1.000000"
-                    }
-                    "pitch_min"
-                    {
-                        "value"		"0.950000"
-                    }
-                    "pitch_max"
-                    {
-                        "value"		"1.050000"
-                    }
-                    "chan_type"
-                    {
-                        "value"		"6"
                     }
                     "memory_type"
                     {
                         "value"		"0"
                     }
-                    "soundlevel_min"
-                    {
-                        "value"		"78.000000"
-                    }
-                    "soundlevel_max"
+                    "soundlevel"
                     {
                         "value"		"78.000000"
                     }
@@ -1391,35 +1055,19 @@
                             "value0"		"sounds/weapons/hero/bane/projectile_impact.vsnd"
                         }
                     }
-                    "volume_min"
+                    "volume"
                     {
                         "value"		"1.000000"
                     }
-                    "volume_max"
+                    "pitch"
                     {
                         "value"		"1.000000"
-                    }
-                    "pitch_min"
-                    {
-                        "value"		"0.950000"
-                    }
-                    "pitch_max"
-                    {
-                        "value"		"1.050000"
-                    }
-                    "chan_type"
-                    {
-                        "value"		"6"
                     }
                     "memory_type"
                     {
                         "value"		"0"
                     }
-                    "soundlevel_min"
-                    {
-                        "value"		"75.000000"
-                    }
-                    "soundlevel_max"
+                    "soundlevel"
                     {
                         "value"		"75.000000"
                     }
@@ -1456,35 +1104,19 @@
                             "value0"		"sounds/weapons/hero/broodmother/spiderling_impact.vsnd"
                         }
                     }
-                    "volume_min"
+                    "volume"
                     {
                         "value"		"1.000000"
                     }
-                    "volume_max"
-                    {
-                        "value"		"1.000000"
-                    }
-                    "pitch_min"
-                    {
-                        "value"		"0.950000"
-                    }
-                    "pitch_max"
+                    "pitch"
                     {
                         "value"		"1.050000"
-                    }
-                    "chan_type"
-                    {
-                        "value"		"6"
                     }
                     "memory_type"
                     {
                         "value"		"0"
                     }
-                    "soundlevel_min"
-                    {
-                        "value"		"78.000000"
-                    }
-                    "soundlevel_max"
+                    "soundlevel"
                     {
                         "value"		"78.000000"
                     }
@@ -1521,35 +1153,19 @@
                             "value0"		"sounds/weapons/creep/neutral/troll_priest_heal.vsnd"
                         }
                     }
-                    "volume_min"
+                    "volume"
                     {
                         "value"		"1.000000"
                     }
-                    "volume_max"
+                    "pitch"
                     {
                         "value"		"1.000000"
-                    }
-                    "pitch_min"
-                    {
-                        "value"		"1.000000"
-                    }
-                    "pitch_max"
-                    {
-                        "value"		"1.000000"
-                    }
-                    "chan_type"
-                    {
-                        "value"		"4"
                     }
                     "memory_type"
                     {
                         "value"		"0"
                     }
-                    "soundlevel_min"
-                    {
-                        "value"		"75.000000"
-                    }
-                    "soundlevel_max"
+                    "soundlevel"
                     {
                         "value"		"75.000000"
                     }
@@ -1582,35 +1198,19 @@
                             "value0"		"sounds/weapons/hero/chen/attack.vsnd"
                         }
                     }
-                    "volume_min"
+                    "volume"
                     {
                         "value"		"1.000000"
                     }
-                    "volume_max"
-                    {
-                        "value"		"1.000000"
-                    }
-                    "pitch_min"
-                    {
-                        "value"		"0.950000"
-                    }
-                    "pitch_max"
+                    "pitch"
                     {
                         "value"		"1.050000"
-                    }
-                    "chan_type"
-                    {
-                        "value"		"1"
                     }
                     "memory_type"
                     {
                         "value"		"0"
                     }
-                    "soundlevel_min"
-                    {
-                        "value"		"75.000000"
-                    }
-                    "soundlevel_max"
+                    "soundlevel"
                     {
                         "value"		"75.000000"
                     }
@@ -1643,35 +1243,19 @@
                             "value0"		"sounds/weapons/hero/doom_bringer/lvl_death.vsnd"
                         }
                     }
-                    "volume_min"
+                    "volume"
                     {
                         "value"		"1.000000"
                     }
-                    "volume_max"
+                    "pitch"
                     {
                         "value"		"1.000000"
-                    }
-                    "pitch_min"
-                    {
-                        "value"		"0.950000"
-                    }
-                    "pitch_max"
-                    {
-                        "value"		"1.050000"
-                    }
-                    "chan_type"
-                    {
-                        "value"		"6"
                     }
                     "memory_type"
                     {
                         "value"		"0"
                     }
-                    "soundlevel_min"
-                    {
-                        "value"		"81.000000"
-                    }
-                    "soundlevel_max"
+                    "soundlevel"
                     {
                         "value"		"81.000000"
                     }
@@ -1708,35 +1292,19 @@
                             "value0"		"sounds/weapons/hero/dark_seer/dota_dark_seer_ion_shield_end.vsnd"
                         }
                     }
-                    "volume_min"
+                    "volume"
                     {
                         "value"		"0.799805"
                     }
-                    "volume_max"
+                    "pitch"
                     {
-                        "value"		"0.799805"
-                    }
-                    "pitch_min"
-                    {
-                        "value"		"0.950000"
-                    }
-                    "pitch_max"
-                    {
-                        "value"		"1.050000"
-                    }
-                    "chan_type"
-                    {
-                        "value"		"6"
+                        "value"		"1.000000"
                     }
                     "memory_type"
                     {
                         "value"		"0"
                     }
-                    "soundlevel_min"
-                    {
-                        "value"		"81.000000"
-                    }
-                    "soundlevel_max"
+                    "soundlevel"
                     {
                         "value"		"81.000000"
                     }
@@ -1773,35 +1341,19 @@
                             "value0"		"sounds/weapons/hero/faceless_void/time_walk.vsnd"
                         }
                     }
-                    "volume_min"
+                    "volume"
                     {
                         "value"		"1.000000"
                     }
-                    "volume_max"
+                    "pitch"
                     {
                         "value"		"1.000000"
-                    }
-                    "pitch_min"
-                    {
-                        "value"		"1.000000"
-                    }
-                    "pitch_max"
-                    {
-                        "value"		"1.000000"
-                    }
-                    "chan_type"
-                    {
-                        "value"		"6"
                     }
                     "memory_type"
                     {
                         "value"		"0"
                     }
-                    "soundlevel_min"
-                    {
-                        "value"		"81.000000"
-                    }
-                    "soundlevel_max"
+                    "soundlevel"
                     {
                         "value"		"81.000000"
                     }
@@ -1838,35 +1390,19 @@
 							"value0"		"sounds/weapons/hero/keeper/mana_leak_target_fp.vsnd"
 						}
 					}
-					"volume_min"
+					"volume"
 					{
 						"value"		"1.000000"
 					}
-					"volume_max"
+					"pitch"
 					{
 						"value"		"1.000000"
-					}
-					"pitch_min"
-					{
-						"value"		"1.000000"
-					}
-					"pitch_max"
-					{
-						"value"		"1.000000"
-					}
-					"chan_type"
-					{
-						"value"		"6"
 					}
 					"memory_type"
 					{
 						"value"		"0"
 					}
-					"soundlevel_min"
-					{
-						"value"		"75.000000"
-					}
-					"soundlevel_max"
+					"soundlevel"
 					{
 						"value"		"75.000000"
 					}
@@ -1915,35 +1451,19 @@
 							"value0"		"sounds/weapons/hero/earth_spirit/magnetize_end.vsnd"
 						}
 					}
-					"volume_min"
+					"volume"
 					{
 						"value"		"1.000000"
 					}
-					"volume_max"
+					"pitch"
 					{
 						"value"		"1.000000"
-					}
-					"pitch_min"
-					{
-						"value"		"0.950000"
-					}
-					"pitch_max"
-					{
-						"value"		"1.050000"
-					}
-					"chan_type"
-					{
-						"value"		"6"
 					}
 					"memory_type"
 					{
 						"value"		"0"
 					}
-					"soundlevel_min"
-					{
-						"value"		"81.000000"
-					}
-					"soundlevel_max"
+					"soundlevel"
 					{
 						"value"		"81.000000"
 					}
@@ -2004,35 +1524,19 @@
 							"value0"		"sounds/weapons/hero/earth_spirit/magnetize_cast.vsnd"
 						}
 					}
-					"volume_min"
+					"volume"
 					{
 						"value"		"1.000000"
 					}
-					"volume_max"
+					"pitch"
 					{
 						"value"		"1.000000"
-					}
-					"pitch_min"
-					{
-						"value"		"0.950000"
-					}
-					"pitch_max"
-					{
-						"value"		"1.050000"
-					}
-					"chan_type"
-					{
-						"value"		"6"
 					}
 					"memory_type"
 					{
 						"value"		"0"
 					}
-					"soundlevel_min"
-					{
-						"value"		"81.000000"
-					}
-					"soundlevel_max"
+					"soundlevel"
 					{
 						"value"		"81.000000"
 					}
@@ -2069,35 +1573,19 @@
 							"value0"		"sounds/weapons/hero/earth_spirit/magnetize_end.vsnd"
 						}
 					}
-					"volume_min"
+					"volume"
 					{
 						"value"		"1.000000"
 					}
-					"volume_max"
+					"pitch"
 					{
 						"value"		"1.000000"
-					}
-					"pitch_min"
-					{
-						"value"		"0.950000"
-					}
-					"pitch_max"
-					{
-						"value"		"1.050000"
-					}
-					"chan_type"
-					{
-						"value"		"6"
 					}
 					"memory_type"
 					{
 						"value"		"0"
 					}
-					"soundlevel_min"
-					{
-						"value"		"81.000000"
-					}
-					"soundlevel_max"
+					"soundlevel"
 					{
 						"value"		"81.000000"
 					}
@@ -2158,35 +1646,19 @@
 							"value0"		"sounds/items/refresher.vsnd"
 						}
 					}
-					"volume_min"
+					"volume"
 					{
 						"value"		"1.000000"
 					}
-					"volume_max"
+					"pitch"
 					{
 						"value"		"1.000000"
-					}
-					"pitch_min"
-					{
-						"value"		"0.950000"
-					}
-					"pitch_max"
-					{
-						"value"		"1.050000"
-					}
-					"chan_type"
-					{
-						"value"		"6"
 					}
 					"memory_type"
 					{
 						"value"		"0"
 					}
-					"soundlevel_min"
-					{
-						"value"		"84.000000"
-					}
-					"soundlevel_max"
+					"soundlevel"
 					{
 						"value"		"84.000000"
 					}
@@ -2219,35 +1691,19 @@
 							"value0"		"sounds/items/linkens_sphere.vsnd"
 						}
 					}
-					"volume_min"
+					"volume"
 					{
 						"value"		"1.000000"
 					}
-					"volume_max"
+					"pitch"
 					{
 						"value"		"1.000000"
-					}
-					"pitch_min"
-					{
-						"value"		"0.950000"
-					}
-					"pitch_max"
-					{
-						"value"		"1.050000"
-					}
-					"chan_type"
-					{
-						"value"		"6"
 					}
 					"memory_type"
 					{
 						"value"		"0"
 					}
-					"soundlevel_min"
-					{
-						"value"		"90.000000"
-					}
-					"soundlevel_max"
+					"soundlevel"
 					{
 						"value"		"90.000000"
 					}
