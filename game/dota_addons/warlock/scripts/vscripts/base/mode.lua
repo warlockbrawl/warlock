@@ -38,6 +38,9 @@ function Mode:onStart()
 	self:prepareForRound()
 end
 
+function Mode:playerReconnected(player)
+end
+
 function Mode:respawnPlayers(shop_time)
 	-- Respawn players and make them un/able to upgrade spells
 	for id, player in pairs(GAME.players) do
@@ -50,7 +53,7 @@ function Mode:respawnPlayers(shop_time)
 			end
 		end
 		
-		-- Reset player stats (kills etc.)
+		-- Reset player stats (damage etc.)
 		if not shop_time then
 			player:resetStats()
 		end
@@ -271,7 +274,7 @@ end
 ModeLTS = class(Mode)
 
 function ModeLTS:getDescription()
-	return "Rounds"
+	return "Rounds (1 score for winning team per round)"
 end
 
 -- check for victory conditions
@@ -287,4 +290,253 @@ function ModeLTS:onKill(event)
 			self:onRoundWon(alive_teams[1])
 		end
 	end
+end
+
+
+-------------------
+-- Deathmatch
+-------------------
+
+ModeDeathmatch = class(Mode)
+
+ModeDeathmatch.RESPAWN_TIME = 10
+ModeDeathmatch.ROUND_TIME   = 60
+
+function ModeDeathmatch:getDescription()
+    return "Deathmatch (60 second rounds, respawn after 10 seconds, 1 score per kill)"
+end
+
+function ModeDeathmatch:playerReconnected(player)
+    print("dm reconnect", GAME.combat)
+
+    if GAME.combat then
+        print("dm reconnect in combat")
+        -- Respawn the hero after some seconds
+        GAME:addTask {
+            id = "reconnected player respawn",
+            time = ModeDeathmatch.RESPAWN_TIME,
+            func = function()
+                print("dm reconnect respawn")
+                if player.active and GAME.combat then
+                    -- Respawn the hero
+                    player.pawn:respawn(true)
+
+                    -- Add temp invul
+                    player.pawn.unit:Stop()
+                    player.pawn:addNativeModifier("modifier_omninight_guardian_angel")
+                    player.pawn.invulnerable = true
+
+                    -- Remove invul timer
+                    GAME:addTask {
+                        id = "player invul stop",
+                        time = 2,
+                        func = function()
+                            player.pawn:removeNativeModifier("modifier_omninight_guardian_angel")
+		                    player.pawn.invulnerable = false
+                        end
+                    }
+
+                    print("dm reconnect respawned")
+                end
+            end
+        }
+    end
+end
+
+function ModeDeathmatch:prepareForRound()
+    print("dm prepare")
+
+    GAME:setCombat(false)
+	GAME:removeProjectiles()
+	GAME:destroyTempActors()
+	GAME:setShop(true)
+	GAME.arena:setAutoShrink(false)
+	
+	-- obstacles
+	GAME:clearObstacles()
+	GAME:setRandomObstacleVariation()
+	Arena:setPlatformType(Obstacle.variation) -- arena platform type matches obstacle variation
+	GAME.arena:setLayer(0) -- delete the remaining tiles (to create new platform type)
+	GAME.arena:setLayer(16) -- corresponding to 1 player
+	GAME:addRandomObstacles(math.random(Mode.OBSTACLE_COUNT_MIN, Mode.OBSTACLE_COUNT_MAX))
+
+    self:respawnPlayers(true)
+
+	-- Start the round start timer
+	GAME:addTask{
+		id='round start',
+		time=self.SHOP_TIME,
+		func= function()
+			self:onRoundStart()
+		end
+	}
+
+ 	-- Every 5 s print time till shoptime ends
+	local shoptime_end = GAME:time() + self.SHOP_TIME
+
+	local function print_shoptime_countdown()
+		local time_to_round_start = math.ceil(shoptime_end - GAME:time())
+		display(self:roundName(self.round+1) ..' in ' .. time_to_round_start .. 's')
+	end
+
+	for t = 0, self.SHOP_TIME-1, 5 do
+		GAME:addTask{
+			id='shoptime countdown',
+			time=t,
+			func=print_shoptime_countdown
+		}
+	end
+
+	-- Print the last 3 seconds bigger
+	local function print_shoptime_final_countdown()
+		local time_to_round_start = math.ceil(shoptime_end - GAME:time())
+		GAME:showMessage(tostring(time_to_round_start), 0.7)
+	end
+
+	for t = self.SHOP_TIME-3, self.SHOP_TIME-1 do
+		GAME:addTask{
+			id='shoptime final countdown',
+			time=t,
+			func=print_shoptime_final_countdown
+		}
+	end
+
+	GAME:addTask{
+		id="shoptime help",
+		time = 1,
+		func=function()
+			display('Buy new spells in the shop')
+			display('Assign ability points to buy spell upgrades (remember this costs money)')
+		end
+	}
+
+	GAME:addTask {
+		id ='shoptime fight',
+		time = self.SHOP_TIME,
+		func = function()
+			GAME:showMessage("FIGHT!", 1.0)
+		end
+	}
+
+	-- Show SHOPTIME message at the top
+	GAME:showMessage("SHOPTIME", self.SHOP_TIME - 5)
+end
+
+function ModeDeathmatch:onRoundStart()
+    self.round = self.round + 1
+	display(self:roundName())
+
+    print("dm start")
+
+	GAME.team_mode:onNewRound()
+
+    -- Invul only for first round
+    if self.round == 1 then
+        print("dm round 1")
+
+        GAME:removeProjectiles()
+	    GAME:destroyTempActors()
+	    GAME:setCombat(true)
+
+        self:respawnPlayers(true)
+
+	    -- initial invul
+	    for pawn, _ in pairs(GAME.pawns) do
+		    pawn.unit:Stop()
+		    pawn:addNativeModifier("modifier_omninight_guardian_angel")
+		    pawn.invulnerable = true
+	    end
+	
+	    -- remove initial invul after some time
+	    GAME:addTask {
+		    time = 2,
+		    func = function()
+			    for pawn, _ in pairs(GAME.pawns) do
+				    pawn:removeNativeModifier("modifier_omninight_guardian_angel")
+				    pawn.invulnerable = false
+			    end
+		    end
+	    }
+    end
+
+    -- Automatic round end
+    GAME:addTask {
+        id = "round end deathmatch",
+        time = ModeDeathmatch.ROUND_TIME,
+        func = function()
+            self:onRoundEnd()
+        end
+    }
+
+    -- Round end counters
+    for t = 1, 3 do
+		GAME:addTask{
+			id = 'deathmatch round end countdown',
+			time = ModeDeathmatch.ROUND_TIME - t,
+			func = function()
+                GAME:showMessage(t, 0.7)
+            end
+		}
+	end
+end
+
+function ModeDeathmatch:onRoundEnd()
+    print("dm end")
+
+    -- obstacles
+	GAME:clearObstacles()
+	GAME:setRandomObstacleVariation()
+	Arena:setPlatformType(Obstacle.variation) -- arena platform type matches obstacle variation
+	GAME.arena:setLayer(0) -- delete the remaining tiles (to create new platform type)
+	GAME.arena:setLayer(15+GAME.player_count*1) -- corresponding to 1 player
+	GAME:addRandomObstacles(math.random(Mode.OBSTACLE_COUNT_MIN, Mode.OBSTACLE_COUNT_MAX))
+
+    display(self:roundName()..' has ended')
+
+	-- Rewards for ending the round
+	for id, player in pairs(GAME.players) do
+		player:addCash(self.cash_every_round)
+	end
+
+	-- Check the win condition if the game is over
+	if not self.win_condition:isGameOver() then
+		self:onRoundStart()
+	else
+		GAME:winGame(self.win_condition:getWinners())
+	end
+end
+
+function ModeDeathmatch:onKill(event)
+    ModeDeathmatch.super.onKill(self, event)
+
+    if event.killer and event.killer.owner and event.killer.owner.team then
+        event.killer.owner.team:addScore(1)
+    end
+
+    -- Respawn the hero after some seconds
+    GAME:addTask {
+        id = "player respawn",
+        time = ModeDeathmatch.RESPAWN_TIME,
+        func = function()
+            if event.victim.owner.active then
+                -- Respawn the hero
+                event.victim:respawn(true)
+
+                -- Add temp invul
+                event.victim.unit:Stop()
+		        event.victim:addNativeModifier("modifier_omninight_guardian_angel")
+		        event.victim.invulnerable = true
+
+                -- Remove invul timer
+                GAME:addTask {
+                    id = "player invul stop",
+                    time = 2,
+                    func = function()
+                        event.victim:removeNativeModifier("modifier_omninight_guardian_angel")
+				        event.victim.invulnerable = false
+                    end
+                }
+            end
+        end
+    }
 end

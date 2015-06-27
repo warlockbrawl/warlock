@@ -90,6 +90,10 @@ function Player:EventConnect(info)
 		GAME.active_players[self] = true
 		
 		log("Player " .. self.name .. " reconnected fully.")
+
+        if GAME.mode then
+            GAME.mode:playerReconnected(self)
+        end
 	end
 end
 

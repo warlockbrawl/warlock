@@ -25,7 +25,7 @@ var g_TextBoxIntIds = {
 
 var g_DropDownIntIds = {
 	1: { id: "#TeamModeDropDown", values: [ "Shuffle", "FFA", "Teams" ], valueIdPrefix: "TeamMode" },
-	2: { id: "#ModeDropDown", values: ["Rounds" ], valueIdPrefix: "Mode" },
+	2: { id: "#ModeDropDown", values: ["Rounds", "Deathmatch" ], valueIdPrefix: "Mode" },
 	3: { id: "#WinConditionDropDown", values: [ "Rounds", "Score" ], valueIdPrefix: "WinCondition" }
 };
 

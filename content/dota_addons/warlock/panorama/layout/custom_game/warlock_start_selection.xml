@@ -38,6 +38,7 @@
 					<Label id="ModeLabel" class="ModeItemLabel" text="Mode:" />
 					<DropDown id="ModeDropDown" class="ModeItemValue" oninputsubmit="onDropDownValueChanged()">
 						<Label id="ModeRounds" text="Rounds" />
+						<Label id="ModeDeathmatch" text="Deathmatch" />
 					</DropDown>
 				</Panel>
 
