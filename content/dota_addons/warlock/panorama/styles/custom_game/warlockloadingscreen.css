@@ -1,0 +1,30 @@
+.LoadingScreenRoot
+{
+	width: 100%;
+	height: 100%;
+	overflow: clip;
+	flow-children: down;
+}
+
+#LoadingScreenBackground
+{
+	width: 100%;
+	height: 100%;
+}
+
+#LoadingScreenImage
+{
+	width: 100%;
+	height: 100%;
+}
+
+#LoadingScreenTitleWrapper
+{
+	horizontal-align: center;
+	vertical-align: top;
+}
+
+#LoadingScreenTitle
+{
+	font-size: 80px;
+}

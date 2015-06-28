@@ -1,0 +1,15 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/warlockloadingscreen.css" />
+	</styles>
+	
+	<scripts>
+	
+	</scripts>
+	
+	<Panel class="LoadingScreenRoot">
+		<Panel id="LoadingScreenBackground">
+			<Image id="LoadingScreenImage" src="file://{resources}/images/custom_game/LoadingScreen.jpg" />
+		</Panel>
+	</Panel>
+</root>
