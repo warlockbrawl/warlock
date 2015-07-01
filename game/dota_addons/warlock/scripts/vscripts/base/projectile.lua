@@ -24,9 +24,9 @@ function Projectile:init(def)
 	-- actor constructor
 	Projectile.super.init(self, def)
 
-	-- effect
+	-- Create permanent effect until destroyed manually (duration -1)
 	if def.projectile_effect then
-		self.effect = Effect:create(def.projectile_effect, {location=self.location})
+		self.effect = Effect:create(def.projectile_effect, { location=self.location, duration = -1})
 	end
 
 	-- coll component

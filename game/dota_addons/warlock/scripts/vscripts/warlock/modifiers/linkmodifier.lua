@@ -15,5 +15,5 @@ end
 function LinkModifier:onPreTick(dt)
 	local dir = (self.target.location - self.pawn.location):Normalized()
 	
-	self.pawn.velocity += 300 * dir * dt
+	self.pawn.velocity = self.pawn.velocity + 300 * dir * dt
 end

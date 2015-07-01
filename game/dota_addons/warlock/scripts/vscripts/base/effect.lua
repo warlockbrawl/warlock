@@ -37,6 +37,18 @@ function Effect:init(def)
 
 	self.destruction_sound = def.destruction_sound
 	self.destruction_effect = def.destruction_effect
+	
+    local duration = def.duration or 5 -- Default duration five seconds
+
+    -- duration -1 means permanent
+    if duration ~= -1 then
+	    GAME:addTask {
+		    time = def.duration,
+		    func = function()
+			    self:destroy()
+		    end
+	    }
+    end
 end
 
 --- velocity_size is optional but useful for 'projectile effect'
