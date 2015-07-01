@@ -259,14 +259,4 @@ function LightningEffect:init(def)
 	if def.sound and self.locust then
 		self.locust:EmitSound(def.sound)
 	end
-
-	if def.lifetime then
-		GAME:addTask({
-			id='destroy lightning effect',
-			time=def.lifetime,
-			func = function()
-				self:destroy()
-			end
-		})
-	end
 end

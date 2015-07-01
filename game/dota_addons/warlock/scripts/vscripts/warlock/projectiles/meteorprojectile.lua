@@ -58,7 +58,7 @@ function MeteorProjectile:init(def)
 
 	-- effect
 	if def.projectile_effect then
-		self.effect = Effect:create(def.projectile_effect, {location=self.location})
+		self.effect = Effect:create(def.projectile_effect, { location = self.location, duration = -1})
 	end
 
 	-- Start a timer for the meteor to fall
@@ -100,6 +100,7 @@ function MeteorProjectile:explode()
 			amount_max = self.damage_max,
 			knockback_factor = 0.66
 	})
+
 	Effect:create(self.explode_effect, { location=self.target })
 	self:destroy()
 end

@@ -75,7 +75,7 @@ function Lightning:onCast(cast_info)
 	Effect:create(cast_info:attribute("effect"), {
 		start_location=start,
 		end_location=start+dir*best_dst,
-		lifetime=2
+		duration=2
 	})
 end
 

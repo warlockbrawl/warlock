@@ -20,7 +20,7 @@ BASE_MODULES		= {
 	'warlock/projectiles/swapprojectile', 'warlock/projectiles/gripprojectile',
 	'warlock/projectiles/fireballprojectile', 'warlock/projectiles/drainprojectile',
 	'warlock/projectiles/drainhealprojectile', 'warlock/projectiles/homingprojectile',
-    'warlock/projectiles/magnetizeprojectile', 'warlock/projectiles/linkprojectile',
+    'warlock/projectiles/magnetizeprojectile', --'warlock/projectiles/linkprojectile',
 
 	'warlock/spells/fireball', 'warlock/spells/scourge',
 	'warlock/spells/boomerang', 'warlock/spells/lightning',
@@ -32,12 +32,12 @@ BASE_MODULES		= {
 	'warlock/spells/drain', 'warlock/spells/homing',
 	'warlock/spells/thrust', 'warlock/spells/warpzone',
     'warlock/spells/magnetize', 'warlock/spells/rockpillar',
-    'warlock/spells/alteration', 'warlock/spells/link',
+    'warlock/spells/alteration', --'warlock/spells/link',
 
 	'warlock/modifiers/windwalkmodifier', 'warlock/modifiers/shieldmodifier',
 	'warlock/modifiers/rushmodifier', 'warlock/modifiers/gripmodifier',
 	'warlock/modifiers/thrustmodifier', 'warlock/modifiers/magnetizemodifier',
-    'warlock/modifiers/alterationmodifier', 'warlock/modifiers/linkmodifier',
+    'warlock/modifiers/alterationmodifier', --'warlock/modifiers/linkmodifier',
 
 	'triggers'
 }
@@ -123,8 +123,7 @@ function Precache(context)
 	PrecacheResource("particle", "particles/units/heroes/hero_bristleback/bristleback_viscous_nasal_goo_debuff.vpcf", context)
 	PrecacheResource("particle", "particles/units/heroes/hero_ember_spirit/ember_spirit_searing_chains_debuff.vpcf", context)
 	PrecacheResource("particle", "particles/units/heroes/hero_ember_spirit/ember_spirit_flameguard.vpcf", context)
-	-- PrecacheResource("particle", "particles/units/heroes/hero_dazzle/dazzle_poison_touch.vpcf", context) Currently leaks?!
-    PrecacheResource("particle", "particles/units/heroes/hero_viper/viper_base_attack.vpcf", context) -- Replacement for ^
+	PrecacheResource("particle", "particles/units/heroes/hero_dazzle/dazzle_poison_touch.vpcf", context)
 	PrecacheResource("particle", "particles/units/heroes/hero_wisp/wisp_base_attack_explosion.vpcf", context)
 	PrecacheResource("particle", "particles/units/heroes/hero_wisp/wisp_guardian_explosion.vpcf", context)
 	PrecacheResource("particle", "particles/units/heroes/hero_sniper/sniper_assassinate_impact_blood.vpcf", context)
@@ -143,6 +142,7 @@ function Precache(context)
     PrecacheResource("particle", "particles/econ/items/tinker/boots_of_travel/teleport_start_bots_dust.vpcf", context)
     PrecacheResource("particle", "particles/prototype_fx/item_linkens_buff_explosion.vpcf", context)
     PrecacheResource("particle", "particles/units/heroes/hero_treant/treant_livingarmor.vpcf", context)
+    PrecacheResource("particle", "particles/units/heroes/hero_jakiro/jakiro_liquid_fire_explosion.vpcf", context)
    
 	-- custom effects
 	PrecacheResource("particle_folder", "particles/fireball", context)

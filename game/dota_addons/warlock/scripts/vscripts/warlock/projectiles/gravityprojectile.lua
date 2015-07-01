@@ -23,7 +23,7 @@ function GravityProjectile:init(def)
 
 	-- effect
 	if def.projectile_effect then
-		self.effect = Effect:create(def.projectile_effect, {location=self.location})
+		self.effect = Effect:create(def.projectile_effect, { location = self.location, duration = -1})
 	end
 	
 	self:addCollisionComponent{
