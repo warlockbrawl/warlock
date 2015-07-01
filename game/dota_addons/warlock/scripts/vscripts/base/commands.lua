@@ -5,6 +5,36 @@ function Game:initCommands()
 	--Convars:RegisterCommand( "command_example", Dynamic_Wrap(WarlockGameMode, 'cmdExample'), "A console command example", self )
 
 	self.commands = {}
+	
+	self:registerCommand("respawnarena", function()
+		local arena = GAME.arena
+		arena:setLayer(0)
+		arena:setLayer(20)
+	end)
+	
+	self:registerCommand("spawnproj", function()
+		local actor = GAME.pawns:toList()[1]
+	
+		for i = 1, 200 do
+			local dir = Vector(1, 0, 0)
+
+			local projectile_class = SimpleProjectile
+			local projectile_speed = 1000
+			local damage = 10
+			local range = 300
+			local radius = 25
+			local projectile_effect = "fireball_projectile"
+
+			local proj = projectile_class:new{
+				instigator	= actor,
+				velocity	= dir*projectile_speed,
+				coll_radius = radius,
+				lifetime	= range / projectile_speed,
+				projectile_effect = projectile_effect,
+				damage 		= damage
+			}
+		end
+	end)
 
     self:registerCommand("actorlist", function()
         local total_actors = 0
