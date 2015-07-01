@@ -49,7 +49,7 @@ function GameSetup:init()
 	self:setGameOption(GAME_OPT_TEAMSCORE, 0)
     self:setGameOption(GAME_OPT_CASH_ROUND, 10)
     self:setGameOption(GAME_OPT_CASH_START, 30)
-    self:setGameOption(GAME_OPT_CASH_ROUND, 0)
+    self:setGameOption(GAME_OPT_CASH_KILL, 0)
     self:setGameOption(GAME_OPT_CASH_WIN, 0)
 	
 	CustomGameEventManager:RegisterListener("set_team", Dynamic_Wrap(self, "onSetTeam"))

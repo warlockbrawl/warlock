@@ -430,6 +430,14 @@ function ModeDeathmatch:onRoundStart()
 
 	GAME.team_mode:onNewRound()
 
+    -- obstacles
+	GAME:clearObstacles()
+	GAME:setRandomObstacleVariation()
+	Arena:setPlatformType(Obstacle.variation) -- arena platform type matches obstacle variation
+	GAME.arena:setLayer(0) -- delete the remaining tiles (to create new platform type)
+	GAME.arena:setLayer(15+GAME.player_count*1) -- corresponding to 1 player
+	GAME:addRandomObstacles(math.random(Mode.OBSTACLE_COUNT_MIN, Mode.OBSTACLE_COUNT_MAX))
+
     -- Invul only for first round
     if self.round == 1 then
         print("dm round 1")
@@ -482,14 +490,6 @@ end
 
 function ModeDeathmatch:onRoundEnd()
     print("dm end")
-
-    -- obstacles
-	GAME:clearObstacles()
-	GAME:setRandomObstacleVariation()
-	Arena:setPlatformType(Obstacle.variation) -- arena platform type matches obstacle variation
-	GAME.arena:setLayer(0) -- delete the remaining tiles (to create new platform type)
-	GAME.arena:setLayer(15+GAME.player_count*1) -- corresponding to 1 player
-	GAME:addRandomObstacles(math.random(Mode.OBSTACLE_COUNT_MIN, Mode.OBSTACLE_COUNT_MAX))
 
     display(self:roundName()..' has ended')
 

@@ -66,9 +66,8 @@ end
 -- effects
 Effect:register('drain_projectile', {
 	class 				= ProjectileParticleEffect,
-	effect_name 		= 'particles/units/heroes/hero_viper/viper_base_attack.vpcf',
+	effect_name 		= 'particles/units/heroes/hero_dazzle/dazzle_poison_touch.vpcf',
     scale               = 1.5
-    --'particles/units/heroes/hero_dazzle/dazzle_poison_touch.vpcf' Leaks ?!
 })
 
 Effect:register('drain_heal_projectile', {

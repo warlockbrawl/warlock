@@ -99,7 +99,15 @@ function BoomerangProjectile:onCollision(coll_info, cc)
 
 	if self:isMovingTowards(coll_info.hit_normal) then
 		self:reflectVelocity(coll_info.hit_normal)
-		self.velocity = 500 * self.velocity:Normalized()
+		
+		local bounce_vel = 500
+		
+		-- More bouncing when hitting obstacles
+		if coll_info.actor:instanceof(Obstacle) then
+			bounce_vel = 750
+		end
+
+		self.velocity = bounce_vel * self.velocity:Normalized() -- In wc3: 500, but with distance bug
 	end
 	
 	--Move the projectile out of the hit warlock
