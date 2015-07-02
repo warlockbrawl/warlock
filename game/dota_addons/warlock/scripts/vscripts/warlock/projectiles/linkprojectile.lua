@@ -32,11 +32,10 @@ function LinkProjectile:init(def)
 	self.collision_components["projectile"].coll_mat = coll_mat
 	self.collision_components["projectile"].coll_initiative = -1
 
-	-- TODO: Move it
 	self.link_beam_effect = Effect:create(self.beam_effect, {
-		start_location = self.instigator.location,
-		end_location = self.location,
-		duration = self.retract_time
+		start_ent = self.instigator.unit,
+		end_ent = self.effect.locust,
+		duration = -1
 	})
 	
 	-- Start the retract timer
@@ -48,13 +47,7 @@ function LinkProjectile:init(def)
 		end
 	}
 	
-	self.retract = false
-end
-
-function LinkProjectile:onDestroy()
-	if self.link_beam_effect then
-		self.link_beam_effect:destroy()
-	end
+	self.retracting = false
 end
 
 function LinkProjectile:onCollision(coll_info, cc)
@@ -67,18 +60,27 @@ function LinkProjectile:onCollision(coll_info, cc)
 	end
 	
 	if(actor:instanceof(Pawn)) then
+        if self.link_beam_effect then
+            -- Set the effects target
+            self.link_beam_effect:setEndEntity(actor.unit)
+        end
+
 		-- Add the link modifier that pushes the pawn towards the target
 		GAME:addModifier(LinkModifier:new {
 			pawn = actor,
 			target = self.instigator,
-			damage = self.damage,
 			loop_sound = self.loop_sound,
 			loop_duration = self.loop_duration,
 			pull_accel = self.pull_accel,
-			beam_effect = self.beam_effect,
+			link_beam_effect = self.link_beam_effect,
 			damage = self.damage
 		})
 	elseif(coll_info.actor:instanceof(Obstacle)) then
+        if self.link_beam_effect then
+            -- Set the effects target
+            self.link_beam_effect:setEndEntity(actor.locust)
+        end
+
 		-- Add the link modifier that pushes the pawn towards the target
 		GAME:addModifier(LinkModifier:new {
 			pawn = self.instigator,
@@ -86,6 +88,7 @@ function LinkProjectile:onCollision(coll_info, cc)
 			loop_sound = self.loop_sound,
 			loop_duration = self.loop_duration,
 			pull_accel = self.pull_accel,
+            link_beam_effect = self.link_beam_effect,
 			beam_effect = self.beam_effect
 		})
 	end
@@ -95,15 +98,20 @@ function LinkProjectile:onCollision(coll_info, cc)
 end
 
 function LinkProjectile:retract()
-	self.retract = true
+	self.retracting = true
 end
 
 function LinkProjectile:onPreTick(dt)
-	if self.retract then
+	if self.retracting then
 		local delta = self.instigator.location - self.location
 		local dst = delta:Length()
 		
 		if dst < 75 then
+            -- Destroy the link if nobody was linked
+            if self.link_beam_effect then
+		        self.link_beam_effect:destroy()
+	        end
+
 			self:destroy()
 		else
 			local dir = delta:Normalized()

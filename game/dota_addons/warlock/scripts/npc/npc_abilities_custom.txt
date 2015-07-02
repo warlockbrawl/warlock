@@ -820,7 +820,7 @@
 		"AbilityCooldown"				"17.0 15.0 13.0 11.0 9.0 7.0"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
 		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
-		"MaxLevel"						"6"
+		"MaxLevel"						"7"
 		"AbilityManaCost"				"0"
 
 		"precache"
@@ -843,27 +843,27 @@
 			"01"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"damage"				"1.4 2.2 3.0 3.8 4.6 5.4"
+				"damage"				"1.2 2.0 2.8 3.6 4.4 5.2 6.0"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"range"					"860 860 860 860 860 860"
+				"range"					"860 860 860 860 860 860 860"
 			}
 			"03"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"speed"					"950 950 950 950 950 950"
+				"speed"					"950 950 950 950 950 950 950"
 			}
 			"04"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"cooldown2"				"17.0 15.0 13.0 11.0 9.0 7.0"
+				"cooldown2"				"20.0 18.0 16.0 14.0 12.0 10.0 8.0"
 			}
 			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"upgrade_cost"			"4 5 6 7 8 9"
+				"upgrade_cost"			"4 5 6 7 8 9 10"
 			}
 		}
 	}

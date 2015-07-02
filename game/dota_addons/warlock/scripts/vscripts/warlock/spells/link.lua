@@ -10,7 +10,7 @@ Link.pull_accel = 1550
 Link.hit_sound = "Link.Hit"
 Link.cast_sound = "Link.Cast"
 Link.loop_sound = "Link.Loop"
-Link.loop_duration = 1.0
+Link.loop_duration = 100000 -- Already loops by default
 Link.beam_effect = "link_beam"
 
 function Link:onCast(cast_info)
@@ -20,7 +20,6 @@ function Link:onCast(cast_info)
 	local range = cast_info:attribute('range')
 	local radius = cast_info:attribute('radius')
 	local projectile_effect = cast_info:attribute('projectile_effect')
-	local ttl = cast_info:attribute('ttl')
 	local speed = cast_info:attribute('speed')
 	local hit_sound = cast_info:attribute('hit_sound')
 	local loop_sound = cast_info:attribute('loop_sound')
@@ -29,7 +28,9 @@ function Link:onCast(cast_info)
 	local beam_effect = cast_info:attribute('beam_effect')
 	local cast_sound = cast_info:attribute('cast_sound')
 	
-	actor.unit:EmitSound(cast_sound)
+    if cast_sound then
+	    actor.unit:EmitSound(cast_sound)
+    end
 	
 	-- Direction to target
 	local start = cast_info.caster_actor.location
@@ -43,7 +44,6 @@ function Link:onCast(cast_info)
 		projectile_effect = projectile_effect,
 		location = start,
 		damage = damage,
-		range = range,
 		velocity = speed * dir,
 		speed = speed,
 		pull_accel = pull_accel,
@@ -58,10 +58,10 @@ end
 -- effects
 Effect:register('link_projectile', {
 	class = ProjectileParticleEffect,
-	effect_name = "particles/units/heroes/hero_disruptor/disruptor_base_attack.vpcf"
+	effect_name = "" -- "particles/units/heroes/hero_disruptor/disruptor_base_attack.vpcf"
 })
 
 Effect:register('link_beam', {
-	class 				= LightningEffect,
-	effect_name 		= "particles/units/heroes/hero_lion/lion_spell_mana_drain.vpcf"
+	class 				= FollowLightningEffect,
+	effect_name 		= "particles/units/heroes/hero_stormspirit/stormspirit_electric_vortex.vpcf"
 })

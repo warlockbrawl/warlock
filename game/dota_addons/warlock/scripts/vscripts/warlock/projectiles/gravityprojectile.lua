@@ -78,6 +78,7 @@ function GravityProjectile:onPreTick(dt)
 		local is_proj = actor:instanceof(Projectile) 
 			and not actor:instanceof(MeteorProjectile)
 			and not actor:instanceof(GravityProjectile)
+            and not actor:instanceof(LinkProjectile)
 		
 		if(is_pawn or is_proj) then
 			local dir = self.location - actor.location

@@ -55,7 +55,7 @@ end
 function Effect:setLocation(new_location, velocity_size)
 	self.location = new_location
 
-	-- by defautl move the locust to the new location
+	-- by default move the locust to the new location
 	if self.locust then
 		self.locust:SetAbsOrigin(new_location)
 	end
@@ -94,7 +94,8 @@ function Effect:destroy()
 	end
 
 	if self.particleId then
-		ParticleManager:ReleaseParticleIndex(self.particleId)
+        ParticleManager:DestroyParticle(self.particleId, false)
+		-- ParticleManager:ReleaseParticleIndex(self.particleId)
 		self.particleId = nil
 	end
 
@@ -196,6 +197,11 @@ function ProjectileParticleEffect:setLocation(new_location, velocity_size)
 	self.location = new_location
 	-- no need to move the locust now
 
+    -- Still moving the locust to prevent some bugs and allow follow particles
+    if self.locust then
+        self.locust:SetAbsOrigin(self.location)
+    end
+
 	if self.particleId then
 		-- target
 		ParticleManager:SetParticleControl( self.particleId, 1, self.location)
@@ -251,12 +257,48 @@ function LightningEffect:init(def)
 	LightningEffect.super.init(self, def)
 
 	if self.particleId then
-		ParticleManager:SetParticleControl( self.particleId, 0, def.end_location)
 		ParticleManager:SetParticleControl( self.particleId, 1, def.end_location)
-		ParticleManager:SetParticleControl( self.particleId, 2, def.end_location)
 	end
 
 	if def.sound and self.locust then
 		self.locust:EmitSound(def.sound)
 	end
+end
+
+-------------------------------------------------------------------------------
+--- Beam particle effect that follows a start and end entity
+-- def:
+-- * start_ent
+-- * end_ent
+-------------------------------------------------------------------------------
+FollowLightningEffect = class(ParticleEffect)
+
+function FollowLightningEffect:init(def)
+	def.location = def.start_location
+
+    self.start_ent = def.start_ent
+    self.end_ent = def.end_ent
+
+	self.effect_name = def.effect_name
+
+	ParticleEffect.super.init(self, def)
+
+	if def.effect_name then
+		self.particleId = ParticleManager:CreateParticle(self.effect_name, PATTACH_CUSTOMORIGIN , nil)
+	end
+
+	self:setLocation(self.location, 0)
+
+	if self.particleId then
+		ParticleManager:SetParticleControlEnt(self.particleId, 0, def.start_ent, PATTACH_ABSORIGIN_FOLLOW, nil, Vector(0, 0, 0), true)
+		ParticleManager:SetParticleControlEnt(self.particleId, 1, def.end_ent, PATTACH_ABSORIGIN_FOLLOW, nil, Vector(0, 0, 0), true)
+	end
+end
+
+function FollowLightningEffect:setStartEntity(start_ent)
+    ParticleManager:SetParticleControlEnt(self.particleId, 0, start_ent, PATTACH_ABSORIGIN_FOLLOW, nil, Vector(0, 0, 0), true)
+end
+
+function FollowLightningEffect:setEndEntity(end_ent)
+    ParticleManager:SetParticleControlEnt(self.particleId, 0, end_ent, PATTACH_ABSORIGIN_FOLLOW, nil, Vector(0, 0, 0), true)
 end

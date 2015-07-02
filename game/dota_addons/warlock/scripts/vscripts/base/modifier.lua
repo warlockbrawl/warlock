@@ -1,5 +1,6 @@
 Modifier = class()
 modifiers = {}
+modifiers_by_type = {}
 
 --- Params
 -- pawn
@@ -55,7 +56,6 @@ function Modifier:init(def)
 
         self.sound_loop_task = GAME:addTask {
             period = loop_duration,
-            --period = sound_duration,
             func = function()
                 log("In loop")
 
@@ -174,11 +174,19 @@ end
 
 function Game:addModifier(mod)
 	if(mod.pawn) then
-		if(not modifiers[mod.pawn]) then
+        -- Add to modifiers by pawn list
+		if not modifiers[mod.pawn] then
 			modifiers[mod.pawn] = Set:new()
 		end
 
+        -- Add to modifiers by type list
+        local t = mod.class
+        if not modifiers_by_type[t] then
+            modifiers_by_type[t] = Set:new()
+        end
+
 		modifiers[mod.pawn]:add(mod)
+        modifiers_by_type[t]:add(mod)
 	end
 
 	mod:toggle(true)
@@ -189,8 +197,19 @@ function Game:removeModifier(mod)
 
 	if(mod.pawn) then
 		modifiers[mod.pawn]:remove(mod)
+        modifiers_by_type[mod.class]:remove(mod)
 		mod.pawn = nil
 	end
+end
+
+function Game:getModifiersOfType(t)
+    local mods = modifiers_by_type[t]
+
+    if mods == nil then
+        return Set:new()
+    end
+
+    return mods
 end
 
 function Pawn:hasModifierOfType(t)
