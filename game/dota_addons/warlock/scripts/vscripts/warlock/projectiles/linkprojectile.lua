@@ -73,7 +73,8 @@ function LinkProjectile:onCollision(coll_info, cc)
 			loop_duration = self.loop_duration,
 			pull_accel = self.pull_accel,
 			link_beam_effect = self.link_beam_effect,
-			damage = self.damage
+			damage = self.damage,
+            temporary = true
 		})
 	elseif(coll_info.actor:instanceof(Obstacle)) then
         if self.link_beam_effect then
@@ -89,7 +90,8 @@ function LinkProjectile:onCollision(coll_info, cc)
 			loop_duration = self.loop_duration,
 			pull_accel = self.pull_accel,
             link_beam_effect = self.link_beam_effect,
-			beam_effect = self.beam_effect
+			beam_effect = self.beam_effect,
+            temporary = true
 		})
 	end
 	

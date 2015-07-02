@@ -61,16 +61,31 @@ function LinkModifier:onPreTick(dt)
 end
 
 function LinkModifier:onSpellCast(cast_info)
+    local link_caster = nil
+    local link_target = nil
+
+    -- If the target is an obstacle the caster is the pawn being pulled
+    if self.target:instanceof(Obstacle) then
+        link_caster = self.pawn
+        link_target = self.target
+    else
+        link_caster = self.target
+        link_target = self.pawn
+    end
+
     -- Remove if target casts shield or rush
-    if cast_info.caster_actor == self.target then
-        if cast_info.spell:instanceof(Shield) or cast_info.spell:instanceof(Rush) then
+    if cast_info.caster_actor == link_target then
+        if cast_info.spell.id == Shield.id or cast_info.spell.id == Rush.id then
             GAME:removeModifier(self)
+
+            -- Can return early
+            return
         end
     end
 
     -- Remove if linker casts teleport or swap
-    if cast_info.caster_actor == self.pawn then
-        if cast_info.spell:instanceof(Teleport) or cast_info.spell:instanceof(Swap) then
+    if cast_info.caster_actor == link_caster then
+        if cast_info.spell.id == Teleport.id or cast_info.spell.id == Swap.id then
             GAME:removeModifier(self)
         end
     end

@@ -6,7 +6,7 @@ GripModifier = class(Modifier)
 -- end_sound
 
 function GripModifier:init(def)
-	RushModifier.super.init(self, def)
+	GripModifier.super.init(self, def)
 
 	-- Extract parameters
 	self.dp_gain = def.dp_gain
