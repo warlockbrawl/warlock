@@ -300,5 +300,5 @@ function FollowLightningEffect:setStartEntity(start_ent)
 end
 
 function FollowLightningEffect:setEndEntity(end_ent)
-    ParticleManager:SetParticleControlEnt(self.particleId, 0, end_ent, PATTACH_ABSORIGIN_FOLLOW, nil, Vector(0, 0, 0), true)
+    ParticleManager:SetParticleControlEnt(self.particleId, 1, end_ent, PATTACH_ABSORIGIN_FOLLOW, nil, Vector(0, 0, 0), true)
 end
