@@ -65,15 +65,22 @@ function LinkProjectile:onCollision(coll_info, cc)
             self.link_beam_effect:setEndEntity(actor.unit)
         end
 
+        local damage = nil
+
+        if actor.owner:getAlliance(self.instigator.owner) == ALLIANCE_ENEMY then
+            damage = self.damage
+        end
+
 		-- Add the link modifier that pushes the pawn towards the target
 		GAME:addModifier(LinkModifier:new {
-			pawn = actor,
-			target = self.instigator,
+			pawn = self.instigator,
+			linked = actor,
+            pull_linked = true,
 			loop_sound = self.loop_sound,
 			loop_duration = self.loop_duration,
 			pull_accel = self.pull_accel,
 			link_beam_effect = self.link_beam_effect,
-			damage = self.damage,
+			damage = damage,
             temporary = true
 		})
 	elseif(coll_info.actor:instanceof(Obstacle)) then
@@ -85,7 +92,8 @@ function LinkProjectile:onCollision(coll_info, cc)
 		-- Add the link modifier that pushes the pawn towards the target
 		GAME:addModifier(LinkModifier:new {
 			pawn = self.instigator,
-			target = actor,
+			linked = actor,
+            pull_linked = false,
 			loop_sound = self.loop_sound,
 			loop_duration = self.loop_duration,
 			pull_accel = self.pull_accel,

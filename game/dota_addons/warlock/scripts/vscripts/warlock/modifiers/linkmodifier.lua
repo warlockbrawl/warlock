@@ -1,9 +1,11 @@
 LinkModifier = class(Modifier)
 
 --- Params
--- target
 -- damage
+-- pull_accel
 -- link_beam_effect
+-- linked (the linked pawn)
+-- pull_linked (whether linked should be pulled to pawn)
 
 LinkModifier.damage_period = 0.2
 
@@ -11,10 +13,17 @@ function LinkModifier:init(def)
 	LinkModifier.super.init(self, def)
 
 	-- Extract parameters
-	self.target = def.target
 	self.damage = def.damage
 	self.pull_accel = def.pull_accel
     self.link_beam_effect = def.link_beam_effect
+    self.linked = def.linked
+    self.pull_linked = def.pull_linked
+
+    if self.pull_linked then
+        self.pulled_pawn = self.linked
+    else
+        self.pulled_pawn = self.pawn
+    end
 	
 	-- Set up a seperate task for dealing damage that ticks slower
 	if self.damage then
@@ -22,7 +31,7 @@ function LinkModifier:init(def)
 			period = LinkModifier.damage_period,
 			func = function()
 				self.pawn:receiveDamage {
-					source = self.target,
+					source = self.linked,
 					amount = self.damage * LinkModifier.damage_period
 				}
 			end
@@ -48,33 +57,31 @@ function LinkModifier:onToggle(apply)
 end
 
 function LinkModifier:onPreTick(dt)
-	local delta = self.target.location - self.pawn.location
+    LinkModifier.super.onPreTick(self, dt)
+
+	local delta = self.linked.location - self.pawn.location
 	
     -- Check if the link target is close to the linker and end the modifier
-	if delta:Length() < 100 then
+    -- Also check that the pulled pawn is still alive
+	if (self.pull_linked and not self.linked.enabled) or delta:Length() < 100 then
 		GAME:removeModifier(self)
 	else
-        -- Apply force to move the two together
+        -- Apply force to move the pulled pawn
 		local dir = delta:Normalized()
-		self.pawn.velocity = self.pawn.velocity + self.pull_accel * dir * dt
+        
+        if self.pull_linked then
+            dir = -dir
+        end
+
+		self.pulled_pawn.velocity = self.pulled_pawn.velocity + self.pull_accel * dir * dt
 	end
 end
 
 function LinkModifier:onSpellCast(cast_info)
-    local link_caster = nil
-    local link_target = nil
-
-    -- If the target is an obstacle the caster is the pawn being pulled
-    if self.target:instanceof(Obstacle) then
-        link_caster = self.pawn
-        link_target = self.target
-    else
-        link_caster = self.target
-        link_target = self.pawn
-    end
+    LinkModifier.super.onSpellCast(self, cast_info)
 
     -- Remove if target casts shield or rush
-    if cast_info.caster_actor == link_target then
+    if cast_info.caster_actor == self.linked then
         if cast_info.spell.id == Shield.id or cast_info.spell.id == Rush.id then
             GAME:removeModifier(self)
 
@@ -84,7 +91,7 @@ function LinkModifier:onSpellCast(cast_info)
     end
 
     -- Remove if linker casts teleport or swap
-    if cast_info.caster_actor == link_caster then
+    if cast_info.caster_actor == self.pawn then
         if cast_info.spell.id == Teleport.id or cast_info.spell.id == Swap.id then
             GAME:removeModifier(self)
         end

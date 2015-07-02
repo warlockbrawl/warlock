@@ -18,6 +18,12 @@ function Boomerang:onCast(cast_info)
 	local dist = dir:Length()
 	dir = dir:Normalized()
 
+    -- Prevent division by zero and incorrect directions
+    if dist < 1 then
+        dist = 1
+        dir = Vector(1, 0, 0)
+    end
+
 	local damage = cast_info:attribute('damage')
 	local radius = cast_info:attribute('radius')
 	local projectile_effect = cast_info:attribute('projectile_effect')
