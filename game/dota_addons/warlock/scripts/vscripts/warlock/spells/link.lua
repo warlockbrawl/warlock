@@ -3,7 +3,7 @@ Link = Spell:new{id='warlock_link'}
 
 Link.projectile_class = LinkProjectile
 Link.projectile_effect = 'link_projectile'
-Link.radius = 38
+Link.radius = 35
 Link.speed = 950
 Link.range = 860
 Link.pull_accel = 1550
@@ -17,7 +17,7 @@ function Link:onCast(cast_info)
 	local actor = cast_info.caster_actor
 
 	local damage = cast_info:attribute('damage')
-	local range = cast_info:attribute('range')
+	local range = cast_info:attribute('range') * actor.owner.mastery_factor[Player.MASTERY_RANGE]
 	local radius = cast_info:attribute('radius')
 	local projectile_effect = cast_info:attribute('projectile_effect')
 	local speed = cast_info:attribute('speed')

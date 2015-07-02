@@ -17,10 +17,7 @@ end
 
 -- Called when the modifier is turned on or off
 function RushModifier:onToggle(apply)
-    if apply then
-        -- Remove all link modifiers that have this pawn as target
-        LinkModifier.removeFrom(self.pawn)
-	else	
+    if not apply then
 		-- Remove the bonus ms
 		self.pawn.move_speed = self.pawn.move_speed - self.bonus_ms
 		self.bonus_ms = 0

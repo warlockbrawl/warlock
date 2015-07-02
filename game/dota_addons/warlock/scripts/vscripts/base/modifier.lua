@@ -202,6 +202,10 @@ function Game:removeModifier(mod)
 	end
 end
 
+function Game:getModifiers(pawn)
+    return modifiers[pawn]
+end
+
 function Game:getModifiersOfType(t)
     local mods = modifiers_by_type[t]
 

@@ -20,9 +20,6 @@ function ShieldModifier:onToggle(apply)
 	
 	-- Add / remove temp cc and effect
 	if(apply) then
-        -- Remove all link modifiers that have this pawn as target
-        LinkModifier.removeFrom(self.pawn)
-
 		self.pawn:addCollisionComponent {
 			id = 'shield',
 			channel = CollisionComponent.CHANNEL_PLAYER,

@@ -7,16 +7,6 @@ LinkModifier = class(Modifier)
 
 LinkModifier.damage_period = 0.2
 
--- Removes all link modifiers that have a pawn as target (used in rush and shield)
-function LinkModifier.removeFrom(pawn)
-    local link_mods = GAME:getModifiersOfType(LinkModifier)
-    for link_mod, _ in pairs(link_mods) do
-        if link_mod.target == pawn then
-            GAME:removeModifier(link_mod)
-        end
-    end
-end
-
 function LinkModifier:init(def)
 	LinkModifier.super.init(self, def)
 
@@ -33,7 +23,7 @@ function LinkModifier:init(def)
 			func = function()
 				self.pawn:receiveDamage {
 					source = self.target,
-					amount = self.damage * dt
+					amount = self.damage * LinkModifier.damage_period
 				}
 			end
 		}
@@ -68,4 +58,20 @@ function LinkModifier:onPreTick(dt)
 		local dir = delta:Normalized()
 		self.pawn.velocity = self.pawn.velocity + self.pull_accel * dir * dt
 	end
+end
+
+function LinkModifier:onSpellCast(cast_info)
+    -- Remove if target casts shield or rush
+    if cast_info.caster_actor == self.target then
+        if cast_info.spell:instanceof(Shield) or cast_info.spell:instanceof(Rush) then
+            GAME:removeModifier(self)
+        end
+    end
+
+    -- Remove if linker casts teleport or swap
+    if cast_info.caster_actor == self.pawn then
+        if cast_info.spell:instanceof(Teleport) or cast_info.spell:instanceof(Swap) then
+            GAME:removeModifier(self)
+        end
+    end
 end
