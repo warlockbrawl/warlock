@@ -19,6 +19,8 @@ function GripProjectile:init(def)
 end
 
 function GripProjectile:onCollision(coll_info, cc)
+    GripProjectile.super.onCollision(self, coll_info, cc)
+
 	local actor = coll_info.actor
 
 	if actor:instanceof(Pawn) then

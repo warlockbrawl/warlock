@@ -26,7 +26,9 @@ function SwapProjectile:init(def)
 	self.swapped = false
 end
 
-function SwapProjectile:onCollision(coll_info, cc)	
+function SwapProjectile:onCollision(coll_info, cc)
+    SwapProjectile.super.onCollision(self, coll_info, cc)
+
 	-- Swap the locations
 	local self_loc = self.instigator.location
 	self.instigator.location = coll_info.actor.location

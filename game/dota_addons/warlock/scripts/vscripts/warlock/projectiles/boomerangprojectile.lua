@@ -73,6 +73,8 @@ function BoomerangProjectile:stopAcceleration()
 end
 
 function BoomerangProjectile:onCollision(coll_info, cc)
+    BoomerangProjectile.super.onCollision(self, coll_info, cc)
+
 	if coll_info.actor:instanceof(Pawn) then
 		-- Deal damage
 		coll_info.actor:receiveDamage{

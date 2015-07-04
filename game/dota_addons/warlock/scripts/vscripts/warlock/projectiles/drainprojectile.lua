@@ -64,6 +64,8 @@ function DrainProjectile:changeDirection()
 end
 
 function DrainProjectile:onCollision(coll_info, cc)
+    DrainProjectile.super.onCollision(self, coll_info, cc)
+
 	self.task = nil
 	
 	local actor = coll_info.actor

@@ -35,6 +35,8 @@ function BouncerProjectile:init(def)
 end
 
 function BouncerProjectile:onCollision(coll_info, cc)
+    BouncerProjectile.super.onCollision(self, coll_info, cc)
+
 	if(coll_info.actor:instanceof(Pawn)) then
 		-- Prevent hitting the previous target again
 		if(coll_info.actor ~= self.prev_hit) then

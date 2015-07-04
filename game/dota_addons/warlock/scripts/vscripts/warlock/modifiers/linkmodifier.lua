@@ -30,8 +30,8 @@ function LinkModifier:init(def)
 		self.damage_task = GAME:addTask {
 			period = LinkModifier.damage_period,
 			func = function()
-				self.pawn:receiveDamage {
-					source = self.linked,
+				self.linked:receiveDamage {
+					source = self.pawn,
 					amount = self.damage * LinkModifier.damage_period
 				}
 			end
@@ -63,7 +63,18 @@ function LinkModifier:onPreTick(dt)
 	
     -- Check if the link target is close to the linker and end the modifier
     -- Also check that the pulled pawn is still alive
-	if (self.pull_linked and not self.linked.enabled) or delta:Length() < 100 then
+    -- Also check if the target has shield or rush
+
+    -- Whether the target is dead
+    local stop_link = (self.linked:instanceof(Pawn) and not self.linked.enabled) or not self.linked.exists
+
+    -- Whether the target has shield or rush
+    stop_link = stop_link or (self.linked:instanceof(Pawn) and (self.linked:hasModifierOfType(ShieldModifier) or self.linked:hasModifierOfType(RushModifier)))
+
+    -- Whether the target is too close
+    stop_link = stop_link or delta:Length() < 100
+
+	if stop_link then
 		GAME:removeModifier(self)
 	else
         -- Apply force to move the pulled pawn
@@ -80,18 +91,8 @@ end
 function LinkModifier:onSpellCast(cast_info)
     LinkModifier.super.onSpellCast(self, cast_info)
 
-    -- Remove if target casts shield or rush
-    if cast_info.caster_actor == self.linked then
-        if cast_info.spell.id == Shield.id or cast_info.spell.id == Rush.id then
-            GAME:removeModifier(self)
-
-            -- Can return early
-            return
-        end
-    end
-
-    -- Remove if linker casts teleport or swap
-    if cast_info.caster_actor == self.pawn then
+    -- Remove if linker casts teleport or swap and target is a pawn
+    if self.linked:instanceof(Pawn) then
         if cast_info.spell.id == Teleport.id or cast_info.spell.id == Swap.id then
             GAME:removeModifier(self)
         end

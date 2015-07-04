@@ -50,6 +50,8 @@ function GravityProjectile:onDestroy()
 end
 
 function GravityProjectile:onCollision(coll_info, cc)
+    GravityProjectile.super.onCollision(self, coll_info, cc)
+
 	if self:isMovingTowards(coll_info.hit_normal) then
 		self:reflectVelocity(coll_info.hit_normal)
 	end

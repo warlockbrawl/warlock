@@ -51,6 +51,8 @@ function LinkProjectile:init(def)
 end
 
 function LinkProjectile:onCollision(coll_info, cc)
+    LinkProjectile.super.onCollision(self, coll_info, cc)
+
 	local actor = coll_info.actor
 
 	-- Play a sound
@@ -67,7 +69,7 @@ function LinkProjectile:onCollision(coll_info, cc)
 
         local damage = nil
 
-        if actor.owner:getAlliance(self.instigator.owner) == ALLIANCE_ENEMY then
+        if actor.owner:getAlliance(self.instigator.owner) == Player.ALLIANCE_ENEMY then
             damage = self.damage
         end
 
@@ -112,6 +114,16 @@ function LinkProjectile:retract()
 end
 
 function LinkProjectile:onPreTick(dt)
+    -- Destroy when the owner is dead
+    if not self.instigator.enabled then
+        if self.link_beam_effect then
+		    self.link_beam_effect:destroy()
+	    end
+
+        self:destroy()
+        return
+    end
+
 	if self.retracting then
 		local delta = self.instigator.location - self.location
 		local dst = delta:Length()

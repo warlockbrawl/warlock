@@ -245,7 +245,7 @@ function Game:PawnKilled(event)
 	self.mode:onKill(event)
 
 	-- Modifier Stuff
-	Game:modOnDeath(event)
+	Game:modOnDeath(event.victim)
 end
 
 

@@ -25,6 +25,8 @@ function MagnetizeProjectile:init(def)
 end
 
 function MagnetizeProjectile:onCollision(coll_info, cc)
+    MagnetizeProjectile.super.onCollision(self, coll_info, cc)
+
 	local actor = coll_info.actor
 
 	if actor:instanceof(Pawn) then

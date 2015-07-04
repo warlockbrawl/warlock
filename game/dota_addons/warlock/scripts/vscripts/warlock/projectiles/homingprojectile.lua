@@ -17,6 +17,8 @@ function HomingProjectile:init(def)
 end
 
 function HomingProjectile:onCollision(coll_info, cc)
+    HomingProjectile.super.onCollision(self, coll_info, cc)
+
 	local actor = coll_info.actor
 
 	if actor:instanceof(Pawn) then
