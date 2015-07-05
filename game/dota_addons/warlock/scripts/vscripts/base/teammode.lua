@@ -87,8 +87,13 @@ function TeamModeShuffle:onNewRound()
 		team_counts = { max_team }
 	end
 	
-	-- Get random team size
-	local team_count = team_counts[math.random(1, #team_counts)]
+	-- Get random team size (default is PlayerCount if theres that possibility)
+	local team_count = team_counts[1]
+    
+    -- If theres more than one possibility, choose randomly but no FFA
+    if #team_counts > 1 then
+        team_count = team_counts[math.random(1, #team_counts - 1)]
+    end
 	
 	-- Calculate team count
 	local team_size = player_count / team_count

@@ -12,7 +12,7 @@ function Scoreboard:update()
 
     for _, player in pairs(GAME.players) do
         score_table[player.id] = player.score
-        damage_table[player.id] = player.stats[Player.STATS_DAMAGE]
+        damage_table[player.id] = math.floor(player.stats[Player.STATS_DAMAGE] + 0.5) -- Round to nearest integer
     end
 
     CustomNetTables:SetTableValue(self.net_name, "Score", score_table)

@@ -119,7 +119,7 @@ function Player:EventJoinedTeam(info)
 			err("playerEntity was not nil in EventJoinedTeam but id was -1")
 		end
 	else
-		err("playerEntity was nil in EventJoinedTeam")
+		log("[Warning] playerEntity was nil in EventJoinedTeam")
 	end
 end
 

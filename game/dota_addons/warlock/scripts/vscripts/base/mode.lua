@@ -351,6 +351,9 @@ function ModeDeathmatch:prepareForRound()
 	GAME:destroyTempActors()
 	GAME:setShop(true)
 	GAME.arena:setAutoShrink(false)
+
+    -- modifier event
+	GAME:modOnReset()
 	
 	-- obstacles
 	GAME:clearObstacles()
