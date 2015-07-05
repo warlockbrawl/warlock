@@ -39,6 +39,8 @@ function Player:init()
 	self.temp_actors = {}
 	
 	self.score = 0
+
+    self.name = "Unknown"
 end
 
 function Player:resetStats()
@@ -74,7 +76,8 @@ function Player:EventConnect(info)
 		log("Assigned ID in connect")
 		self.id = id
 		self.steamId = PlayerResource:GetSteamAccountID(self.id)
-
+        self.name = PlayerResource:GetPlayerName(self.id)
+        print("Set name to", self.name)
 		GAME.players[self.id] = self
 	end
 	
@@ -103,7 +106,10 @@ function Player:EventJoinedTeam(info)
 	-- add to the permanent player table
 	GAME.playersByUserid[self.userid] = self
 	
-	self.name = info.name
+    if info.name then
+        self.name = info.name
+    end
+
 	self.is_bot = info.is_bot
 	
 	-- Assign the ids
