@@ -449,6 +449,9 @@ function ModeDeathmatch:onRoundStart()
 	    GAME:destroyTempActors()
 	    GAME:setCombat(true)
 
+        -- modifier event
+	    GAME:modOnReset()
+
         self:respawnPlayers(true)
 
 	    -- initial invul
