@@ -64,9 +64,9 @@ function GameSetup:onSetTeam(args)
 	DeepPrintTable(args)
 	
     local player_id = args.PlayerID
+    local player = PlayerResource:GetPlayer(player_id)
 
-    -- TODO: Verify host for dedicated server correctly
-    if GetListenServerHost():GetPlayerID() ~= player_id then
+    if not player or not GameRules:PlayerHasCustomGameHostPrivileges(player) then
         log("Non-host tried to set teams")
         return
     end
@@ -89,9 +89,9 @@ function GameSetup:onSetGameOption(args)
 	DeepPrintTable(args)
 
     local player_id = args.PlayerID
+    local player = PlayerResource:GetPlayer(player_id)
 
-    -- TODO: Verify host for dedicated server correctly
-    if GetListenServerHost():GetPlayerID() ~= player_id then
+    if not player or not GameRules:PlayerHasCustomGameHostPrivileges(player) then
         log("Non-host tried to set game option")
         return
     end
