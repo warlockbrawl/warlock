@@ -34,6 +34,7 @@ function LinkProjectile:init(def)
 
 	self.link_beam_effect = Effect:create(self.beam_effect, {
 		start_ent = self.instigator.unit,
+        start_ent_attachpoint = "attach_hitloc",
 		end_ent = self.effect.locust,
 		duration = -1
 	})
@@ -64,7 +65,7 @@ function LinkProjectile:onCollision(coll_info, cc)
 	if(actor:instanceof(Pawn)) then
         if self.link_beam_effect then
             -- Set the effects target
-            self.link_beam_effect:setEndEntity(actor.unit)
+            self.link_beam_effect:setEndEntity(actor.unit, "attach_hitloc")
         end
 
         local damage = nil
@@ -88,7 +89,7 @@ function LinkProjectile:onCollision(coll_info, cc)
 	elseif(coll_info.actor:instanceof(Obstacle)) then
         if self.link_beam_effect then
             -- Set the effects target
-            self.link_beam_effect:setEndEntity(actor.locust)
+            self.link_beam_effect:setEndLocation(actor.location)
         end
 
 		-- Add the link modifier that pushes the pawn towards the target

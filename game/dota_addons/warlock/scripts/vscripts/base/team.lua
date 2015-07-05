@@ -20,13 +20,33 @@ Team.TEAM_COLOR = {
 	-- Vector(0x70, 0x70, 0x70)  -- 17 Unused
 }
 
+Team.TEAM_COLOR_NAME = {
+    "Unused",     -- 01
+    "Unused",     -- 02
+    "Red",        -- 03
+    "Blue",       -- 04
+    "Unused",     -- 05
+    "Unused",     -- 06
+    "Teal",       -- 07
+    "Purple",     -- 08
+    "Yellow",     -- 09
+    "Orange",     -- 10
+    "Green",      -- 11
+    "Pink",       -- 12
+    "Gray",       -- 13
+    "Light Blue"  -- 14
+    -- "Dark Green", -- 15
+    -- "Brown"       -- 16
+}
+
 Team.TEAM_IDS = { 2, 3, 6, 7, 8, 9, 10, 11, 12, 13 }
 
 function Team:init(def)
 	self.id = def.id
 	self.size = 0
 	self.players = {}
-	self.name = def.name or "Team " .. tostring(def.id + 1)
+	self.name = def.name or Team.TEAM_COLOR_NAME[def.id + 1] -- "Team " .. tostring(def.id + 1)
+    print("Team name:", self.name)
 	self.score = 0
 	self.alive_count = 0
 end
@@ -140,8 +160,7 @@ function Game:initTeams()
 		SetTeamCustomHealthbarColor(i, Team.TEAM_COLOR[i+1][1], Team.TEAM_COLOR[i+1][2], Team.TEAM_COLOR[i+1][3])
 		
 		local team = Team:new {
-			id = i,
-			name = "Team " .. tostring(i)
+			id = i
 		}
 		
 		GAME.teams[team.id] = team

@@ -143,7 +143,7 @@ function Precache(context)
     PrecacheResource("particle", "particles/prototype_fx/item_linkens_buff_explosion.vpcf", context)
     PrecacheResource("particle", "particles/units/heroes/hero_treant/treant_livingarmor.vpcf", context)
     PrecacheResource("particle", "particles/units/heroes/hero_jakiro/jakiro_liquid_fire_explosion.vpcf", context)
-	PrecacheResource("particle", "particles/units/heroes/hero_disruptor/disruptor_base_attack.vpcf", context)
+	-- PrecacheResource("particle", "particles/units/heroes/hero_disruptor/disruptor_base_attack.vpcf", context)
 	PrecacheResource("particle", "particles/units/heroes/hero_stormspirit/stormspirit_electric_vortex.vpcf", context)
    
 	-- custom effects
