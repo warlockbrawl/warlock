@@ -74,7 +74,8 @@ spells.append(WarlockSpell("warpzone", "Create a time sphere that slows time in 
 spells.append(WarlockSpell("magnetize", "Creates a missile that magnetizes its target repelling or attracting enemy projectiles", 14, 5))
 spells.append(WarlockSpell("rockpillar", "Spawn a rock pillar at the target location that blocks players and projectiles", 13, 5))
 spells.append(WarlockSpell("alteration", "Alters the position with the next enemy projectile coming close to hitting you", 11, 4))
-spells.append(WarlockSpell("link", "Shoots a magical link which can latch on enemies or allies and pull them to you", 12, 5))
+spells.append(WarlockSpell("link", "Shoot a magical link which can latch on enemies or allies and pull them to you", 12, 5))
+spells.append(WarlockSpell("splitter", "Cast a projectile which splits into minor missiles", 15, 3))
 
 # Items		
 items.append(WarlockItem("scourge_incarnation", "", 7, 2, { "damage": "110 120" }, "consumables"))

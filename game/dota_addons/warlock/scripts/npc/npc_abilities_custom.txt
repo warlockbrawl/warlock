@@ -509,6 +509,63 @@
 			}
 		}
 	}
+	
+	"warlock_splitter"
+	{
+		"ID"							"8842"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"skywrath_mage_concussive_shot"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"GLOBAL"
+		"AbilityCastPoint"				"0.2"
+		"AbilityCooldown"				"24 23 22 21 20 19 18"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
+		"MaxLevel"						"7"
+		"AbilityManaCost"				"0"
+
+		"precache"
+		{
+		}
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"				"POINT"
+				"ScriptFile"			"scripts/vscripts/triggers.lua"
+				"Function"				"cast"
+			}
+		}
+
+		// Attributes
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"damage"				"30 35 40 45 50 55 60"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"range"					"900 900 900 900 900 900 900"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"cooldown2"				"24 23 22 21 20 19 18"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"upgrade_cost"			"7 8 9 10 11 12"
+			}
+		}
+	}
 
 	"warlock_gravity"
 	{
@@ -863,7 +920,7 @@
 			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"upgrade_cost"			"4 5 6 7 8 9 10"
+				"upgrade_cost"			"6 7 8 9 10 11"
 			}
 		}
 	}

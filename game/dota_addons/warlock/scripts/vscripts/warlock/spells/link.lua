@@ -58,7 +58,7 @@ end
 -- effects
 Effect:register('link_projectile', {
 	class = ProjectileParticleEffect,
-	effect_name = "" -- "particles/units/heroes/hero_disruptor/disruptor_base_attack.vpcf"
+	effect_name = ""
 })
 
 Effect:register('link_beam', {

@@ -42,6 +42,7 @@
 	{
 		"item" "item_warlock_meteor"
 		"item" "item_warlock_windwalk"
+		"item" "item_warlock_splitter"
 	}
 	"defense"
 	{

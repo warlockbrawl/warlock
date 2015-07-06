@@ -21,6 +21,8 @@ BASE_MODULES		= {
 	'warlock/projectiles/fireballprojectile', 'warlock/projectiles/drainprojectile',
 	'warlock/projectiles/drainhealprojectile', 'warlock/projectiles/homingprojectile',
     'warlock/projectiles/magnetizeprojectile', 'warlock/projectiles/linkprojectile',
+    'warlock/projectiles/splitterprojectile', 'warlock/projectiles/splitterspawnerprojectile',
+    'warlock/projectiles/splitterchildprojectile',
 
 	'warlock/spells/fireball', 'warlock/spells/scourge',
 	'warlock/spells/boomerang', 'warlock/spells/lightning',
@@ -33,6 +35,7 @@ BASE_MODULES		= {
 	'warlock/spells/thrust', 'warlock/spells/warpzone',
     'warlock/spells/magnetize', 'warlock/spells/rockpillar',
     'warlock/spells/alteration', 'warlock/spells/link',
+    'warlock/spells/splitter',
 
 	'warlock/modifiers/windwalkmodifier', 'warlock/modifiers/shieldmodifier',
 	'warlock/modifiers/rushmodifier', 'warlock/modifiers/gripmodifier',
@@ -143,9 +146,11 @@ function Precache(context)
     PrecacheResource("particle", "particles/prototype_fx/item_linkens_buff_explosion.vpcf", context)
     PrecacheResource("particle", "particles/units/heroes/hero_treant/treant_livingarmor.vpcf", context)
     PrecacheResource("particle", "particles/units/heroes/hero_jakiro/jakiro_liquid_fire_explosion.vpcf", context)
-	-- PrecacheResource("particle", "particles/units/heroes/hero_disruptor/disruptor_base_attack.vpcf", context)
 	PrecacheResource("particle", "particles/units/heroes/hero_stormspirit/stormspirit_electric_vortex.vpcf", context)
-   
+    PrecacheResource("particle", "particles/units/heroes/hero_skywrath_mage/skywrath_mage_concussive_shot.vpcf", context)
+    PrecacheResource("particle", "particles/units/heroes/hero_skywrath_mage/skywrath_mage_arcane_bolt.vpcf", context)
+    PrecacheResource("particle", "particles/units/heroes/hero_skywrath_mage/skywrath_mage_base_attack.vpcf", context)
+
 	-- custom effects
 	PrecacheResource("particle_folder", "particles/fireball", context)
 	PrecacheResource("particle_folder", "particles/homing", context)
