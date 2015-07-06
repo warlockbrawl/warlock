@@ -106,7 +106,7 @@ function Player:EventJoinedTeam(info)
 	-- add to the permanent player table
 	GAME.playersByUserid[self.userid] = self
 	
-    if info.name then
+    if info.name and info.name ~= "" then
         self.name = info.name
     end
 

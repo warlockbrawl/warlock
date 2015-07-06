@@ -188,7 +188,7 @@ function purchase(event)
 			if do_upgrade then
 				-- Increase masteryfactor and level for all masteries
 				for i = 0, Player.MASTERY_MAX_INDEX do
-					local stats = item_handle:GetLevelSpecialValueFor('stats', MasteryLevel[id][i])
+					local stats = item_handle:GetLevelSpecialValueFor('stats', MasteryLevel[id][i] + 6 * i)
 					buying_player.mastery_factor[i] = buying_player.mastery_factor[i] + stats / 100.0
 					MasteryLevel[id][i] = MasteryLevel[id][i] + 1
 				end
