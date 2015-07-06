@@ -67,12 +67,11 @@ function SplitterProjectile:onCollision(coll_info, cc)
     SplitterProjectile.super.onCollision(self, coll_info, cc)
 
     if coll_info.actor:instanceof(Obstacle) then
-        print("Dir changed")
-
-        self.spawner_dir = -coll_info.hit_normal
+        -- Revert the spawn direction so it spawns away from the pillar
+        self.spawner_dir = -self.spawner_dir
 
         -- Set the spawner offset so children dont instantly die when they collide
-        self.offset = coll_info.hit_normal * self.velocity:Length() * Config.GAME_TICK_RATE
+        self.offset = -coll_info.hit_normal * ((coll_info.other_cc.radius + cc.radius + 10) - coll_info.hit_distance)
     end
 
     self:destroy()

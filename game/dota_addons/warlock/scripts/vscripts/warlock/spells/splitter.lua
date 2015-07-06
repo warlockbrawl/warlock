@@ -25,6 +25,7 @@ Splitter.child_hit_sound = "Splitter.ChildHit"
 
 function Splitter:onCast(cast_info)
     local actor = cast_info.caster_actor
+    local range_mastery_factor = actor.owner.mastery_factor[Player.MASTERY_RANGE]
 
     local cast_sound = cast_info:attribute('cast_sound')
 
@@ -32,7 +33,7 @@ function Splitter:onCast(cast_info)
     local projectile_class = cast_info:attribute('projectile_class')
 	local radius = cast_info:attribute('radius')
 	local projectile_effect = cast_info:attribute('projectile_effect')
-	local lifetime = cast_info:attribute('lifetime')
+	local lifetime = cast_info:attribute('lifetime') * range_mastery_factor
 	local speed = cast_info:attribute('speed')
 
     -- Spawner params
@@ -45,7 +46,7 @@ function Splitter:onCast(cast_info)
     local child_damage = cast_info:attribute('damage')
     local child_radius = cast_info:attribute('child_radius')
     local child_speed = cast_info:attribute('child_speed')
-    local child_lifetime = cast_info:attribute('child_lifetime')
+    local child_lifetime = cast_info:attribute('child_lifetime') * range_mastery_factor
     local child_projectile_effect = cast_info:attribute('child_projectile_effect')
     local child_hit_sound = cast_info:attribute('child_hit_sound')
 
