@@ -34,9 +34,6 @@ function SplitterProjectile:init(def)
     self.child_lifetime = def.child_lifetime
     self.child_hit_sound = def.child_hit_sound
 
-    -- Spawn in the same direction as the missile is flying
-    self.spawner_dir = self.velocity:Normalized()
-
     self.offset = Vector(0, 0, 0)
 end
 
@@ -48,7 +45,7 @@ function SplitterProjectile:onDestroy()
     SplitterSpawnerProjectile:new {
         instigator = self.instigator,
         location = self.location + self.offset, -- Spawn it offset so it doesnt instantly die to pillars
-        velocity = self.spawner_dir * self.spawner_speed,
+        velocity = self.velocity:Normalized() * self.spawner_speed,
         lifetime = self.spawner_lifetime,
         count = self.spawner_count,
         projectile_effect = self.spawner_projectile_effect,
@@ -66,9 +63,10 @@ end
 function SplitterProjectile:onCollision(coll_info, cc)
     SplitterProjectile.super.onCollision(self, coll_info, cc)
 
+    -- On pillar hit
     if coll_info.actor:instanceof(Obstacle) then
-        -- Revert the spawn direction so it spawns away from the pillar
-        self.spawner_dir = -self.spawner_dir
+        -- Revert the velocity so the spawn direction is reversed spawn
+        self.velocity = -self.velocity
 
         -- Set the spawner offset so children dont instantly die when they collide
         self.offset = -coll_info.hit_normal * ((coll_info.other_cc.radius + cc.radius + 10) - coll_info.hit_distance)
