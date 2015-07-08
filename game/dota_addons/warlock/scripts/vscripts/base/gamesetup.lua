@@ -54,7 +54,6 @@ function GameSetup:init()
 	
 	CustomGameEventManager:RegisterListener("set_team", Dynamic_Wrap(self, "onSetTeam"))
 	CustomGameEventManager:RegisterListener("set_game_option", Dynamic_Wrap(self, "onSetGameOption"))
-	CustomGameEventManager:RegisterListener("start_game", Dynamic_Wrap(self, "onStartGame"))
 
 	print("Game Setup initialized")
 end
@@ -77,16 +76,9 @@ function GameSetup:onSetTeam(args)
 	PlayerResource:SetCustomTeamAssignment(player_id, new_team_id)
 end
 
-function GameSetup:onStartGame(args)
-	print("onStartGame called")
-	DeepPrintTable(args)
-	
-	Game:selectModes()
-end
-
 function GameSetup:onSetGameOption(args)
-    print("onSetGameOption called")
-	DeepPrintTable(args)
+    --print("onSetGameOption called")
+	--DeepPrintTable(args)
 
     local player_id = args.PlayerID
     local player = PlayerResource:GetPlayer(player_id)

@@ -53,82 +53,6 @@ function Player:changeStat(stat, num)
 	self.stats[stat] = self.stats[stat] + num
 end
 
--- player joins
-function Player:EventConnect(info)
-	self.playerEntity = EntIndexToHScript(info.index+1)
-
-	if not IsValidEntity(self.playerEntity) then
-		err("Invalid player entity")
-		return
-	end
-	
-	-- Set index and userid (userid changes with reconnects)
-	self.index = info.index
-	self.userid = info.userid
-	
-	-- add to the permanent player table
-	GAME.playersByUserid[self.userid] = self
-	GAME.playersByIndex[self.index] = self
-
-	-- Assign the ids
-	local id = self.playerEntity:GetPlayerID()
-	if id ~= -1 then
-		log("Assigned ID in connect")
-		self.id = id
-		self.steamId = PlayerResource:GetSteamAccountID(self.id)
-        self.name = PlayerResource:GetPlayerName(self.id)
-        print("Set name to", self.name)
-		GAME.players[self.id] = self
-	end
-	
-	-- Reconnect, set in EventReconnect
-	if self.reconnect then
-		self.reconnect = false
-		
-		if not GAME.combat then
-			self.pawn:respawn()
-		end
-		
-		self.active = true
-		GAME.active_players[self] = true
-		
-		log("Player " .. self.name .. " reconnected fully.")
-
-        if GAME.mode then
-            GAME.mode:playerReconnected(self)
-        end
-	end
-end
-
-function Player:EventJoinedTeam(info)
-	self.userid = info.userid
-	
-	-- add to the permanent player table
-	GAME.playersByUserid[self.userid] = self
-	
-    if info.name and info.name ~= "" then
-        self.name = info.name
-    end
-
-	self.is_bot = info.is_bot
-	
-	-- Assign the ids
-	if self.playerEntity then
-		local id = self.playerEntity:GetPlayerID()
-		if id ~= -1 then
-			log("Assigned ID in joined team: " .. tostring(id))
-			self.id = id
-			self.steamId = PlayerResource:GetSteamAccountID(self.id)
-
-			GAME.players[self.id] = self
-		else
-			err("playerEntity was not nil in EventJoinedTeam but id was -1")
-		end
-	else
-		log("[Warning] playerEntity was nil in EventJoinedTeam")
-	end
-end
-
 function Player:HeroSpawned(hero)	
 	if self.pawn then
 		log("HeroSpawned called but pawn already created (normal on respawn).")
@@ -137,7 +61,7 @@ function Player:HeroSpawned(hero)
 	
 	------- Player init ----------
 	log("Hero spawned, initializing player...")
-	
+
 	-- Assign a non-native team
 	self:initTeam()
 	
@@ -147,7 +71,7 @@ function Player:HeroSpawned(hero)
 	
 	self.active = true
 	GAME.active_players[self] = true
-	
+
 	log("Player initialized")
 	
 	------------------------------
@@ -162,10 +86,7 @@ function Player:HeroSpawned(hero)
 		unit = hero,
 		owner = self
 	}
-	
-	GAME.picked_count = (GAME.picked_count or 0) + 1
-	GAME.player_count = GAME.player_count + 1
-	
+
 	-- Kill pawn if not in combat
 	if GAME.combat then
 		self.pawn:die{}
@@ -191,11 +112,24 @@ function Player:HeroRemoved()
 	end
 end
 
-function Player:EventReconnect(info)
-	self.reconnect = true
+function Player:EventReconnect()
+	p.disconnected = false
+	
+	if not GAME.combat then
+		self.pawn:respawn()
+	end
+		
+	self.active = true
+	GAME.active_players[self] = true
+		
+	log("Player " .. self.name .. " reconnected fully.")
+
+    if GAME.mode then
+        GAME.mode:playerReconnected(self)
+    end
 end
 
-function Player:EventDisconnect(info)
+function Player:EventDisconnect()
 	log(self.name .. ' has left the game.')
 
 	-- Kill the pawn
@@ -216,6 +150,9 @@ function Player:EventDisconnect(info)
 	self.playerEntity = nil
 	self.active = false
 	GAME.active_players[self] = nil
+
+    -- Set disconencted flag for detecting reconnects
+    self.disconnected = false
 end
 
 -- Native dota teams cannot be reassigned
@@ -253,7 +190,7 @@ function Player:setTeam(new_team)
 end
 
 function Player:getAlliance(other_player)
-	if self.userid == other_player.userid then
+	if self == other_player then
 		return self.ALLIANCE_SELF
 	end
 
@@ -294,110 +231,92 @@ function Player:addCash(amount)
 	self:updateCash()
 end
 
-function Game:findPlayerByEvent(event)
-	if event.userid and self.playersByUserid[event.userid] then
-		return self.playersByUserid[event.userid]
-	end
-
-	if event.index and self.playersByIndex[event.index] then
-		return self.playersByIndex[event.index]
-	end
-
-	return nil
-end
-
 -- Called on connect and on team join
-function Game:getOrCreatePlayer(userid)
-	local p = GAME.playersByUserid[userid]
+function Game:getOrCreatePlayer(player_id)
+	local p = self.players[player_id]
 	
 	if not p then
 		log("New player created")
 		p = Player:new()
-	end
-	
-	return p
-end
+        p.id = player_id
+        p.playerEntity = PlayerResource:GetPlayer(p.id)
+        p.disconnected = false
 
-function Game:EventPlayerConnected(event)
-	log('EventPlayerConnected')
-	PrintTable(event)
-	
-	local p = GAME.playersByIndex[event.index]
-	
-	if p then
-		log("Existing player")
-		if not p.reconnect then
-			warning("Existing player connected and is not reconnecting")
-		end
-	else
-		p = self:getOrCreatePlayer(event.userid)
+        if not p.playerEntity then
+            err("Player Entity nil in getOrCreatePlayer")
+        end
+
+        p.name = PlayerResource:GetPlayerName(p.id)
+        self.players[p.id] = p
+
+        GAME.player_count = GAME.player_count + 1
 	end
-	
-	p:EventConnect(event)
+
+	return p
 end
 
 function Game:EventPlayerJoinedTeam(event)
 	log("EventPlayerJoinedTeam")
 	PrintTable(event)
-	
-    local p = self:getOrCreatePlayer(event.userid)
 
     if event.disconnect == 1 then
-        log("Not calling EventJoinedTeam because disconnect was set")
-        return
-    end
+        local dc_count = 0
 
-	p:EventJoinedTeam(event)
-end
+        -- Find newly disconnected players
+        for id, player in pairs(self.players) do
+            if not player.disconnected and PlayerResource:GetConnectionState(id) ~= DOTA_CONNECTION_STATE_CONNECTED then
+                player.disconnected = true
+                log("Detected disconnected player " .. tostring(id))
+                player:EventDisconnect()
+                dc_count = dc_count + 1
+            end
+        end
 
-function Game:EventPlayerReconnected(event)
-	log("EventPlayerReconnected")
-	PrintTable(event)
-	
-	local p = GAME.players[event.PlayerID]
-	
-	if not p then
-		log("Unknown player reconnected")
-		return
+        if dc_count > 1 then
+            warning("More than one disconnected player detected at once")
+        end
+    else
+        local rec_count = 0
+
+        -- Find reconnected players
+        for id, player in pairs(self.players) do
+            if player.disconnected and PlayerResource:GetConnectionState(id) == DOTA_CONNECTION_STATE_CONNECTED then
+                player.disconnected = false
+                log("Detected reconnected player " .. tostring(id))
+                player:EventReconnect()
+                rec_count = rec_count + 1
+            end
+        end
+
+        if rec_count > 1 then
+            warning("More than one reconnected player detected at once")
+        end
 	end
-	
-	p:EventReconnect(event)
 end
 
 function Game:EventNPCSpawned(event)
 	local spawned_unit = EntIndexToHScript(event.entindex)
-	
+
 	-- Ignore non-hero units
 	if not spawned_unit:IsHero() then
 		return
 	end
-	
-	local p = GAME.players[spawned_unit:GetPlayerID()]
-	
-	if not p then
-		err("NPC spawned but player owner not found.")
-		return
-	end
-	
+
+    print("EventNPCSpawned Hero Spawned")
+    DeepPrintTable(event)
+
+    local player_id = spawned_unit:GetPlayerID()
+
+    print("Player ID:", player_id)
+
+    if player_id == -1 then
+        err("Player ID was -1 in EventNPCSpawned")
+        return
+    end
+
+	local p = GAME:getOrCreatePlayer(player_id)
+
 	p:HeroSpawned(spawned_unit)
-end
-
-function Game:EventPlayerDisconnected(event)
-	print('EventPlayerDisconnected ')
-	PrintTable(event)
-
-	local p = self:findPlayerByEvent(event)
-
-	if p then
-		if self.players[p.id] then
-			p:EventDisconnect(event)
-		else
-			warning('Player leaves before fully connecting')
-		end
-	else
-		err('Unknown player leaving')
-		PrintTable(event)
-	end
 end
 
 --- Periodically sets players' cash to match the scripted value

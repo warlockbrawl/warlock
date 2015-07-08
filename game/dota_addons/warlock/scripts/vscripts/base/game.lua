@@ -16,16 +16,11 @@ function Game:init()
 	local time_txt = string.gsub(string.gsub(GetSystemTime(), ':', ''), '0','')
 	log("RNG Seed:" .. time_txt)
 	math.randomseed(tonumber(time_txt))
-	
-	-- Precache unit
-	--PrecacheUnitByName('npc_precache_everything')
 
 	-- Game data structures
 	self.lastTickTime = 0
 	self.players = {}
 	self.player_count = 0
-	self.playersByUserid = {} -- contains also leavers waiting for reconnect
-	self.playersByIndex = {}
 	self.active_players = {}
 
 	self.entityActor = {} --map enity to actor
@@ -81,46 +76,46 @@ end
 function Game:EventStateChanged(event)
 	new_state = GameRules:State_Get()
 	
+    -- Start a timer for game start
+	if not self.in_progress and not self.game_start_task and new_state >= DOTA_GAMERULES_STATE_PRE_GAME then
+		self:selectModes()
+	end
+
 	log("GameState changed to " .. tostring(new_state))
-	
-	-- Fix for current state bug
-	if new_state == DOTA_GAMERULES_STATE_INIT then
-		for id, player in pairs(GAME.players) do
-			player:HeroRemoved()
-		end
-	end
-	
-	-- Start a timer for game start
-	if not self.in_progress and not self.task_start and new_state >= DOTA_GAMERULES_STATE_PRE_GAME then
-		self.task_start = self:addTask {
-			id = "game start",
-			period = 1,
-			func = function()
-				if (self.picked_count or 0) > 0 then
-					self.in_progress = true
-					self.task_start:cancel()
-					self.task_start = nil
-					self:selectModes()
-				else
-					log("Waiting for at least 1 player")
-				end
-			end
-		}
-	end
 end
 
 function Game:start()
-	self.in_progress = true
+    if self.game_start_task or self.in_progress then
+        warning("Game:start called more than once")
+        return
+    end
 
-	display("Welcome to Warlock")
-	display("Created by Toraxxx, Adynathos, Zymoran")
+    self.game_start_task = self:addTask {
+        period = 1,
+        func = function()
+            if self.player_count < 1 then
+                log("Waiting for at least 1 player to pick")
+                return
+            end
+
+            self.game_start_task:cancel()
+            self.game_start_task = nil
+            
+            self.in_progress = true
+
+            log("Game:start called")
+
+	        display("Welcome to Warlock")
+	        display("Created by Toraxxx, Adynathos, Zymoran")
 	
-	-- Assign teams
-	for _, player in pairs(GAME.players) do
-		player:initTeam()
-	end
+	        -- Assign teams
+	        for _, player in pairs(GAME.players) do
+		        player:initTeam()
+	        end
 
-	self.mode:onStart()
+	        self.mode:onStart()
+        end
+    }
 end
 
 --- @return Current game time
@@ -178,20 +173,18 @@ function Game:initEvents()
 	-- Tick loop
 	self.nativeMode:SetThink("_Tick", self, "_Tick", Config.GAME_TICK_RATE)
 	
-	-- Events
-	ListenToGameEvent('player_connect_full', Dynamic_Wrap(self, 'EventPlayerConnected'), self)
+	-- Player init events
 	ListenToGameEvent('player_team', Dynamic_Wrap(self, 'EventPlayerJoinedTeam'), self)
-	ListenToGameEvent('player_disconnect', Dynamic_Wrap(self, 'EventPlayerDisconnected'), self)
-	ListenToGameEvent('player_say', Dynamic_Wrap(self, 'EventPlayerChat'), self)
+    ListenToGameEvent('npc_spawned', Dynamic_Wrap(self, 'EventNPCSpawned'), self)
 
+    -- Shop events
 	ListenToGameEvent('dota_item_purchased', Dynamic_Wrap(self, 'EventShop'), self)
 	ListenToGameEvent('dota_player_learned_ability', Dynamic_Wrap(self, 'EventUpgrade'), self)
 
+    -- Player killed event
 	ListenToGameEvent('entity_killed', Dynamic_Wrap(self, 'EventEntityKilled'), self)
 
-	ListenToGameEvent('player_reconnected', Dynamic_Wrap(self, 'EventPlayerReconnected'), self)
-	ListenToGameEvent('npc_spawned', Dynamic_Wrap(self, 'EventNPCSpawned'), self)
-	
+    -- Misc events
 	ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(self, 'EventStateChanged'), self)
 end
 
