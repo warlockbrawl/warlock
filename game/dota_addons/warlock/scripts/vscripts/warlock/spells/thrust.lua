@@ -31,6 +31,10 @@ function Thrust:onCast(cast_info)
 	if dist > range then
 		dist = range
 	end
+
+	-- Stop movement, set facing angle
+	actor.unit:Stop()
+	actor.unit:SetAngles(0, math.deg(math.atan2(dir.y, dir.x)), 0)
 	
 	actor.velocity = 0.77 * dir * velocity
 	

@@ -23,6 +23,9 @@ function Teleport:onCast(cast_info)
 	
 	actor.location = target
 	actor.velocity = actor.velocity * 0.8 --reduce vel by 20 percent
+
+	-- Stop movement
+	actor.unit:Stop()
 	
 	Effect:create(cast_info:attribute('source_effect'), { location=start })
 	Effect:create(cast_info:attribute('target_effect'), { location=target })

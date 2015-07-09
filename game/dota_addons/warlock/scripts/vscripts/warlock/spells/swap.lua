@@ -24,6 +24,9 @@ function Swap:onCast(cast_info)
 	local speed = cast_info:attribute("speed")
 	local lifetime = math.min(dist / speed, cast_info:attribute("lifetime") * actor.owner.mastery_factor[Player.MASTERY_RANGE])
 
+	-- Stop movement
+	actor.unit:Stop()
+
 	local proj = SwapProjectile:new {
 		instigator	= actor,
 		coll_radius = cast_info:attribute("radius"),
