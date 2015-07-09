@@ -176,7 +176,7 @@ function Game:initEvents()
 	-- Player init events
 	ListenToGameEvent('player_team', Dynamic_Wrap(self, 'EventPlayerJoinedTeam'), self)
     ListenToGameEvent('npc_spawned', Dynamic_Wrap(self, 'EventNPCSpawned'), self)
-
+    
     -- Shop events
 	ListenToGameEvent('dota_item_purchased', Dynamic_Wrap(self, 'EventShop'), self)
 	ListenToGameEvent('dota_player_learned_ability', Dynamic_Wrap(self, 'EventUpgrade'), self)
@@ -186,6 +186,8 @@ function Game:initEvents()
 
     -- Misc events
 	ListenToGameEvent('game_rules_state_change', Dynamic_Wrap(self, 'EventStateChanged'), self)
+
+    self:startReconnectTask()
 end
 
 --- Function executed periodically every GAME_TICK_RATE

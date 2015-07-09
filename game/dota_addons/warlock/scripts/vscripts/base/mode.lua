@@ -24,16 +24,32 @@ function Mode:init(def)
     self.cash_on_start = def.cash_on_start
     self.cash_per_kill = def.cash_per_kill
     self.cash_per_win = def.cash_per_win
+
+    self.new_player_cash = 0
 end
 
 function Mode:getDescription()
 	return "Default"
 end
 
-function Mode:onStart()
-	for id, player in pairs(GAME.players) do
-		player:setCash(self.cash_on_start)
+-- Adds gold for all players and saves how much so we can give new players
+-- the same gold once they select a hero
+function Mode:addGoldForAll(amount)
+    self.new_player_cash = self.new_player_cash + amount
+
+    for _, player in pairs(GAME.players) do
+		player:addCash(amount)
 	end
+end
+
+-- Adds the gold a player was missing out on if he spawned late
+function Mode:addNewPlayerGold(player)
+    player:addCash(self.new_player_cash)
+end
+
+function Mode:onStart()
+    -- Add start gold for all players
+    self:addGoldForAll(self.cash_on_start)
 	
 	self:prepareForRound()
 end
@@ -223,9 +239,7 @@ function Mode:onRoundEnd()
 	display(self:roundName()..' has ended')
 
 	-- Rewards for ending the round
-	for id, player in pairs(GAME.players) do
-		player:addCash(self.cash_every_round)
-	end
+    self:addGoldForAll(self.cash_every_round)
 
 	-- Check the win condition if the game is over
 	if not self.win_condition:isGameOver() then
@@ -500,9 +514,7 @@ function ModeDeathmatch:onRoundEnd()
     display(self:roundName()..' has ended')
 
 	-- Rewards for ending the round
-	for id, player in pairs(GAME.players) do
-		player:addCash(self.cash_every_round)
-	end
+	self:addGoldForAll(self.cash_every_round)
 
 	-- Check the win condition if the game is over
 	if not self.win_condition:isGameOver() then

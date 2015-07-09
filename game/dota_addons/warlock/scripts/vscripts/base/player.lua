@@ -103,6 +103,9 @@ function Player:HeroSpawned(hero)
 
         child = child:NextMovePeer()
     end
+
+    -- Add all start and round gold
+    GAME.mode:addNewPlayerGold(self)
 end
 
 function Player:HeroRemoved()
@@ -113,7 +116,7 @@ function Player:HeroRemoved()
 end
 
 function Player:EventReconnect()
-	p.disconnected = false
+	self.disconnected = false
 	
 	if not GAME.combat then
 		self.pawn:respawn()
@@ -152,7 +155,7 @@ function Player:EventDisconnect()
 	GAME.active_players[self] = nil
 
     -- Set disconencted flag for detecting reconnects
-    self.disconnected = false
+    self.disconnected = true
 end
 
 -- Native dota teams cannot be reassigned
@@ -255,6 +258,23 @@ function Game:getOrCreatePlayer(player_id)
 	return p
 end
 
+function Game:startReconnectTask()
+    self:addTask {
+        id = "Reconnect detection",
+        period = 1,
+        func = function()
+            -- Find reconnected players
+            for id, player in pairs(self.players) do
+                if player.disconnected and PlayerResource:GetConnectionState(id) == DOTA_CONNECTION_STATE_CONNECTED then
+                    log("Detected reconnected player " .. tostring(id))
+                    player:EventReconnect()
+                    rec_count = rec_count + 1
+                end
+            end
+        end
+    }
+end
+
 function Game:EventPlayerJoinedTeam(event)
 	log("EventPlayerJoinedTeam")
 	PrintTable(event)
@@ -265,7 +285,6 @@ function Game:EventPlayerJoinedTeam(event)
         -- Find newly disconnected players
         for id, player in pairs(self.players) do
             if not player.disconnected and PlayerResource:GetConnectionState(id) ~= DOTA_CONNECTION_STATE_CONNECTED then
-                player.disconnected = true
                 log("Detected disconnected player " .. tostring(id))
                 player:EventDisconnect()
                 dc_count = dc_count + 1
@@ -275,23 +294,7 @@ function Game:EventPlayerJoinedTeam(event)
         if dc_count > 1 then
             warning("More than one disconnected player detected at once")
         end
-    else
-        local rec_count = 0
-
-        -- Find reconnected players
-        for id, player in pairs(self.players) do
-            if player.disconnected and PlayerResource:GetConnectionState(id) == DOTA_CONNECTION_STATE_CONNECTED then
-                player.disconnected = false
-                log("Detected reconnected player " .. tostring(id))
-                player:EventReconnect()
-                rec_count = rec_count + 1
-            end
-        end
-
-        if rec_count > 1 then
-            warning("More than one reconnected player detected at once")
-        end
-	end
+    end
 end
 
 function Game:EventNPCSpawned(event)
