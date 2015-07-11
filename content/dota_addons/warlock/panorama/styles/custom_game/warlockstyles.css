@@ -131,6 +131,7 @@
 .ModeItemValue
 {
 	width: 300px;
+	vertical-align: center;
 }
 
 #StartButton

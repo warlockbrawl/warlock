@@ -42,6 +42,9 @@ function SwapProjectile:onCollision(coll_info, cc)
 	Effect:create(self.swap_effect, { location=self_loc })
 	Effect:create(self.swap_effect, { location=self.instigator.location })
 
+    -- Stop movement
+	self.instigator.unit:Stop()
+
 	self:setLifetime(0)
 end
 
@@ -58,6 +61,9 @@ function SwapProjectile:onDestroy()
 
 		-- Set location of pawn at correct time
 		self.instigator.location = self.location + self.death_timer.time_left * self.velocity
+
+        -- Stop movement
+	    self.instigator.unit:Stop()
 
 		Effect:create(self.swap_effect, { location=self.instigator.location })
 	end

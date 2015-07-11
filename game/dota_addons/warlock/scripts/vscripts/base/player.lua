@@ -118,13 +118,17 @@ end
 function Player:EventReconnect()
 	self.disconnected = false
 	
-	if not GAME.combat then
-		self.pawn:respawn()
-	end
+    if Config.bot_on_dc then
+        GAME:removePlayerAI(self)
+    else
+        if not GAME.combat then
+		    self.pawn:respawn()
+	    end
 		
-	self.active = true
-	GAME.active_players[self] = true
-		
+	    self.active = true
+	    GAME.active_players[self] = true
+    end
+
 	log("Player " .. self.name .. " reconnected fully.")
 
     if GAME.mode then
@@ -135,24 +139,30 @@ end
 function Player:EventDisconnect()
 	log(self.name .. ' has left the game.')
 
-	-- Kill the pawn
-	if self.pawn.enabled then
-		self.pawn.last_hitter = nil
-		self.pawn:die({})
-	end
+    -- Replace leavers with bots or kill the leaver until he rejoins
+    if Config.bot_on_dc then
+        display("Adding AI for disconnected player")
+        GAME:addPlayerAI(self, { buy_delay = Config.BOT_BUY_DELAY })
+    else
+	    -- Kill the pawn
+	    if self.pawn.enabled then
+		    self.pawn.last_hitter = nil
+		    self.pawn:die({})
+	    end
 
-	-- Disable pawn
-	self.pawn:disable()
+	    -- Disable pawn
+	    self.pawn:disable()
 	
-	-- Make sure the hero is dead
-	if self.heroEntity and self.heroEntity:IsAlive() then
-		self.heroEntity:ForceKill(false)
-	end
+	    -- Make sure the hero is dead
+	    if self.heroEntity and self.heroEntity:IsAlive() then
+		    self.heroEntity:ForceKill(false)
+	    end
 
-	-- the entity will be removed from c++ anyway
-	self.playerEntity = nil
-	self.active = false
-	GAME.active_players[self] = nil
+	    -- the entity will be removed from c++ anyway
+	    self.playerEntity = nil
+	    self.active = false
+	    GAME.active_players[self] = nil
+    end
 
     -- Set disconencted flag for detecting reconnects
     self.disconnected = true
@@ -269,7 +279,6 @@ function Game:startReconnectTask()
                 if player.disconnected and PlayerResource:GetConnectionState(id) == DOTA_CONNECTION_STATE_CONNECTED then
                     log("Detected reconnected player " .. tostring(id))
                     player:EventReconnect()
-                    rec_count = rec_count + 1
                 end
             end
         end
@@ -324,10 +333,7 @@ function Game:EventNPCSpawned(event)
 
     -- Detect AI and add an AI controller
     if self.spawning_ai then
-        self.ai_controllers:add(AIController:new {
-            player = p,
-            think_interval = self.spawning_ai_think_interval
-        })
+        self:addPlayerAI(p, self.spawning_ai_def)
         display("Added AI player")
         self.spawning_ai = false
     end

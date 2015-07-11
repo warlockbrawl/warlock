@@ -4,6 +4,12 @@
 
 Config = {}
 
+--[[
+
+    Unmodifiable constants
+
+--]]
+
 Config.GAME_START_TIME				= 10
 
 Config.GAME_TICK_RATE 				= 0.035
@@ -27,3 +33,14 @@ Config.MAX_LEVEL					= 100
 Config.OBSTACLE_MAX_COORD			= 1000
 
 Config.FRICTION = 0.96
+
+Config.BOT_BUY_DELAY                = 120 -- How many seconds an AI should wait before buying items on a disconnected player
+
+--[[
+
+    Non-constants
+
+--]]
+
+Config.bot_on_dc = true -- Whether to replace leavers with bots until they reconnect
+Config.bot_count = 0 -- How many bots to add in Game:start()

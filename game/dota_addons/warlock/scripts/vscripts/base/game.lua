@@ -47,7 +47,7 @@ function Game:init()
 	self.in_progress = false
 
     -- AI Controllers
-    self.ai_controllers = Set:new()
+    self.ai_controllers = { }
 end
 
 -- Ends the game and sets winners
@@ -111,6 +111,12 @@ function Game:start()
 	        display("Welcome to Warlock")
 	        display("Created by Toraxxx, Adynathos, Zymoran")
 	
+            -- Add bots
+            log("Adding " .. tostring(Config.bot_count) .. " bots")
+            for i = 1, Config.bot_count do
+                self:addBot(0.2)
+            end
+
 	        -- Assign teams
 	        for _, player in pairs(GAME.players) do
 		        player:initTeam()

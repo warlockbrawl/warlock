@@ -323,7 +323,7 @@ end
 function ModeDeathmatch:playerReconnected(player)
     print("dm reconnect", GAME.combat)
 
-    if GAME.combat then
+    if GAME.combat and not player:isAlive() then
         print("dm reconnect in combat")
         -- Respawn the hero after some seconds
         GAME:addTask {
@@ -331,7 +331,7 @@ function ModeDeathmatch:playerReconnected(player)
             time = ModeDeathmatch.RESPAWN_TIME,
             func = function()
                 print("dm reconnect respawn")
-                if player.active and GAME.combat then
+                if player.active and GAME.combat and not player:isAlive() then
                     -- Respawn the hero
                     player.pawn:respawn(true)
 

@@ -12,6 +12,8 @@ GAME_OPT_CASH_ROUND = 7
 GAME_OPT_CASH_START = 8
 GAME_OPT_CASH_KILL  = 9
 GAME_OPT_CASH_WIN   = 10
+GAME_OPT_BOT_COUNT  = 11
+GAME_OPT_BOT_ON_DC  = 12
 
 GAME_OPT_TEAM_SHUFFLE	= 1
 GAME_OPT_TEAM_FFA		= 2
@@ -51,6 +53,8 @@ function GameSetup:init()
     self:setGameOption(GAME_OPT_CASH_START, 30)
     self:setGameOption(GAME_OPT_CASH_KILL, 0)
     self:setGameOption(GAME_OPT_CASH_WIN, 0)
+    self:setGameOption(GAME_OPT_BOT_COUNT, 0)
+    self:setGameOption(GAME_OPT_BOT_ON_DC, 1)
 	
 	CustomGameEventManager:RegisterListener("set_team", Dynamic_Wrap(self, "onSetTeam"))
 	CustomGameEventManager:RegisterListener("set_game_option", Dynamic_Wrap(self, "onSetGameOption"))
@@ -115,6 +119,9 @@ end
 function Game:selectModes()
 	local gs = self.game_setup
 	
+    Config.bot_on_dc = gs:getGameOption(GAME_OPT_BOT_ON_DC) ~= 0
+    Config.bot_count = gs:getGameOption(GAME_OPT_BOT_COUNT)
+
 	self.team_mode = GAME_OPT_TEAM_MODES[gs:getGameOption(GAME_OPT_TEAM)]:new {
 		
 	}

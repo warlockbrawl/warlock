@@ -12,13 +12,13 @@ function AIController:init(def)
     self.time = 0
     self.scourge_end_time = 0
     self.spell_end_time = 0
-    self.next_buy_time = 0
+    self.next_buy_time = def.buy_delay or 0
     self.next_target_time = 0
 
     self:chooseTargetPoint()
 
     -- Add think task
-    GAME:addTask {
+    self.ai_task = GAME:addTask {
         id = "ai controller " .. tostring(self.player.id),
         period = self.think_interval,
         func = function()
@@ -42,6 +42,11 @@ function AIController:init(def)
     self.escape_spell = nil
 
     self.projectile_spells = { "warlock_fireball" }
+end
+
+function AIController:destroy()
+    self.ai_task:cancel()
+    GAME.ai_controllers[self.player] = nil
 end
 
 -- Finds a random point to move to
@@ -331,4 +336,57 @@ function AIController:think(dt)
 
     -- Increment time
     self.time = self.time + dt
+end
+
+
+--[[-------------------------------
+
+          Game Interface
+
+-------------------------------]]--
+
+-- Adds an AI to an existing player
+function Game:addPlayerAI(player, def)
+    def = def or {}
+    def.player = player
+
+    if player == nil then
+        err("Player was nil in addPlayerAI")
+        return
+    end
+
+    if self.ai_controllers[player] then
+        err("AI for player already existed in addPlayerAI")
+        return
+    end
+
+    local ai_controller = AIController:new(def)
+
+    self.ai_controllers[player] = ai_controller
+end
+
+-- Removes an AI from a player if any
+function Game:removePlayerAI(player)
+    if self.ai_controllers[player] then
+        self.ai_controllers[player]:destroy()
+    end
+end
+
+-- Adds a new player bot
+function Game:addBot(think_interval)
+    if GAME.player_count < 10 then
+        GAME.spawning_ai = true
+        GAME.spawning_ai_def = { think_interval = think_interval }
+        Tutorial:AddBot("npc_dota_hero_warlock", "npc_dota_hero_warlock", "npc_dota_hero_warlock", true)
+
+        -- Find newly created player
+        for i = 0, DOTA_MAX_PLAYERS do
+            local player_ent = PlayerResource:GetPlayer(i)
+            
+            if player_ent and not GAME.players[i] then
+                print("Created hero for AI with player id", i)
+                CreateUnitByName("npc_dota_hero_warlock", Vector(0, 0, 0), true, PlayerResource:GetPlayer(i), PlayerResource:GetPlayer(i), DOTA_TEAM_GOODGUYS)
+            end
+        end
+    end
 end

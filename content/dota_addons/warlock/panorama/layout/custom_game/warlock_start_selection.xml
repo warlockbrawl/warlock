@@ -78,6 +78,16 @@
 					<Label class="ModeItemLabel" text="Win Gold:" />
 					<TextEntry id="WinGoldText" class="ModeItemValue" text="0" />
 				</Panel>
+				
+				<Panel class="ModeItem">
+					<Label class="ModeItemLabel" text="Bot Count:" />
+					<TextEntry id="BotCountText" class="ModeItemValue" text="0" />
+				</Panel>
+				
+				<Panel class="ModeItem">
+					<Label class="ModeItemLabel" text="Bots for leavers:" />
+					<ToggleButton id="BotOnDC" class="ModeItemValue" checked="true" onactivate="onToggleButtonValueChanged()" />
+				</Panel>
 			</Panel>
 			
 			<Button id="StartButton" class="ButtonBevel" onactivate="onStartGame()">

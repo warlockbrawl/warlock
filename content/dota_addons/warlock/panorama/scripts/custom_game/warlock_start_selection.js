@@ -14,19 +14,26 @@ var GAME_OPT_CASH_ROUND = 7;
 var GAME_OPT_CASH_START = 8;
 var GAME_OPT_CASH_KILL  = 9;
 var GAME_OPT_CASH_WIN   = 10;
+var GAME_OPT_BOT_COUNT  = 11;
+var GAME_OPT_BOT_ON_DC  = 12;
 
 var g_TextBoxIntIds = {
 	4: "#WinCondMaxText",
 	7: "#RoundGoldText",
 	8: "#StartGoldText",
 	9: "#KillGoldText",
-	10: "#WinGoldText"
+	10: "#WinGoldText",
+	11: "#BotCountText"
 };
 
 var g_DropDownIntIds = {
 	1: { id: "#TeamModeDropDown", values: [ "Shuffle", "FFA", "Teams" ], valueIdPrefix: "TeamMode" },
 	2: { id: "#ModeDropDown", values: ["Rounds", "Deathmatch" ], valueIdPrefix: "Mode" },
 	3: { id: "#WinConditionDropDown", values: [ "Rounds", "Score" ], valueIdPrefix: "WinCondition" }
+};
+
+var g_ToggleButtonIntIds = {
+	12: "#BotOnDC"
 };
 
 //Enables or disables all controls
@@ -37,6 +44,15 @@ function enableAll(enable) {
 	
 	for(var index in g_DropDownIntIds) {
 		$(g_DropDownIntIds[index].id).enabled = enable;
+	}
+	
+	for(var index in g_ToggleButtonIntIds) {
+		$(g_ToggleButtonIntIds[index]).enabled = enable;
+		
+		//TEMP: checked gets set to false when disabling
+		if(enable) {
+			$(g_ToggleButtonIntIds[index]).checked = true;
+		}
 	}
 	
 	$("#StartButton").enabled = enable;
@@ -115,8 +131,36 @@ function sendDropDownIntValue(index, dropDownId) {
 //Sends the values of all drop downs
 function sendDropDownValues() {
 	for(var index in g_DropDownIntIds) {
-		$.Msg("Index:", index);
 		sendDropDownIntValue(index, g_DropDownIntIds[index].id);
+	}
+}
+
+//Send the text box values every few seconds
+function sendTextBoxValues() {
+	for(var index in g_TextBoxIntIds) {
+		sendTextBoxIntValue(index, g_TextBoxIntIds[index]);
+	}
+	
+	//Call again even if not the host, because the host can be changed later
+	if(isGameSetup()) {
+		$.Schedule(1.0, sendTextBoxValues);
+	}
+}
+
+function sendToggleButtonValue(index, toggleButtonId) {
+	var toggleButton = $(toggleButtonId);
+		
+	var value = toggleButton.checked ? 1 : 0;
+	
+	$.Msg("Toggle Value:", value);
+	
+	sendSetGameOption(index, value);
+}
+
+//Sends the values of all toggle buttons
+function sendToggleButtonValues() {
+	for(var index in g_ToggleButtonIntIds) {
+		sendToggleButtonValue(index, g_ToggleButtonIntIds[index])
 	}
 }
 
@@ -135,20 +179,7 @@ function onHostDetected() {
 	if(isGameSetup()) {
 		sendTextBoxValues();
 		sendDropDownValues();
-	}
-}
-
-//Send the text box values every few seconds
-function sendTextBoxValues() {
-	$.Msg("Updating text box values");
-	
-	for(var index in g_TextBoxIntIds) {
-		sendTextBoxIntValue(index, g_TextBoxIntIds[index]);
-	}
-	
-	//Call again even if not the host, because the host can be changed later
-	if(isGameSetup()) {
-		$.Schedule(1.0, sendTextBoxValues);
+		sendToggleButtonValues();
 	}
 }
 
@@ -157,6 +188,13 @@ function onDropDownValueChanged() {
 	//Send the values of all dropdowns to the server when it changes
 	if(g_IsHost) {
 		sendDropDownValues();
+	}
+}
+
+//Called when a toggle button value changes
+function onToggleButtonValueChanged() {
+	if (g_IsHost) {
+		sendToggleButtonValues();
 	}
 }
 
@@ -188,8 +226,14 @@ function onNetTableChanged(tableName, key, data) {
 		var dropDown = $(dropDownId);
 		var prefix = g_DropDownIntIds[index].valueIdPrefix;
 		var selectedId = prefix + g_DropDownIntIds[index].values[value-1];
-		$.Msg("Selected ID: ", selectedId);
 		dropDown.SetSelected(selectedId);
+	}
+	
+	//Set the toggle button value
+	if(index in g_ToggleButtonIntIds) {
+		var toggleButtonId = g_ToggleButtonIntIds[index];
+		var toggleButton = $(toggleButtonId);
+		toggleButton.checked = value != 0 ? true : false;
 	}
 }
 

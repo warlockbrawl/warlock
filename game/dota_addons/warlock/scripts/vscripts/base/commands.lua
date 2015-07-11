@@ -1,22 +1,4 @@
---- base_commands.lua
--- @author Krzysztof Lis (Adynathos)
-
-function Game:addBot(think_interval)
-    if GAME.player_count < 10 then
-        GAME.spawning_ai = true
-        GAME.spawning_ai_think_interval = think_interval
-        Tutorial:AddBot("npc_dota_hero_warlock", "npc_dota_hero_warlock", "npc_dota_hero_warlock", true)
-
-        for i = 0, DOTA_MAX_PLAYERS do
-            local player_ent = PlayerResource:GetPlayer(i)
-            
-            if player_ent and not GAME.players[i] then
-                print("Created hero for AI with player id", i)
-                CreateUnitByName("npc_dota_hero_warlock", Vector(0, 0, 0), true, PlayerResource:GetPlayer(i), PlayerResource:GetPlayer(i), DOTA_TEAM_GOODGUYS)
-            end
-        end
-    end
-end
+--- commands.lua
 
 function Game:initCommands()
 	--Convars:RegisterCommand( "command_example", Dynamic_Wrap(WarlockGameMode, 'cmdExample'), "A console command example", self )
