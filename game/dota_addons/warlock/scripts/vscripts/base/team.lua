@@ -46,7 +46,6 @@ function Team:init(def)
 	self.size = 0
 	self.players = {}
 	self.name = def.name or Team.TEAM_COLOR_NAME[def.id + 1] -- "Team " .. tostring(def.id + 1)
-    print("Team name:", self.name)
 	self.score = 0
 	self.alive_count = 0
 end

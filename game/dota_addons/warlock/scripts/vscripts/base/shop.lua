@@ -83,8 +83,7 @@ function purchase(event)
 		
 	PrintTable(event)
 	if hero == nil then
-		log("FATAL ERROR: Nil hero in shop!")
-		print("FATAL ERROR: Nil hero in shop!")
+		err("Nil hero in shop!")
 	end
 		
 	local gold = buying_player:getCash()
@@ -93,7 +92,7 @@ function purchase(event)
 	func = item_handle:GetSpecialValueFor("type")
 	if (func == nil) or (event.itemcost > gold) then
 		print(event.itemname)
-		print("Error in shop: Undefined item OR fake money purchase")
+		err("Error in shop: Undefined item OR fake money purchase")
 		local item = hero:GetItemInSlot(6)
 		item:RemoveSelf()
 		buying_player:updateCash()
@@ -208,7 +207,7 @@ function purchase(event)
 		print(buying_player.mastery_factor[Player.MASTERY_RANGE])
 		print(buying_player.mastery_factor[Player.MASTERY_LIFESTEAL])
 	else
-		print("Error: Shop type not found")
+		err("Shop type not found")
 	end
 	
 	local item = hero:GetItemInSlot(6)

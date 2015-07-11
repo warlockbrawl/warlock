@@ -45,6 +45,9 @@ function Game:init()
 
 	-- Wait for the game to start
 	self.in_progress = false
+
+    -- AI Controllers
+    self.ai_controllers = Set:new()
 end
 
 -- Ends the game and sets winners

@@ -250,6 +250,7 @@ function Game:getOrCreatePlayer(player_id)
         end
 
         p.name = PlayerResource:GetPlayerName(p.id)
+
         self.players[p.id] = p
 
         GAME.player_count = GAME.player_count + 1
@@ -320,6 +321,16 @@ function Game:EventNPCSpawned(event)
 	local p = GAME:getOrCreatePlayer(player_id)
 
 	p:HeroSpawned(spawned_unit)
+
+    -- Detect AI and add an AI controller
+    if self.spawning_ai then
+        self.ai_controllers:add(AIController:new {
+            player = p,
+            think_interval = self.spawning_ai_think_interval
+        })
+        display("Added AI player")
+        self.spawning_ai = false
+    end
 end
 
 --- Periodically sets players' cash to match the scripted value

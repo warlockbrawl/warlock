@@ -36,7 +36,6 @@ end
 function TeamModeFFA:onNewRound()
 	local i = 1
 	for player, _ in pairs(GAME.active_players) do
-		print("FFA:", i, Team.TEAM_IDS[i])
 		player:setTeam(GAME.teams[Team.TEAM_IDS[i]])
 		i = i + 1
 	end
