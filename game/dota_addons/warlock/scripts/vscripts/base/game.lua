@@ -110,12 +110,6 @@ function Game:start()
 
 	        display("Welcome to Warlock")
 	        display("Created by Toraxxx, Adynathos, Zymoran")
-	
-            -- Add bots
-            log("Adding " .. tostring(Config.bot_count) .. " bots")
-            for i = 1, Config.bot_count do
-                self:addBot(0.2)
-            end
 
 	        -- Assign teams
 	        for _, player in pairs(GAME.players) do
@@ -123,6 +117,12 @@ function Game:start()
 	        end
 
 	        self.mode:onStart()
+
+            -- Add bots
+            log("Adding " .. tostring(Config.bot_count) .. " bots")
+            for i = 1, Config.bot_count do
+                self:addBot(0.2)
+            end
         end
     }
 end

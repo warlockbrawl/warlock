@@ -20,7 +20,6 @@
 			<Label text="Team 8" id="team11" />
 			<Label text="Team 9" id="team12" />
 			<Label text="Team 10" id="team13" />
-			<Label text="Spectator" id="team5" />
 		</DropDown>
 	</Panel>
 </root>

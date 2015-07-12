@@ -55,7 +55,7 @@ end
 
 function Player:HeroSpawned(hero)	
 	if self.pawn then
-		log("HeroSpawned called but pawn already created (normal on respawn).")
+		warning("HeroSpawned called but pawn already created.")
 		return
 	end
 	
@@ -310,8 +310,8 @@ end
 function Game:EventNPCSpawned(event)
 	local spawned_unit = EntIndexToHScript(event.entindex)
 
-	-- Ignore non-hero units
-	if not spawned_unit:IsHero() then
+	-- Ignore non-hero units and respawns
+	if not spawned_unit:IsHero() or spawned_unit.hero_spawned_called then
 		return
 	end
 
@@ -330,12 +330,23 @@ function Game:EventNPCSpawned(event)
 	local p = GAME:getOrCreatePlayer(player_id)
 
 	p:HeroSpawned(spawned_unit)
+    spawned_unit.hero_spawned_called = true
 
     -- Detect AI and add an AI controller
-    if self.spawning_ai then
-        self:addPlayerAI(p, self.spawning_ai_def)
+    if PlayerResource:IsFakeClient(player_id) then
         display("Added AI player")
-        self.spawning_ai = false
+
+        if not p.playerEntity.ai_def then
+            warning("Fake player hero spawned but player's entity ai_def was nil")
+        end
+
+        self:addPlayerAI(p, p.playerEntity.ai_def)
+
+        p.is_bot = true
+
+        -- Move AI definition from player entity to player object
+        p.ai_def = p.playerEntity.ai_def
+        p.playerEntity.ai_def = nil
     end
 end
 

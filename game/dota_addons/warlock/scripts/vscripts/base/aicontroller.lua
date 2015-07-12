@@ -6,8 +6,24 @@ function AIController:init(def)
     self.pawn = self.player.pawn
     self.think_interval = def.think_interval or AIController.think_interval
 
-    self.fireball = self.pawn.unit:GetItemInSlot(0)
-    self.scourge = self.pawn.unit:GetItemInSlot(1)
+    -- Find fireball and scourge
+    for i = 0, 5 do
+        local item = self.pawn.unit:GetItemInSlot(i)
+        
+        if item then
+            local item_name = item:GetAbilityName()
+
+            if item_name == "item_warlock_fireball" then
+                log("Found fireball in slot " .. tostring(i))
+                self.fireball = item
+            end
+
+            if item_name == "item_warlock_scourge" or item_name == "item_warlock_scourge_incarnation1" or item_name == "item_warlock_scourge_incarnation2" then
+                log("Found scourge in slot " .. tostring(i))
+                self.scourge = item
+            end
+        end
+    end
 
     self.time = 0
     self.scourge_end_time = 0
@@ -30,7 +46,7 @@ function AIController:init(def)
         { "warlock_boomerang", "warlock_lightning", "warlock_homing" },
         { "warlock_cluster", "warlock_bouncer", "warlock_drain" },
         { "warlock_splitter", "warlock_meteor" },
-        { "warlock_link", "warlock_grip", "warlock_gravity", "warlock_magnetize", "warlock_rockpillar" }
+        { "warlock_link", "warlock_grip", "warlock_gravity", "warlock_magnetize", "warlock_rockpillar", "warlock_warpzone" }
     }
 
     self.purchasable_escape_spells = {
@@ -42,6 +58,60 @@ function AIController:init(def)
     self.escape_spell = nil
 
     self.projectile_spells = { "warlock_fireball" }
+
+    -- Find existing abilities
+    for i = 0, 5 do
+        local abil = self.pawn.unit:GetAbilityByIndex(i)
+
+        if abil then
+            local abil_name = abil:GetAbilityName()
+            local found_abil = false
+            log("Checking for ability " .. abil_name)
+
+            -- Special case for windwalk
+            if abil_name == "warlock_windwalk" then
+                for j = 1, #self.purchasable_target_spells do
+                    if self.purchasable_target_spells[j][1] == "warlock_splitter" then
+                        table.remove(self.purchasable_target_spells, j)
+                        log("Handled windwalk")
+                        found_abil = true
+                        break
+                    end
+                end
+            end
+
+            
+            if not found_abil then
+                for j = 1, #self.purchasable_target_spells do
+                    local spells = self.purchasable_target_spells[j]
+                    for k = 1, #spells do
+                        if spells[k] == abil_name then
+                            table.insert(self.projectile_spells, abil_name)
+                            table.remove(self.purchasable_target_spells, k)
+                            found_abil = true
+                            log("Found")
+                            break
+                        end
+                    end
+
+                    if found_abil then
+                        break
+                    end
+                end
+
+                if not found_abil then
+                    for j = 1, #self.purchasable_escape_spells do
+                        if self.purchasable_escape_spells[j] == abil_name then
+                            self.escape_spell = abil_name
+                            self.purchasable_escape_spells = { }
+                            log("Found")
+                            break
+                        end
+                    end
+                end
+            end
+        end
+    end
 end
 
 function AIController:destroy()
@@ -374,18 +444,22 @@ end
 
 -- Adds a new player bot
 function Game:addBot(think_interval)
-    if GAME.player_count < 10 then
-        GAME.spawning_ai = true
-        GAME.spawning_ai_def = { think_interval = think_interval }
-        Tutorial:AddBot("npc_dota_hero_warlock", "npc_dota_hero_warlock", "npc_dota_hero_warlock", true)
+    local player_count = PlayerResource:GetPlayerCount()
+
+    print("Player count:", player_count)
+
+    if GAME.player_count < 10 and player_count < 10 then
+        Tutorial:AddBot("npc_dota_hero_warlock", "npc_dota_hero_warlock", "npc_dota_hero_warlock", false)
 
         -- Find newly created player
         for i = 0, DOTA_MAX_PLAYERS do
             local player_ent = PlayerResource:GetPlayer(i)
-            
-            if player_ent and not GAME.players[i] then
+
+            -- Check if the player is a bot and doesnt have a hero yet (sometimes they automatically get a hero while still in selection)
+            if player_ent and not GAME.players[i] and PlayerResource:IsFakeClient(i) and not PlayerResource:HasSelectedHero(i) then
                 print("Created hero for AI with player id", i)
-                CreateUnitByName("npc_dota_hero_warlock", Vector(0, 0, 0), true, PlayerResource:GetPlayer(i), PlayerResource:GetPlayer(i), DOTA_TEAM_GOODGUYS)
+                player_ent.ai_def = { think_interval = think_interval }
+                CreateHeroForPlayer("npc_dota_hero_warlock", player_ent)
             end
         end
     end
