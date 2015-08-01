@@ -67,7 +67,7 @@ ShopMasteries.prototype.createUI = function() {
 			}
 		}(mastery.name);
 		
-		var showTooltipFunc = makeTooltipFunction(mastery.name, mastery.description);
+		var showTooltipFunc = makeTooltipFunction(mastery.displayName, mastery.description);
 		
 		/*
 		Creating XML hierarchy

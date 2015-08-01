@@ -2,61 +2,37 @@
 {
 	"misc"
 	{
-		"item" "item_warlock_duration_mastery"
-		"item" "item_warlock_range_mastery"
-		"item" "item_warlock_life_steal_mastery"
-		"item" "item_warlock_jack_of_all_trades"
 	}
 	"consumables"
 	{
 	}
 	"attributes"
 	{
-		"item" "item_warlock_ring_of_health"
-		"item" "item_warlock_cursed_ring"
-		"item" "item_warlock_cape"
-		"item" "item_warlock_armor"
-		"item" "item_warlock_boots"
-		"item" "item_warlock_pocket_watch"
+
 	}
 	"basics"
 	{
-		"item" "item_warlock_lightning"
-		"item" "item_warlock_boomerang"
-		"item" "item_warlock_homing"
+
 	}
 	"support"
 	{
-		"item" "item_warlock_teleport"
-		"item" "item_warlock_thrust"
-		"item" "item_warlock_swap"
+
 	}
 	"magics"
 	{
-		"item" "item_warlock_drain"
-		"item" "item_warlock_cluster"
-		"item" "item_warlock_bouncer"
+
 	}
 	"weapons"
 	{
-		"item" "item_warlock_meteor"
-		"item" "item_warlock_windwalk"
-		"item" "item_warlock_splitter"
+
 	}
 	"defense"
 	{
-		"item" "item_warlock_rush"
-		"item" "item_warlock_shield"
-		"item" "item_warlock_alteration"
+
 	}
 	"artifacts"
 	{
-		"item" "item_warlock_grip"
-		"item" "item_warlock_gravity"
-		"item" "item_warlock_warpzone"
-		"item" "item_warlock_magnetize"
-		"item" "item_warlock_rockpillar"
-		"item" "item_warlock_link"
+
 	}
 	"weapons_armor"
 	{

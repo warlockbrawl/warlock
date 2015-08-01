@@ -13,7 +13,7 @@
 		"AbilityUnitDamageType"	"DAMAGE_TYPE_PURE"
 		"AbilityCastAnimation"	"ACT_DOTA_DISABLED"
 		"AbilityManaCost"		"0"
-		"ItemCost"				"%(cost)s"
+		"ItemCost"				"0"
 		"ItemShopTags"			"consumable"
 		"ItemQuality"			"consumable"
 		"ItemDeclarations"		"DECLARE_PURCHASES_TO_SPECTATORS"

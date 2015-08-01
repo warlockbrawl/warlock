@@ -37,7 +37,7 @@ ShopItems.prototype.createUI = function() {
 			}
 		}(item.name);
 
-		var showTooltipFunc = makeTooltipFunction(item.name, item.description);
+		var showTooltipFunc = makeTooltipFunction(item.displayName, item.description);
 		
 		var itemButton = $.CreatePanel("Button", this.root, "");
 		itemButton.AddClass("ShopBuyItemButton");

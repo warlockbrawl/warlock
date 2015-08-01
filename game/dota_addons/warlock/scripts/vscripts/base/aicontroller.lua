@@ -84,8 +84,8 @@ function AIController:init(def)
                     local spells = self.purchasable_target_spells[j]
                     for k = 1, #spells do
                         if Shop.SPELL_DEFS[spells[k]].ability_name == abil_name then
-                            table.insert(self.projectile_spells, Shop.SPELL_DEFS[spells[k]])
-                            table.remove(self.purchasable_target_spells, k)
+                            table.insert(self.projectile_spells, Shop.SPELL_DEFS[spells[k]]) -- Add found spell to available spell list
+                            table.remove(self.purchasable_target_spells, j) -- Remove column from purchasable spells
                             found_abil = true
                             log("Found")
                             break

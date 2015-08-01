@@ -174,7 +174,7 @@ function sendToggleButtonValues() {
 function onHostDetected() {
 	enableAll(true);
 	
-	$("#HostLabel").text = "You are the host!\n\nChoose the settings and start the game within one minute.";
+	$("#HostLabel").text = $.Localize("#WL_setup_you_are_host") + "\n\n" + $.Localize("#WL_setup_choose_settings");
 	
 	if(isGameSetup()) {
 		sendTextBoxValues();

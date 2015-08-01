@@ -12,9 +12,9 @@ function toggleShop() {
 	g_ShopElements.visible = !g_ShopElements.visible;
 	g_ShopTooltip.visible = g_ShopElements.visible;
 	if(g_ShopElements.visible) {
-		g_ShopLabel.text = "Close Shop";
+		g_ShopLabel.text = $.Localize("#WL_shop_close");
 	} else {
-		g_ShopLabel.text = "Open Shop";
+		g_ShopLabel.text = $.Localize("#WL_shop_open");
 	}
 }
 

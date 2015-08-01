@@ -5,12 +5,8 @@
 --------------------- */
 
 function showTooltip(title, text) {
-	$("#ShopTooltipTitle").text = title;
-	if(text.startsWith("#")) {
-		$("#ShopTooltipText").text = $.Localize(text);
-	} else {
-		$("#ShopTooltipText").text = text;
-	}
+	$("#ShopTooltipTitle").text = $.Localize(title);
+	$("#ShopTooltipText").text = $.Localize(text);
 }
 
 function makeTooltipFunction(name, text) {

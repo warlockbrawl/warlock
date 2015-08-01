@@ -112,7 +112,7 @@ ShopSpells.prototype.createUI = function() {
 				}
 			}(spell.name);
 			
-			var showTooltipFunc = makeTooltipFunction(spell.name, spell.description);
+			var showTooltipFunc = makeTooltipFunction(spell.displayName, spell.description);
 			
 			var spellContainer = $.CreatePanel("Panel", columnContainer, "");
 			spellContainer.AddClass("ShopBuySpellContainer");
@@ -158,7 +158,7 @@ ShopSpells.prototype.spellColumnChoose = function(column, spellName) {
 		}
 	}(column);
 	
-	var showTooltipFunc = makeTooltipFunction(spell.name, spell.description);
+	var showTooltipFunc = makeTooltipFunction(spell.displayName, spell.description);
 	
 	var spellContainer = $.CreatePanel("Panel", parent, "");
 	spellContainer.AddClass("ShopUpgradeSpellContainer");

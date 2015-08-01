@@ -15,7 +15,7 @@
 	</scripts>
 	<Panel class="ShopRoot" hittest="false">
 		<Button id="ShopButton" class="ButtonBevel" onactivate="toggleShop()">
-			<Label id="ShopLabel" text="Close Shop" />
+			<Label id="ShopLabel" text="#WL_shop_close" />
 		</Button>
 		
 		<Panel id="ShopElements" hittest="false">
@@ -24,7 +24,7 @@
 				<Panel id="ShopMasteriesContainer" hittest="false">
 					<Panel id="ShopMasteries" hittest="false">
 					</Panel>
-					<Panel id="ShopMasteriesUpgAllContainer" hittest="false" onmouseover="showTooltip('Jack of all Trades', '#DOTA_Tooltip_ability_item_warlock_jack_of_all_trades_Description')">
+					<Panel id="ShopMasteriesUpgAllContainer" hittest="false" onmouseover="showTooltip('#WL_shop_mastery_jack_of_all_trades', '#WL_shop_mastery_jack_of_all_trades_description')">
 						<Button id="ShopMasteriesUpgAllButton" onactivate="onUpgradeAllMasteriesClicked()">
 							<Label id="ShopMasteriesUpgAllLabel" text="+" />
 						</Button>

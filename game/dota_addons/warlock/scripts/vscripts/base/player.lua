@@ -132,6 +132,9 @@ function Player:EventReconnect()
 	    GAME.active_players[self] = true
     end
 
+    -- Get the player entity, invalid after reconnecting
+    self.playerEntity = PlayerResource:GetPlayer(self.id)
+
 	log("Player " .. self.name .. " reconnected fully.")
 
     if GAME.mode then

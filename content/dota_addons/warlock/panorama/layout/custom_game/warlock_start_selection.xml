@@ -9,24 +9,24 @@
 	<Panel class="SelectionRoot">
 		<Panel class="SelectionPanel">
 			<Panel id="PlayerList" class="SelectionSubPanel">
-				<Label text="Players" class="SelectionPanelTitle" />
+				<Label text="#WL_setup_players" class="SelectionPanelTitle" />
 			
 				<Panel id="PlayerListHeader">
-					<Label id="PlayerListHeaderName" text="Player Name" />
-					<Label id="PlayerListHeaderTeam" text="Team" />
+					<Label id="PlayerListHeaderName" text="#WL_setup_player_name" />
+					<Label id="PlayerListHeaderTeam" text="#WL_setup_team" />
 				</Panel>
 			</Panel>
 			
 			<Panel class="SelectionSubPanel">
-				<Label text="Waiting for the host to start the game for up to one minute." id="HostLabel" />
+				<Label text="#WL_setup_wait_for_host" id="HostLabel" />
 			</Panel>
 		</Panel>
 		<Panel id="OptionsList" class="SelectionPanel">
 			<Panel id="ModeSelection" class="SelectionSubPanel">
-				<Label text="Modes" class="SelectionPanelTitle" />
+				<Label text="#WL_setup_modes" class="SelectionPanelTitle" />
 
 				<Panel class="ModeItem">
-					<Label id="TeamModeLabel" class="ModeItemLabel" text="Team Mode:" />
+					<Label id="TeamModeLabel" class="ModeItemLabel" text="#WL_setup_team_mode" />
 					<DropDown id="TeamModeDropDown" class="ModeItemValue" oninputsubmit="onDropDownValueChanged()">
 						<Label id="TeamModeShuffle" text="Shuffle" />
 						<Label id="TeamModeFFA" text="FFA" />
@@ -35,7 +35,7 @@
 				</Panel>
 
 				<Panel class="ModeItem">
-					<Label id="ModeLabel" class="ModeItemLabel" text="Mode:" />
+					<Label id="ModeLabel" class="ModeItemLabel" text="#WL_setup_mode" />
 					<DropDown id="ModeDropDown" class="ModeItemValue" oninputsubmit="onDropDownValueChanged()">
 						<Label id="ModeRounds" text="Rounds" />
 						<Label id="ModeDeathmatch" text="Deathmatch" />
@@ -43,7 +43,7 @@
 				</Panel>
 
 				<Panel class="ModeItem">
-					<Label id="WinConditionLabel" class="ModeItemLabel" text="Win condition:" />
+					<Label id="WinConditionLabel" class="ModeItemLabel" text="#WL_setup_win_condition" />
 					<DropDown id="WinConditionDropDown" class="ModeItemValue" oninputsubmit="onDropDownValueChanged()">
 						<Label id="WinConditionRounds" text="Rounds" />
 						<Label id="WinConditionScore" text="Score" />
@@ -51,7 +51,7 @@
 				</Panel>
 				
 				<Panel class="ModeItem">
-					<Label id="WinCondMaxLabel" class="ModeItemLabel" text="Max Rounds/Score:" />
+					<Label id="WinCondMaxLabel" class="ModeItemLabel" text="#WL_setup_max_rounds_or_score" />
 					<TextEntry id="WinCondMaxText" class="ModeItemValue" text="11" />
 				</Panel>
 			</Panel>
@@ -60,38 +60,38 @@
 				<Label text="Constants" class="SelectionPanelTitle" />
 				
 				<Panel class="ModeItem">
-					<Label class="ModeItemLabel" text="Round Gold:" />
+					<Label class="ModeItemLabel" text="#WL_setup_round_gold" />
 					<TextEntry id="RoundGoldText" class="ModeItemValue" text="10" />
 				</Panel>
 				
 				<Panel class="ModeItem">
-					<Label class="ModeItemLabel" text="Start Gold:" />
+					<Label class="ModeItemLabel" text="#WL_setup_start_gold" />
 					<TextEntry id="StartGoldText" class="ModeItemValue" text="30" />
 				</Panel>
 				
 				<Panel class="ModeItem">
-					<Label class="ModeItemLabel" text="Kill Gold:" />
+					<Label class="ModeItemLabel" text="#WL_setup_kill_gold" />
 					<TextEntry id="KillGoldText" class="ModeItemValue" text="0" />
 				</Panel>
 				
 				<Panel class="ModeItem">
-					<Label class="ModeItemLabel" text="Win Gold:" />
+					<Label class="ModeItemLabel" text="#WL_setup_win_gold" />
 					<TextEntry id="WinGoldText" class="ModeItemValue" text="0" />
 				</Panel>
 				
 				<Panel class="ModeItem">
-					<Label class="ModeItemLabel" text="Bot Count:" />
+					<Label class="ModeItemLabel" text="#WL_setup_bot_count" />
 					<TextEntry id="BotCountText" class="ModeItemValue" text="0" />
 				</Panel>
 				
 				<Panel class="ModeItem">
-					<Label class="ModeItemLabel" text="Bots for leavers:" />
+					<Label class="ModeItemLabel" text="#WL_setup_bots_for_leavers" />
 					<ToggleButton id="BotOnDC" class="ModeItemValue" checked="true" onactivate="onToggleButtonValueChanged()" />
 				</Panel>
 			</Panel>
 			
 			<Button id="StartButton" class="ButtonBevel" onactivate="onStartGame()">
-				<Label text="Start" />
+				<Label text="#WL_setup_start" />
 			</Button>
 		</Panel>
 	</Panel>

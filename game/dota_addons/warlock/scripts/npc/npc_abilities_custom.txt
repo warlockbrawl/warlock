@@ -1195,7 +1195,7 @@
 		"ID"							"8872"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"modifier_illusion"
+		"AbilityTextureName"			"treant_overgrowth"
 
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
