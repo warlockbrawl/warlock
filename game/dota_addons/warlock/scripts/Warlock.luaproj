@@ -47,7 +47,6 @@
     <Compile Include="vscripts\base\item.lua" />
     <Compile Include="vscripts\base\mode.lua" />
     <Compile Include="vscripts\base\modifier.lua" />
-    <Compile Include="vscripts\base\newshop.lua" />
     <Compile Include="vscripts\base\obstacles.lua" />
     <Compile Include="vscripts\base\pawn.lua" />
     <Compile Include="vscripts\base\physics.lua" />

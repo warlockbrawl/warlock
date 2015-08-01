@@ -13,12 +13,12 @@ function AIController:init(def)
         if item then
             local item_name = item:GetAbilityName()
 
-            if item_name == "item_warlock_fireball" then
+            if item_name == "item_warlock_fireball1" then
                 log("Found fireball in slot " .. tostring(i))
                 self.fireball = item
             end
 
-            if item_name == "item_warlock_scourge" or item_name == "item_warlock_scourge_incarnation1" or item_name == "item_warlock_scourge_incarnation2" then
+            if item_name == "item_warlock_scourge1" or item_name == "item_warlock_scourge2" or item_name == "item_warlock_scourge3" then
                 log("Found scourge in slot " .. tostring(i))
                 self.scourge = item
             end
@@ -43,21 +43,19 @@ function AIController:init(def)
     }
 
     self.purchasable_target_spells = {
-        { "warlock_boomerang", "warlock_lightning", "warlock_homing" },
-        { "warlock_cluster", "warlock_bouncer", "warlock_drain" },
-        { "warlock_splitter", "warlock_meteor" },
-        { "warlock_link", "warlock_grip", "warlock_gravity", "warlock_magnetize", "warlock_rockpillar", "warlock_warpzone" }
+        { 1, 2, 3 },
+        { 7, 8, 9 },
+        { 11, 12 },
+        { 16, 17, 18, 19, 20, 21 }
     }
 
     self.purchasable_escape_spells = {
-        "warlock_teleport",
-        "warlock_swap",
-        "warlock_thrust"
+        4, 5, 6
     }
 
     self.escape_spell = nil
 
-    self.projectile_spells = { "warlock_fireball" }
+    self.projectile_spells = { { name = "Fireball", ability_name = "item_warlock_fireball1" } }
 
     -- Find existing abilities
     for i = 0, 5 do
@@ -68,10 +66,10 @@ function AIController:init(def)
             local found_abil = false
             log("Checking for ability " .. abil_name)
 
-            -- Special case for windwalk
+            -- Special case for windwalk, remove E column
             if abil_name == "warlock_windwalk" then
                 for j = 1, #self.purchasable_target_spells do
-                    if self.purchasable_target_spells[j][1] == "warlock_splitter" then
+                    if Shop.SPELL_DEFS[self.purchasable_target_spells[j][1]].name == "Splitter" then
                         table.remove(self.purchasable_target_spells, j)
                         log("Handled windwalk")
                         found_abil = true
@@ -80,13 +78,13 @@ function AIController:init(def)
                 end
             end
 
-            
             if not found_abil then
+                -- Search in target spells
                 for j = 1, #self.purchasable_target_spells do
                     local spells = self.purchasable_target_spells[j]
                     for k = 1, #spells do
-                        if spells[k] == abil_name then
-                            table.insert(self.projectile_spells, abil_name)
+                        if Shop.SPELL_DEFS[spells[k]].ability_name == abil_name then
+                            table.insert(self.projectile_spells, Shop.SPELL_DEFS[spells[k]])
                             table.remove(self.purchasable_target_spells, k)
                             found_abil = true
                             log("Found")
@@ -99,10 +97,11 @@ function AIController:init(def)
                     end
                 end
 
+                -- Search in escape spells if not yet found
                 if not found_abil then
                     for j = 1, #self.purchasable_escape_spells do
-                        if self.purchasable_escape_spells[j] == abil_name then
-                            self.escape_spell = abil_name
+                        if Shop.SPELL_DEFS[self.purchasable_escape_spells[j]].ability_name == abil_name then
+                            self.escape_spell = Shop.SPELL_DEFS[self.purchasable_escape_spells[j]]
                             self.purchasable_escape_spells = { }
                             log("Found")
                             break
@@ -229,17 +228,45 @@ function AIController:getPredictedDir(target, speed)
 	return (target.velocity * t - delta) / (speed * t)
 end
 
+function AIController:buyRandomSpell()
+    -- 50 percent chance to buy an R spell if not owning one already
+    if not self.escape_spell and math.random(0, 1) == 0 then
+        local spell_number = math.random(1, #self.purchasable_escape_spells)
+        local spell_index = self.purchasable_escape_spells[spell_number]
+        local spell_def = Shop.SPELL_DEFS[spell_index]
+
+        if GAME.shop:buySpell(self.pawn.owner, spell_index) then
+            self.escape_spell = spell_def
+            self.purchasable_escape_spells = { }
+        end
+    else
+        if #self.purchasable_target_spells == 0 then
+            return
+        end
+
+        local column = math.random(1, #self.purchasable_target_spells)
+        local spells = table.remove(self.purchasable_target_spells, column)
+    
+        local spell_number = math.random(1, #spells)
+        local spell_index = spells[spell_number]
+        local spell_def = Shop.SPELL_DEFS[spell_index]
+
+        if GAME.shop:buySpell(self.pawn.owner, spell_index) then
+            table.insert(self.projectile_spells, spell_def)
+        end
+    end
+    print("Purchased a spell")
+end
+
 -- Casts a random projectile spell, returns false if nothing was cast
 function AIController:castRandomProjectileSpell()
-    local spell_name = self.projectile_spells[math.random(1, #self.projectile_spells)]
-    local spell_item_name = "item_" .. spell_name
+    local spell_def = self.projectile_spells[math.random(1, #self.projectile_spells)]
 
-    local spell
-    
+    local spell_name = spell_def.ability_name
+
     -- Special case for fireball since it's an item and not an ability
-    if spell_name == "warlock_fireball" then
+    if spell_def.name == "Fireball" then
         spell = self.fireball
-        spell_name = "item_" .. spell_name
     else
         spell = self.pawn.unit:FindAbilityByName(spell_name)
     end
@@ -271,53 +298,8 @@ function AIController:castRandomProjectileSpell()
     return true
 end
 
-function AIController:buyRandomSpell()
-    -- 50 percent chance to buy an R spell if not owning one already
-    if not self.escape_spell and math.random(0, 1) == 0 then
-        local spell_number = math.random(1, #self.purchasable_escape_spells)
-        local spell_name = self.purchasable_escape_spells[spell_number]
-        local spell_item_name = "item_" .. spell_name
-
-        self.pawn.unit:AddItemByName(spell_item_name)
-        self.pawn.unit:SwapItems(2, 6)
-
-        purchase {
-            PlayerID = self.player.id,
-            itemcost = 15, -- TODO
-            itemname = spell_item_name
-        }
-
-        self.escape_spell = spell_name
-
-        self.purchasable_escape_spells = { }
-    else
-        if #self.purchasable_target_spells == 0 then
-            return
-        end
-
-        local column = math.random(1, #self.purchasable_target_spells)
-        local spells = table.remove(self.purchasable_target_spells, column)
-    
-        local spell_number = math.random(1, #spells)
-        local spell_name = spells[spell_number]
-        local spell_item_name = "item_" .. spell_name
-
-        self.pawn.unit:AddItemByName(spell_item_name)
-        self.pawn.unit:SwapItems(2, 6)
-
-        purchase {
-            PlayerID = self.player.id,
-            itemcost = 15, -- TODO
-            itemname = spell_item_name
-        }
-
-        table.insert(self.projectile_spells, spell_name)
-    end
-    print("Purchased a spell")
-end
-
 function AIController:castEscapeSpell()
-    local spell = self.pawn.unit:FindAbilityByName(self.escape_spell)
+    local spell = self.pawn.unit:FindAbilityByName(self.escape_spell.ability_name)
 
     if spell and not spell:IsNull() and spell:IsFullyCastable() then
         self.pawn.unit:CastAbilityOnPosition(self.target, spell, self.pawn.owner.id)
