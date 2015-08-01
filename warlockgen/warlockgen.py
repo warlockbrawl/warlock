@@ -78,7 +78,6 @@ spells.append(WarlockSpell("link", "Shoot a magical link which can latch on enem
 spells.append(WarlockSpell("splitter", "Cast a projectile which splits into minor missiles", 15, 3))
 
 # Items		
-items.append(WarlockItem("scourge_incarnation", "", 7, 2, { "damage": "110 120" }, "consumables"))
 items.append(WarlockItem("ring_of_health", "Increases maximum HP", 4, 5, { "hp_bonus": "100 190 270 340 400" }, "attributes"))
 items.append(WarlockItem("cursed_ring", "Increases maximum HP and reduces knockback taken from spells, but suffer longer from debuffs", 6, 2, { "hp_bonus": "100 200", "kb_reduction": "0.15 0.15", "debuff_factor": "0.25 0.30" }, "attributes"))
 items.append(WarlockItem("cape", "Increases HP regeneration", 3, 3, { "hp_regen": "2.0 3.5 4.5" }, "attributes"))

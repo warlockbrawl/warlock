@@ -1,5 +1,5 @@
 --- Spell warlock_fireball
-Fireball = Spell:new{id='item_warlock_fireball'}
+Fireball = Spell:new{id='item_warlock_fireball1'}
 
 Fireball.projectile_class 	= FireballProjectile
 Fireball.projectile_speed 	= 1000

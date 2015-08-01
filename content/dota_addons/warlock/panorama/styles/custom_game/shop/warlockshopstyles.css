@@ -1,0 +1,274 @@
+/*----------------------
+
+		  Shop
+
+-----------------------*/
+
+@define shopBackgroundColor: rgba(51, 51, 51, 240);
+@define shopSubBackgroundColor: rgba(30, 30, 30, 200);
+@define shopBorderColor: rgba(0, 0, 0, 200);
+
+.ShopRoot
+{
+	vertical-align: top;
+	horizontal-align: center;
+	margin-top: 80px;
+	flow-children: down;
+	z-index: 3;
+}
+
+#ShopButton
+{
+	horizontal-align: center;
+	margin-bottom: 30px;
+}
+
+#ShopElements
+{
+	flow-children: right;
+}
+
+.ShopArea
+{
+	flow-children: down;
+	padding: 10px;
+	background-color: shopBackgroundColor;
+	border: 3px solid shopBorderColor;
+	border-radius: 20px;
+	margin-right: 30px;
+}
+
+.ShopAreaHeader
+{
+	text-align: center;
+	width: 100%;
+	font-size: 30px;
+	color: rgba(150, 255, 0, 255);
+}
+
+#ShopMasteries
+{
+	flow-children: right;
+}
+
+.ShopUpgradeMasteryContainer
+{
+	flow-children: down;
+	background-color: shopSubBackgroundColor;
+	border-radius: 10px;
+	padding: 10px;
+	border: 3px solid rgba(0, 0, 0, 200);
+}
+
+.ShopUpgradeMasteryIcon
+{
+	width: 40px;
+	height: 40px;
+	border-radius: 100px;
+}
+
+.ShopUpgradeMasteryButton
+{
+	width: 40px;
+	height: 30px;
+}
+
+.ShopUpgradeMasteryLabel
+{
+	font-size: 30px;
+	color: yellow;
+	text-align: center;
+	vertical-align: center;
+	horizontal-align: center;
+}
+
+.ShopLevelContainer
+{
+	flow-children: down;
+}
+
+.ShopLevel
+{
+	width: 40px;
+	height: 10px;
+	background-color: #FFFFFF;
+	box-shadow:0px 0px 3px #111111;
+	border-radius: 4px;
+	margin-top: 3px;
+}
+
+.ShopLevel.Active
+{
+	background-color: #BBFF00;
+}
+
+#ShopMasteriesUpgAllContainer
+{
+	width: 200px;
+	height: 40px;
+	margin-top: 200px;
+	background-color: shopSubBackgroundColor;
+	border-radius: 6px;
+	border: 3px solid rgba(0, 0, 0, 200);
+}
+
+#ShopMasteriesUpgAllLabel
+{
+	font-size: 28px;
+	color: yellow;
+	text-align: center;
+	horizontal-align: center;
+	vertical-align: center;
+}
+
+#ShopMasteriesUpgAllButton
+{
+	width: 100%;
+	height: 100%;
+}
+
+#ShopSpells
+{
+	flow-children: right;
+}
+
+.ShopSpellColumn
+{
+	flow-children: down;
+	margin-right: 10px;
+	background-color: shopSubBackgroundColor;
+	border-radius: 10px;
+	padding: 10px;
+	border: 3px solid rgba(0, 0, 0, 200);
+}
+
+.ShopSpellColumnHeader
+{
+	text-align: center;
+	font-size: 24px;
+	color: rgba(150, 255, 0, 200);
+	width: 100%;
+	height: 36px;
+	border-radius: 10px;
+	border: 3px solid rgba(150, 255, 0, 200);
+	background-color: rgba(33, 33, 33, 200);
+	margin-bottom: 10px;
+}
+
+.ShopBuySpellContainer
+{
+	margin-bottom: 10px;
+	border: 2px solid black;
+	border-radius: 8px;
+}
+
+.ShopBuySpellButton
+{
+	width: 40px;
+	height: 40px;
+}
+
+.ShopBuySpellLabel
+{
+	font-size: 16px;
+	horizontal-align: left;
+	vertical-align: top;
+	text-align: center;
+	z-index: 1;
+	color: yellow;
+}
+
+.ShopBuySpellImage
+{
+	width: 100%;
+	height: 100%;
+}
+
+.ShopUpgradeSpellContainer
+{
+	flow-children: down;
+	border-radius: 10px;
+}
+
+.ShopUpgradeSpellIcon
+{
+	width: 40px;
+	height: 40px;
+	border-radius: 100px;
+}
+
+.ShopUpgradeSpellButton
+{
+	width: 40px;
+	height: 30px;
+}
+
+.ShopUpgradeSpellLabel
+{
+	font-size: 30px;
+	color: yellow;
+	text-align: center;
+	vertical-align: center;
+	horizontal-align: center;
+}
+
+#ShopItems
+{
+	flow-children: down;
+	width: 100px;
+}
+
+.ShopBuyItemButton
+{
+	width: 80px;
+	height: 50px;
+	border: 2px solid black;
+	margin-bottom: 10px;
+	border-radius: 8px;
+	horizontal-align: center;
+	background-color: black;
+}
+
+.ShopBuyItemLabel
+{
+	font-size: 16px;
+	horizontal-align: left;
+	vertical-align: top;
+	text-align: center;
+	z-index: 1;
+	color: yellow;
+}
+
+.ShopBuyItemImage
+{
+	width: 100%;
+	height: 100%;
+}
+
+#ShopTooltip
+{
+	flow-children: down;
+	horizontal-align: center;
+	background-color: shopBackgroundColor;
+	border: 3px solid shopBorderColor;
+	border-radius: 20px;
+	width: 300px;
+	height: 150px;
+	padding: 10px;
+	margin-top: 20px;
+	border-radius: 10px;
+}
+
+#ShopTooltipTitle
+{
+	horizontal-align: center;
+	font-size: 24px;
+	margin-bottom: 0px;
+	color: rgba(150, 255, 0, 200);
+}
+
+#ShopTooltipText
+{
+	color: rgba(170, 255, 30, 200);
+	text-align: left;
+}

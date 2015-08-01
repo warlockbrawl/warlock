@@ -7,14 +7,14 @@ Player.ALLIANCE_SELF		= 0
 Player.ALLIANCE_ALLY		= 1
 Player.ALLIANCE_ENEMY		= 2
 
-Player.MASTERY_DURATION		= 0
-Player.MASTERY_RANGE		= 1
-Player.MASTERY_LIFESTEAL	= 2
-Player.MASTERY_MAX_INDEX	= 2
+Player.MASTERY_DURATION		= 1
+Player.MASTERY_RANGE		= 2
+Player.MASTERY_LIFESTEAL	= 3
+Player.MASTERY_MAX_INDEX	= 3
 
-Player.STATS_DAMAGE			= 0
-Player.STATS_HEALING		= 1
-Player.STATS_MAX_INDEX		= 1
+Player.STATS_DAMAGE			= 1
+Player.STATS_HEALING		= 2
+Player.STATS_MAX_INDEX		= 2
 
 --- Create a player using the information
 -- from PreConnect event
@@ -25,7 +25,7 @@ function Player:init()
 	
 	-- stats
 	self.stats = {}
-	for i = 0, Player.STATS_MAX_INDEX do
+	for i = 1, Player.STATS_MAX_INDEX do
 		self.stats[i] = 0
 	end
 
@@ -86,6 +86,9 @@ function Player:HeroSpawned(hero)
 		unit = hero,
 		owner = self
 	}
+
+    GAME.shop:giveItem(self, 2) -- Fireball
+    GAME.shop:giveItem(self, 1) -- Scourge
 
 	-- Kill pawn if not in combat
 	if GAME.combat then
@@ -262,6 +265,9 @@ function Game:getOrCreatePlayer(player_id)
         p.name = PlayerResource:GetPlayerName(p.id)
 
         self.players[p.id] = p
+
+        -- Add new player to shop
+        self.shop:addPlayer(p)
 
         GAME.player_count = GAME.player_count + 1
 	end

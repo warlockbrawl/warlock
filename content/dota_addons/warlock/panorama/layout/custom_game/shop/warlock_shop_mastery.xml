@@ -1,0 +1,20 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/warlockstyles.css" />
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/warlock_shop_mastery.js" />
+	</scripts>
+	<Panel class="ShopLevelable">
+		<Image id="ShopIcon" />
+
+		<Panel id="ShopLevelContainer">
+			
+		</Panel>
+		
+		<Button id="ShopUpgradeButton" onactivate="onUpgradeClicked()" >
+			<Label text="+" id="ShopUpgradeLabel" />
+		</Button>
+	</Panel>
+</root>

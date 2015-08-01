@@ -1,0 +1,55 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/shop/warlockshopstyles.css" />
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/warlock_util.js" />
+		<include src="file://{resources}/scripts/custom_game/shop/warlock_shop_lib.js" />
+		<include src="file://{resources}/scripts/custom_game/shop/warlock_shop_data.js" />
+		<include src="file://{resources}/scripts/custom_game/shop/warlock_shop.js" />
+		<include src="file://{resources}/scripts/custom_game/shop/warlock_shop_masteries.js" />
+		<include src="file://{resources}/scripts/custom_game/shop/warlock_shop_spells.js" />
+		<include src="file://{resources}/scripts/custom_game/shop/warlock_shop_items.js" />
+		<include src="file://{resources}/scripts/custom_game/shop/warlock_shop_setup.js" />
+	</scripts>
+	<Panel class="ShopRoot" hittest="false">
+		<Button id="ShopButton" class="ButtonBevel" onactivate="toggleShop()">
+			<Label id="ShopLabel" text="Close Shop" />
+		</Button>
+		
+		<Panel id="ShopElements" hittest="false">
+			<Panel class="ShopArea" hittest="false">
+				<Label text="Masteries" class="ShopAreaHeader" hittest="false"/>
+				<Panel id="ShopMasteriesContainer" hittest="false">
+					<Panel id="ShopMasteries" hittest="false">
+					</Panel>
+					<Panel id="ShopMasteriesUpgAllContainer" hittest="false" onmouseover="showTooltip('Jack of all Trades', '#DOTA_Tooltip_ability_item_warlock_jack_of_all_trades_Description')">
+						<Button id="ShopMasteriesUpgAllButton" onactivate="onUpgradeAllMasteriesClicked()">
+							<Label id="ShopMasteriesUpgAllLabel" text="+" />
+						</Button>
+					</Panel>
+				</Panel>
+			</Panel>
+			
+			<Panel class="ShopArea" hittest="false">
+				<Label text="Spells" class="ShopAreaHeader" hittest="false"/>
+				<Panel id="ShopSpells" hittest="false">
+				
+				</Panel>
+			</Panel>
+			
+			<Panel class="ShopArea" hittest="false">
+				<Label text="Items" class="ShopAreaHeader" hittest="false"/>
+				<Panel id="ShopItems" hittest="false">
+				
+				</Panel>
+			</Panel>
+		</Panel>
+		
+		<Panel id="ShopTooltip" hittest="false">
+			<Label id="ShopTooltipTitle" text="" hittest="false" />
+			<Label id="ShopTooltipText" text="" hittest="false" />
+		</Panel>
+	</Panel>
+</root>

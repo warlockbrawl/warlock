@@ -1,0 +1,8 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/warlockstyles.css" />
+		<include src="s2r://panorama/styles/dotastyles.vcss_c" />
+	</styles>
+	<Panel class="ShopLevel">
+	</Panel>
+</root>

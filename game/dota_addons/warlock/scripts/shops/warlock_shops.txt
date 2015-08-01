@@ -9,7 +9,6 @@
 	}
 	"consumables"
 	{
-		"item" "item_warlock_scourge_incarnation"
 	}
 	"attributes"
 	{

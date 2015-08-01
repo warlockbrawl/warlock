@@ -101,7 +101,9 @@ function MeteorProjectile:explode()
 			knockback_factor = 0.66
 	})
 
-	Effect:create(self.explode_effect, { location=self.target })
+	local effect = Effect:create(self.explode_effect, { location=self.target })
+    effect:setControlPoint(0, self.target)
+
 	self:destroy()
 end
 

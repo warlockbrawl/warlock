@@ -1,6 +1,6 @@
 "DOTAAbilities"
 {
-	"item_warlock_scourge"
+	"item_warlock_scourge1"
 	{
 		"ID"							"8810"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET" //DOTA_ABILITY_BEHAVIOR_CHANNELLED
@@ -76,7 +76,7 @@
 		}
 	}
 	
-	"item_warlock_scourge_incarnation1"
+	"item_warlock_scourge2"
 	{
 		"ID"							"8811"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET" //DOTA_ABILITY_BEHAVIOR_CHANNELLED
@@ -152,7 +152,7 @@
 		}
 	}
 	
-	"item_warlock_scourge_incarnation2"
+	"item_warlock_scourge3"
 	{
 		"ID"							"8812"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET" //DOTA_ABILITY_BEHAVIOR_CHANNELLED
@@ -229,7 +229,7 @@
 		}
 	}
 	
-	"item_warlock_fireball"
+	"item_warlock_fireball1"
 	{
 		"ID"							"8800"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"

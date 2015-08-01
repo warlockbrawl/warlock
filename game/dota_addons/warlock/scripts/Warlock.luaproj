@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>E439935D-B2A2-46AE-856D-2AA408428F33</ProjectGuid>
+    <!--$guid1$-->
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>
+    </StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="vscripts\" />
+    <Folder Include="vscripts\base\" />
+    <Folder Include="vscripts\obj\" />
+    <Folder Include="vscripts\obj\Debug\" />
+    <Folder Include="vscripts\stats\" />
+    <Folder Include="vscripts\test\" />
+    <Folder Include="vscripts\util\" />
+    <Folder Include="vscripts\warlock\" />
+    <Folder Include="vscripts\warlock\modifiers\" />
+    <Folder Include="vscripts\warlock\projectiles\" />
+    <Folder Include="vscripts\warlock\spells\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="vscripts\addon_game_mode.lua" />
+    <Compile Include="vscripts\base\actor.lua" />
+    <Compile Include="vscripts\base\aicontroller.lua" />
+    <Compile Include="vscripts\base\arena.lua" />
+    <Compile Include="vscripts\base\commands.lua" />
+    <Compile Include="vscripts\base\config.lua" />
+    <Compile Include="vscripts\base\effect.lua" />
+    <Compile Include="vscripts\base\game.lua" />
+    <Compile Include="vscripts\base\gamesetup.lua" />
+    <Compile Include="vscripts\base\item.lua" />
+    <Compile Include="vscripts\base\mode.lua" />
+    <Compile Include="vscripts\base\modifier.lua" />
+    <Compile Include="vscripts\base\newshop.lua" />
+    <Compile Include="vscripts\base\obstacles.lua" />
+    <Compile Include="vscripts\base\pawn.lua" />
+    <Compile Include="vscripts\base\physics.lua" />
+    <Compile Include="vscripts\base\player.lua" />
+    <Compile Include="vscripts\base\projectile.lua" />
+    <Compile Include="vscripts\base\scoreboard.lua" />
+    <Compile Include="vscripts\base\shop.lua" />
+    <Compile Include="vscripts\base\spell.lua" />
+    <Compile Include="vscripts\base\tasks.lua" />
+    <Compile Include="vscripts\base\team.lua" />
+    <Compile Include="vscripts\base\teammode.lua" />
+    <Compile Include="vscripts\base\wincondition.lua" />
+    <Compile Include="vscripts\heap.lua" />
+    <Compile Include="vscripts\stats\json.lua" />
+    <Compile Include="vscripts\stats\md5.lua" />
+    <Compile Include="vscripts\stats\statcollection.lua" />
+    <Compile Include="vscripts\test\test.lua" />
+    <Compile Include="vscripts\test\test_heap.lua" />
+    <Compile Include="vscripts\triggers.lua" />
+    <Compile Include="vscripts\util\class.lua" />
+    <Compile Include="vscripts\util\print.lua" />
+    <Compile Include="vscripts\util\print_table.lua" />
+    <Compile Include="vscripts\util\set.lua" />
+    <Compile Include="vscripts\warlock\modifiers\alterationmodifier.lua" />
+    <Compile Include="vscripts\warlock\modifiers\gripmodifier.lua" />
+    <Compile Include="vscripts\warlock\modifiers\linkmodifier.lua" />
+    <Compile Include="vscripts\warlock\modifiers\magnetizemodifier.lua" />
+    <Compile Include="vscripts\warlock\modifiers\rushmodifier.lua" />
+    <Compile Include="vscripts\warlock\modifiers\shieldmodifier.lua" />
+    <Compile Include="vscripts\warlock\modifiers\thrustmodifier.lua" />
+    <Compile Include="vscripts\warlock\modifiers\windwalkmodifier.lua" />
+    <Compile Include="vscripts\warlock\projectiles\boomerangprojectile.lua" />
+    <Compile Include="vscripts\warlock\projectiles\bouncerprojectile.lua" />
+    <Compile Include="vscripts\warlock\projectiles\drainhealprojectile.lua" />
+    <Compile Include="vscripts\warlock\projectiles\drainprojectile.lua" />
+    <Compile Include="vscripts\warlock\projectiles\fireballprojectile.lua" />
+    <Compile Include="vscripts\warlock\projectiles\gravityprojectile.lua" />
+    <Compile Include="vscripts\warlock\projectiles\gripprojectile.lua" />
+    <Compile Include="vscripts\warlock\projectiles\homingprojectile.lua" />
+    <Compile Include="vscripts\warlock\projectiles\linkprojectile.lua" />
+    <Compile Include="vscripts\warlock\projectiles\magnetizeprojectile.lua" />
+    <Compile Include="vscripts\warlock\projectiles\meteorprojectile.lua" />
+    <Compile Include="vscripts\warlock\projectiles\splitterchildprojectile.lua" />
+    <Compile Include="vscripts\warlock\projectiles\splitterprojectile.lua" />
+    <Compile Include="vscripts\warlock\projectiles\splitterspawnerprojectile.lua" />
+    <Compile Include="vscripts\warlock\projectiles\swapprojectile.lua" />
+    <Compile Include="vscripts\warlock\spells\alteration.lua" />
+    <Compile Include="vscripts\warlock\spells\boomerang.lua" />
+    <Compile Include="vscripts\warlock\spells\bouncer.lua" />
+    <Compile Include="vscripts\warlock\spells\cluster.lua" />
+    <Compile Include="vscripts\warlock\spells\drain.lua" />
+    <Compile Include="vscripts\warlock\spells\fireball.lua" />
+    <Compile Include="vscripts\warlock\spells\gravity.lua" />
+    <Compile Include="vscripts\warlock\spells\grip.lua" />
+    <Compile Include="vscripts\warlock\spells\homing.lua" />
+    <Compile Include="vscripts\warlock\spells\lightning.lua" />
+    <Compile Include="vscripts\warlock\spells\link.lua" />
+    <Compile Include="vscripts\warlock\spells\magnetize.lua" />
+    <Compile Include="vscripts\warlock\spells\meteor.lua" />
+    <Compile Include="vscripts\warlock\spells\rockpillar.lua" />
+    <Compile Include="vscripts\warlock\spells\rush.lua" />
+    <Compile Include="vscripts\warlock\spells\scourge.lua" />
+    <Compile Include="vscripts\warlock\spells\shield.lua" />
+    <Compile Include="vscripts\warlock\spells\splitter.lua" />
+    <Compile Include="vscripts\warlock\spells\swap.lua" />
+    <Compile Include="vscripts\warlock\spells\teleport.lua" />
+    <Compile Include="vscripts\warlock\spells\thrust.lua" />
+    <Compile Include="vscripts\warlock\spells\warpzone.lua" />
+    <Compile Include="vscripts\warlock\spells\windwalk.lua" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+</Project>

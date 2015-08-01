@@ -1,0 +1,10 @@
+<root>
+	<Panel>
+		<Image src="file://{images}/custom_game/masteries/warlock_duration_mastery.png" /> 
+		<Image src="file://{images}/custom_game/masteries/warlock_life_steal_mastery.png" /> 
+		<Image src="file://{images}/custom_game/masteries/warlock_range_mastery.png" />
+		<Image src="file://{images}/custom_game/masteries/warlock_jack_of_all_trades.png" />
+		<Image src="file://{images}/custom_game/spells/warlock_boomerang.png" />
+		<Image src="file://{images}/custom_game/spells/warlock_lightning.png" />
+	</Panel>
+</root>

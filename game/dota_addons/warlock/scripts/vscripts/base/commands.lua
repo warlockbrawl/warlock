@@ -74,6 +74,38 @@ function Game:initCommands()
         print("#END TEAM REPORT")
     end)
 
+    self:registerCommand("buy1", function()
+        GAME.shop:buySpell(GAME.players[0], 1)
+    end)
+
+    self:registerCommand("buy2", function()
+        GAME.shop:buySpell(GAME.players[0], 2)
+    end)
+
+    self:registerCommand("buy3", function()
+        GAME.shop:buySpell(GAME.players[0], 3)
+    end)
+
+    self:registerCommand("buy4", function()
+        GAME.shop:buySpell(GAME.players[0], 4)
+    end)
+
+    self:registerCommand("upgrade1", function()
+        GAME.shop:upgradeSpell(GAME.players[0], 1)
+    end)
+
+    self:registerCommand("upgrade2", function()
+        GAME.shop:upgradeSpell(GAME.players[0], 2)
+    end)
+
+    self:registerCommand("buyitem1", function()
+        GAME.shop:buyItem(GAME.players[0], 1)
+    end)
+
+    self:registerCommand("buyitem2", function()
+        GAME.shop:buyItem(GAME.players[0], 2)
+    end)
+
 	-- Development only commands
 	if Config.DEVELOPMENT then
 		self:registerCommand('f', function()

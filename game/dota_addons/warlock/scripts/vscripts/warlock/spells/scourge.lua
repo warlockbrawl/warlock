@@ -1,6 +1,6 @@
 --- Spell warlock_scourge
 
-Scourge = Spell:new{id='item_warlock_scourge'}
+Scourge = Spell:new{id='item_warlock_scourge1'}
 
 function Scourge:onCast(cast_info)
 	local caster_actor = cast_info.caster_actor
@@ -15,8 +15,8 @@ function Scourge:onCast(cast_info)
 	caster_actor:setHealth(math.max(1, caster_actor.health - damage)) -- self damage
 end
 
-Scourge_incarnation1 = Spell:new{id='item_warlock_scourge_incarnation1'}
-Scourge_incarnation2 = Spell:new{id='item_warlock_scourge_incarnation2'}
+Scourge_incarnation1 = Spell:new{id='item_warlock_scourge2'}
+Scourge_incarnation2 = Spell:new{id='item_warlock_scourge3'}
 
 
 function Scourge_incarnation1:onCast(cast_info)
