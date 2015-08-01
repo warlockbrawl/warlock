@@ -480,12 +480,12 @@
 			"01"
 			{
 				"var_type" "FIELD_FLOAT"
-				"hp_bonus" "100 200"
+				"kb_reduction" "0.15 0.15"
 			}
 			"02"
 			{
 				"var_type" "FIELD_FLOAT"
-				"kb_reduction" "0.15 0.15"
+				"hp_bonus" "100 200"
 			}
 			"03"
 			{
@@ -524,12 +524,12 @@
 			"01"
 			{
 				"var_type" "FIELD_FLOAT"
-				"hp_bonus" "100 200"
+				"kb_reduction" "0.15 0.15"
 			}
 			"02"
 			{
 				"var_type" "FIELD_FLOAT"
-				"kb_reduction" "0.15 0.15"
+				"hp_bonus" "100 200"
 			}
 			"03"
 			{

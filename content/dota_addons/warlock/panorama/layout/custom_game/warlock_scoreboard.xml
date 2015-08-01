@@ -10,11 +10,11 @@
 		<Panel id="ScorePlayerList">
 			<Panel class="HeaderScoreRow">
 				<Label id="HeaderScoreAvatar" class="HeaderScoreAvatarColumn" />
-				<Label id="HeaderScoreName" class="HeaderScoreColumn" text="Name" />
-				<Label id="HeaderScoreKills" class="HeaderScoreColumn" text="Kills" />
-				<Label id="HeaderScoreDeaths" class="HeaderScoreColumn" text="Deaths" />
-				<Label id="HeaderScoreScore" class="HeaderScoreColumn" text="Score" />
-				<Label id="HeaderScoreDamage" class="HeaderScoreColumn" text="Damage" />
+				<Label id="HeaderScoreName" class="HeaderScoreColumn" text="WL_scoreboard_name" />
+				<Label id="HeaderScoreKills" class="HeaderScoreColumn" text="WL_scoreboard_kills" />
+				<Label id="HeaderScoreDeaths" class="HeaderScoreColumn" text="WL_scoreboard_deaths" />
+				<Label id="HeaderScoreScore" class="HeaderScoreColumn" text="WL_scoreboard_score" />
+				<Label id="HeaderScoreDamage" class="HeaderScoreColumn" text="WL_scoreboard_damage" />
 			</Panel>
 		</Panel>
 	</Panel>

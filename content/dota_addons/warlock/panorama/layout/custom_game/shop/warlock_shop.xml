@@ -20,7 +20,7 @@
 		
 		<Panel id="ShopElements" hittest="false">
 			<Panel class="ShopArea" hittest="false">
-				<Label text="Masteries" class="ShopAreaHeader" hittest="false"/>
+				<Label text="#WL_shop_masteries" class="ShopAreaHeader" hittest="false"/>
 				<Panel id="ShopMasteriesContainer" hittest="false">
 					<Panel id="ShopMasteries" hittest="false">
 					</Panel>
@@ -33,14 +33,14 @@
 			</Panel>
 			
 			<Panel class="ShopArea" hittest="false">
-				<Label text="Spells" class="ShopAreaHeader" hittest="false"/>
+				<Label text="#WL_shop_spells" class="ShopAreaHeader" hittest="false"/>
 				<Panel id="ShopSpells" hittest="false">
 				
 				</Panel>
 			</Panel>
 			
 			<Panel class="ShopArea" hittest="false">
-				<Label text="Items" class="ShopAreaHeader" hittest="false"/>
+				<Label text="#WL_shop_items" class="ShopAreaHeader" hittest="false"/>
 				<Panel id="ShopItems" hittest="false">
 				
 				</Panel>
