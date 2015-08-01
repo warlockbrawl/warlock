@@ -3,6 +3,7 @@ function ShopSpells(shop) {
 	
 	this.spellColumnPanels = [];
 	this.spellColumnLevelPanels = [];
+	this.spellCostLabels = [];
 	this.root = $("#ShopSpells");
 	
 	this.createUI();
@@ -37,6 +38,15 @@ ShopSpells.prototype.onSpellColumnInfo = function(eventData) {
 		}
 		
 		this.setColumnUILevel(eventData.column, eventData.level);
+		
+		var spell = this.shop.data.getSpellData(eventData.spell_name);
+		
+		//Set the upgrade cost text
+		if(eventData.level - 1 < spell.upgradeCost.length) {
+			this.spellCostLabels[eventData.column-1].text = spell.upgradeCost[eventData.level-1];
+		} else {
+			this.spellCostLabels[eventData.column-1].text = "";
+		}
 	}
 };
 
@@ -139,6 +149,7 @@ ShopSpells.prototype.spellColumnChoose = function(column, spellName) {
 	--- 7 Spell Levels
 	--- Upgrade Spell Button
 	---- Upgrade Spell Label
+	---- Upgrade Spell Cost Label
 	*/
 	
 	var upgradeSpellFunc = function(col) {
@@ -168,4 +179,10 @@ ShopSpells.prototype.spellColumnChoose = function(column, spellName) {
 	var spellLabel = $.CreatePanel("Label", spellButton, "");
 	spellLabel.AddClass("ShopUpgradeSpellLabel");
 	spellLabel.text = "+";
+	
+	var spellCostLabel = $.CreatePanel("Label", spellButton, "");
+	spellCostLabel.AddClass("ShopUpgradeSpellCostLabel");
+	spellCostLabel.text = spell.upgradeCost[0];
+	
+	this.spellCostLabels[column-1] = spellCostLabel;
 };

@@ -454,7 +454,7 @@ end
 ShopUI = class()
 
 ShopUI.MASTERY_NAMES = {
-    "Duration", "Lifesteal", "Range"
+    "Duration", "Range", "Lifesteal"
 }
 
 function ShopUI:init()

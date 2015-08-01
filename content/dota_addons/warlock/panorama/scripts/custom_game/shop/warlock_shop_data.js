@@ -1,8 +1,8 @@
 function ShopData() {
 	this.masteryData = [
 		{ name: "Duration", iconPath: "file://{images}/spellicons/pugna_nether_blast_png.vtex", description: "#DOTA_Tooltip_ability_item_warlock_duration_mastery_Description" },
-		{ name: "Lifesteal", iconPath: "file://{images}/spellicons/pugna_life_drain_png.vtex", description: "#DOTA_Tooltip_ability_item_warlock_life_steal_mastery_Description" },
 		{ name: "Range", iconPath: "file://{images}/spellicons/pugna_nether_ward_png.vtex", description: "#DOTA_Tooltip_ability_item_warlock_range_mastery_Description" },
+		{ name: "Lifesteal", iconPath: "file://{images}/spellicons/pugna_life_drain_png.vtex", description: "#DOTA_Tooltip_ability_item_warlock_life_steal_mastery_Description" },
 	];
 	
 	this.spellData = [

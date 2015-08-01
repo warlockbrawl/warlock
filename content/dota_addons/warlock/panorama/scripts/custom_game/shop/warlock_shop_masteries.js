@@ -78,6 +78,7 @@ ShopMasteries.prototype.createUI = function() {
 		--- 7 Mastery Levels
 		--- Upgrade Mastery Button
 		---- Upgrade Mastery Label
+		---- Upgrade Mastery Cost Label
 		*/
 		
 		var masteryContainer = $.CreatePanel("Panel", this.root, "");
@@ -97,5 +98,9 @@ ShopMasteries.prototype.createUI = function() {
 		var masteryLabel = $.CreatePanel("Label", masteryButton, "");
 		masteryLabel.AddClass("ShopUpgradeMasteryLabel");
 		masteryLabel.text = "+";
+		
+		var masteryCostLabel = $.CreatePanel("Label", masteryButton, "");
+		masteryCostLabel.AddClass("ShopUpgradeMasteryCostLabel");
+		masteryCostLabel.text = "5";
 	}
 };

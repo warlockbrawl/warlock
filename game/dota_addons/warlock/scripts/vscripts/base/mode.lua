@@ -62,11 +62,6 @@ function Mode:respawnPlayers(shop_time)
 	for id, player in pairs(GAME.players) do
 		if player.active and player.pawn then
 			player.pawn:respawn()
-			if shop_time then
-				player.pawn.unit:SetAbilityPoints(1)
-			else
-				player.pawn.unit:SetAbilityPoints(0)
-			end
 		end
 		
 		-- Reset player stats (damage etc.)
@@ -137,7 +132,6 @@ function Mode:prepareForRound()
 		time = 1,
 		func=function()
 			display('Buy new spells in the shop')
-			display('Assign ability points to buy spell upgrades (remember this costs money)')
 		end
 	}
 
@@ -423,7 +417,6 @@ function ModeDeathmatch:prepareForRound()
 		time = 1,
 		func=function()
 			display('Buy new spells in the shop')
-			display('Assign ability points to buy spell upgrades (remember this costs money)')
 		end
 	}
 

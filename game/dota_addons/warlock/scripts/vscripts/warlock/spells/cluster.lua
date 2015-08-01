@@ -5,6 +5,7 @@ Cluster.projectile_class = SimpleProjectile
 Cluster.projectile_speed = 844
 Cluster.projectile_effect = 'cluster_projectile'
 Cluster.radius = 22
+Cluster.knockback_factor = 0.65
 
 function Cluster:onCast(cast_info)
 	-- Calculate dist and angle
@@ -14,9 +15,7 @@ function Cluster:onCast(cast_info)
 	local dist = delta:Length()
 	
 	local angle = math.atan2(delta.y, delta.x) - 0.18
-	
-	cast_info.knockback_factor = 0.65
-	
+
 	-- Spawn four projectiles, starting at -0.18 and ending at 0.18 angle in rad
 	for i = 0, 3 do
 		local target = start + dist * Vector(math.cos(angle), math.sin(angle), 0)

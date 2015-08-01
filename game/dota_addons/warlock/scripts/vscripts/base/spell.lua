@@ -54,7 +54,6 @@ function Spell:spawnProjectile(cast_info, target)
 	dir.z = 0
 	dir = dir:Normalized()
 
-
 	local projectile_class = cast_info:attribute('projectile_class') or SimpleProjectile
 	local projectile_speed = cast_info:attribute('projectile_speed')
 	local damage = cast_info:attribute('damage')
@@ -62,15 +61,20 @@ function Spell:spawnProjectile(cast_info, target)
 	local radius = cast_info:attribute('radius')
 	local projectile_effect = cast_info:attribute('projectile_effect')
 
+    local knockback_factor = cast_info:attribute('knockback_factor')
+    if knockback_factor == 0 then
+        knockback_factor = 1
+    end
+
 	local proj = projectile_class:new{
 		instigator	= cast_info.caster_actor,
 		velocity	= dir*projectile_speed,
 		coll_radius = radius,
 		lifetime	= range / projectile_speed,
 		projectile_effect = projectile_effect,
-		damage 		= damage
+		damage 		= damage,
+        knockback_factor = knockback_factor
 	}
-
 end
 
 -------------------------------------------------------------------------------
@@ -88,6 +92,7 @@ function CastInfo:attribute(attr_name)
 	end
 
 	-- for values in the config file, will return nil if not found
+    -- Edit: does return 0, not nil if not found?
 	
 	return self.ability:GetLevelSpecialValueFor(attr_name,self.ability:GetLevel()-1)
 end

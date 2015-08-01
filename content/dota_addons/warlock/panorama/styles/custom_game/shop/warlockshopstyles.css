@@ -82,6 +82,12 @@
 	horizontal-align: center;
 }
 
+.ShopUpgradeMasteryCostLabel
+{
+	font-size: 16px;
+	color: yellow;
+}
+
 .ShopLevelContainer
 {
 	flow-children: down;
@@ -210,6 +216,12 @@
 	text-align: center;
 	vertical-align: center;
 	horizontal-align: center;
+}
+
+.ShopUpgradeSpellCostLabel
+{
+	font-size: 16px;
+	color: yellow;
 }
 
 #ShopItems
