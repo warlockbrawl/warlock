@@ -231,15 +231,14 @@ function ModelEffect:init(def)
 
 	self:spawnLocustUnit()
 
-	-- Need to do this again because the super ctr is called before the
-	-- locust was spawned
-	
-	if def.scale then
-		self:setScale(def.scale)
-	end
-
 	if def.model_name then
 		self.locust:SetModel(def.model_name)
+	end
+
+    -- Need to do this again because the super ctr is called before the
+	-- locust was spawned
+    if def.scale then
+		self:setScale(def.scale)
 	end
 end
 
