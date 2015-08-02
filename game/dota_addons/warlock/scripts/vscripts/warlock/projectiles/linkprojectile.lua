@@ -48,7 +48,16 @@ function LinkProjectile:init(def)
 		end
 	}
 	
-	self.retracting = false
+	self.retracting = false -- Whether the link is currently going back to its owner
+    self.dont_destroy_effect = false -- Whether to destroy the link effect on death
+end
+
+function LinkProjectile:onDestroy()
+    LinkProjectile.super.onDestroy(self)
+
+    if self.link_beam_effect and not self.dont_destroy_effect then
+        self.link_beam_effect:destroy()
+    end
 end
 
 function LinkProjectile:onCollision(coll_info, cc)
@@ -86,6 +95,8 @@ function LinkProjectile:onCollision(coll_info, cc)
 			damage = damage,
             temporary = true
 		})
+
+        self.dont_destroy_effect = true
 	elseif(coll_info.actor:instanceof(Obstacle)) then
         if self.link_beam_effect then
             -- Set the effects target
@@ -104,6 +115,8 @@ function LinkProjectile:onCollision(coll_info, cc)
 			beam_effect = self.beam_effect,
             temporary = true
 		})
+
+        self.dont_destroy_effect = true
 	end
 	
 	-- Destroy the projectile, the target is now linked
@@ -117,10 +130,6 @@ end
 function LinkProjectile:onPreTick(dt)
     -- Destroy when the owner is dead
     if not self.instigator.enabled then
-        if self.link_beam_effect then
-		    self.link_beam_effect:destroy()
-	    end
-
         self:destroy()
         return
     end
@@ -130,11 +139,6 @@ function LinkProjectile:onPreTick(dt)
 		local dst = delta:Length()
 		
 		if dst < 75 then
-            -- Destroy the link if nobody was linked
-            if self.link_beam_effect then
-		        self.link_beam_effect:destroy()
-	        end
-
 			self:destroy()
 		else
 			local dir = delta:Normalized()

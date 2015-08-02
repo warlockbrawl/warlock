@@ -1355,7 +1355,7 @@
 
 		"Modifiers"
 		{
-			"locust_unit"
+			"obstacle_unit"
 			{
 				"Passive"		"1"
 				"IsHidden"		"1"
