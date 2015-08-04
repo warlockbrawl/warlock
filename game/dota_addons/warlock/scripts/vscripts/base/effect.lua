@@ -37,14 +37,15 @@ function Effect:init(def)
 
 	self.destruction_sound = def.destruction_sound
 	self.destruction_effect = def.destruction_effect
-	
+
     local duration = def.duration or 5 -- Default duration five seconds
 
     -- duration -1 means permanent
     if duration ~= -1 then
 	    GAME:addTask {
-		    time = def.duration,
+		    time = duration,
 		    func = function()
+                print("Timer end")
 			    self:destroy()
 		    end
 	    }
@@ -119,6 +120,10 @@ function Effect:spawnLocustUnit()
 	self:removeLocust()
 
 	self.locust = CreateUnitByName(Config.LOCUST_UNIT, self.location, true, nil, nil, DOTA_TEAM_NOTEAM)
+
+    local locust_abil = self.locust:FindAbilityByName("warlock_tech_locust")
+    locust_abil:SetLevel(1)
+
 	self.locust:SetAbsOrigin(self.location)
 end
 
@@ -138,26 +143,25 @@ end
 -- @param additional_def Overrides the standard def and provides
 -- 			additional info like location
 function Effect:create(id, additional_def)
+    -- Get the effect definition
 	local def = Effect.effect_definitions[id]
 
 	if def ~= nil then
-		-- apply the additional def
+		-- If there's any additional def, copy the original one and extend it
+        -- If we don't copy it then the original def will be modified!
 		if additional_def then
-			for k, v in pairs(additional_def) do
-				def[k] = v
-			end
+			def = copy_extend(def, additional_def)
 		end
 
 		local effect_class = def.class
 		if effect_class ~= nil then
 			return effect_class:new(def)
 		else
-			err("Missing class in definition of effect "..id)
+			err("Missing class in definition of effect " .. tostring(id))
 		end
 	else
-		err("Unknown effect "..id)
+		err("Unknown effect " .. tostring(id))
 	end
-
 end
 
 -------------------------------------------------------------------------------
@@ -233,6 +237,7 @@ function ModelEffect:init(def)
 
 	if def.model_name then
 		self.locust:SetModel(def.model_name)
+        self.locust:SetOriginalModel(def.model_name)
 	end
 
     -- Need to do this again because the super ctr is called before the

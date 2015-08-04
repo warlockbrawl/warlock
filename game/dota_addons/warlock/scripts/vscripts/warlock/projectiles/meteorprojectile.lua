@@ -72,7 +72,7 @@ end
 
 function MeteorProjectile:onDestroy()
 	MeteorProjectile.super.onDestroy(self)
-	
+
 	-- Cancel tasks if any
 	if(self.task) then
 		self.task:cancel()
@@ -101,8 +101,7 @@ function MeteorProjectile:explode()
 			knockback_factor = 0.66
 	})
 
-	local effect = Effect:create(self.explode_effect, { location=self.target })
-
+	Effect:create(self.explode_effect, { location = self.target })
 	self:destroy()
 end
 

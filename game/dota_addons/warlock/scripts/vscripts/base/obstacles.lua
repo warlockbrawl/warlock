@@ -2,9 +2,9 @@
 -- @author Krzysztof Lis (Adynathos)
 
 Obstacle = class(Actor)
+Obstacle.z = Config.GAME_Z
 Obstacle.dummy_unit = "npc_obstacle"
 Obstacle.mass 			= 10000
-Obstacle.z				= -94
 Obstacle.owner = {
 	team = DOTA_TEAM_NEUTRALS,
 	userid = -1
@@ -12,7 +12,7 @@ Obstacle.owner = {
 Obstacle.max_health		= 400
 Obstacle.explode_effect = 'obstacle_explode'
 Obstacle.explode_radius = 300
-Obstacle.explode_dmg_min= 5
+Obstacle.explode_dmg_min = 5
 Obstacle.explode_dmg_gain = 5
 setmetatable(Obstacle.owner, Player)
 
@@ -59,7 +59,7 @@ function Obstacle:init(def)
 	def.static 	= true
 	def.owner 	= def.owner or Obstacle.owner
 	def.mass	= def.mass or Obstacle.mass
-	def.location.z = Config.GAME_Z
+	def.location.z = Obstacle.z
     def.name = "Obstacle"
 	
 	local obstacle_def = def.obstacle_def or Obstacle.getRandomDefinition()
@@ -81,8 +81,13 @@ function Obstacle:init(def)
 
 	-- effect
 	self.model_unit = CreateUnitByName(Obstacle.dummy_unit, self.location, false, nil, nil, DOTA_TEAM_NOTEAM)
+
+    local locust_abil = self.model_unit:FindAbilityByName("warlock_tech_obstacle")
+    locust_abil:SetLevel(1)
+
 	self.model_unit:SetModel(obstacle_def.model)
-	
+	self.model_unit:SetOriginalModel(obstacle_def.model)
+
 	self.health = def.max_health or Obstacle.max_health
 	
 	-- Set the dummy's health
@@ -99,11 +104,6 @@ function Obstacle:_updateLocation()
 	if self.model_unit ~= nil then
 		self.model_unit:SetAbsOrigin(Vector(self.location.x, self.location.y, Obstacle.z))
 	end
-end
-
--- TEMPORARY FIX: Update the location on every tick, else the Z won't get updated
-function Obstacle:onPreTick()
-	self:_updateLocation()
 end
 
 function Obstacle:receiveDamage(dmg_info)

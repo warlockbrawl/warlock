@@ -9,7 +9,7 @@
 print("## Script start load ##")
 
 BASE_MODULES		= {
-	'util/print', 'util/print_table', 'util/class', 'util/set',
+	'util/print', 'util/print_table', 'util/class', 'util/set', 'util/util',
 	'base/config', 'base/game', 'base/tasks', 'base/player', 'base/commands', 'base/effect', 'base/actor',
 	'base/physics', 'base/projectile', 'base/pawn', 'base/spell', 'base/arena', 'base/obstacles',
 	'base/mode', 'base/shop', 'base/modifier', 'base/item', 'base/wincondition',
@@ -150,6 +150,8 @@ function Precache(context)
     PrecacheResource("particle", "particles/units/heroes/hero_skywrath_mage/skywrath_mage_concussive_shot.vpcf", context)
     PrecacheResource("particle", "particles/units/heroes/hero_skywrath_mage/skywrath_mage_arcane_bolt.vpcf", context)
     PrecacheResource("particle", "particles/units/heroes/hero_skywrath_mage/skywrath_mage_base_attack.vpcf", context)
+    PrecacheResource("particle", "particles/units/heroes/hero_techies/techies_remote_mines_detonate.vpcf", context)
+    PrecacheResource("particle", "particles/meteor/meteor_fly.vpcf", context)
 
 	-- custom effects
 	PrecacheResource("particle_folder", "particles/fireball", context)

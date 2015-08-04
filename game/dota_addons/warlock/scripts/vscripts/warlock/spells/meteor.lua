@@ -36,13 +36,12 @@ end
 
 -- effects
 Effect:register('meteor_projectile', {
-	class = ModelEffect,
-	model_name = "models/particle/meteor.vmdl",
-	scale = 0.7,
+	class = ProjectileParticleEffect,
+	effect_name = "particles/meteor/meteor_fly.vpcf",
 	destruction_sound = "Meteor.Explode"
 })
 
 Effect:register('meteor_explode', {
 	class = ParticleEffect,
-	effect_name = 'particles/units/heroes/hero_jakiro/jakiro_liquid_fire_explosion.vpcf'
+	effect_name = 'particles/units/heroes/hero_techies/techies_remote_mines_detonate.vpcf'
 })
