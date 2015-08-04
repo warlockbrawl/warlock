@@ -45,7 +45,6 @@ function Effect:init(def)
 	    GAME:addTask {
 		    time = duration,
 		    func = function()
-                print("Timer end")
 			    self:destroy()
 		    end
 	    }

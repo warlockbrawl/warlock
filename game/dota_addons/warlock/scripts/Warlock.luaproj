@@ -70,6 +70,7 @@
     <Compile Include="vscripts\util\print.lua" />
     <Compile Include="vscripts\util\print_table.lua" />
     <Compile Include="vscripts\util\set.lua" />
+    <Compile Include="vscripts\util\util.lua" />
     <Compile Include="vscripts\warlock\modifiers\alterationmodifier.lua" />
     <Compile Include="vscripts\warlock\modifiers\gripmodifier.lua" />
     <Compile Include="vscripts\warlock\modifiers\linkmodifier.lua" />
