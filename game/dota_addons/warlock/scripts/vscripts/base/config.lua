@@ -36,6 +36,12 @@ Config.FRICTION = 0.96
 
 Config.BOT_BUY_DELAY                = 120 -- How many seconds an AI should wait before buying items on a disconnected player
 
+Config.ARENA_RADIUS_PER_LAYER       = 100
+Config.ARENA_BASE_LAYER             = 13
+Config.ARENA_LAYER_PER_PLAYER       = 1
+Config.ARENA_SPAWN_INSET            = 600
+
+
 --[[
 
     Non-constants

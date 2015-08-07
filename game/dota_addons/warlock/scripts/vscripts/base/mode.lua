@@ -83,7 +83,7 @@ function Mode:prepareForRound()
 	GAME:setRandomObstacleVariation()
 	Arena:setPlatformType(Obstacle.variation) -- arena platform type matches obstacle variation
 	GAME.arena:setLayer(0) -- delete the remaining tiles (to create new platform type)
-	GAME.arena:setLayer(13) -- corresponding to 1 player
+	GAME.arena:setLayer(Config.ARENA_BASE_LAYER + Config.ARENA_LAYER_PER_PLAYER) -- corresponding to 1 player
 	GAME:addRandomObstacles(math.random(Mode.OBSTACLE_COUNT_MIN, Mode.OBSTACLE_COUNT_MAX))
 
 	self:respawnPlayers(true)
@@ -179,7 +179,7 @@ function Mode:onRoundStart()
 		end
 	}
 	
-	GAME.arena:setLayer(12+GAME.player_count*1)
+	GAME.arena:setLayer(Config.ARENA_BASE_LAYER + GAME.player_count * Config.ARENA_LAYER_PER_PLAYER)
 	GAME.arena:setAutoShrink(true)
 
 	-- modifier event
@@ -269,7 +269,7 @@ end
 function Mode:getRespawnLocation(pawn)
 	local angle_per_team = 2 * math.pi / GAME.active_team_count
 	
-	local radius = 900 + 100 * GAME.player_count
+	local radius = (Config.ARENA_BASE_LAYER + GAME.player_count * Config.ARENA_LAYER_PER_PLAYER) * Config.ARENA_RADIUS_PER_LAYER - Config.ARENA_SPAWN_INSET
 	local angle = angle_per_team * pawn.owner.team.active_team_id
 	
 	-- Offset the individual players of a team
@@ -368,7 +368,7 @@ function ModeDeathmatch:prepareForRound()
 	GAME:setRandomObstacleVariation()
 	Arena:setPlatformType(Obstacle.variation) -- arena platform type matches obstacle variation
 	GAME.arena:setLayer(0) -- delete the remaining tiles (to create new platform type)
-	GAME.arena:setLayer(13) -- corresponding to 1 player
+	GAME.arena:setLayer(Config.ARENA_BASE_LAYER + Config.ARENA_LAYER_PER_PLAYER) -- corresponding to 1 player
 	GAME:addRandomObstacles(math.random(Mode.OBSTACLE_COUNT_MIN, Mode.OBSTACLE_COUNT_MAX))
 
     self:respawnPlayers(true)
@@ -445,7 +445,7 @@ function ModeDeathmatch:onRoundStart()
 	GAME:setRandomObstacleVariation()
 	Arena:setPlatformType(Obstacle.variation) -- arena platform type matches obstacle variation
 	GAME.arena:setLayer(0) -- delete the remaining tiles (to create new platform type)
-	GAME.arena:setLayer(12+GAME.player_count*1) -- corresponding to 1 player
+	GAME.arena:setLayer(Config.ARENA_BASE_LAYER + GAME.player_count * Config.ARENA_LAYER_PER_PLAYER) -- corresponding to 1 player
 	GAME:addRandomObstacles(math.random(Mode.OBSTACLE_COUNT_MIN, Mode.OBSTACLE_COUNT_MAX))
 
     -- Invul only for first round
