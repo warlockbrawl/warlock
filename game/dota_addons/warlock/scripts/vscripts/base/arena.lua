@@ -6,7 +6,7 @@ Arena.ARENA_TILE_SIZE 	= 192
 Arena.ARENA_TILE_HEIGHT = 32
 Arena.ARENA_TILE_Z 		= 42.5 --Height 3, 71.5
 Arena.ARENA_MAX_COORD	= 20
-Arena.SHRINK_PERIOD 	= 9
+Arena.SHRINK_PERIOD 	= 15
 Arena.DAMAGE_PERIOD 	= 0.25
 Arena.DAMAGE_PER_SECOND = 100
 Arena.DAMAGE_KB_POINT_FACTOR = 0.5
@@ -251,7 +251,6 @@ function Arena:setAutoShrink(status)
 		end}
 	end
 end
-
 
 function Arena:isLocationSafe(location)
 	local grid_x = math.floor( location.x / self.ARENA_TILE_SIZE + 0.5 )
