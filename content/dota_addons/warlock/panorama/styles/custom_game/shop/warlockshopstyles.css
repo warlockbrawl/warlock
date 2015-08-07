@@ -7,6 +7,8 @@
 @define shopBackgroundColor: rgba(51, 51, 51, 240);
 @define shopSubBackgroundColor: rgba(30, 30, 30, 200);
 @define shopBorderColor: rgba(0, 0, 0, 200);
+@define shopBuyColor: rgba(255, 255, 0, 100);
+@define shopBuyColorHover: rgba(255, 255, 0, 255);
 
 .ShopRoot
 {
@@ -76,10 +78,15 @@
 .ShopUpgradeMasteryLabel
 {
 	font-size: 30px;
-	color: yellow;
+	color: shopBuyColor;
 	text-align: center;
 	vertical-align: center;
 	horizontal-align: center;
+}
+
+.ShopUpgradeMasteryLabel:hover
+{
+	color: shopBuyColorHover;
 }
 
 .ShopUpgradeMasteryCostLabel
@@ -121,10 +128,15 @@
 #ShopMasteriesUpgAllLabel
 {
 	font-size: 28px;
-	color: yellow;
+	color: shopBuyColor;
 	text-align: center;
 	horizontal-align: center;
 	vertical-align: center;
+}
+
+#ShopMasteriesUpgAllLabel:hover
+{
+	color: shopBuyColorHover;
 }
 
 #ShopMasteriesUpgAllButton
@@ -166,6 +178,11 @@
 	margin-bottom: 10px;
 	border: 2px solid black;
 	border-radius: 8px;
+}
+
+.ShopBuySpellContainer:hover
+{
+	border: 2px solid shopBuyColorHover;
 }
 
 .ShopBuySpellButton
@@ -212,10 +229,15 @@
 .ShopUpgradeSpellLabel
 {
 	font-size: 30px;
-	color: yellow;
+	color: shopBuyColor;
 	text-align: center;
 	vertical-align: center;
 	horizontal-align: center;
+}
+
+.ShopUpgradeSpellLabel:hover
+{
+	color: shopBuyColorHover;
 }
 
 .ShopUpgradeSpellCostLabel
@@ -239,6 +261,11 @@
 	border-radius: 8px;
 	horizontal-align: center;
 	background-color: black;
+}
+
+.ShopBuyItemButton:hover
+{
+	border: 2px solid shopBuyColorHover;
 }
 
 .ShopBuyItemLabel
