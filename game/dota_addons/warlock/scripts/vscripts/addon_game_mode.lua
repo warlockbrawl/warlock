@@ -75,17 +75,24 @@ function Precache(context)
 	-- Misc
 	PrecacheResource("particle", "particles/msg_fx/msg_evade.vpcf", context)
 	PrecacheResource("model", "models/development/invisiblebox.vmdl", context)
-	
-	
+
 	-- Hero
 	PrecacheResource("particle_folder", "particles/units/heroes/hero_warlock", context)
 	PrecacheUnitByNameAsync("npc_dota_hero_warlock", context)
-	
-	-- Arena
-	PrecacheResource("model", "models/tile01.vmdl", context)
-	PrecacheResource("model", "models/tile02.vmdl", context)
-	PrecacheResource("model", "models/tile03.vmdl", context)
-	PrecacheResource("particle", "particles/units/heroes/hero_phoenix/phoenix_icarus_dive_burn_debuff.vpcf", context)
+
+    -- Arena
+    PrecacheResource("model", "models/tiles/tile1_0round.vmdl", context)
+    PrecacheResource("model", "models/tiles/tile1_1round.vmdl", context)
+    PrecacheResource("model", "models/tiles/tile1_2round.vmdl", context)
+    PrecacheResource("model", "models/tiles/tile2_0round.vmdl", context)
+    PrecacheResource("model", "models/tiles/tile2_1round.vmdl", context)
+    PrecacheResource("model", "models/tiles/tile2_2round.vmdl", context)
+    PrecacheResource("model", "models/tiles/tile3_0round.vmdl", context)
+    PrecacheResource("model", "models/tiles/tile3_1round.vmdl", context)
+    PrecacheResource("model", "models/tiles/tile3_2round.vmdl", context)
+
+    -- Lava burn
+    PrecacheResource("particle", "particles/units/heroes/hero_phoenix/phoenix_icarus_dive_burn_debuff.vpcf", context)
 
 	-- Obstacles
 	PrecacheResource("model", "models/props_stone/stone_ruins001a.vmdl", context)
