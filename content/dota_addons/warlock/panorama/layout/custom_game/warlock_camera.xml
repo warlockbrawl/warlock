@@ -1,0 +1,8 @@
+<root>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/warlock_camera.js" />
+	</scripts>
+	<Panel>
+	
+	</Panel>
+</root>
