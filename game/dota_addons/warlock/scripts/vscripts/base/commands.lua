@@ -112,12 +112,6 @@ function Game:initCommands()
 			end)
 		end)
 
-		self:registerCommand('cam', function(name, dist)
-			if(arg[1]) then
-				GAME.nativeMode:SetCameraDistanceOverride(tonumber(dist))
-			end
-		end)
-
 		self:registerCommand('d', function()
 			SendToServerConsole("disconnect")
 		end)

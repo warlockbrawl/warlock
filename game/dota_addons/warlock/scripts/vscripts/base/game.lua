@@ -161,9 +161,6 @@ function Game:initGameRules()
     -- Disable recommended items
     self.nativeMode:SetHUDVisible(DOTA_HUD_VISIBILITY_SHOP_SUGGESTEDITEMS, false)
 
-	-- Set the cam distance
-	self.nativeMode:SetCameraDistanceOverride( Config.GAME_CAMERA_DISTANCE )
-
 	--
 	self.nativeMode:SetCustomBuybackCostEnabled( true )
 	self.nativeMode:SetCustomBuybackCooldownEnabled( true )

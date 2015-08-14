@@ -12,5 +12,6 @@
 		<CustomUIElement type="GameSetup" layoutfile="file://{resources}/layout/custom_game/warlock_start_selection.xml" />
 		<CustomUIElement type="FlyoutScoreboard" layoutfile="file://{resources}/layout/custom_game/warlock_scoreboard.xml" />
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/shop/warlock_shop.xml" />
+		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/warlock_camera.xml" />
 	</Panel>
 </root>
