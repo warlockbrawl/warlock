@@ -64,7 +64,7 @@ Shop.ITEM_DEFS = {
     { name = "Fireball", item_name = "item_warlock_fireball", buy_cost = 0, max_level = 1, mod_defs = { {} } },
     { name = "Ring of Health", item_name = "item_warlock_ring_of_health", buy_cost = 4, max_level = 5, mod_defs = { { hp_bonus = 100 }, { hp_bonus = 190 }, { hp_bonus = 270 }, { hp_bonus = 340 }, { hp_bonus = 400 } } },
     { name = "Cursed Ring", item_name = "item_warlock_cursed_ring", buy_cost = 4, max_level = 2, mod_defs = { { hp_bonus = 100, kb_reduction = 0.15, debuff_factor = 0.25 }, { hp_bonus = 200, kb_reduction = 0.15, debuff_factor = 0.30 } } },
-    { name = "Cape", item_name = "item_warlock_cape", buy_cost = 3, max_level = 3, mod_defs = { { hp_regen = 2 }, { hp_regen = 3.5 }, { hp_regen = 4.5 } } },
+    { name = "Cape", item_name = "item_warlock_cape", buy_cost = 3, max_level = 3, mod_defs = { { hp_regen = 1.5 }, { hp_regen = 2.5 }, { hp_regen = 3.5 } } },
     { name = "Armor", item_name = "item_warlock_armor", buy_cost = 6, max_level = 3, mod_defs = { { kb_reduction = 0.12 }, { kb_reduction = 0.18 }, { kb_reduction = 0.22 } } },
     { name = "Boots", item_name = "item_warlock_boots", buy_cost = 5, max_level = 3, mod_defs = { { speed_bonus_abs = 18 }, { speed_bonus_abs = 29 }, { speed_bonus_abs = 40 } } },
     { name = "Pocket Watch", item_name = "item_warlock_pocket_watch", buy_cost = 2, max_level = 2, mod_defs = { { debuff_factor = -0.35 }, { debuff_factor = -0.45 } } },
