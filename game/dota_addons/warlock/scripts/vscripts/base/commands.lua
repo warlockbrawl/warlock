@@ -21,6 +21,10 @@ function Game:initCommands()
         GAME:addBot(1.0)
     end)
 
+    self:registerCommand("addbotdummy", function()
+        GAME:addBot(10000000)
+    end)
+
     self:registerCommand("fillbots", function()
         for i = 1, 10 do
             GAME:addBot(math.random(0.2, 1.0))
