@@ -48,7 +48,7 @@ function WindWalkModifier:onCollision(coll_info, cc)
 		if thrust_mod then
 			-- reduce kb if theres both WW and thrust
 			knockback = 0.7
-			thrust_mod.knockback = knockback
+			thrust_mod.knockback = 0.7 * thrust_mod.knockback
 			
 			-- Execute thrust hit which also removes its modifier
 			thrust_mod:hitPawn(coll_info.actor, coll_info.hit_normal, 1)

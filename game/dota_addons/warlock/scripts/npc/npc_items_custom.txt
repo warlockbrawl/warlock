@@ -480,12 +480,12 @@
 			"01"
 			{
 				"var_type" "FIELD_FLOAT"
-				"kb_reduction" "0.15 0.15"
+				"hp_bonus" "100 200"
 			}
 			"02"
 			{
 				"var_type" "FIELD_FLOAT"
-				"hp_bonus" "100 200"
+				"kb_reduction" "0.15 0.15"
 			}
 			"03"
 			{
@@ -524,12 +524,12 @@
 			"01"
 			{
 				"var_type" "FIELD_FLOAT"
-				"kb_reduction" "0.15 0.15"
+				"hp_bonus" "100 200"
 			}
 			"02"
 			{
 				"var_type" "FIELD_FLOAT"
-				"hp_bonus" "100 200"
+				"kb_reduction" "0.15 0.15"
 			}
 			"03"
 			{
@@ -568,7 +568,7 @@
 			"01"
 			{
 				"var_type" "FIELD_FLOAT"
-				"hp_regen" "2.0 3.5 4.5"
+				"hp_regen" "1.5 2.5 3.5"
 			}
 
 		}
@@ -602,7 +602,7 @@
 			"01"
 			{
 				"var_type" "FIELD_FLOAT"
-				"hp_regen" "2.0 3.5 4.5"
+				"hp_regen" "1.5 2.5 3.5"
 			}
 
 		}
@@ -636,7 +636,7 @@
 			"01"
 			{
 				"var_type" "FIELD_FLOAT"
-				"hp_regen" "2.0 3.5 4.5"
+				"hp_regen" "1.5 2.5 3.5"
 			}
 
 		}

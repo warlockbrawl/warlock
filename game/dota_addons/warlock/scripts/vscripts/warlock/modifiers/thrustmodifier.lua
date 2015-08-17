@@ -10,7 +10,7 @@ function ThrustModifier:init(def)
 	self.hit_effect = def.hit_effect
 	self.end_sound = def.end_sound
 	
-	self.knockback = 1.0
+	self.knockback = 1.2
 end
 
 function ThrustModifier:onPreTick(dt)
