@@ -23,6 +23,7 @@ function Teleport:onCast(cast_info)
 	
 	actor.location = target
 	actor.velocity = actor.velocity * 0.8 --reduce vel by 20 percent
+    actor:_updateLocation() -- Set the abs origin after modifying the location so the walk vel is right
 
 	-- Stop movement
 	actor.unit:Stop()
