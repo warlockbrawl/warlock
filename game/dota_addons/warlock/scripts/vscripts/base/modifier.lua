@@ -77,6 +77,8 @@ function Modifier:init(def)
 	self.debuff_factor = def.debuff_factor or 0
 	
 	self.native_mod = def.native_mod
+
+    self.effect = def.effect
 end
 
 function Modifier:toggle(apply)
@@ -100,12 +102,22 @@ function Modifier:onToggle(apply)
 			if self.native_mod then
 				p:addNativeModifier(self.native_mod)
 			end
+
+            -- Attach particle effect if any
+            if self.effect then
+                self.attach_effect = Effect:create(self.effect, { location = self.pawn.location, ent = self.pawn.unit, ent_attach_point = "attach_hitloc" })
+            end
 		else
 			sign = -1
 			
 			if self.native_mod then
 				p:removeNativeModifier(self.native_mod)
 			end
+
+            -- Detach particle effect if any
+            if self.attach_effect then
+                self.attach_effect:destroy()
+            end
 
             if self.sound_loop_task then
                 -- Cancel the sound loop timer

@@ -26,7 +26,7 @@ function Effect:init(def)
 	end
 	
 	if def.angles then
-		self:setAngles(angles)
+		self:setAngles(def.angles[1], def.angles[2], def.angles[3])
 	else
 		self.angles = Vector(0, 0, 0)
 	end
@@ -181,14 +181,45 @@ function ParticleEffect:init(def)
     self:spawnLocustUnit()
 
 	if def.effect_name then
-		self.particleId = ParticleManager:CreateParticle(self.effect_name, PATTACH_ABSORIGIN_FOLLOW , self.locust)
+        -- Create particle effect differently when attached to an entity
+        if not def.ent then
+		    self.particleId = ParticleManager:CreateParticle(self.effect_name, PATTACH_ABSORIGIN_FOLLOW , self.locust)
+        else
+            self.particleId = ParticleManager:CreateParticle(self.effect_name, PATTACH_CUSTOMORIGIN , nil)
+        end
 	end
 
 	self:setLocation(self.location, 0)
+
+    if def.angles then
+        self:setAngles(def.angles[1], def.angles[2], def.angles[3])
+    end
+
+    -- Attach cp0 (location) to an entity if specified
+    if self.particleId and def.ent then
+        self:setEntity(def.ent, def.attach_point)
+    end
+end
+
+--- sets the pitch, yaw, roll angles of the effect
+function ParticleEffect:setAngles(pitch, yaw, roll)
+	ParticleEffect.super.setAngles(self, pitch, yaw, roll)
+
+    if self.particleId then
+        ParticleManager:SetParticleControlForward(self.particleId, 0, Vector(pitch, yaw, roll))
+    end
 end
 
 function ParticleEffect:setControlPoint(cp, value)
 	ParticleManager:SetParticleControl(self.particleId, cp, value)
+end
+
+function ParticleEffect:setEntity(ent, attach_point)
+    if attach_point then
+        ParticleManager:SetParticleControlEnt(self.particleId, 0, ent, PATTACH_POINT_FOLLOW, attach_point, Vector(0, 0, 0), true)
+    else
+        ParticleManager:SetParticleControlEnt(self.particleId, 0, ent, PATTACH_ABSORIGIN_FOLLOW, nil, Vector(0, 0, 0), true)
+    end
 end
 
 -------------------------------------------------------------------------------
@@ -271,8 +302,8 @@ end
 -------------------------------------------------------------------------------
 --- Beam particle effect that follows a start and end entity
 -- def:
--- * start_ent
 -- * end_ent
+-- * end_ent_attach_point
 -------------------------------------------------------------------------------
 FollowLightningEffect = class(ParticleEffect)
 
@@ -290,26 +321,9 @@ function FollowLightningEffect:init(def)
 	self:setLocation(self.location, 0)
 
 	if self.particleId then
-        if def.start_ent_attachpoint then
-            ParticleManager:SetParticleControlEnt(self.particleId, 0, def.start_ent, PATTACH_POINT_FOLLOW, def.start_ent_attachpoint, Vector(0, 0, 0), true)
-        else
-		    ParticleManager:SetParticleControlEnt(self.particleId, 0, def.start_ent, PATTACH_ABSORIGIN_FOLLOW, nil, Vector(0, 0, 0), true)
-        end
-
-		if def.end_ent_attachpoint then
-            ParticleManager:SetParticleControlEnt(self.particleId, 1, def.end_ent, PATTACH_POINT_FOLLOW, def.end_ent_attachpoint, Vector(0, 0, 0), true)
-        else
-		    ParticleManager:SetParticleControlEnt(self.particleId, 1, def.end_ent, PATTACH_ABSORIGIN_FOLLOW, nil, Vector(0, 0, 0), true)
-        end
+        self:setEntity(def.ent, def.ent_attach_point)
+        self:setEndEntity(def.end_ent, def.end_ent_attach_point)
 	end
-end
-
-function FollowLightningEffect:setStartEntity(ent, attach_point)
-    if attach_point then
-        ParticleManager:SetParticleControlEnt(self.particleId, 0, ent, PATTACH_POINT_FOLLOW, attach_point, Vector(0, 0, 0), true)
-    else
-        ParticleManager:SetParticleControlEnt(self.particleId, 0, ent, PATTACH_ABSORIGIN_FOLLOW, nil, Vector(0, 0, 0), true)
-    end
 end
 
 function FollowLightningEffect:setEndEntity(ent, attach_point)

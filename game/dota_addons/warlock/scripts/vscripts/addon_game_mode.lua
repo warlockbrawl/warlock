@@ -35,7 +35,7 @@ BASE_MODULES		= {
 	'warlock/spells/thrust', 'warlock/spells/warpzone',
     'warlock/spells/magnetize', 'warlock/spells/rockpillar',
     'warlock/spells/alteration', 'warlock/spells/link',
-    'warlock/spells/splitter',
+    'warlock/spells/splitter', 'warlock/spells/redirect',
 
 	'warlock/modifiers/windwalkmodifier', 'warlock/modifiers/shieldmodifier',
 	'warlock/modifiers/rushmodifier', 'warlock/modifiers/gripmodifier',
@@ -159,6 +159,8 @@ function Precache(context)
     PrecacheResource("particle", "particles/units/heroes/hero_skywrath_mage/skywrath_mage_base_attack.vpcf", context)
     PrecacheResource("particle", "particles/units/heroes/hero_techies/techies_remote_mines_detonate.vpcf", context)
     PrecacheResource("particle", "particles/meteor/meteor_fly.vpcf", context)
+    PrecacheResource("particle", "particles/econ/courier/courier_faceless_rex/cour_rex_flying.vpcf", context)
+    PrecacheResource("particle", "particles/econ/items/ursa/ursa_swift_claw/ursa_swift_fury_sweep_dim_b_blue.vpcf", context)
 
 	-- custom effects
 	PrecacheResource("particle_folder", "particles/fireball", context)

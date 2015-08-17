@@ -33,8 +33,8 @@ function LinkProjectile:init(def)
 	self.collision_components["projectile"].coll_initiative = -1
 
 	self.link_beam_effect = Effect:create(self.beam_effect, {
-		start_ent = self.instigator.unit,
-        start_ent_attachpoint = "attach_hitloc",
+		ent = self.instigator.unit,
+        ent_attach_point = "attach_hitloc",
 		end_ent = self.effect.locust,
 		duration = -1
 	})

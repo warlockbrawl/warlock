@@ -107,6 +107,7 @@
     <Compile Include="vscripts\warlock\spells\link.lua" />
     <Compile Include="vscripts\warlock\spells\magnetize.lua" />
     <Compile Include="vscripts\warlock\spells\meteor.lua" />
+    <Compile Include="vscripts\warlock\spells\redirect.lua" />
     <Compile Include="vscripts\warlock\spells\rockpillar.lua" />
     <Compile Include="vscripts\warlock\spells\rush.lua" />
     <Compile Include="vscripts\warlock\spells\scourge.lua" />
