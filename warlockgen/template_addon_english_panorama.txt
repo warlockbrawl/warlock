@@ -2,6 +2,8 @@
 {
 %(strings)s	"WL_shop_item_scourge_incarnation"	"Scourge Incarnation"
 	"WL_shop_item_scourge_incarnation_description"	"Upgrades scourge to deal 10/20 more damage and recover 20/30 DP for each opponent struck"
+	"WL_shop_item_warlock_redirector1"	"Redirector"
+	"WL_shop_item_warlock_redirector1_description"	"Changes the direction of the missile closest to your target towards it and increases its lifetime by 0.5 seconds but increases your knockback vulnerability by 30 percent for 8 seconds"
 	"WL_shop_mastery_duration" "Duration mastery"
 	"WL_shop_mastery_duration_description" "Passively grants 10/18/25/31/36/40 percent additional duration to all duration spells"
 	"WL_shop_mastery_range" "Range mastery"

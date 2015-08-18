@@ -31,7 +31,7 @@
 		"DOTA_Tooltip_ability_item_warlock_scourge3_Description"	"Deal 120 damage to nearby enemy warlocks at the cost of 100 HP of your own. Each opponent struck recovers 30 DP"
 		"DOTA_Tooltip_ability_item_warlock_scourge3_note0"	"Cancel spell casting by pressing the stop hotkey"
 		"DOTA_Tooltip_ability_item_warlock_redirector1"	"Redirector"
-		"DOTA_Tooltip_ability_item_warlock_redirector1_Description"	"Changes the direction of the missile closest to your cursor towards it but increases your knockback vulnerability by 30 percent for 8 seconds"
+		"DOTA_Tooltip_ability_item_warlock_redirector1_Description"	"Changes the direction of the missile closest to your target towards it and increases its lifetime by 0.5 seconds but increases your knockback vulnerability by 30 percent for 8 seconds"
 		"DOTA_Tooltip_ability_warlock_emptyslot1"	"Available spell slot"
 		"DOTA_Tooltip_ability_warlock_emptyslot1_Description"	"Holds a knockout-type spell. Fill this slot by purchasing an ability from the 1st column in the shop"
 		"DOTA_Tooltip_ability_warlock_emptyslot2"	"Available spell slot"

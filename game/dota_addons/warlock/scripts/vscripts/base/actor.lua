@@ -131,6 +131,16 @@ function Actor:setLifetime(lifetime)
 	}
 end
 
+-- Returns the remaining lifetime of this actor or nil if no death timer
+function Actor:getLifetime()
+    -- Get the timer and subtract the current time from it
+    if self.death_timer then
+        return self.death_timer.time_left
+    end
+
+    return nil
+end
+
 function Actor:heal(info)
 end
 

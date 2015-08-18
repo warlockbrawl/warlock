@@ -43,6 +43,12 @@ function Redirect:onCast(cast_info)
         if closest_proj.effect and closest_proj.effect.locust then
             closest_proj.effect.locust:EmitSound(cast_info:attribute("cast_sound"))
         end
+
+        -- Increase lifetime by 0.5 if applicable
+        local lifetime = closest_proj:getLifetime()
+        if lifetime then
+            closest_proj:setLifetime(lifetime + 0.5)
+        end
     end
 
     -- Add KB penalty to the caster while on cd
