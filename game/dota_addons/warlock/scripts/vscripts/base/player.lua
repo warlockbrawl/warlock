@@ -108,7 +108,10 @@ function Player:HeroSpawned(hero)
     end
 
     -- Add all start and round gold
-    GAME.mode:addNewPlayerGold(self)
+    -- The mode can be nil in the start of the game
+    if GAME.mode then
+        GAME.mode:addNewPlayerGold(self)
+    end
 end
 
 function Player:HeroRemoved()
