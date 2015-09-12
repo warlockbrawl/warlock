@@ -106,6 +106,7 @@ function RoundWinCondition:getWinners()
 		for i, player in pairs(GAME.players) do
 			if player.score > highest_score then
 				highest_score = player.score
+                players = {}
 			end
 
 			if player.score == highest_score then

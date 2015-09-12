@@ -72,7 +72,15 @@ function LinkModifier:onPreTick(dt)
     stop_link = stop_link or (self.linked:instanceof(Pawn) and (self.linked:hasModifierOfType(ShieldModifier) or self.linked:hasModifierOfType(RushModifier)))
 
     -- Whether the target is too close
-    stop_link = stop_link or delta:Length() < 100
+    local min_range = 100
+
+    -- Bigger for obstacles
+    if self.linked:instanceof(Obstacle) then
+        log("Bigger")
+        min_range = 120
+    end
+
+    stop_link = stop_link or delta:Length() < min_range
 
 	if stop_link then
 		GAME:removeModifier(self)

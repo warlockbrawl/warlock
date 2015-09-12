@@ -75,8 +75,9 @@ function WarpZoneActor:init(def)
 	}
 	
 	-- Add an effect
-	self.locust = Entities:CreateByClassname("prop_dynamic")
-	self.locust:SetAbsOrigin(self.location)
+	self.locust = CreateUnitByName(Config.LOCUST_UNIT, self.location, true, nil, nil, DOTA_TEAM_NOTEAM)
+    local locust_abil = self.locust:FindAbilityByName("warlock_tech_locust")
+    locust_abil:SetLevel(1)
 	
 	self.effect = ParticleManager:CreateParticle("particles/warpzone.vpcf", PATTACH_ABSORIGIN_FOLLOW, self.locust)
 	ParticleManager:SetParticleControl(self.effect, 1, Vector(def.radius, 1, 1))

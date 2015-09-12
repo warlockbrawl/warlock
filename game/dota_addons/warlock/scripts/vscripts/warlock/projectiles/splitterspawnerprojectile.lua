@@ -40,7 +40,7 @@ function SplitterSpawnerProjectile:init(def)
     self.spawned_count = 0 -- How many waves have already been spawned
 
     -- Set up a task for spawning the projectiles
-    self:addTimer {
+    self.spawn_timer = self:addTimer {
         time = self.lifetime / self.count,
         periodic = true,
         func = function()
@@ -52,6 +52,13 @@ function SplitterSpawnerProjectile:init(def)
             end
         end
     }
+end
+
+function SplitterSpawnerProjectile:onDestroy()
+    SplitterSpawnerProjectile.super.onDestroy(self)
+
+    -- Remove the timer that spawns the child projectiles
+    self:removeTimer(self.spawn_timer)
 end
 
 function SplitterSpawnerProjectile:spawnChildren()
