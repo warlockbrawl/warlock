@@ -43,6 +43,7 @@ function Game:init()
 	self:initArena()
 	self:initGameSetup()
     self:initScoreboard()
+    self:initWebAPI()
 
 	-- Wait for the game to start
 	self.in_progress = false
