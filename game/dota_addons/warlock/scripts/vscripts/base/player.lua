@@ -269,6 +269,13 @@ function Game:getOrCreatePlayer(player_id)
         end
 
         p.name = PlayerResource:GetPlayerName(p.id)
+        p.steam_id = PlayerResource:GetSteamAccountID(p.id)
+        
+        if p.steam_id then
+            self.web_api:addPlayer(p.steam_id)
+        else
+            warning("Steam ID of new player was not found, not added through Web API")
+        end
 
         self.players[p.id] = p
 

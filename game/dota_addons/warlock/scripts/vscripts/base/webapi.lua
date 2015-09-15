@@ -1,94 +1,74 @@
 WebAPI = class()
 
--- API base url
-WebAPI.BASE_URL = "http://api.warlockbrawl.com"
-
--- API mod id
-WebAPI.MOD_ID = "warlock"
-
--- API function paths
-WebAPI.PATH_NEW_MATCH = "/newmatch/"
-WebAPI.PATH_ADD_PLAYERS = "/addplayers/" -- <matchid>/repeated <steamid>
-WebAPI.PATH_SET_PLAYER_PROPERTY = "/setplayerproperty/" -- /<matchid>/<steamid>/<key>/<value>
-WebAPI.PATH_SET_MATCH_PROPERTY = "/setmatchproperty/" -- /<matchid>/<key>/<value>
-WebAPI.PATH_END_MATCH = "/endmatch/" -- <matchid>/repeated <steamid> of winners
-
-function WebAPI:init()
-    self.match_id = nil
+function WebAPI:init(base_url, mod_id, mod_version)
+    self.base_url = base_url
+    self.mod_id = mod_id
+    self.mod_version = mod_version
+    self.match_token = nil
 end
 
 -- Sends a GET request for a path and optionally calls a callback with the received data
-function WebAPI.send(path, callback)
-    local request = CreateHTTPRequest("GET", WebAPI.BASE_URL .. path)
+-- Handles the JSON status
+function WebAPI:send(path, callback)
+    local request = CreateHTTPRequest("GET", self.base_url .. path)
 
-    log("Sending request, path: " .. path)
+    log("WebAPI sending request, path: " .. path)
 
     request:Send(function(result)
-        if not result or result.StatusCode ~= 200 or result.Body == "error" then
-            warning("Web API receive failed")
+        if not result or result.StatusCode ~= 200 then
+            log("WebAPI receive failed")
             return
         end
 
-        log("Web API received")
+        log("WebAPI received response for path " .. path)
         PrintTable(result)
 
+        result_data = JSON:decode(result.Body)
+
+        if result_data["status"] ~= "Success" then
+            log("WebAPI receive failed, reason: " .. result_data["reason"])
+            return
+        end
+
         if callback then
-            callback(result.Body)
+            callback(result_data)
         end
     end)
 end
 
--- Sends per-match data
-function WebAPI:sendMatchData(func, data, callback)
-    if not self.match_id then
-        warning("WebAPI tried to send match data but no match id was set")
+function WebAPI:matchSend(func, path, callback)
+    if not self.match_token then
+        log("WebAPI tried to call matchSend but no match token was set")
+        return
     end
 
-    WebAPI.send(func .. self.match_id .. "/" .. data, callback)
+    self:send("/" .. func .. "/" .. self.match_token .. path, callback)
 end
 
 -- Requests a new match id
-function WebAPI:newMatch()
-    WebAPI.send(WebAPI.PATH_NEW_MATCH .. WebAPI.MOD_ID, function(result)
-        if result:len() ~= 32 then
-            warning("Web API received invalid match id at new match")
-            return
-        end
-
-        self.match_id = result
+function WebAPI:startMatch()
+    self:send("/startmatch/" .. self.mod_id .. "/" .. self.mod_version, function(result)
+        self.match_token = result.data.match_token
+        log("WebAPI match successfully created, match token: " .. self.match_token)
     end)
 end
 
 -- Adds players to the current match id
-function WebAPI:addPlayers(steam_ids)
-    local data = ""
-
-    for _, steam_id in pairs(steam_ids) do
-        data = data .. steam_id .. "/"
-    end
-
-    self:sendMatchData(WebAPI.PATH_ADD_PLAYERS, data)
+function WebAPI:addPlayer(steam_id)
+    self:matchSend("addplayer", "/" .. steam_id, function(result)
+        log("WebAPI successfully added player with steam id " .. steam_id)
+    end)
 end
 
--- Sets a players property for the current match id
-function WebAPI:setPlayerProperty(steam_id, key, value)
-    self:sendMatchData(WebAPI.PATH_SET_PLAYER_PROPERTY, steam_id .. "/" .. key .. "/" .. value)
+-- Ends the current match
+function WebAPI:finishMatch()
+    self:matchSend("finishmatch", "")
 end
 
--- Sets a property for the current match
 function WebAPI:setMatchProperty(key, value)
-    self:sendMatchData(WebAPI.PATH_SET_MATCH_PROPERTY, key .. "/" .. value)
-end
-
--- Ends the current match and declares the winners
-function WebAPI:endMatch(winner_steam_ids)
-    local data = ""
-
-    for _, steam_id in pairs(steam_ids) do
-        data = data .. steam_id .. "/"
-    end
-
-    self:sendMatchData(WebAPI.PATH_END_MATCH, data)
+    self:matchSend("setmatchproperty", "/" .. key .. "/" .. value, function(result)
+        log("WebAPI successfully set match property with key " .. key .. " to " .. value)
+    end)
 end
 
 --[[-------------------------
@@ -96,6 +76,6 @@ end
 -------------------------]]--
 
 function Game:initWebAPI()
-    self.web_api = WebAPI:new()
-    self.web_api:newMatch()
+    self.web_api = WebAPI:new(Config.WEB_API_BASE_URL, Config.WEB_API_MOD_ID, Config.WEB_API_MOD_VERSION)
+    self.web_api:startMatch()
 end

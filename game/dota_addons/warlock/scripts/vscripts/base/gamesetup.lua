@@ -142,6 +142,18 @@ function Game:selectModes()
         cash_per_win = gs:getGameOption(GAME_OPT_CASH_WIN)
 	}
 
+    -- Send setup info to web api
+    self.web_api:setMatchProperty("bot_on_dc", tostring(Config.bot_on_dc))
+    self.web_api:setMatchProperty("bot_count", tostring(Config.bot_count))
+    self.web_api:setMatchProperty("mode", tostring(gs:getGameOption(GAME_OPT_GAME)))
+    self.web_api:setMatchProperty("team_mode", tostring(gs:getGameOption(GAME_OPT_TEAM)))
+    self.web_api:setMatchProperty("winc", tostring(gs:getGameOption(GAME_OPT_WINC)))
+    self.web_api:setMatchProperty("winc_max", tostring(gs:getGameOption(GAME_OPT_WINC_MAX)))
+    self.web_api:setMatchProperty("cash_every_round", tostring(gs:getGameOption(GAME_OPT_CASH_ROUND)))
+    self.web_api:setMatchProperty("cash_on_start", tostring(gs:getGameOption(GAME_OPT_CASH_START)))
+    self.web_api:setMatchProperty("cash_per_kill", tostring(gs:getGameOption(GAME_OPT_CASH_KILL)))
+    self.web_api:setMatchProperty("cash_per_win", tostring(gs:getGameOption(GAME_OPT_CASH_WIN)))
+
 	display("-- Modes have been selected")
 	display("Mode: " .. self.mode:getDescription())
 	display("Team Mode: " .. self.team_mode:getDescription())

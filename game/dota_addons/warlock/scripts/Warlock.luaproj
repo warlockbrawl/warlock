@@ -58,6 +58,7 @@
     <Compile Include="vscripts\base\tasks.lua" />
     <Compile Include="vscripts\base\team.lua" />
     <Compile Include="vscripts\base\teammode.lua" />
+    <Compile Include="vscripts\base\webapi.lua" />
     <Compile Include="vscripts\base\wincondition.lua" />
     <Compile Include="vscripts\heap.lua" />
     <Compile Include="vscripts\stats\json.lua" />
@@ -67,6 +68,7 @@
     <Compile Include="vscripts\test\test_heap.lua" />
     <Compile Include="vscripts\triggers.lua" />
     <Compile Include="vscripts\util\class.lua" />
+    <Compile Include="vscripts\util\json.lua" />
     <Compile Include="vscripts\util\print.lua" />
     <Compile Include="vscripts\util\print_table.lua" />
     <Compile Include="vscripts\util\set.lua" />
