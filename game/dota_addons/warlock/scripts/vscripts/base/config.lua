@@ -42,7 +42,7 @@ Config.ARENA_SPAWN_INSET            = 600
 
 -- Web API constants
 Config.WEB_API_MOD_ID               = "warlockbrawl"
-Config.WEB_API_MOD_VERSION          = 1
+Config.WEB_API_MOD_VERSION          = 2
 Config.WEB_API_BASE_URL             = "http://api.warlockbrawl.com/mod"
 
 --[[
@@ -53,3 +53,6 @@ Config.WEB_API_BASE_URL             = "http://api.warlockbrawl.com/mod"
 
 Config.bot_on_dc = true -- Whether to replace leavers with bots until they reconnect
 Config.bot_count = 0 -- How many bots to add in Game:start()
+
+Config.dmg_multiplier = 1
+Config.kb_multiplier = 1

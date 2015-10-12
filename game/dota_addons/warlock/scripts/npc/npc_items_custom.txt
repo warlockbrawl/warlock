@@ -532,12 +532,12 @@
 			"01"
 			{
 				"var_type" "FIELD_FLOAT"
-				"hp_bonus" "100 200"
+				"debuff_factor" "0.25 0.30"
 			}
 			"02"
 			{
 				"var_type" "FIELD_FLOAT"
-				"debuff_factor" "0.25 0.30"
+				"hp_bonus" "100 200"
 			}
 			"03"
 			{
@@ -576,12 +576,12 @@
 			"01"
 			{
 				"var_type" "FIELD_FLOAT"
-				"hp_bonus" "100 200"
+				"debuff_factor" "0.25 0.30"
 			}
 			"02"
 			{
 				"var_type" "FIELD_FLOAT"
-				"debuff_factor" "0.25 0.30"
+				"hp_bonus" "100 200"
 			}
 			"03"
 			{

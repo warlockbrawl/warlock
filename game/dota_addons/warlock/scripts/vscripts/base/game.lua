@@ -47,6 +47,7 @@ function Game:init()
 
 	-- Wait for the game to start
 	self.in_progress = false
+    self.is_over = false
 
     -- AI Controllers
     self.ai_controllers = { }
@@ -84,7 +85,7 @@ function Game:EventStateChanged(event)
 	new_state = GameRules:State_Get()
 	
     -- Start a timer for game start
-	if not self.in_progress and not self.game_start_task and new_state >= DOTA_GAMERULES_STATE_PRE_GAME then
+	if not self.in_progress and not self.is_over and not self.game_start_task and new_state >= DOTA_GAMERULES_STATE_PRE_GAME then
 		self:selectModes()
 	end
 
@@ -204,6 +205,7 @@ function Game:_Tick()
 
 	if GameRules:State_Get() >= DOTA_GAMERULES_STATE_POST_GAME then
 		self.in_progress = false
+        self.is_over = true
 		return
 	end
 
@@ -247,6 +249,17 @@ function Game:PawnKilled(event)
 
 	-- Modifier Stuff
 	Game:modOnDeath(event.victim)
+
+    -- Update kills and deaths for Web API
+    if event.killer and event.killer.owner and event.killer.owner.steam_id ~= 0 then
+        local kills = tostring(PlayerResource:GetKills(event.killer.owner.id))
+        self.web_api:setMatchPlayerProperty(event.killer.owner.steam_id, "kills", kills)
+    end
+
+    if event.victim.owner and event.victim.owner.steam_id ~= 0 then
+        local deaths = tostring(PlayerResource:GetDeaths(event.victim.owner.id))
+        self.web_api:setMatchPlayerProperty(event.victim.owner.steam_id, "deaths", deaths)
+    end
 end
 
 

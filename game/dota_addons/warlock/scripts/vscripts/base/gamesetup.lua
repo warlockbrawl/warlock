@@ -14,6 +14,10 @@ GAME_OPT_CASH_KILL  = 9
 GAME_OPT_CASH_WIN   = 10
 GAME_OPT_BOT_COUNT  = 11
 GAME_OPT_BOT_ON_DC  = 12
+GAME_OPT_LAVA_DPS	= 13
+GAME_OPT_KB_MULT	= 14
+GAME_OPT_DMG_MULT	= 15
+GAME_OPT_PHYS_FRICT	= 16
 
 GAME_OPT_TEAM_SHUFFLE	= 1
 GAME_OPT_TEAM_FFA		= 2
@@ -55,7 +59,11 @@ function GameSetup:init()
     self:setGameOption(GAME_OPT_CASH_WIN, 0)
     self:setGameOption(GAME_OPT_BOT_COUNT, 0)
     self:setGameOption(GAME_OPT_BOT_ON_DC, 1)
-	
+    self:setGameOption(GAME_OPT_LAVA_DPS, 100)
+    self:setGameOption(GAME_OPT_KB_MULT, 1)
+    self:setGameOption(GAME_OPT_DMG_MULT, 1)
+	self:setGameOption(GAME_OPT_PHYS_FRICT, 0.96)
+
 	CustomGameEventManager:RegisterListener("set_team", Dynamic_Wrap(self, "onSetTeam"))
 	CustomGameEventManager:RegisterListener("set_game_option", Dynamic_Wrap(self, "onSetGameOption"))
 
@@ -142,6 +150,12 @@ function Game:selectModes()
         cash_per_win = gs:getGameOption(GAME_OPT_CASH_WIN)
 	}
 
+    -- Constants
+    Arena.DAMAGE_PER_SECOND = gs:getGameOption(GAME_OPT_LAVA_DPS)
+    Config.kb_multiplier = gs:getGameOption(GAME_OPT_KB_MULT)
+    Config.dmg_multiplier = gs:getGameOption(GAME_OPT_DMG_MULT)
+    Config.FRICTION = gs:getGameOption(GAME_OPT_PHYS_FRICT)
+
     -- Send setup info to web api
     self.web_api:setMatchProperty("bot_on_dc", tostring(Config.bot_on_dc))
     self.web_api:setMatchProperty("bot_count", tostring(Config.bot_count))
@@ -153,6 +167,10 @@ function Game:selectModes()
     self.web_api:setMatchProperty("cash_on_start", tostring(gs:getGameOption(GAME_OPT_CASH_START)))
     self.web_api:setMatchProperty("cash_per_kill", tostring(gs:getGameOption(GAME_OPT_CASH_KILL)))
     self.web_api:setMatchProperty("cash_per_win", tostring(gs:getGameOption(GAME_OPT_CASH_WIN)))
+    self.web_api:setMatchProperty("lava_dps", tostring(gs:getGameOption(GAME_OPT_LAVA_DPS)))
+    self.web_api:setMatchProperty("kb_mult", tostring(gs:getGameOption(GAME_OPT_KB_MULT)))
+    self.web_api:setMatchProperty("dmg_mult", tostring(gs:getGameOption(GAME_OPT_DMG_MULT)))
+    self.web_api:setMatchProperty("phys_frict", tostring(gs:getGameOption(GAME_OPT_PHYS_FRICT)))
 
 	display("-- Modes have been selected")
 	display("Mode: " .. self.mode:getDescription())

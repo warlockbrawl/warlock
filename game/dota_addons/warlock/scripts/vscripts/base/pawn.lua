@@ -246,6 +246,9 @@ function Pawn:receiveDamage(dmg_info)
 		return
 	end
 
+    -- Global damage multiplier
+    dmg_info.amount = Config.dmg_multiplier * dmg_info.amount
+
 	-- Modifier damage change
 	dmg_info.amount = dmg_info.amount * self.dmg_factor
 	dmg_info.amount = dmg_info.amount - self.dmg_reduction
@@ -274,6 +277,9 @@ function Pawn:receiveDamage(dmg_info)
         end
 
 		local kb_amount = math.max(0, self.kb_factor) * dmg_kb_factor * Config.KB_DMG_TO_VELOCITY * (1 + kb_points/1000) * (dmg_info.knockback_factor or 1)
+
+        -- Global kb multiplier
+        kb_amount = Config.kb_multiplier * kb_amount
 
 		self:applyMomentum(kb_amount*dmg_info.hit_normal*self.mass)
 	end

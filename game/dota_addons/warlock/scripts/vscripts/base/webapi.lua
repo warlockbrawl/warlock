@@ -71,6 +71,12 @@ function WebAPI:setMatchProperty(key, value)
     end)
 end
 
+function WebAPI:setMatchPlayerProperty(steam_id, key, value)
+    self:matchSend("setmatchplayerproperty", "/" .. steam_id .. "/" .. key .. "/" .. value, function(result)
+        log("WebAPI successfully set match player for " .. steam_id .. "'s property with key " .. key .. " to " .. value)
+    end)
+end
+
 --[[-------------------------
         Game Interface
 -------------------------]]--

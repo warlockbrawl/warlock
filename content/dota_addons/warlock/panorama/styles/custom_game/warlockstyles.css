@@ -31,6 +31,24 @@
 
 /*----------------------
 
+       Tabs
+
+----------------------*/
+
+#TabButtons
+{
+	flow-children: right;
+}
+
+.TabContainer
+{
+	width: 500px;
+	height: 600px;
+	flow-children: down;
+}
+
+/*----------------------
+
        Player List
 
 ----------------------*/

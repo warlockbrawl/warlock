@@ -4,6 +4,9 @@ var g_PlayerPanels = [];
 var g_PlayerIds = [];
 var g_PlayerCount = 0;
 
+var g_SelectedTab = 0;
+var g_TabContainers = [];
+
 var GAME_OPT_TEAM		= 1;
 var GAME_OPT_GAME		= 2;
 var GAME_OPT_WINC		= 3;
@@ -16,6 +19,10 @@ var GAME_OPT_CASH_KILL  = 9;
 var GAME_OPT_CASH_WIN   = 10;
 var GAME_OPT_BOT_COUNT  = 11;
 var GAME_OPT_BOT_ON_DC  = 12;
+var GAME_OPT_LAVA_DPS	= 13;
+var GAME_OPT_KB_MULT	= 14;
+var GAME_OPT_DMG_MULT	= 15;
+var GAME_OPT_PHYS_FRICT	= 16;
 
 var g_TextBoxIntIds = {
 	4: "#WinCondMaxText",
@@ -24,6 +31,13 @@ var g_TextBoxIntIds = {
 	9: "#KillGoldText",
 	10: "#WinGoldText",
 	11: "#BotCountText"
+};
+
+var g_TextBoxFloatIds = {
+	13: "#LavaDPSText",
+	14: "#KnockbackMultiplierText",
+	15: "#DamageMultiplierText",
+	16: "#PhysicsFrictionText"
 };
 
 var g_DropDownIntIds = {
@@ -109,6 +123,7 @@ function sendTextBoxIntValue(index, textBoxId) {
 	index = parseInt(index);
 	var textBox = $(textBoxId);
 
+	//Floor
 	var n = ~~textBox.text;
 	
 	if(String(n) === textBox.text && n >= 0) {
@@ -116,6 +131,15 @@ function sendTextBoxIntValue(index, textBoxId) {
 	} else {
 		$.Msg("in sendTextBoxIntValue: was not a positive integer for index ", index, " and box id ", textBoxId);
 	}
+}
+
+function sendTextBoxFloatValue(index, textBoxId) {
+	index = parseInt(index);
+	var textBox = $(textBoxId);
+
+	var n = parseFloat(textBox.text);
+
+	sendSetGameOption(index, n);
 }
 
 //Sends the value of a drop down
@@ -139,6 +163,10 @@ function sendDropDownValues() {
 function sendTextBoxValues() {
 	for(var index in g_TextBoxIntIds) {
 		sendTextBoxIntValue(index, g_TextBoxIntIds[index]);
+	}
+
+	for(var index in g_TextBoxFloatIds) {
+		sendTextBoxFloatValue(index, g_TextBoxFloatIds[index]);
 	}
 	
 	//Call again even if not the host, because the host can be changed later
@@ -283,6 +311,14 @@ function hostCheckLoop() {
 	$.Schedule(1.0, hostCheckLoop);
 }
 
+//Sets one specified tab to be visible
+function selectTab(tabNum) {
+	g_SelectedTab = tabNum;
+	for(var num in g_TabContainers) {
+		g_TabContainers[num].visible = num == tabNum;
+	}
+}
+
 function setupSelection() {
 	//GameEvents.Subscribe("dota_team_player_list_changed", onTeamChanged);
 	CustomNetTables.SubscribeNetTableListener("wl_game_options", onNetTableChanged);
@@ -292,6 +328,11 @@ function setupSelection() {
 	
 	enableAll(false);
 	
+	//Setup the tabs
+	g_TabContainers.push($("#TabContainer1"));
+	g_TabContainers.push($("#TabContainer2"));
+	selectTab(0);
+
 	hostCheckLoop();
 	playerSelectLoop();
 }
