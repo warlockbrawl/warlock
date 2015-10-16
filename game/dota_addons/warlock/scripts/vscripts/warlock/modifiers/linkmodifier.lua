@@ -76,7 +76,6 @@ function LinkModifier:onPreTick(dt)
 
     -- Bigger for obstacles
     if self.linked:instanceof(Obstacle) then
-        log("Bigger")
         min_range = 120
     end
 

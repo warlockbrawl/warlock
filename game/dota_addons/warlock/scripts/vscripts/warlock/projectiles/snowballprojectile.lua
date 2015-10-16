@@ -50,6 +50,7 @@ function SnowballProjectile:onCollision(coll_info, cc)
         if not coll_info.actor:hasModifierOfType(SnowballModifier) then
             GAME:addModifier(SnowballModifier:new {
 			    pawn = coll_info.actor,
+                instigator = self.instigator,
 			    speed_bonus_abs = -100,
 			    time = SnowballProjectile.damage_period,
 			    end_damage = self.damage * SnowballProjectile.damage_period,
@@ -73,7 +74,7 @@ function SnowballProjectile:onPostTick(dt)
 
     -- Rotate the snowball in the direction it is rolling
     local dir = self.velocity:Normalized()
-    self.pitch = self.pitch + 1000 * dt * dir.x
-    self.roll = self.roll + 1000 * dt * dir.y
+    self.pitch = self.pitch + 1000 * dt * dir.y
+    self.roll = self.roll + 1000 * dt * dir.x
     self.effect:setAngles(self.pitch, 0, self.roll)
 end

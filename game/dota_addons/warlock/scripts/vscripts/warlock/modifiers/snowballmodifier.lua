@@ -17,7 +17,7 @@ function SnowballModifier:onToggle(apply)
 		end
 
         self.pawn:receiveDamage {
-            instigator = self.instigator,
+            source = self.instigator,
             amount = self.end_damage
         }
 	end

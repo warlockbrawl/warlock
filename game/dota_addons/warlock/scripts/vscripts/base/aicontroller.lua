@@ -45,8 +45,8 @@ function AIController:init(def)
     self.purchasable_target_spells = {
         { 1, 2, 3 },
         { 7, 8, 9 },
-        { 11, 12 },
-        { 16, 17, 18, 19, 20, 21 }
+        { 11, 12, 13 },
+        { 17, 18, 19, 20, 21, 22 }
     }
 
     self.purchasable_escape_spells = {
