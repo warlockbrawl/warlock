@@ -23,7 +23,7 @@ BASE_MODULES		= {
 	'warlock/projectiles/drainhealprojectile', 'warlock/projectiles/homingprojectile',
     'warlock/projectiles/magnetizeprojectile', 'warlock/projectiles/linkprojectile',
     'warlock/projectiles/splitterprojectile', 'warlock/projectiles/splitterspawnerprojectile',
-    'warlock/projectiles/splitterchildprojectile',
+    'warlock/projectiles/splitterchildprojectile', 'warlock/projectiles/snowballprojectile',
 
 	'warlock/spells/fireball', 'warlock/spells/scourge',
 	'warlock/spells/boomerang', 'warlock/spells/lightning',
@@ -37,11 +37,13 @@ BASE_MODULES		= {
     'warlock/spells/magnetize', 'warlock/spells/rockpillar',
     'warlock/spells/alteration', 'warlock/spells/link',
     'warlock/spells/splitter', 'warlock/spells/redirect',
+    'warlock/spells/snowball',
 
 	'warlock/modifiers/windwalkmodifier', 'warlock/modifiers/shieldmodifier',
 	'warlock/modifiers/rushmodifier', 'warlock/modifiers/gripmodifier',
 	'warlock/modifiers/thrustmodifier', 'warlock/modifiers/magnetizemodifier',
     'warlock/modifiers/alterationmodifier', 'warlock/modifiers/linkmodifier',
+    'warlock/modifiers/snowballmodifier',
 
 	'triggers'
 }
@@ -162,6 +164,9 @@ function Precache(context)
     PrecacheResource("particle", "particles/meteor/meteor_fly.vpcf", context)
     PrecacheResource("particle", "particles/econ/courier/courier_faceless_rex/cour_rex_flying.vpcf", context)
     PrecacheResource("particle", "particles/econ/items/ursa/ursa_swift_claw/ursa_swift_fury_sweep_dim_b_blue.vpcf", context)
+    PrecacheResource("particle", "particles/econ/items/crystal_maiden/crystal_maiden_cowl_of_ice/maiden_crystal_nova_cowlofice.vpcf", context)
+    PrecacheResource("model", "models/particle/snowball.vmdl", context)
+    PrecacheResource("particle", "particles/units/heroes/hero_crystalmaiden/maiden_crystal_nova.vpcf", context)
 
 	-- custom effects
 	PrecacheResource("particle_folder", "particles/fireball", context)

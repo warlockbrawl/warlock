@@ -25,7 +25,8 @@ function ShopData() {
 		{ name: "Windwalk", column: 4, buyCost: 14, upgradeCost: [ 6, 7, 8, 9, 10, 11 ], iconPath: "file://{images}/spellicons/elder_titan_echo_stomp_spirit_png.vtex", displayName: "#WL_shop_ability_windwalk", description: "#WL_shop_ability_windwalk_description" },
 		{ name: "Meteor", column: 4, buyCost: 14, upgradeCost: [ 6, 7, 8, 9, 10, 11 ], iconPath: "file://{images}/spellicons/invoker_chaos_meteor_png.vtex", displayName: "#WL_shop_ability_meteor", description: "#WL_shop_ability_meteor_description" },
 		{ name: "Splitter", column: 4, buyCost: 15, upgradeCost: [ 7, 8, 9, 10, 11, 12 ], iconPath: "file://{images}/spellicons/skywrath_mage_concussive_shot_png.vtex", displayName: "#WL_shop_ability_splitter", description: "#WL_shop_ability_splitter_description" },
-		
+		{ name: "Snowball", column: 4, buyCost: 14, upgradeCost: [ 6, 7, 8, 9, 10, 11 ], iconPath: "file://{images}/spellicons/tusk_snowball_png.vtex", displayName: "#WL_shop_ability_snowball", description: "#WL_shop_ability_snowball_description" },
+
 		// C 5
 		{ name: "Shield", column: 5, buyCost: 12, upgradeCost: [ 6, 7, 8, 9, 10, 11 ], iconPath: "file://{images}/spellicons/faceless_void_chronosphere_png.vtex", displayName: "#WL_shop_ability_shield", description: "#WL_shop_ability_shield_description" },
 		{ name: "Rush", column: 5, buyCost: 12, upgradeCost: [ 6, 7, 8, 9, 10, 11 ], iconPath: "file://{images}/spellicons/ogre_magi_bloodlust_png.vtex", displayName: "#WL_shop_ability_rush", description: "#WL_shop_ability_rush_description" },

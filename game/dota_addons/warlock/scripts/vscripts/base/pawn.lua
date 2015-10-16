@@ -355,7 +355,7 @@ function Pawn:onPostTick(dt)
 end
 
 --- utility damage
--- requires: dmg_info.amount or dmg_info.amount_min and dmg_info.amount_max
+-- requires: radius and dmg_info.amount or dmg_info.amount_min and dmg_info.amount_max
 function Pawn:damageArea(target, radius, dmg_info)
 	dmg_info.source = self
 

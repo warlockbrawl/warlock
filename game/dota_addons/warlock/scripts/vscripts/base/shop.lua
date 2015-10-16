@@ -40,7 +40,8 @@ Shop.SPELL_DEFS = {
     { name = "Windwalk", column = 4, ability_name = "warlock_windwalk", buy_cost = 14, upgrade_cost = { 6, 7, 8, 9, 10, 11 } },
     { name = "Meteor", column = 4, ability_name = "warlock_meteor", buy_cost = 14, upgrade_cost = { 6, 7, 8, 9, 10, 11 } },
     { name = "Splitter", column = 4, ability_name = "warlock_splitter", buy_cost = 15, upgrade_cost = { 7, 8, 9, 10, 11, 12 } },
-    
+    { name = "Snowball", column = 4, ability_name = "warlock_snowball", buy_cost = 14, upgrade_cost = { 6, 7, 8, 9, 10, 11 } },
+
     -- C
     { name = "Shield", column = 5, ability_name = "warlock_shield", buy_cost = 12, upgrade_cost = { 6, 7, 8, 9, 10, 11 } },
     { name = "Rush", column = 5, ability_name = "warlock_rush", buy_cost = 12, upgrade_cost = { 6, 7, 8, 9, 10, 11 } },

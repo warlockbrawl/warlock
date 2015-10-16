@@ -1,4 +1,4 @@
---- Spell warlock_fireball
+--- Spell warlock_gravity
 Gravity = Spell:new{id='warlock_gravity'}
 
 Gravity.projectile_class 	= GravityProjectile

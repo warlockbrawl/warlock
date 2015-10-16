@@ -92,6 +92,7 @@
     <Compile Include="vscripts\warlock\projectiles\linkprojectile.lua" />
     <Compile Include="vscripts\warlock\projectiles\magnetizeprojectile.lua" />
     <Compile Include="vscripts\warlock\projectiles\meteorprojectile.lua" />
+    <Compile Include="vscripts\warlock\projectiles\snowballprojectile.lua" />
     <Compile Include="vscripts\warlock\projectiles\splitterchildprojectile.lua" />
     <Compile Include="vscripts\warlock\projectiles\splitterprojectile.lua" />
     <Compile Include="vscripts\warlock\projectiles\splitterspawnerprojectile.lua" />
@@ -114,6 +115,7 @@
     <Compile Include="vscripts\warlock\spells\rush.lua" />
     <Compile Include="vscripts\warlock\spells\scourge.lua" />
     <Compile Include="vscripts\warlock\spells\shield.lua" />
+    <Compile Include="vscripts\warlock\spells\snowball.lua" />
     <Compile Include="vscripts\warlock\spells\splitter.lua" />
     <Compile Include="vscripts\warlock\spells\swap.lua" />
     <Compile Include="vscripts\warlock\spells\teleport.lua" />

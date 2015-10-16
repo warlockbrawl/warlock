@@ -53,6 +53,7 @@ spells.append(WarlockSpell("rockpillar", "Spawn a rock pillar at the target loca
 spells.append(WarlockSpell("alteration", "Alters the position with the next enemy projectile coming close to hitting you"))
 spells.append(WarlockSpell("link", "Shoot a magical link which can latch on enemies or allies and pull them to you"))
 spells.append(WarlockSpell("splitter", "Cast a projectile which splits into minor missiles"))
+spells.append(WarlockSpell("snowball", "Spawns a snowball which will drag other players with it and explode"))
 
 # Items		
 items.append(WarlockItem("ring_of_health", "Increases maximum HP", 5, { "hp_bonus": "100 190 270 340 400" }))
@@ -122,6 +123,7 @@ with open("../game/dota_addons/warlock/resource/addon_english.txt", "w", encodin
 		strings += prefix + '_upgrade_cost" "Upgrade cost:"\n'
 		strings += prefix + '_range" "Range:"\n'
 		strings += prefix + '_absorb_max" "Max absorb:"\n'
+		strings += prefix + '_coll_radius" "Collision radius:"\n'
 		
 	for item in items:
 		prefix = '		"DOTA_Tooltip_ability_item_warlock_' + item.name
