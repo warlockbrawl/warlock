@@ -24,8 +24,12 @@ function Actor:init(def)
 	
 	self.timers = Set:new()
 
-	if def.lifetime and def.lifetime > 0 then
-		self:setLifetime(def.lifetime)
+	if def.lifetime then
+        if def.lifetime < 0 then
+            warning("Actor lifetime < 0")
+        end
+
+		self:setLifetime(math.max(0, def.lifetime))
 	end
 
 	if self.unit then

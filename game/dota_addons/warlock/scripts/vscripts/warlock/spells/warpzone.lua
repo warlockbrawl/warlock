@@ -101,14 +101,11 @@ function WarpZoneActor:onDestroy()
 end
 
 function WarpZoneActor:scaleActor(actor)
-	log("Scaled actor")
-
 	self.scaled_actors[actor] = true
 	actor.time_scale = actor.time_scale * self.time_scale_change
 end
 
 function WarpZoneActor:unscaleActor(actor)
-	log("Unscaled actor")
 	actor.time_scale = actor.time_scale / self.time_scale_change
 end
 
