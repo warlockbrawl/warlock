@@ -43,7 +43,6 @@ function Game:init()
 	self:initArena()
 	self:initGameSetup()
     self:initScoreboard()
-    self:initWebAPI()
 
 	-- Wait for the game to start
 	self.in_progress = false
@@ -88,6 +87,11 @@ function Game:EventStateChanged(event)
 	if not self.in_progress and not self.is_over and not self.game_start_task and new_state >= DOTA_GAMERULES_STATE_PRE_GAME then
 		self:selectModes()
 	end
+
+    -- Need to init web api here because http requests dont work before
+    if new_state == DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then
+        self:initWebAPI()
+    end
 
 	log("GameState changed to " .. tostring(new_state))
 end
