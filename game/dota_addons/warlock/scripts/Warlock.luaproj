@@ -69,6 +69,8 @@
     <Compile Include="vscripts\test\test.lua" />
     <Compile Include="vscripts\test\test_heap.lua" />
     <Compile Include="vscripts\triggers.lua" />
+    <Compile Include="vscripts\txnn\class.lua" />
+    <Compile Include="vscripts\txnn\txnn.lua" />
     <Compile Include="vscripts\txnn\matrix.lua" />
     <Compile Include="vscripts\txnn\test.lua" />
     <Compile Include="vscripts\util\class.lua" />

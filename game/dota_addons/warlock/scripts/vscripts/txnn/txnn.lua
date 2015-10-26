@@ -130,7 +130,58 @@ function SigmoidLayer:backward(grad_output)
 end
 
 ----------------------------------------
--- Mean Squared Error Layer
+-- Log Softmax Layer
+----------------------------------------
+
+LogSoftMaxLayer = class(Layer)
+
+function LogSoftMaxLayer:init(def)
+end
+
+function LogSoftMaxLayer:forward(input)
+    self.input = input
+
+    self.output = self.input:copy()
+
+    for i = 1, #self.output do
+        local ei = {}
+        local a = 0
+
+        for j = 1, #self.output[1] do
+            ei[j] = math.exp(self.output[1][j])
+            a = a + ei[j]
+        end
+
+        for j = 1, #self.output[1] do
+            self.output[i][j] = math.log(ei[j] / a)
+        end
+    end
+
+    return self.output
+end
+
+function LogSoftMaxLayer:backward(grad_output)
+    self.grad_output = grad_output
+
+    self.grad_input = self.output:copy()
+
+    for i = 1, #self.grad_input do
+        local a = 0
+
+        for j = 1, #self.grad_input[i] do
+            a = a + grad_output[i][j]
+        end
+
+        for j = 1, #self.grad_input[i] do
+            self.grad_input[i][j] = grad_output[i][j] - math.exp(self.output[i][j]) * a
+        end
+    end
+
+    return self.grad_input
+end
+
+----------------------------------------
+-- Mean Squared Error criterion
 ----------------------------------------
 
 Criterion = class()
@@ -162,4 +213,46 @@ end
 
 function MSECriterion:calcGradient(predicted, expected)
     return predicted - expected
+end
+
+----------------------------------------
+-- Class negative-log likelihood criterion
+----------------------------------------
+
+ClassNLLCriterion = class(Criterion)
+
+function ClassNLLCriterion:init(def)
+end
+
+function ClassNLLCriterion:loss(predicted, expected)
+    local l = 0.0
+
+    for i = 1, #predicted do
+        local predicted_class = 0
+        local predicted_class_prob = 0
+
+        local expected_class = 0
+        for j = 1, #predicted[i] do
+            if j == 1 or predicted[j] > predicted_class_prob then
+                predicted_class = j
+                predicted_class_prob = predicted[j]
+            end
+        end
+
+        if predicted_class ~= expected[i][1] then
+            l = l + 1.0
+        end
+    end
+
+    l = l / #predicted
+
+    return l
+end
+
+function ClassNLLCriterion:calcGradient(predicted, expected)
+    local grad = predicted:copy()
+
+    -- -1 for wrongly predicted target?
+
+    return grad
 end
