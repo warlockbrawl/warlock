@@ -24,6 +24,7 @@
   <ItemGroup>
     <Folder Include="vscripts\" />
     <Folder Include="vscripts\base\" />
+    <Folder Include="vscripts\txnn\" />
     <Folder Include="vscripts\obj\" />
     <Folder Include="vscripts\obj\Debug\" />
     <Folder Include="vscripts\stats\" />
@@ -52,6 +53,7 @@
     <Compile Include="vscripts\base\physics.lua" />
     <Compile Include="vscripts\base\player.lua" />
     <Compile Include="vscripts\base\projectile.lua" />
+    <Compile Include="vscripts\base\replay.lua" />
     <Compile Include="vscripts\base\scoreboard.lua" />
     <Compile Include="vscripts\base\shop.lua" />
     <Compile Include="vscripts\base\spell.lua" />
@@ -67,6 +69,8 @@
     <Compile Include="vscripts\test\test.lua" />
     <Compile Include="vscripts\test\test_heap.lua" />
     <Compile Include="vscripts\triggers.lua" />
+    <Compile Include="vscripts\txnn\matrix.lua" />
+    <Compile Include="vscripts\txnn\test.lua" />
     <Compile Include="vscripts\util\class.lua" />
     <Compile Include="vscripts\util\json.lua" />
     <Compile Include="vscripts\util\print.lua" />

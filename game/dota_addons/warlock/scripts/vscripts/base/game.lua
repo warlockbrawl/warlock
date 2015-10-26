@@ -18,6 +18,7 @@ function Game:init()
 	math.randomseed(tonumber(time_txt))
 
 	-- Game data structures
+    self.tick = 0 -- The tick at the start of a frame
 	self.lastTickTime = 0
 	self.players = {}
 	self.player_count = 0
@@ -232,6 +233,8 @@ function Game:_Tick()
 		-- Subclasses
 		self:EventTick(dt)
 	end
+
+    self.tick = self.tick + 1
 
 	return Config.GAME_TICK_RATE
 end

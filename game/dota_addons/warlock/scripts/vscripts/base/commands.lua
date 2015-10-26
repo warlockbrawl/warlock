@@ -5,6 +5,26 @@ function Game:initCommands()
 
 	self.commands = {}
 
+    self:registerCommand("recordreplay", function()
+        for pawn, _ in pairs(GAME.pawns) do
+            if not pawn.recorder and not pawn.owner.is_bot then
+                pawn.recorder = ReplayRecorder:new(pawn)
+            end
+
+            print("Record started")
+        end
+    end)
+
+    self:registerCommand("saverecord", function()
+        for pawn, _ in pairs(GAME.pawns) do
+            if pawn.recorder then
+                pawn.recorder:save()
+            end
+
+            print("Records saved")
+        end
+    end)
+
     self:registerCommand("addbotinsane", function()
         GAME:addBot(0.01)
     end)
