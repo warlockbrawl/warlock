@@ -26,30 +26,34 @@ function Game:initCommands()
     end)
 
     self:registerCommand("addbotinsane", function()
-        GAME:addBot(0.01)
+        GAME:addBot { think_interval = 0.01, }
     end)
 
     self:registerCommand("addbothard", function()
-        GAME:addBot(0.2)
+        GAME:addBot { think_interval = 0.2, }
     end)
 
     self:registerCommand("addbotmedium", function()
-        GAME:addBot(0.5)
+        GAME:addBot { think_interval = 0.5, }
     end)
 
     self:registerCommand("addboteasy", function()
-        GAME:addBot(1.0)
+        GAME:addBot { think_interval = 1.0, }
     end)
 
     self:registerCommand("addbotdummy", function()
-        GAME:addBot(10000000)
+        GAME:addBot { think_interval = 10000000 }
     end)
 
     self:registerCommand("fillbots", function()
         for i = 1, 10 do
-            GAME:addBot(math.random(0.2, 1.0))
+            GAME:addBot { think_interval = math.random(0.2, 1.0) }
         end
     end)
+
+    self:registerCommand("addlearningbot", function()
+    	GAME:addBot { think_interval = 0.2, controller_class = NNAI }
+	end)
 
     self:registerCommand("actorlist", function()
         local total_actors = 0

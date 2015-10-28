@@ -1,7 +1,3 @@
-require("class")
-
-Matrix = require("matrix")
-
 Layer = class()
 Layer.forward = function(input) return nil end
 Layer.backward = function(grad_output) return nil end
@@ -148,7 +144,7 @@ function LogSoftMaxLayer:forward(input)
         local a = 0
 
         for j = 1, #self.output[1] do
-            ei[j] = math.exp(self.output[1][j])
+            ei[j] = math.exp(self.output[i][j])
             a = a + ei[j]
         end
 
@@ -228,20 +224,7 @@ function ClassNLLCriterion:loss(predicted, expected)
     local l = 0.0
 
     for i = 1, #predicted do
-        local predicted_class = 0
-        local predicted_class_prob = 0
-
-        local expected_class = 0
-        for j = 1, #predicted[i] do
-            if j == 1 or predicted[j] > predicted_class_prob then
-                predicted_class = j
-                predicted_class_prob = predicted[j]
-            end
-        end
-
-        if predicted_class ~= expected[i][1] then
-            l = l + 1.0
-        end
+        l = l - predicted[i][expected[i][1]]
     end
 
     l = l / #predicted
@@ -250,9 +233,11 @@ function ClassNLLCriterion:loss(predicted, expected)
 end
 
 function ClassNLLCriterion:calcGradient(predicted, expected)
-    local grad = predicted:copy()
+    local grad = Matrix:new(#predicted, #predicted[1], 0.0)
 
-    -- -1 for wrongly predicted target?
+    for i = 1, #grad do
+        grad[i][expected[i][1]] = -1
+    end
 
     return grad
 end

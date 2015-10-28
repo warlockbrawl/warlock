@@ -9,12 +9,15 @@
 print("## Script start load ##")
 
 BASE_MODULES		= {
-	'util/print', 'util/print_table', 'util/class', 'util/set', 'util/util', 'util/json',
+	'util/print', 'util/print_table', 'util/class', 'util/set', 'util/util', 'util/json', 'util/matrix',
+
 	'base/config', 'base/game', 'base/tasks', 'base/player', 'base/commands', 'base/effect', 'base/actor',
 	'base/physics', 'base/projectile', 'base/pawn', 'base/spell', 'base/arena', 'base/obstacles',
 	'base/mode', 'base/shop', 'base/modifier', 'base/item', 'base/wincondition',
 	'base/teammode', 'base/team', 'base/gamesetup', 'base/scoreboard', 'base/aicontroller',
     'base/webapi', 'base/replay',
+
+    'txnn/txnn', 'txnn/learner', 'txnn/nnai',
 
 	'warlock/projectiles/boomerangprojectile', 'warlock/projectiles/gravityprojectile',
 	'warlock/projectiles/meteorprojectile', 'warlock/projectiles/bouncerprojectile',

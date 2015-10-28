@@ -412,7 +412,7 @@ function Game:addPlayerAI(player, def)
         return
     end
 
-    local ai_controller = AIController:new(def)
+    local ai_controller = (def.controller_class or AIController):new(def)
 
     self.ai_controllers[player] = ai_controller
 end
@@ -425,7 +425,7 @@ function Game:removePlayerAI(player)
 end
 
 -- Adds a new player bot
-function Game:addBot(think_interval)
+function Game:addBot(ai_def)
     local player_count = PlayerResource:GetPlayerCount()
 
     print("Player count:", player_count)
@@ -440,7 +440,7 @@ function Game:addBot(think_interval)
             -- Check if the player is a bot and doesnt have a hero yet (sometimes they automatically get a hero while still in selection)
             if player_ent and not GAME.players[i] and PlayerResource:IsFakeClient(i) and not PlayerResource:HasSelectedHero(i) then
                 print("Created hero for AI with player id", i)
-                player_ent.ai_def = { think_interval = think_interval }
+                player_ent.ai_def = ai_def
                 CreateHeroForPlayer("npc_dota_hero_warlock", player_ent)
             end
         end
