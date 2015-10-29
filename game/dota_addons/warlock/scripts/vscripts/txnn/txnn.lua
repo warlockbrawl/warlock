@@ -1,7 +1,7 @@
 Layer = class()
-Layer.forward = function(input) return nil end
-Layer.backward = function(grad_output) return nil end
-Layer.learn = function(learn_rate) end
+function Layer:forward(input) return nil end
+function Layer:backward(grad_output) return nil end
+function Layer:learn(learn_rate) end
 
 ----------------------------------------
 -- Sequence contains multiple layers
@@ -83,13 +83,17 @@ end
 function LinearLayer:backward(grad_output)
     self.grad_output = grad_output
 
+    self.accum_grad_output = (self.accum_grad_output or Matrix:new(#grad_output, #grad_output[1], 0)) + grad_output
+
     self.grad_input =  self.weights * grad_output:transpose()
     return self.grad_input:transpose()
 end
 
 function LinearLayer:learn(learn_rate)
-    self.weights = self.weights - learn_rate * self.input:transpose() * self.grad_output
-    self.bias = self.bias - learn_rate * self.grad_output:transpose()
+    self.weights = self.weights - learn_rate * self.input:transpose() * self.accum_grad_output
+    self.bias = self.bias - learn_rate * self.accum_grad_output:transpose()
+
+    self.accum_grad_output = Matrix:new(#self.accum_grad_output, #self.accum_grad_output[1], 0)
 end
 
 ----------------------------------------

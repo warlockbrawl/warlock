@@ -25,7 +25,7 @@ function NNAI:init(def)
         end
     end
 
-    self.learner = Learner:new(17, 11, function(os, ns)
+    self.learner = QLearner:new(17, 11, function(os, ns)
         local r = 0
 
         local hp_diff = ns[1][7] - os[1][7]
@@ -33,25 +33,25 @@ function NNAI:init(def)
         local enemy_kb_diff = ns[1][17] - os[1][17]
 
         if hp_diff < 0 then
-            r = r + 10 * hp_diff
+            r = r + hp_diff
         end
 
         if enemy_hp_diff < 0 then
-            r = r - 10 * enemy_hp_diff
+            --r = r - 10 * enemy_hp_diff
         end
 
         if enemy_kb_diff > 0 then
-            r = r + 10 * enemy_kb_diff
+            --r = r + 10 * enemy_kb_diff
         end
 
         if self.pawn.on_lava then
             local walk_dir = Vector(ns[1][5], ns[1][6], 0):Normalized()
             local center_dir = Vector(ns[1][1], ns[1][2], 0):Normalized()
 
-            r = r - (walk_dir:Dot(center_dir) + 1) / self.think_interval
+            r = r - (walk_dir:Dot(center_dir) + 1) * self.think_interval
         end
 
-        r = r - 0.01 / self.think_interval
+        r = r + 0.1 * self.think_interval
 
         return r
     end)

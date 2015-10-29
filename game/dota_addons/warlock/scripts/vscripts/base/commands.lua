@@ -55,6 +55,23 @@ function Game:initCommands()
     	GAME:addBot { think_interval = 0.2, controller_class = NNAI }
 	end)
 
+    self:registerCommand("dumpweights", function()
+        for _, player in pairs(GAME.players) do
+            if player.is_bot then
+                local controller = GAME.ai_controllers[player]
+
+                if controller:instanceof(NNAI) then
+                    local linear_layer = controller.learner.model.layers[1]
+                    print("-- Params for player", player.id)
+                    print("Weights:", linear_layer.weights)
+                    print("Bias:", linear_layer.bias)
+                end
+            end
+
+            print("Dumped weights")
+        end
+    end)
+
     self:registerCommand("actorlist", function()
         local total_actors = 0
         for actor, _ in pairs(GAME.actors) do
