@@ -11,9 +11,20 @@ function NNAI:init(def)
     self.think_interval = def.think_interval
 
     self.action_size = 6
-    self.state_size = 17 + self.action_size
+    self.base_state_size = 17 -- How big a base state is
+    self.base_state_count = 5 -- How many base states to put into the state
+    self.state_size = self.base_state_count * self.base_state_size + self.action_size
+
+    self.base_states = {}
+    for i = 1, self.base_state_count do
+        self.base_states[i] = {}
+        for j = 1, self.base_state_size do
+            self.base_states[i][j] = 0
+        end
+    end
 
     self.learner = SDRRL:new(self.state_size, self.action_size, 128)
+
 
     -- Add think task
     self.ai_task = GAME:addTask {
@@ -57,28 +68,44 @@ function NNAI:destroy()
 end
 
 function NNAI:getState()
-    local state = {}
+    local base_state = {}
 
     self.enemy_pawn = self:getClosestEnemyPawn()
 
-    state[1] = self.pawn.location.x / 2000.0
-    state[2] = self.pawn.location.y / 2000.0
-    state[3] = self.pawn.health / 1000.0
-    state[4] = self.pawn.unit:GetMana() / 1000.0
-    state[5] = self.enemy_pawn and self.enemy_pawn.location.x / 2000.0 or 0
-    state[6] = self.enemy_pawn and self.enemy_pawn.location.y / 2000.0 or 0
-    state[7] = self.enemy_pawn and self.enemy_pawn.health / 1000.0 or 0
-    state[8] = self.pawn.unit:GetMana() / 1000.0
-    state[9] = self.enemy_pawn and self.enemy_pawn.velocity.x / 2000.0 or 0
-    state[10] = self.enemy_pawn and self.enemy_pawn.velocity.y / 2000.0 or 0
-    state[11] = self.enemy_pawn and self.enemy_pawn.walk_velocity.x / Config.PAWN_MOVE_SPEED or 0
-    state[12] = self.enemy_pawn and self.enemy_pawn.walk_velocity.y / Config.PAWN_MOVE_SPEED or 0
-    state[13] = self.fireball:GetCooldownTimeRemaining() / 4.8
-    state[14] = self.pawn.velocity.x / 2000.0
-    state[15] = self.pawn.velocity.y / 2000.0
-    state[16] = self.pawn.walk_velocity.x / Config.PAWN_MOVE_SPEED
-    state[17] = self.pawn.walk_velocity.y / Config.PAWN_MOVE_SPEED
+    base_state[1] = self.pawn.location.x / 2000.0
+    base_state[2] = self.pawn.location.y / 2000.0
+    base_state[3] = self.pawn.health / 1000.0
+    base_state[4] = self.pawn.unit:GetMana() / 1000.0
+    base_state[5] = self.enemy_pawn and self.enemy_pawn.location.x / 2000.0 or 0
+    base_state[6] = self.enemy_pawn and self.enemy_pawn.location.y / 2000.0 or 0
+    base_state[7] = self.enemy_pawn and self.enemy_pawn.health / 1000.0 or 0
+    base_state[8] = self.pawn.unit:GetMana() / 1000.0
+    base_state[9] = self.enemy_pawn and self.enemy_pawn.velocity.x / 2000.0 or 0
+    base_state[10] = self.enemy_pawn and self.enemy_pawn.velocity.y / 2000.0 or 0
+    base_state[11] = self.enemy_pawn and self.enemy_pawn.walk_velocity.x / Config.PAWN_MOVE_SPEED or 0
+    base_state[12] = self.enemy_pawn and self.enemy_pawn.walk_velocity.y / Config.PAWN_MOVE_SPEED or 0
+    base_state[13] = self.fireball:GetCooldownTimeRemaining() / 4.8
+    base_state[14] = self.pawn.velocity.x / 2000.0
+    base_state[15] = self.pawn.velocity.y / 2000.0
+    base_state[16] = self.pawn.walk_velocity.x / Config.PAWN_MOVE_SPEED
+    base_state[17] = self.pawn.walk_velocity.y / Config.PAWN_MOVE_SPEED
 
+    -- Add current state to base state list
+    for i = 1, self.base_state_count-1 do
+        self.base_states[i] = self.base_states[i+1]
+    end
+    self.base_states[self.base_state_count] = base_state
+
+    local state = {}
+
+    -- Copy base states to state
+    for i = 1, self.base_state_count do
+        for j = 1, self.base_state_size do
+            state[(i-1) * self.base_state_size + j] = self.base_states[i][j]
+        end
+    end
+
+    -- Add previous action to state
     for i = 1, self.action_size do
         state[self.state_size - self.action_size + i] = self.last_action[i]
     end
@@ -149,6 +176,8 @@ function NNAI:think()
         reward = reward + 0.01 * self.think_interval
     end
 
+    reward = reward * 10
+
     self.total_reward = (self.total_reward or 0) + reward
 
     print("Reward:", reward)
@@ -169,7 +198,10 @@ function NNAI:think()
         end
 
         print("Action:")
-        PrintTable(action)
+        for i = 1, self.action_size do
+            print(i, self.learner.actions[i].value, self.learner.actions[i].exp_value)
+        end
+
         self:executeAction(action)
 
         self.prev_state = state

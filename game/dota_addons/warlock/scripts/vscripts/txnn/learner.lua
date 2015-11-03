@@ -8,45 +8,20 @@ function Learner:update(new_state, reward, is_terminal) end
 
 -- SDRRL Learner
 SDRRL = class(Learner)
-SDRRL.SPARSITY = 0.03
+SDRRL.SPARSITY = 0.05
 SDRRL.DISCOUNT = 0.99
-SDRRL.Q_ALPHA = 0.03
+SDRRL.Q_ALPHA = 0.01
 SDRRL.ACTION_ALPHA = 0.01
 SDRRL.SURPRISE_LEARN_FACTOR = 4.0
 SDRRL.AVG_SURPRISE_DECAY = 0.01
 SDRRL.GAMMA_LAMBDA = 0.98
-SDRRL.GATE_BIAS_ALPHA = 0.03
-SDRRL.GATE_FORWARD_ALPHA = 0.03
+SDRRL.GATE_BIAS_ALPHA = 0.01
+SDRRL.GATE_FORWARD_ALPHA = 0.01
 SDRRL.EXPLORATION_STDDEV = 0.04
 SDRRL.EXPLORATION_BREAK = 0.01
 SDRRL.INIT_THRESHOLD = 0.1
-SDRRL.ACTION_ITER_COUNT = 25
+SDRRL.ACTION_ITER_COUNT = 64
 SDRRL.ACTION_DERIVE_ALPHA = 0.05
-
-SDRRL.generate = false
-SDRRL.z0 = 0
-SDRRL.z1 = 0
-
-local function rand_normal(mean, stddev)
-    SDRRL.generate = not SDRRL.generate
-
-    if not SDRRL.generate then
-        return SDRRL.z1 * stddev + mean
-    end
-
-    local u1 = 0
-    local u2 = 0
-    repeat
-        u1 = math.random()
-        u2 = math.random()
-    until u1 > 0.0001
-
-    local x = math.sqrt(-2.0 * math.log(u1)) 
-
-	SDRRL.z0 = x * math.cos(2 * math.pi * u2)
-	SDRRL.z1 = x * math.sin(2 * math.pi * u2);
-	return SDRRL.z0 * stddev + mean;
-end
 
 local function sigmoid(x)
 	return 1.0 / (1 + math.exp(-x))
@@ -143,20 +118,36 @@ function SDRRL:update(inputs, reward, is_terminal)
 		end
 	end
 
-	-- Calculate cell states
+	-- Calculate cell states, make the highest activated cells active
 	local num_active = SDRRL.SPARSITY * self.cell_count
+
+	local highest_cells = {}
+
 	for i, cell in pairs(self.cells) do
-		local num_higher = 0
-		
-		for j, other_cell in pairs(self.cells) do
-			if cell ~= other_cell and other_cell.excitation >= cell.excitation then
-				num_higher = num_higher + 1
+		local higher_index = nil
+		for j = 1, num_active do
+			if highest_cells[j] and cell.excitation < highest_cells[j].excitation then
+				break
 			end
+
+			higher_index = j
 		end
-		
-		cell.state = num_higher < num_active and 1.0 or 0.0
+
+		if higher_index then
+			for j = 1, higher_index - 1 do
+				highest_cells[j] = highest_cells[j+1]
+			end
+			highest_cells[higher_index] = cell
+		end
+
+		cell.state = 0
+	end
+
+	for _, cell in pairs(highest_cells) do
+		cell.state = 1
 	end
 	
+	-- Calculate anti-actions
 	for action_index, anti_action in pairs(self.anti_actions) do
 		anti_action.value = 1.0 - self.actions[action_index].value
 	end
