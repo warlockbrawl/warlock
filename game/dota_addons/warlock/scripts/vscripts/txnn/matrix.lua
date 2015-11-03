@@ -1255,7 +1255,9 @@ end
 matrix.symbol = symbol
 
 -- return matrix
-return matrix
+--return matrix
+
+Matrix = matrix
 
 --///////////////--
 --// chillcode //--

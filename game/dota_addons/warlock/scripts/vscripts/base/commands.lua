@@ -52,7 +52,7 @@ function Game:initCommands()
     end)
 
     self:registerCommand("addlearningbot", function()
-    	GAME:addBot { think_interval = 0.2, controller_class = NNAI }
+    	GAME:addBot { think_interval = 1.0, controller_class = NNAI }
 	end)
 
     self:registerCommand("dumpweights", function()
@@ -61,14 +61,78 @@ function Game:initCommands()
                 local controller = GAME.ai_controllers[player]
 
                 if controller:instanceof(NNAI) then
-                    local linear_layer = controller.learner.model.layers[1]
-                    print("-- Params for player", player.id)
-                    print("Weights:", linear_layer.weights)
-                    print("Bias:", linear_layer.bias)
+                    controller.learner:saveParams()
                 end
             end
 
             print("Dumped weights")
+        end
+    end)
+
+    self:registerCommand("printrewards", function()
+        for _, player in pairs(GAME.players) do
+            if player.is_bot then
+                local controller = GAME.ai_controllers[player]
+
+                if controller:instanceof(NNAI) then
+                    print("-- Total rewards:")
+                    PrintTable(controller.total_rewards)
+                    print("-- Moving AVG over 5 datapoints:")
+                    for i = 1, #controller.total_rewards-5 do
+                        local avg = 0
+                        for j = 1, 5 do
+                            avg = avg + controller.total_rewards[i + j]
+                        end
+                        avg = avg / 5
+                        print(i, avg)
+                    end
+                end
+            end
+
+            print("Dumped weights")
+        end
+    end)
+
+    self:registerCommand("printq", function()
+        for _, player in pairs(GAME.players) do
+            if player.is_bot then
+                local controller = GAME.ai_controllers[player]
+
+                if controller:instanceof(NNAI) then
+                    print("-- Q Values:")
+                    PrintTable(controller.q_history)
+                end
+            end
+
+            print("Dumped weights")
+        end
+    end)
+
+    self:registerCommand("explore", function()
+        for _, player in pairs(GAME.players) do
+            if player.is_bot then
+                local controller = GAME.ai_controllers[player]
+
+                if controller:instanceof(NNAI) then
+                    controller.learner.exploration_chance = 0.2
+                end
+            end
+
+            print("Turned off exploration")
+        end
+    end)
+
+    self:registerCommand("noexplore", function()
+        for _, player in pairs(GAME.players) do
+            if player.is_bot then
+                local controller = GAME.ai_controllers[player]
+
+                if controller:instanceof(NNAI) then
+                    controller.learner.exploration_chance = 0.0
+                end
+            end
+
+            print("Turned off exploration")
         end
     end)
 
