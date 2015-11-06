@@ -22,6 +22,7 @@ SDRRL.EXPLORATION_BREAK = 0.01
 SDRRL.INIT_THRESHOLD = 0.1
 SDRRL.ACTION_ITER_COUNT = 64
 SDRRL.ACTION_DERIVE_ALPHA = 0.05
+SDRRL.GATE_SOLVE_ITER_COUNT = 10
 
 local function sigmoid(x)
 	return 1.0 / (1 + math.exp(-x))
@@ -109,44 +110,56 @@ function SDRRL:init(state_size, action_size, cell_count)
 end
 
 function SDRRL:update(inputs, reward, is_terminal)
-	-- Calculate cell excitement
-	for i, cell in pairs(self.cells) do
-		cell.excitation = -cell.threshold
+    for iter = 1, SDRRL.GATE_SOLVE_ITER_COUNT do
+	    -- Calculate cell excitement
+	    for i, cell in pairs(self.cells) do
+		    cell.excitation = -cell.threshold
 		
-		for j, input in pairs(inputs) do
-			cell.excitation = cell.excitation + cell.forward_conn[j] * input
-		end
-	end
+		    for j, input in pairs(inputs) do
+			    cell.excitation = cell.excitation + cell.forward_conn[j] * input
+		    end
+	    end
 
-	-- Calculate cell states, make the highest activated cells active
-	local num_active = SDRRL.SPARSITY * self.cell_count
+        -- Calculate cell states, make the highest activated cells active
+	    local num_active = SDRRL.SPARSITY * self.cell_count
+	    local highest_cells = {}
 
-	local highest_cells = {}
+	    for i, cell in pairs(self.cells) do
+		    local higher_index = nil
+		    for j = 1, num_active do
+			    if highest_cells[j] and cell.excitation < highest_cells[j].excitation then
+				    break
+			    end
 
-	for i, cell in pairs(self.cells) do
-		local higher_index = nil
-		for j = 1, num_active do
-			if highest_cells[j] and cell.excitation < highest_cells[j].excitation then
-				break
-			end
+			    higher_index = j
+		    end
 
-			higher_index = j
-		end
+		    if higher_index then
+			    for j = 1, higher_index - 1 do
+				    highest_cells[j] = highest_cells[j+1]
+			    end
+			    highest_cells[higher_index] = cell
+		    end
 
-		if higher_index then
-			for j = 1, higher_index - 1 do
-				highest_cells[j] = highest_cells[j+1]
-			end
-			highest_cells[higher_index] = cell
-		end
+		    cell.state = 0
+	    end
 
-		cell.state = 0
-	end
+	    for _, cell in pairs(highest_cells) do
+		    cell.state = 1
+	    end
 
-	for _, cell in pairs(highest_cells) do
-		cell.state = 1
-	end
-	
+        -- Reconstruct
+	    for i, _ in pairs(self.reconstr_errors) do
+		    local reconstr = 0.0
+		
+		    for _, cell in pairs(self.cells) do
+			    reconstr = reconstr + cell.forward_conn[i] * cell.state
+		    end
+		
+		    self.reconstr_errors[i] = inputs[i] - reconstr
+	    end
+    end
+
 	-- Calculate anti-actions
 	for action_index, anti_action in pairs(self.anti_actions) do
 		anti_action.value = 1.0 - self.actions[action_index].value
@@ -198,7 +211,7 @@ function SDRRL:update(inputs, reward, is_terminal)
 	end
 	
 	-- Exploration
-	for _, action in pairs(self.all_actions) do
+	for _, action in pairs(self.actions) do
 		if math.random() < SDRRL.EXPLORATION_BREAK then
 			action.exp_value = math.random()
 		else
@@ -207,6 +220,11 @@ function SDRRL:update(inputs, reward, is_terminal)
 			-- action.exp_value = math.min(1, math.max(0, action.value + SDRRL.EXPLORATION_STDDEV * 2 * (math.random() - 0.5)))
 		end
 	end
+
+    -- Set anti-action stuff
+    for action_index, action in pairs(self.anti_actions) do
+        action.exp_value = 1.0 - self.actions[action_index]
+    end
 	
 	-- Forward
 	local q = 0.0
@@ -248,18 +266,7 @@ function SDRRL:update(inputs, reward, is_terminal)
 		cell.q_conn.weight = cell.q_conn.weight + q_alpha_td_error * cell.q_conn.trace
 		cell.q_conn.trace = cell.q_conn.trace * SDRRL.GAMMA_LAMBDA + cell.action_state
 	end
-	
-	-- Reconstruct
-	for i, _ in pairs(self.reconstr_errors) do
-		local reconstr = 0.0
-		
-		for _, cell in pairs(self.cells) do
-			reconstr = reconstr + cell.forward_conn[i] * cell.state
-		end
-		
-		self.reconstr_errors[i] = inputs[i] - reconstr
-	end
-	
+
 	-- Learn SDRs
 	for _, cell in pairs(self.cells) do
 		if cell.state > 0.0 then
