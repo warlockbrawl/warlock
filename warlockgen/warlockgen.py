@@ -155,3 +155,13 @@ with open("../game/dota_addons/warlock/panorama/localization/addon_english.txt",
 
 	f.write(template_addon_english_panorama % { "strings": strings })
 	
+# Create Lua abilities
+template_lua_ability = ""
+
+with open("template_lua_ability.lua", "r") as f:
+	template_lua_ability = f.read()
+
+for spell in spells:
+	spell_name = "warlock_" + spell.name
+	with open("../game/dota_addons/warlock/scripts/vscripts/luaabils/" + spell_name + ".lua", "w+") as f:
+		f.write(template_lua_ability % { "spell_name": spell_name, })
