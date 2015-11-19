@@ -10,26 +10,26 @@ function Learner:update(new_state, reward, is_terminal) end
 SDRRL = class(Learner)
 SDRRL.SPARSITY = 0.05
 SDRRL.DISCOUNT = 0.99
-SDRRL.Q_ALPHA = 0.01
-SDRRL.ACTION_ALPHA = 0.01
+SDRRL.Q_ALPHA = 0.003
+SDRRL.ACTION_ALPHA = 0.1
 SDRRL.SURPRISE_LEARN_FACTOR = 4.0
 SDRRL.AVG_SURPRISE_DECAY = 0.01
 SDRRL.GAMMA_LAMBDA = 0.98
-SDRRL.GATE_BIAS_ALPHA = 0.01
-SDRRL.GATE_FORWARD_ALPHA = 0.01
+SDRRL.GATE_BIAS_ALPHA = 0.1
+SDRRL.GATE_FORWARD_ALPHA = 0.1
 SDRRL.EXPLORATION_STDDEV = 0.04
 SDRRL.EXPLORATION_BREAK = 0.01
 SDRRL.INIT_THRESHOLD = 0.1
 SDRRL.ACTION_ITER_COUNT = 64
 SDRRL.ACTION_DERIVE_ALPHA = 0.05
-SDRRL.GATE_SOLVE_ITER_COUNT = 10
+SDRRL.GATE_SOLVE_ITER_COUNT = 32
 
 local function sigmoid(x)
 	return 1.0 / (1 + math.exp(-x))
 end
 
 local function rand_weight()
-	return 0.2 * 2 * (math.random() - 0.5)
+	return 1.0 * 2 * (math.random() - 0.5)
 end
 
 function SDRRL:init(state_size, action_size, cell_count)
@@ -116,7 +116,9 @@ function SDRRL:update(inputs, reward, is_terminal)
 		    cell.excitation = -cell.threshold
 		
 		    for j, input in pairs(inputs) do
-			    cell.excitation = cell.excitation + cell.forward_conn[j] * input
+			    -- cell.excitation = cell.excitation + cell.forward_conn[j] * input
+                local diff = cell.forward_conn[j] - input
+                cell.excitation = cell.excitation - diff * diff
 		    end
 	    end
 
@@ -159,6 +161,15 @@ function SDRRL:update(inputs, reward, is_terminal)
 		    self.reconstr_errors[i] = inputs[i] - reconstr
 	    end
     end
+
+    print("Reconstr errs:")
+    local avg_reconstr_err = 0.0
+    for i, re in pairs(self.reconstr_errors) do
+	    avg_reconstr_err = avg_reconstr_err + math.abs(re)
+        print(i, re)
+    end
+    avg_reconstr_err = avg_reconstr_err / self.state_size
+    print("Avg reconstr err:", avg_reconstr_err)
 
 	-- Calculate anti-actions
 	for action_index, anti_action in pairs(self.anti_actions) do
@@ -223,7 +234,7 @@ function SDRRL:update(inputs, reward, is_terminal)
 
     -- Set anti-action stuff
     for action_index, action in pairs(self.anti_actions) do
-        action.exp_value = 1.0 - self.actions[action_index]
+        action.exp_value = 1.0 - self.actions[action_index].exp_value
     end
 	
 	-- Forward
@@ -247,6 +258,8 @@ function SDRRL:update(inputs, reward, is_terminal)
 	local td_error = reward + SDRRL.DISCOUNT * q - self.prev_q
 	local q_alpha_td_error = SDRRL.Q_ALPHA * td_error
 	local action_alpha_td_error = SDRRL.ACTION_ALPHA * td_error
+
+    print("TD Error:", td_error)
 	
 	local surprise = td_error * td_error
 	local learn_pattern = sigmoid(SDRRL.SURPRISE_LEARN_FACTOR * (surprise - self.avg_surprise))
@@ -275,6 +288,7 @@ function SDRRL:update(inputs, reward, is_terminal)
 			end
 		end
 		
+        -- Make active cells be less likely to be active and vice versa
 		cell.threshold = cell.threshold + SDRRL.GATE_BIAS_ALPHA * (cell.state - SDRRL.SPARSITY)
 	end
 	

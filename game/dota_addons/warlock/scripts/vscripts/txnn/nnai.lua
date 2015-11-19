@@ -23,7 +23,7 @@ function NNAI:init(def)
         end
     end
 
-    self.learner = SDRRL:new(self.state_size, self.action_size, 128)
+    self.learner = SDRRL:new(self.state_size, self.action_size, 64)
 
 
     -- Add think task
@@ -72,21 +72,23 @@ function NNAI:getState()
 
     self.enemy_pawn = self:getClosestEnemyPawn()
 
-    base_state[1] = self.pawn.location.x / 2000.0
-    base_state[2] = self.pawn.location.y / 2000.0
+    local SPATIAL_NORM_CONST = 2500.0
+
+    base_state[1] = self.pawn.location.x / SPATIAL_NORM_CONST
+    base_state[2] = self.pawn.location.y / SPATIAL_NORM_CONST
     base_state[3] = self.pawn.health / 1000.0
     base_state[4] = self.pawn.unit:GetMana() / 1000.0
-    base_state[5] = self.enemy_pawn and self.enemy_pawn.location.x / 2000.0 or 0
-    base_state[6] = self.enemy_pawn and self.enemy_pawn.location.y / 2000.0 or 0
+    base_state[5] = self.enemy_pawn and self.enemy_pawn.location.x / SPATIAL_NORM_CONST or 0
+    base_state[6] = self.enemy_pawn and self.enemy_pawn.location.y / SPATIAL_NORM_CONST or 0
     base_state[7] = self.enemy_pawn and self.enemy_pawn.health / 1000.0 or 0
     base_state[8] = self.pawn.unit:GetMana() / 1000.0
-    base_state[9] = self.enemy_pawn and self.enemy_pawn.velocity.x / 2000.0 or 0
-    base_state[10] = self.enemy_pawn and self.enemy_pawn.velocity.y / 2000.0 or 0
+    base_state[9] = self.enemy_pawn and self.enemy_pawn.velocity.x / SPATIAL_NORM_CONST or 0
+    base_state[10] = self.enemy_pawn and self.enemy_pawn.velocity.y / SPATIAL_NORM_CONST or 0
     base_state[11] = self.enemy_pawn and self.enemy_pawn.walk_velocity.x / Config.PAWN_MOVE_SPEED or 0
     base_state[12] = self.enemy_pawn and self.enemy_pawn.walk_velocity.y / Config.PAWN_MOVE_SPEED or 0
     base_state[13] = self.fireball:GetCooldownTimeRemaining() / 4.8
-    base_state[14] = self.pawn.velocity.x / 2000.0
-    base_state[15] = self.pawn.velocity.y / 2000.0
+    base_state[14] = self.pawn.velocity.x / SPATIAL_NORM_CONST
+    base_state[15] = self.pawn.velocity.y / SPATIAL_NORM_CONST
     base_state[16] = self.pawn.walk_velocity.x / Config.PAWN_MOVE_SPEED
     base_state[17] = self.pawn.walk_velocity.y / Config.PAWN_MOVE_SPEED
 
@@ -172,18 +174,34 @@ function NNAI:think()
         end
     end
 
+    local enemy_pawn = self:getClosestEnemyPawn()
+    for actor, _ in pairs(GAME.actors) do
+        if actor:instanceof(Projectile) and actor.owner == self.player then
+            local dst_to_enemy = (enemy_pawn.location - actor.location):Length2D()
+            if dst_to_enemy < 200 then
+                reward = reward + 2 * self.think_interval
+            end
+        end
+    end
+
     if not self.pawn.on_lava then
         reward = reward + 0.01 * self.think_interval
     end
 
-    reward = reward * 10
-
+    -- reward = reward * 10
+    
     self.total_reward = (self.total_reward or 0) + reward
 
-    print("Reward:", reward)
+    --print("Reward:", reward)
 
     -- Inform the learner of the new state
     self.learner:update(state, reward, is_terminal)
+
+    local state_str = ""
+    for _, cell in pairs(self.learner.cells) do
+        state_str = state_str .. tostring(cell.state)
+    end
+    print("State:", state_str)
 
     table.insert(self.q_episode, self.learner.prev_q)
 
@@ -197,10 +215,12 @@ function NNAI:think()
             self.last_action[i] = action[i]
         end
 
+        --[[
         print("Action:")
         for i = 1, self.action_size do
             print(i, self.learner.actions[i].value, self.learner.actions[i].exp_value)
         end
+        --]]
 
         self:executeAction(action)
 

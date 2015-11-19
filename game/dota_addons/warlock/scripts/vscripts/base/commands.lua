@@ -55,20 +55,6 @@ function Game:initCommands()
     	GAME:addBot { think_interval = 1.0, controller_class = NNAI }
 	end)
 
-    self:registerCommand("dumpweights", function()
-        for _, player in pairs(GAME.players) do
-            if player.is_bot then
-                local controller = GAME.ai_controllers[player]
-
-                if controller:instanceof(NNAI) then
-                    controller.learner:saveParams()
-                end
-            end
-
-            print("Dumped weights")
-        end
-    end)
-
     self:registerCommand("printrewards", function()
         for _, player in pairs(GAME.players) do
             if player.is_bot then
@@ -76,14 +62,15 @@ function Game:initCommands()
 
                 if controller:instanceof(NNAI) then
                     print("-- Total rewards:")
+                    local n = 10
                     PrintTable(controller.total_rewards)
-                    print("-- Moving AVG over 5 datapoints:")
-                    for i = 1, #controller.total_rewards-5 do
+                    print("-- Moving AVG over", n, "datapoints:")
+                    for i = 1, #controller.total_rewards-n do
                         local avg = 0
-                        for j = 1, 5 do
+                        for j = 1, n do
                             avg = avg + controller.total_rewards[i + j]
                         end
-                        avg = avg / 5
+                        avg = avg / n
                         print(i, avg)
                     end
                 end
@@ -105,6 +92,23 @@ function Game:initCommands()
             end
 
             print("Dumped weights")
+        end
+    end)
+
+    self:registerCommand("printfwconns", function()
+        for _, player in pairs(GAME.players) do
+            if player.is_bot then
+                local controller = GAME.ai_controllers[player]
+
+                print("Forward conns:")
+                if controller:instanceof(NNAI) then
+                    for cell_idx, cell in pairs(controller.learner.cells) do
+                        for conn_idx, f_conn in pairs(cell.forward_conn) do
+                            print(cell_idx, conn_idx, f_conn)
+                        end
+                    end
+                end
+            end
         end
     end)
 
