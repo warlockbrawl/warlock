@@ -5,6 +5,7 @@
 
 "CustomHeroList"
 {
-	//"npc_dota_hero_invoker"		"1"
 	"npc_dota_hero_warlock"		"1"
+	"npc_dota_hero_invoker"		"1"
+	"npc_dota_hero_rubick"		"1"
 }

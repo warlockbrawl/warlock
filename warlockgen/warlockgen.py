@@ -1,9 +1,10 @@
 from shutil import copyfile
 
 class WarlockSpell:
-	def __init__(self, name, description):
+	def __init__(self, name, description, cast_anim):
 		self.name = name
 		self.description = description
+		self.cast_anim = cast_anim
 		
 class WarlockItem:
 	def __init__(self, name, description, levels, stats):
@@ -32,28 +33,28 @@ class WarlockItem:
 spells = []
 items = []
 
-spells.append(WarlockSpell("lightning", "Cast a lightning that instantly strikes the first obstacle on its path"))
-spells.append(WarlockSpell("teleport", "Instantly alter your location"))
-spells.append(WarlockSpell("drain", "Cast a projectile that can change direction, grant a slow debuff and steal life of its target"))
-spells.append(WarlockSpell("meteor", "Summons a meteor to strike from the skies"))
-spells.append(WarlockSpell("rush", "Enter a focused state where half damage taken is absorbed and converted into movement speed"))
-spells.append(WarlockSpell("boomerang", "Cast a magically enhanced shuriken which will return to its caster"))
-spells.append(WarlockSpell("thrust", "Charge toward target point and deal damage to enemies on impact"))
-spells.append(WarlockSpell("cluster", "Cast four lesser fireballs simultaneously"))
-spells.append(WarlockSpell("windwalk", "Fade and gain high movement speed, enabling a charge attack for a short duration"))
-spells.append(WarlockSpell("shield", "Activates a shield that will deflect projectile spells"))
-spells.append(WarlockSpell("grip", "Cast a missile that immobilizes its target"))
-spells.append(WarlockSpell("homing", "Cast a bolt of energy which will homes in on its target"))
-spells.append(WarlockSpell("swap", "Cast missile that swaps location with its target"))
-spells.append(WarlockSpell("bouncer", "Cast missile which will bounce between nearby Warlocks"))
-spells.append(WarlockSpell("gravity", "Cast an enchanted orb that will pull enemies with gravitational forces"))
-spells.append(WarlockSpell("warpzone", "Create a time sphere that slows time in an area for any missiles"))
-spells.append(WarlockSpell("magnetize", "Creates a missile that magnetizes its target repelling or attracting enemy projectiles"))
-spells.append(WarlockSpell("rockpillar", "Spawn a rock pillar at the target location that blocks players and projectiles"))
-spells.append(WarlockSpell("alteration", "Alters the position with the next enemy projectile coming close to hitting you"))
-spells.append(WarlockSpell("link", "Shoot a magical link which can latch on enemies or allies and pull them to you"))
-spells.append(WarlockSpell("splitter", "Cast a projectile which splits into minor missiles"))
-spells.append(WarlockSpell("snowball", "Spawns a snowball which will drag other players with it and explode"))
+spells.append(WarlockSpell("lightning", "Cast a lightning that instantly strikes the first obstacle on its path", 3))
+spells.append(WarlockSpell("teleport", "Instantly alter your location", 1))
+spells.append(WarlockSpell("drain", "Cast a projectile that can change direction, grant a slow debuff and steal life of its target", 2))
+spells.append(WarlockSpell("meteor", "Summons a meteor to strike from the skies", 4))
+spells.append(WarlockSpell("rush", "Enter a focused state where half damage taken is absorbed and converted into movement speed", 1))
+spells.append(WarlockSpell("boomerang", "Cast a magically enhanced shuriken which will return to its caster", 2))
+spells.append(WarlockSpell("thrust", "Charge toward target point and deal damage to enemies on impact", 2))
+spells.append(WarlockSpell("cluster", "Cast four lesser fireballs simultaneously", 2))
+spells.append(WarlockSpell("windwalk", "Fade and gain high movement speed, enabling a charge attack for a short duration", 1))
+spells.append(WarlockSpell("shield", "Activates a shield that will deflect projectile spells", 1))
+spells.append(WarlockSpell("grip", "Cast a missile that immobilizes its target", 2))
+spells.append(WarlockSpell("homing", "Cast a bolt of energy which will homes in on its target", 2))
+spells.append(WarlockSpell("swap", "Cast missile that swaps location with its target", 1))
+spells.append(WarlockSpell("bouncer", "Cast missile which will bounce between nearby Warlocks", 2))
+spells.append(WarlockSpell("gravity", "Cast an enchanted orb that will pull enemies with gravitational forces", 2))
+spells.append(WarlockSpell("warpzone", "Create a time sphere that slows time in an area for any missiles", 2))
+spells.append(WarlockSpell("magnetize", "Creates a missile that magnetizes its target repelling or attracting enemy projectiles", 2))
+spells.append(WarlockSpell("rockpillar", "Spawn a rock pillar at the target location that blocks players and projectiles", 2))
+spells.append(WarlockSpell("alteration", "Alters the position with the next enemy projectile coming close to hitting you", 1))
+spells.append(WarlockSpell("link", "Shoot a magical link which can latch on enemies or allies and pull them to you", 2))
+spells.append(WarlockSpell("splitter", "Cast a projectile which splits into minor missiles", 2))
+spells.append(WarlockSpell("snowball", "Spawns a snowball which will drag other players with it and explode", 2))
 
 # Items		
 items.append(WarlockItem("ring_of_health", "Increases maximum HP", 5, { "hp_bonus": "100 190 270 340 400" }))
@@ -164,4 +165,4 @@ with open("template_lua_ability.lua", "r") as f:
 for spell in spells:
 	spell_name = "warlock_" + spell.name
 	with open("../game/dota_addons/warlock/scripts/vscripts/luaabils/" + spell_name + ".lua", "w+") as f:
-		f.write(template_lua_ability % { "spell_name": spell_name, })
+		f.write(template_lua_ability % { "spell_name": spell_name, "cast_anim": spell.cast_anim })

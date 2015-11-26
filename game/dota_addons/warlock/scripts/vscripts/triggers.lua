@@ -6,9 +6,9 @@ end
 -- Function executed by Warlock Lua abilities
 function CastLuaAbility(abil)
 	local event = {}
-	event.ability = self
-	event.caster = self:GetCaster()
-	event.target_points = { self:GetCursorPosition() }
+	event.ability = abil
+	event.caster = abil:GetCaster()
+	event.target_points = { abil:GetCursorPosition() }
 
 	CastInfo:handleAbilityEvent(event)
 end

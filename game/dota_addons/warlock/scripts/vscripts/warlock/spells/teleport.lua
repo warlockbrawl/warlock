@@ -2,6 +2,7 @@
 Teleport = Spell:new{id='warlock_teleport'}
 Teleport.source_effect = "teleport_source"
 Teleport.target_effect = "teleport_target"
+Teleport.cast_sound = "Teleport.Cast"
 
 function Teleport:onCast(cast_info)
 	local actor = cast_info.caster_actor
@@ -20,7 +21,7 @@ function Teleport:onCast(cast_info)
 	end
 	
 	target.z = start.z
-	
+
 	actor.location = target
 	actor.velocity = actor.velocity * 0.8 --reduce vel by 20 percent
     actor:_updateLocation() -- Set the abs origin after modifying the location so the walk vel is right
@@ -30,6 +31,8 @@ function Teleport:onCast(cast_info)
 	
 	Effect:create(cast_info:attribute('source_effect'), { location=start })
 	Effect:create(cast_info:attribute('target_effect'), { location=target })
+
+	actor.unit:EmitSound(cast_info:attribute("cast_sound"))
 end
 
 -- effects

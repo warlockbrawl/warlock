@@ -246,7 +246,7 @@
 		"AbilityCastPoint"				"0.2"
 		"AbilityCooldown"				"4.8 4.8 4.8 4.8 4.8"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
+		"AbilityCastAnimation"			"ACT_DOTA_ATTACK"
 		"MaxLevel"						"5"
 		"AbilityManaCost"				"0"
 
@@ -299,7 +299,7 @@
 		"AbilityCastPoint"				"0.2"
 		"AbilityCooldown"				"24.0"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
+		"AbilityCastAnimation"			"ACT_DOTA_ATTACK"
 		"MaxLevel"						"1"
 		"AbilityManaCost"				"0"
 
@@ -532,17 +532,17 @@
 			"01"
 			{
 				"var_type" "FIELD_FLOAT"
-				"debuff_factor" "0.25 0.30"
+				"kb_reduction" "0.15 0.15"
 			}
 			"02"
 			{
 				"var_type" "FIELD_FLOAT"
-				"hp_bonus" "100 200"
+				"debuff_factor" "0.25 0.30"
 			}
 			"03"
 			{
 				"var_type" "FIELD_FLOAT"
-				"kb_reduction" "0.15 0.15"
+				"hp_bonus" "100 200"
 			}
 
 		}
@@ -576,17 +576,17 @@
 			"01"
 			{
 				"var_type" "FIELD_FLOAT"
-				"debuff_factor" "0.25 0.30"
+				"kb_reduction" "0.15 0.15"
 			}
 			"02"
 			{
 				"var_type" "FIELD_FLOAT"
-				"hp_bonus" "100 200"
+				"debuff_factor" "0.25 0.30"
 			}
 			"03"
 			{
 				"var_type" "FIELD_FLOAT"
-				"kb_reduction" "0.15 0.15"
+				"hp_bonus" "100 200"
 			}
 
 		}

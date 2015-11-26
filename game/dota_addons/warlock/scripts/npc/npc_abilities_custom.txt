@@ -10,34 +10,17 @@
 	//Spells
 	"warlock_boomerang"
 	{
-		"ID"							"8820"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
-		"BaseClass"						"ability_datadriven"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"luaabils/warlock_boomerang"
 		"AbilityTextureName"			"bounty_hunter_shuriken_toss"
 
 		// Stats
-		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"GLOBAL"
 		"AbilityCastPoint"				"0.2"
 		"AbilityCooldown"				"16.0 13.9 12.5 11.7 11.0 10.3 9.6"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
 		"MaxLevel"						"7"
 		"AbilityManaCost"				"0"
-
-		"precache"
-		{
-		}
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"				"POINT"
-				"ScriptFile"			"scripts/vscripts/triggers.lua"
-				"Function"				"cast"
-			}
-		}
 
 		// Attributes
 		"AbilitySpecial"
@@ -57,7 +40,7 @@
 			"03"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"cooldown2"			"16.0 13.9 12.5 11.7 11.0 10.3 9.6"
+				"cooldown2"				"16.0 13.9 12.5 11.7 11.0 10.3 9.6"
 			}
 			
 			"04"
@@ -65,41 +48,22 @@
 				"var_type"				"FIELD_INTEGER"
 				"upgrade_cost"			"7 8 9 10 11 12"
 			}
-			
-
 		}
 	}
 
 	"warlock_lightning"
 	{
-		"ID"							"8821"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
-		"BaseClass"						"ability_datadriven"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"luaabils/warlock_lightning"
 		"AbilityTextureName"			"lina_laguna_blade"
 
 		// Stats
-		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"GLOBAL"
 		"AbilityCastPoint"				"0.2"
 		"AbilityCooldown"				"16.5 15.5 15 14.5 14 13.5 13"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_2"
 		"MaxLevel"						"7"
 		"AbilityManaCost"				"0"
-
-		"precache"
-		{
-		}
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"				"POINT"
-				"ScriptFile"			"scripts/vscripts/triggers.lua"
-				"Function"				"cast"
-			}
-		}
 
 		// Attributes
 		"AbilitySpecial"
@@ -130,34 +94,17 @@
 	
 	"warlock_homing"
 	{
-		"ID"							"8822"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
-		"BaseClass"						"ability_datadriven"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"luaabils/warlock_homing"
 		"AbilityTextureName"			"puck_illusory_orb"
 
 		// Stats
-		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"GLOBAL"
 		"AbilityCastPoint"				"0.2"
 		"AbilityCooldown"				"16.5 14.5 13 12 11 10 9"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
 		"MaxLevel"						"7"
 		"AbilityManaCost"				"0"
-
-		"precache"
-		{
-		}
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"				"POINT"
-				"ScriptFile"			"scripts/vscripts/triggers.lua"
-				"Function"				"cast"
-			}
-		}
 
 		// Attributes
 		"AbilitySpecial"
@@ -187,34 +134,17 @@
 
 	"warlock_cluster"
 	{
-		"ID"							"8830"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
-		"BaseClass"						"ability_datadriven"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"luaabils/warlock_cluster"
 		"AbilityTextureName"			"ember_spirit_searing_chains"
 
 		// Stats
-		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"GLOBAL"
 		"AbilityCastPoint"				"0.2"
 		"AbilityCooldown"				"15.50 14.75 14.00 13.25 12.50 11.75 11.00"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
 		"MaxLevel"						"7"
 		"AbilityManaCost"				"0"
-
-		"precache"
-		{
-		}
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"				"POINT"
-				"ScriptFile"			"scripts/vscripts/triggers.lua"
-				"Function"				"cast"
-			}
-		}
 
 		// Attributes
 		"AbilitySpecial"
@@ -245,34 +175,17 @@
 	
 	"warlock_bouncer"
 	{
-		"ID"							"8831"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
-		"BaseClass"						"ability_datadriven"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"luaabils/warlock_bouncer"
 		"AbilityTextureName"			"viper_poison_attack"
 
 		// Stats
-		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"GLOBAL"
 		"AbilityCastPoint"				"0.2"
 		"AbilityCooldown"				"19 18 17 16 15 14 13"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
 		"MaxLevel"						"7"
 		"AbilityManaCost"				"0"
-
-		"precache"
-		{
-		}
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"				"POINT"
-				"ScriptFile"			"scripts/vscripts/triggers.lua"
-				"Function"				"cast"
-			}
-		}
 
 		// Attributes
 		"AbilitySpecial"
@@ -305,34 +218,17 @@
 	
 	"warlock_drain"
 	{
-		"ID"							"8844"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
-		"BaseClass"						"ability_datadriven"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"luaabils/warlock_drain"
 		"AbilityTextureName"			"necrolyte_death_pulse"
 
 		// Stats
-		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"GLOBAL"
 		"AbilityCastPoint"				"0.2"
 		"AbilityCooldown"				"22 21 20 19 18 17 16"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
 		"MaxLevel"						"7"
 		"AbilityManaCost"				"0"
-
-		"precache"
-		{
-		}
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"				"POINT"
-				"ScriptFile"			"scripts/vscripts/triggers.lua"
-				"Function"				"cast"
-			}
-		}
 
 		// Attributes
 		"AbilitySpecial"
@@ -365,29 +261,17 @@
 
 	"warlock_windwalk"
 	{
-		"ID"							"8840"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE" //DOTA_ABILITY_BEHAVIOR_CHANNELLED
-		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"elder_titan_echo_stomp_spirit" //doom_bringer_doom"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"luaabils/warlock_windwalk"
+		"AbilityTextureName"			"elder_titan_echo_stomp_spirit"
 
 		// Stats
-		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"0"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"29.0 26.0 23.5 21.0 19.5 18.5 17.5"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-		"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
 		"MaxLevel"						"7"
 		"AbilityManaCost"				"0"
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"			"scripts/vscripts/triggers.lua"
-				"Function"				"cast"
-			}
-		}
 		
 		// Attributes
 		"AbilitySpecial"
@@ -426,36 +310,18 @@
 	
 	"warlock_meteor"
 	{
-		"ID"							"8841"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-		"BaseClass"						"ability_datadriven"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"luaabils/warlock_meteor"
 		"AbilityTextureName"			"invoker_chaos_meteor"
 
 		// Stats
-		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"GLOBAL"
 		"AbilityCastPoint"				"0.2"
 		"AbilityCooldown"				"20.0 19.5 19.0 18.5 18.0 17.5 17.0"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-		"AbilityCastAnimation"			"ACT_DOTA_FATAL_BONDS"
 		"MaxLevel"						"7"
 		"AOERadius"						"%radius"
 		"AbilityManaCost"				"0"
-
-		"precache"
-		{
-			"model"						"models/particle/meteor.mdl"
-		}
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"				"POINT"
-				"ScriptFile"			"scripts/vscripts/triggers.lua"
-				"Function"				"cast"
-			}
-		}
 
 		// Attributes
 		"AbilitySpecial"
@@ -512,34 +378,17 @@
 	
 	"warlock_splitter"
 	{
-		"ID"							"8842"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IGNORE_TURN"
-		"BaseClass"						"ability_datadriven"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"luaabils/warlock_splitter"
 		"AbilityTextureName"			"skywrath_mage_concussive_shot"
 
 		// Stats
-		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"GLOBAL"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"24 23 22 21 20 19 18"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
 		"MaxLevel"						"7"
 		"AbilityManaCost"				"0"
-
-		"precache"
-		{
-		}
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"				"POINT"
-				"ScriptFile"			"scripts/vscripts/triggers.lua"
-				"Function"				"cast"
-			}
-		}
 
 		// Attributes
 		"AbilitySpecial"
@@ -569,9 +418,9 @@
 
 	"warlock_snowball"
 	{
-		"ID"							"8843"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
-		"BaseClass"						"ability_datadriven"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"luaabils/warlock_snowball"
 		"AbilityTextureName"			"tusk_snowball"
 
 		// Stats
@@ -579,24 +428,8 @@
 		"AbilityCastRange"				"GLOBAL"
 		"AbilityCastPoint"				"0.2"
 		"AbilityCooldown"				"19.0 18.0 17.0 16.0 15.0 14.0 13.0"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
 		"MaxLevel"						"7"
 		"AbilityManaCost"				"0"
-
-		"precache"
-		{
-		}
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"				"POINT"
-				"ScriptFile"			"scripts/vscripts/triggers.lua"
-				"Function"				"cast"
-			}
-		}
 
 		// Attributes
 		"AbilitySpecial"
@@ -654,34 +487,17 @@
 
 	"warlock_gravity"
 	{
-		"ID"							"8850"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
-		"BaseClass"						"ability_datadriven"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"luaabils/warlock_gravity"
 		"AbilityTextureName"			"enigma_black_hole"
 
 		// Stats
-		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"GLOBAL"
 		"AbilityCastPoint"				"0.2"
 		"AbilityCooldown"				"21 20.5 20 19.5 19 18.5 18"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
 		"MaxLevel"						"7"
 		"AbilityManaCost"				"0"
-
-		"precache"
-		{
-		}
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"				"POINT"
-				"ScriptFile"			"scripts/vscripts/triggers.lua"
-				"Function"				"cast"
-			}
-		}
 
 		// Attributes
 		"AbilitySpecial"
@@ -716,9 +532,9 @@
 	
 	"warlock_grip"
 	{
-		"ID"							"8851"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
-		"BaseClass"						"ability_datadriven"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"luaabils/warlock_grip"
 		"AbilityTextureName"			"nevermore_shadowraze3"
 
 		// Stats
@@ -726,24 +542,8 @@
 		"AbilityCastRange"				"GLOBAL"
 		"AbilityCastPoint"				"0.2"
 		"AbilityCooldown"				"24 20 17 15 13 12 10.5"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
 		"MaxLevel"						"7"
 		"AbilityManaCost"				"0"
-
-		"precache"
-		{
-		}
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"				"POINT"
-				"ScriptFile"			"scripts/vscripts/triggers.lua"
-				"Function"				"cast"
-			}
-		}
 
 		// Attributes
 		"AbilitySpecial"
@@ -773,35 +573,18 @@
 	
 	"warlock_warpzone"
 	{
-		"ID"							"8852"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
-		"BaseClass"						"ability_datadriven"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"luaabils/warlock_warpzone"
 		"AbilityTextureName"			"antimage_spell_shield"
 
 		// Stats
-		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"GLOBAL"
 		"AbilityCastPoint"				"0.2"
 		"AbilityCooldown"				"23 21 20 19 18 17 16"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
 		"MaxLevel"						"7"
 		"AOERadius"						"%radius"
 		"AbilityManaCost"				"0"
-
-		"precache"
-		{
-		}
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"				"POINT"
-				"ScriptFile"			"scripts/vscripts/triggers.lua"
-				"Function"				"cast"
-			}
-		}
 
 		// Attributes
 		"AbilitySpecial"
@@ -841,34 +624,17 @@
 	
 	"warlock_magnetize"
 	{
-		"ID"							"8853"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
-		"BaseClass"						"ability_datadriven"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"luaabils/warlock_magnetize"
 		"AbilityTextureName"			"earth_spirit_magnetize"
 
 		// Stats
-		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"GLOBAL"
 		"AbilityCastPoint"				"0.2"
 		"AbilityCooldown"				"22 21 20 19 18 17 16"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
 		"MaxLevel"						"7"
 		"AbilityManaCost"				"0"
-
-		"precache"
-		{
-		}
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"				"POINT"
-				"ScriptFile"			"scripts/vscripts/triggers.lua"
-				"Function"				"cast"
-			}
-		}
 
 		// Attributes
 		"AbilitySpecial"
@@ -893,34 +659,17 @@
 	
 	"warlock_rockpillar"
 	{
-		"ID"							"8854"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
-		"BaseClass"						"ability_datadriven"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"luaabils/warlock_rockpillar"
 		"AbilityTextureName"			"earth_spirit_rolling_boulder"
 
 		// Stats
-		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"GLOBAL"
 		"AbilityCastPoint"				"0.2"
 		"AbilityCooldown"				"26.0 24.0 22.0 20.0 18.0 16.0 14.0"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
 		"MaxLevel"						"7"
 		"AbilityManaCost"				"0"
-
-		"precache"
-		{
-		}
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"				"POINT"
-				"ScriptFile"			"scripts/vscripts/triggers.lua"
-				"Function"				"cast"
-			}
-		}
 
 		// Attributes
 		"AbilitySpecial"
@@ -950,34 +699,17 @@
 	
 	"warlock_link"
 	{
-		"ID"							"8855"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
-		"BaseClass"						"ability_datadriven"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"luaabils/warlock_link"
 		"AbilityTextureName"			"wisp_tether"
 
 		// Stats
-		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"GLOBAL"
 		"AbilityCastPoint"				"0.2"
 		"AbilityCooldown"				"17.0 15.0 13.0 11.0 9.0 7.0"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
 		"MaxLevel"						"7"
 		"AbilityManaCost"				"0"
-
-		"precache"
-		{
-		}
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"				"POINT"
-				"ScriptFile"			"scripts/vscripts/triggers.lua"
-				"Function"				"cast"
-			}
-		}
 
 		// Attributes
 		"AbilitySpecial"
@@ -1012,40 +744,17 @@
 	
 	"warlock_teleport"
 	{
-		"ID"							"8860"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"BaseClass"						"ability_datadriven"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"luaabils/warlock_teleport"
 		"AbilityTextureName"			"rubick_telekinesis"
 
 		// Stats
-		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"GLOBAL"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"16.0 13.5 11.5 10.0 9.0 8.0 7.0"
-		"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
 		"MaxLevel"						"7"
 		"AbilityManaCost"				"0"
-
-		"precache"
-		{
-			"soundfile"						"scripts/game_sounds_custom.txt"
-		}
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"				"POINT"
-				"ScriptFile"			"scripts/vscripts/triggers.lua"
-				"Function"				"cast"
-			}
-
-			"FireSound"
-			{
-				"EffectName"	"Teleport.Cast"
-				"Target"			"CASTER"
-			}
-		}
 
 		// Attributes
 		"AbilitySpecial"
@@ -1071,33 +780,17 @@
 	
 	"warlock_swap"
 	{
-		"ID"							"8861"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"BaseClass"						"ability_datadriven"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"luaabils/warlock_swap"
 		"AbilityTextureName"			"vengefulspirit_nether_swap"
 
 		// Stats
-		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"GLOBAL"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"15.8 13.3 11.3 9.8 8.8 7.8 7.0"
-		"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
 		"MaxLevel"						"7"
 		"AbilityManaCost"				"0"
-
-		"precache"
-		{
-		}
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"				"POINT"
-				"ScriptFile"			"scripts/vscripts/triggers.lua"
-				"Function"				"cast"
-			}
-		}
 
 		// Attributes
 		"AbilitySpecial"
@@ -1118,34 +811,17 @@
 	
 	"warlock_thrust"
 	{
-		"ID"							"8862"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"BaseClass"						"ability_datadriven"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"luaabils/warlock_thrust"
 		"AbilityTextureName"			"disruptor_glimpse"
 
 		// Stats
-		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"GLOBAL"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"16.5 14.5 13 12 11 10 9"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
 		"MaxLevel"						"7"
 		"AbilityManaCost"				"0"
-
-		"precache"
-		{
-		}
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"Target"				"POINT"
-				"ScriptFile"			"scripts/vscripts/triggers.lua"
-				"Function"				"cast"
-			}
-		}
 
 		// Attributes
 		"AbilitySpecial"
@@ -1170,9 +846,9 @@
 	
 	"warlock_shield"
 	{
-		"ID"							"8870"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"BaseClass"						"ability_datadriven"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"luaabils/warlock_shield"
 		"AbilityTextureName"			"faceless_void_chronosphere"
 
 		// Stats
@@ -1180,19 +856,8 @@
 		"AbilityCastRange"				"0"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"14.0 13.0 12.0 11.0 10.0 9.0 8.0"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-		"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
 		"MaxLevel"						"7"
 		"AbilityManaCost"				"0"
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"			"scripts/vscripts/triggers.lua"
-				"Function"				"cast"
-			}
-		}
 		
 		// Attributes
 		"AbilitySpecial"
@@ -1222,29 +887,17 @@
 	
 	"warlock_rush"
 	{
-		"ID"							"8871"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"BaseClass"						"ability_datadriven"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"luaabils/warlock_rush"
 		"AbilityTextureName"			"ogre_magi_bloodlust"
 
 		// Stats
-		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"0"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"21 20 19 18 17 16 15"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-		"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
 		"MaxLevel"						"7"
 		"AbilityManaCost"				"0"
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"			"scripts/vscripts/triggers.lua"
-				"Function"				"cast"
-			}
-		}
 		
 		// Attributes
 		"AbilitySpecial"
@@ -1277,9 +930,9 @@
 	
 	"warlock_alteration"
 	{
-		"ID"							"8872"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"BaseClass"						"ability_datadriven"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"luaabils/warlock_alteration"
 		"AbilityTextureName"			"treant_overgrowth"
 
 		// Stats
@@ -1287,19 +940,8 @@
 		"AbilityCastRange"				"0"
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"19.0 17.5 16.0 14.5 13.0 11.5 10.0"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
-		"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
 		"MaxLevel"						"7"
 		"AbilityManaCost"				"0"
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"			"scripts/vscripts/triggers.lua"
-				"Function"				"cast"
-			}
-		}
 		
 		// Attributes
 		"AbilitySpecial"
@@ -1334,7 +976,6 @@
 	//Spells
     "warlock_emptyslot1"
 	{
-		"ID"							"8823"
 		"BaseClass"						"ability_datadriven"
 		"AbilityTextureName"			"rubick_empty1"
 		"AbilityCastRange"				"0"
@@ -1345,7 +986,6 @@
 	}
 	"warlock_emptyslot2"
 	{
-		"ID"							"8824"
 		"BaseClass"						"ability_datadriven"
 		"AbilityTextureName"			"rubick_empty1"
 		"AbilityCastRange"				"0"
@@ -1356,7 +996,6 @@
 	}
 	"warlock_emptyslot3"
 	{
-		"ID"							"8825"
 		"BaseClass"						"ability_datadriven"
 		"AbilityTextureName"			"rubick_empty1"
 		"AbilityCastRange"				"0"
@@ -1367,7 +1006,6 @@
 	}
 	"warlock_emptyslot4"
 	{
-		"ID"							"8826"
 		"BaseClass"						"ability_datadriven"
 		"AbilityTextureName"			"rubick_empty1"
 		"AbilityCastRange"				"0"
@@ -1378,7 +1016,6 @@
 	}
 	"warlock_emptyslot5"
 	{
-		"ID"							"8827"
 		"BaseClass"						"ability_datadriven"
 		"AbilityTextureName"			"rubick_empty1"
 		"AbilityCastRange"				"0"
@@ -1389,7 +1026,6 @@
 	}
 	"warlock_emptyslot6"
 	{
-		"ID"							"8828"
 		"BaseClass"						"ability_datadriven"
 		"AbilityTextureName"			"rubick_empty1"
 		"AbilityCastRange"				"0"

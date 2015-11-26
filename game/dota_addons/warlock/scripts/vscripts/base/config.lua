@@ -17,11 +17,40 @@ Config.GAME_Z 						= 120
 Config.GAME_ARENA_RADIUS 			= 5910
 Config.GAME_ARENA_RADIUS_SQ 		= Config.GAME_ARENA_RADIUS*Config.GAME_ARENA_RADIUS
 
-Config.PAWN_HERO 					= 'npc_dota_hero_warlock' --'npc_dota_hero_invoker'
 Config.PAWN_MAX_LIFE 				= 1000
 Config.PAWN_MOVE_SPEED				= 210
 Config.PAWN_HEALTH_REG				= 5.0
-Config.PAWN_MODEL_SCALE				= 0.75
+
+Config.HERO_SETTINGS				= {
+	npc_dota_hero_warlock = {
+		CAST_ANIMS = {
+			ACT_DOTA_DISABLED, -- None
+			ACT_DOTA_CAST_ABILITY_4, -- Generic cast
+			ACT_DOTA_CAST_ABILITY_2, -- Lightning
+			ACT_DOTA_FATAL_BONDS, -- Meteor
+		},
+		SCALE = 0.65
+	},
+	npc_dota_hero_invoker = {
+		CAST_ANIMS = {
+			ACT_DOTA_DISABLED, -- None
+			ACT_DOTA_ATTACK, -- Generic cast
+			ACT_DOTA_CAST_SUN_STRIKE, -- Lightning
+			ACT_DOTA_CAST_SUN_STRIKE, -- Meteor
+		},
+		SCALE = 0.55
+	},
+	npc_dota_hero_rubick = {
+		CAST_ANIMS = {
+			ACT_DOTA_DISABLED, -- None
+			ACT_DOTA_CAST_ABILITY_5, -- Generic cast
+			ACT_DOTA_CAST_ABILITY_5 , -- Lightning
+			ACT_DOTA_CAST_ABILITY_5 , -- Meteor
+		},
+		SCALE = 0.50
+	},
+}
+
 Config.KB_DMG_TO_VELOCITY 			= 10.0
 
 Config.LOCUST_UNIT 					= "npc_dummy_unit"

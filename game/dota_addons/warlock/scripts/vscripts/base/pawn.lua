@@ -52,7 +52,7 @@ function Pawn:init(def)
 	self.debuff_factor = 1
 
 	-- Model scale
-	self.unit:SetModelScale(Config.PAWN_MODEL_SCALE)
+	self.unit:SetModelScale(Config.HERO_SETTINGS[self.unit:GetName()].SCALE)
 
 	self:respawn()
 end
