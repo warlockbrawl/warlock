@@ -9,7 +9,7 @@ function WindWalk:onCast(cast_info)
 	actor.unit:EmitSound(cast_info:attribute("cast_sound"))
 	
 	GAME:addModifier(WindWalkModifier:new {
-		pawn = cast_info.caster_actor,
+		pawn = actor,
 		damage = cast_info:attribute("damage"),
 		time = actor:getBuffDuration(cast_info:attribute("duration"), actor),
 		speed_bonus_abs = cast_info:attribute("move_bonus"),

@@ -48,8 +48,9 @@ function ShopData() {
 		{ name: "Cape", itemName: "item_warlock_cape", buyCost: 3, maxLevel: 3, modDefs: [ { hp_regen: 2 }, { hp_regen: 3.5 }, { hp_regen: 4.5 } ], iconPath: "file://{images}/items/cloak_png.vtex", displayName: "#WL_shop_item_cape", description: "#WL_shop_item_cape_description" },
 		{ name: "Armor", itemName: "item_warlock_armor", buyCost: 6, maxLevel: 3, modDefs: [ { kbReduction: 0.12 }, { kbReduction: 0.18 }, { kbReduction: 0.22 } ], iconPath: "file://{images}/items/assault_png.vtex", displayName: "#WL_shop_item_armor", description: "#WL_shop_item_armor_description" },
 		{ name: "Boots", itemName: "item_warlock_boots", buyCost: 5, maxLevel: 3, modDefs: [ { speedBonusAbs: 18 }, { speedBonusAbs: 29 }, { speedBonusAbs: 40 } ], iconPath: "file://{images}/items/boots_png.vtex", displayName: "#WL_shop_item_boots", description: "#WL_shop_item_boots_description" },
-		{ name: "Pocket Watch", itemName: "item_warlock_pocket_watch", buyCost: 2, modDefs: [ { debuffFactor: -0.35 }, { debuffFactor: -0.45 } ], iconPath: "file://{images}/items/talisman_of_evasion_png.vtex", displayName: "#WL_shop_item_pocket_watch", description: "#WL_shop_item_pocket_watch_description" },
-		{ name: "Redirector", itemName: "item_warlock_redirector", buyCost: 8, modDefs: [ { }, { } ], iconPath: "file://{images}/spellicons/disruptor_kinetic_field_png.vtex", displayName: "#WL_shop_item_redirector", description: "#WL_shop_item_redirector_description" },
+		{ name: "Pocket Watch", itemName: "item_warlock_pocket_watch", maxLevel: 2, buyCost: 2, modDefs: [ { debuffFactor: -0.35 }, { debuffFactor: -0.45 } ], iconPath: "file://{images}/items/talisman_of_evasion_png.vtex", displayName: "#WL_shop_item_pocket_watch", description: "#WL_shop_item_pocket_watch_description" },
+		{ name: "Redirector", itemName: "item_warlock_redirector", maxLevel: 1, buyCost: 8, modDefs: [ {} ], iconPath: "file://{images}/spellicons/disruptor_kinetic_field_png.vtex", displayName: "#WL_shop_item_redirector", description: "#WL_shop_item_redirector_description" },
+		{ name: "Pact", itemName: "item_warlock_pact", maxLevel: 1, buyCost: 10, modDefs: [ {} ], iconPath: "file://{images}/spellicons/abaddon/mistral_fiend_icons/abaddon_death_coil_png.vtex", displayName: "#WL_shop_item_pact", description: "#WL_shop_item_pact_description" },
 	];
 }
 

@@ -82,10 +82,19 @@ end
 -------------------------------------------------------------------------------
 CastInfo = class()
 
+function CastInfo:setAttribute(name, value)
+	self.attributes[name] = value
+end
+
 --- Fetches the value of spell's attribute in context of the current cast
 -- the attributes value are first searched in the spell class
 -- then using ability:GetSpecialValueFor
 function CastInfo:attribute(attr_name)
+	-- if found in self
+	if self.attributes[attr_name] ~= nil then
+		return self.attributes[attr_name]
+	end
+
 	-- if found in the class
 	if self.spell[attr_name] ~= nil then
 		return self.spell[attr_name]
@@ -94,7 +103,7 @@ function CastInfo:attribute(attr_name)
 	-- for values in the config file, will return nil if not found
     -- Edit: does return 0, not nil if not found?
 	
-	return self.ability:GetLevelSpecialValueFor(attr_name,self.ability:GetLevel()-1)
+	return self.ability:GetLevelSpecialValueFor(attr_name, self.ability:GetLevel()-1)
 end
 
 --- Takes the data passed by native handler and returns a CastInfo context
@@ -125,6 +134,8 @@ function CastInfo:fromEvent(cast_info)
 
 	-- give the class to the cast_info without creating a new object
 	setmetatable(cast_info, CastInfo)
+
+	cast_info.attributes = {}
 
 	return cast_info
 end

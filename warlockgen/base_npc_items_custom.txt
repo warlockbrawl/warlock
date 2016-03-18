@@ -334,3 +334,67 @@
 		}
 	}
 	
+	"item_warlock_pact1"
+	{
+		"ID"							"8830"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"item_warlock_pact"
+		"ItemKillable"					"0"
+		"ItemSellable"					"0"
+		"ItemDroppable"					"0"
+		"ItemPurchasable"				"0"
+		
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"0.2"
+		"AbilityCooldown"				"30.0"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"			"ACT_DOTA_DISABLED"
+		"MaxLevel"						"1"
+		"AbilityManaCost"				"0"
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/triggers.lua"
+				"Function"				"cast"
+			}
+
+			"FireSound"
+			{
+				"EffectName"		"Pact.Cast"
+				"Target"			"CASTER"
+			}
+		}
+
+		// Attributes
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"5"
+			}
+
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"damage_multiplier"		"1.5"
+			}
+
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"speed_reduction"		"66"
+			}
+
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"slow_duration"			"6"
+			}
+		}
+	}

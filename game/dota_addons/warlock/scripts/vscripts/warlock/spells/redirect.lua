@@ -7,7 +7,7 @@ Redirect.cast_sound = "Redirector.Cast"
 
 function Redirect:onCast(cast_info)
     local kb_penalty = cast_info:attribute("kb_penalty")
-    local kb_penalty_duration = cast_info:attribute("kb_penalty_duration")
+    local kb_penalty_duration = cast_info.caster_actor:getDebuffDuration(cast_info:attribute("kb_penalty_duration"), cast_info.caster_actor)
 
     local closest_proj = nil
     local closest_delta = nil

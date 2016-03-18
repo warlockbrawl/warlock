@@ -37,13 +37,13 @@ BASE_MODULES		= {
     'warlock/spells/magnetize', 'warlock/spells/rockpillar',
     'warlock/spells/alteration', 'warlock/spells/link',
     'warlock/spells/splitter', 'warlock/spells/redirect',
-    'warlock/spells/snowball',
+    'warlock/spells/snowball', 'warlock/spells/pact',
 
 	'warlock/modifiers/windwalkmodifier', 'warlock/modifiers/shieldmodifier',
 	'warlock/modifiers/rushmodifier', 'warlock/modifiers/gripmodifier',
 	'warlock/modifiers/thrustmodifier', 'warlock/modifiers/magnetizemodifier',
     'warlock/modifiers/alterationmodifier', 'warlock/modifiers/linkmodifier',
-    'warlock/modifiers/snowballmodifier',
+    'warlock/modifiers/snowballmodifier', 'warlock/modifiers/pactmodifier',
 
 	'triggers'
 }
@@ -167,6 +167,9 @@ function Precache(context)
     PrecacheResource("particle", "particles/econ/items/crystal_maiden/crystal_maiden_cowl_of_ice/maiden_crystal_nova_cowlofice.vpcf", context)
     PrecacheResource("model", "models/particle/snowball.vmdl", context)
     PrecacheResource("particle", "particles/units/heroes/hero_crystalmaiden/maiden_crystal_nova.vpcf", context)
+    PrecacheResource("particle", "particles/econ/items/abaddon/abaddon_alliance/abaddon_aphotic_shield_alliance_explosion.vpcf", context)
+    PrecacheResource("particle", "particles/econ/courier/courier_oculopus/courier_oculopus_ambient.vpcf", context)
+    PrecacheResource("particle", "particles/generic_gameplay/rune_doubledamage.vpcf", context)
 
 	-- custom effects
 	PrecacheResource("particle_folder", "particles/fireball", context)

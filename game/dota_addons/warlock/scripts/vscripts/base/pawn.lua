@@ -107,8 +107,10 @@ function Pawn:getDebuffDuration(dur, debuff_pawn)
 	-- Self factor
 	local scaled_dur = dur * self.debuff_factor
 	
-	-- Other factor
-	scaled_dur = scaled_dur * debuff_pawn.owner.mastery_factor[Player.MASTERY_DURATION]
+	if debuff_pawn ~= self then
+		-- Other factor
+		scaled_dur = scaled_dur * debuff_pawn.owner.mastery_factor[Player.MASTERY_DURATION]
+	end
 	
 	return scaled_dur
 end

@@ -70,6 +70,7 @@ Shop.ITEM_DEFS = {
     { name = "Boots", item_name = "item_warlock_boots", buy_cost = 5, max_level = 3, mod_defs = { { speed_bonus_abs = 18 }, { speed_bonus_abs = 29 }, { speed_bonus_abs = 40 } } },
     { name = "Pocket Watch", item_name = "item_warlock_pocket_watch", buy_cost = 2, max_level = 2, mod_defs = { { debuff_factor = -0.35 }, { debuff_factor = -0.45 } } },
     { name = "Redirector", item_name = "item_warlock_redirector", buy_cost = 8, max_level = 1, mod_defs = { {} } },
+    { name = "Pact", item_name = "item_warlock_pact", buy_cost = 10, max_level = 1, mod_defs = { {} } },
 }
 
 function Shop:init()

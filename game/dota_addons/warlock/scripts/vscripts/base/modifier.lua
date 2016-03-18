@@ -163,7 +163,7 @@ function Modifier:onCollision(coll_info, cc)
 
 end
 
-function Modifier:onSpellCast()
+function Modifier:onSpellCast(cast_info)
 
 end
 

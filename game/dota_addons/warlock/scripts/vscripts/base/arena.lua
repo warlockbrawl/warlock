@@ -126,7 +126,8 @@ function Arena:init()
 		func = function()
 			local dmg_info = {
 				amount = self.DAMAGE_PER_SECOND * self.DAMAGE_PERIOD,
-				knockback_vulnerability_factor = self.DAMAGE_KB_POINT_FACTOR
+				knockback_vulnerability_factor = self.DAMAGE_KB_POINT_FACTOR,
+				is_lava = true
 			}
 
 			for pawn, _ in pairs(GAME.pawns) do
