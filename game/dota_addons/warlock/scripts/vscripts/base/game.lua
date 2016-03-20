@@ -43,6 +43,7 @@ function Game:init()
 	self:initArena()
 	self:initGameSetup()
     self:initScoreboard()
+    self:initAwards()
 
 	-- Wait for the game to start
 	self.in_progress = false
@@ -315,7 +316,7 @@ function Game:showFloatingNum(def)
 	self:addTask {
 		time = duration,
 		func = function()
-			ParticleManager:ReleaseParticleIndex(pid)
+			ParticleManager:DestroyParticle(pid, false)
 		end
 	}
 end

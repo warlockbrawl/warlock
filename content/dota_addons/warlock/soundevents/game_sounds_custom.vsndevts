@@ -2303,12 +2303,12 @@
                     {
                         "value"
                         {
-                            "value0"        "sounds/weapons/hero/abaddon/shield_detonate.vsnd"
+                            "value0"        "sounds/weapons/hero/abaddon/death_coil_impact.vsnd"
                         }
                     }
                     "volume"
                     {
-                        "value"     "0.750000"
+                        "value"     "0.849609"
                     }
                     "pitch_rand_min"
                     {

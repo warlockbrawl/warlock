@@ -107,6 +107,9 @@ function Player:HeroSpawned(hero)
         child = child:NextMovePeer()
     end
 
+    -- Add awards
+    GAME.awards:applyPlayerAwards(self)
+
     -- Add all start and round gold
     -- The mode can be nil in the start of the game
     if GAME.mode then

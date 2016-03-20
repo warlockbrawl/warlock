@@ -77,6 +77,20 @@ function WebAPI:setMatchPlayerProperty(steam_id, key, value)
     end)
 end
 
+function WebAPI:setPlayerProperty(steam_id, key, value)
+    self:send("/setplayerproperty/" .. self.mod_id .. "/" .. steam_id .. "/" .. key .. "/" .. value, function(result)
+        log("WebAPI successfully set player for " .. steam_id .. "'s property with key " .. key .. " to " .. value)
+    end)
+end
+
+function WebAPI:getPlayerProperty(steam_id, key, callback)
+    self:send("/getplayerproperty/" .. self.mod_id .. "/" .. steam_id .. "/" .. key, function(result)
+        local property_value = result.data.property_value
+        log("WebAPI successfully got player property with steam id " .. steam_id .. " and key " .. key .. ": " .. property_value)
+        callback(steam_id, key, result.data.property_value)
+    end)
+end
+
 --[[-------------------------
         Game Interface
 -------------------------]]--

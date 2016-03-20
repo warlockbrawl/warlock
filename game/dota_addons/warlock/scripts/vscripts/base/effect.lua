@@ -95,7 +95,6 @@ function Effect:destroy()
 
 	if self.particleId then
         ParticleManager:DestroyParticle(self.particleId, false)
-		-- ParticleManager:ReleaseParticleIndex(self.particleId)
 		self.particleId = nil
 	end
 
