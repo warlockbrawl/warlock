@@ -147,6 +147,9 @@ function Pawn:respawn()
 	
     -- Already done in mode on kill
 	-- self.owner.team:updateAliveCount()
+
+	-- TODO / HARDCODED: Recharge reset consecutive count
+	Recharge.resetConsecutiveCount(self)
 end
 
 function Pawn:die(dmg_info)

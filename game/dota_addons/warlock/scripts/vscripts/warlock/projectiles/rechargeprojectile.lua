@@ -9,10 +9,34 @@ function RechargeProjectile:init(def)
 	RechargeProjectile.super.init(self, def)
 
 	-- Extract
+	self.original_instigator = def.instigator
 	self.hit_sound = def.hit_sound
 	self.hit_effect = def.hit_effect
 	self.refresh_projectile_effect = def.refresh_projectile_effect
 	self.refresh_hit_sound = def.refresh_hit_sound
+	self.collided_pawn = false
+end
+
+function RechargeProjectile:onDestroy()
+	RechargeProjectile.super.onDestroy(self)
+
+	-- Increment consecutive hits if a pawn was hit and the projectile was 
+	-- not reflected (ie. owner / instigator changed)
+	if self.collided_pawn and self.instigator == self.original_instigator then
+		Recharge.incrementConsecutiveCount(self.original_instigator)
+
+		-- Display consecutive count text
+		GAME:showFloatingNum {
+			num = Recharge.getConsecutiveCount(self.original_instigator),
+			location = self.original_instigator.location,
+			duration = 1,
+			color = Vector(150, 30, 240)
+		}
+	else
+		-- Reset consecutive hit count when no pawn was hit
+		-- This is also executed when destroyed on new rounds etc.
+		Recharge.resetConsecutiveCount(self.original_instigator)
+	end
 end
 
 function RechargeProjectile:onCollision(coll_info, cc)
@@ -26,6 +50,8 @@ function RechargeProjectile:onCollision(coll_info, cc)
 		if self.hit_effect then
 			Effect:create(self.hit_effect, { location = self.location })
 		end
+
+		self.collided_pawn = true
 
 		self:spawnRefreshProjectile()
 	end

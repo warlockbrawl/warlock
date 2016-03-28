@@ -45,7 +45,7 @@
 	"WL_shop_ability_snowball" "Snowball"
 	"WL_shop_ability_snowball_description" "Spawns a snowball which will drag other players with it and explode"
 	"WL_shop_ability_recharge" "Recharge"
-	"WL_shop_ability_recharge_description" "Casts a projectile that refreshes the spells cooldown if it hits"
+	"WL_shop_ability_recharge_description" "Casts a projectile that refreshes the spell's cooldown if it hits. Consecutive hits deal more damage"
 	"WL_shop_item_ring_of_health" "Ring of health"
 	"WL_shop_item_ring_of_health_description" "Increases maximum HP"
 	"WL_shop_item_cursed_ring" "Cursed ring"

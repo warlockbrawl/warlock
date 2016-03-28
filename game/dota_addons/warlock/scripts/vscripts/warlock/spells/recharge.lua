@@ -5,11 +5,13 @@ Recharge.projectile_effect = 'recharge_projectile'
 Recharge.radius = 35
 Recharge.speed = 900
 Recharge.lifetime = 1
+Recharge.damage_per_consecutive = 10
 Recharge.cast_sound = "Recharge.Cast"
 Recharge.hit_sound = "Recharge.Hit" -- Sound played when projectile hits
 Recharge.hit_effect = "recharge_hit"
 Recharge.refresh_hit_sound = "Recharge.Refresh" -- Sound played when projectile hits
 Recharge.refresh_projectile_effect = "recharge_refresh_projectile"
+Recharge.consecutive_count = {} -- How many hits in a row an actor has
 
 function Recharge:onCast(cast_info)
 	local start = cast_info.caster_actor.location
@@ -22,9 +24,11 @@ function Recharge:onCast(cast_info)
 
 	cast_info.caster_actor.unit:EmitSound(cast_info:attribute("cast_sound"))
 
+	local dmg = cast_info:attribute("damage") + cast_info:attribute("damage_per_consecutive") * Recharge.getConsecutiveCount(cast_info.caster_actor)
+
 	local proj = RechargeProjectile:new{
 		instigator	= 			cast_info.caster_actor,
-		damage =				cast_info:attribute("damage"),
+		damage =				dmg,
 		coll_radius = 			cast_info:attribute("radius"),
 		projectile_effect = 	cast_info:attribute("projectile_effect"),
 		location = 				start,
@@ -35,6 +39,26 @@ function Recharge:onCast(cast_info)
 		refresh_hit_sound =		cast_info:attribute("refresh_hit_sound"),
 		refresh_projectile_effect = cast_info:attribute("refresh_projectile_effect")
 	}
+end
+
+function Recharge.incrementConsecutiveCount(actor)
+	if not Recharge.consecutive_count[actor] then
+		Recharge.consecutive_count[actor] = 0
+	end
+
+	Recharge.consecutive_count[actor] = Recharge.consecutive_count[actor] + 1
+end
+
+function Recharge.resetConsecutiveCount(actor)
+	Recharge.consecutive_count[actor] = 0
+end
+
+function Recharge.getConsecutiveCount(actor)
+	if not Recharge.consecutive_count[actor] then
+		Recharge.consecutive_count[actor] = 0
+	end
+
+	return Recharge.consecutive_count[actor]
 end
 
 -- effects
