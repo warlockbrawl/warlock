@@ -2339,3 +2339,215 @@
         }
     }
 }
+
+"Recharge.Cast"
+{
+        "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"      "sos_reference_stack"
+                "reference_stack"       "dota_update_default"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "value0"        "sounds/weapons/hero/arc_warden/spark_wraith_cast.vsnd"
+                        }
+                    }
+                    "volume"
+                    {
+                        "value"     "0.849609"
+                    }
+                    "pitch_rand_min"
+                    {
+                        "value"     "-0.050000"
+                    }
+                    "pitch_rand_max"
+                    {
+                        "value"     "0.050000"
+                    }
+                    "pitch"
+                    {
+                        "value"     "1.000000"
+                    }
+                    "soundlevel"
+                    {
+                        "value"     "81.000000"
+                    }
+                    "mixgroup"
+                    {
+                        "value"     "Weapons"
+                    }
+                    "spread_radius"
+                    {
+                        "value"     "300.000000"
+                    }
+                }
+            }
+        }
+    }
+}
+
+"Recharge.Destroy"
+{
+        "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"      "sos_reference_stack"
+                "reference_stack"       "dota_update_default"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "value0"        "sounds/weapons/hero/puck/impact.vsnd"
+                        }
+                    }
+                    "volume"
+                    {
+                        "value"     "0.849609"
+                    }
+                    "pitch_rand_min"
+                    {
+                        "value"     "-0.050000"
+                    }
+                    "pitch_rand_max"
+                    {
+                        "value"     "0.050000"
+                    }
+                    "pitch"
+                    {
+                        "value"     "1.000000"
+                    }
+                    "soundlevel"
+                    {
+                        "value"     "81.000000"
+                    }
+                    "mixgroup"
+                    {
+                        "value"     "Weapons"
+                    }
+                    "spread_radius"
+                    {
+                        "value"     "300.000000"
+                    }
+                }
+            }
+        }
+    }
+}
+
+"Recharge.Hit"
+{
+        "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"      "sos_reference_stack"
+                "reference_stack"       "dota_update_default"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "value0"        "sounds/weapons/hero/arc_warden/flux_cast.vsnd"
+                        }
+                    }
+                    "volume"
+                    {
+                        "value"     "0.849609"
+                    }
+                    "pitch_rand_min"
+                    {
+                        "value"     "-0.050000"
+                    }
+                    "pitch_rand_max"
+                    {
+                        "value"     "0.050000"
+                    }
+                    "pitch"
+                    {
+                        "value"     "1.000000"
+                    }
+                    "soundlevel"
+                    {
+                        "value"     "81.000000"
+                    }
+                    "mixgroup"
+                    {
+                        "value"     "Weapons"
+                    }
+                    "spread_radius"
+                    {
+                        "value"     "300.000000"
+                    }
+                }
+            }
+        }
+    }
+}
+
+"Recharge.Refresh"
+{
+        "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"      "sos_reference_stack"
+                "reference_stack"       "dota_update_default"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "value0"        "sounds/weapons/hero/arc_warden/tempest_double.vsnd"
+                        }
+                    }
+                    "volume"
+                    {
+                        "value"     "0.849609"
+                    }
+                    "pitch_rand_min"
+                    {
+                        "value"     "-0.050000"
+                    }
+                    "pitch_rand_max"
+                    {
+                        "value"     "0.050000"
+                    }
+                    "pitch"
+                    {
+                        "value"     "1.000000"
+                    }
+                    "soundlevel"
+                    {
+                        "value"     "81.000000"
+                    }
+                    "mixgroup"
+                    {
+                        "value"     "Weapons"
+                    }
+                    "spread_radius"
+                    {
+                        "value"     "300.000000"
+                    }
+                }
+            }
+        }
+    }
+}

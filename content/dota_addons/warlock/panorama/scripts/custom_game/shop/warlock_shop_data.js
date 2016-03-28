@@ -20,7 +20,8 @@ function ShopData() {
 		{ name: "Cluster", column: 3, buyCost: 14, upgradeCost: [ 6, 7, 8, 9, 10, 11 ], iconPath: "file://{images}/spellicons/ember_spirit_searing_chains_png.vtex", displayName: "#WL_shop_ability_cluster", description: "#WL_shop_ability_cluster_description" },
 		{ name: "Drain", column: 3, buyCost: 14, upgradeCost: [ 6, 7, 8, 9, 10, 11 ], iconPath: "file://{images}/spellicons/necrolyte_death_pulse_png.vtex", displayName: "#WL_shop_ability_drain", description: "#WL_shop_ability_drain_description" },
 		{ name: "Bouncer", column: 3, buyCost: 14, upgradeCost: [ 6, 7, 8, 9, 10, 11 ], iconPath: "file://{images}/spellicons/viper_poison_attack_png.vtex", displayName: "#WL_shop_ability_bouncer", description: "#WL_shop_ability_bouncer_description" },
-		
+		{ name: "Recharge", column: 3, buyCost: 13, upgradeCost: [ 6, 7, 8, 9, 10, 11 ], iconPath: "file://{images}/spellicons/vengefulspirit_wave_of_terror_png.vtex", displayName: "#WL_shop_ability_recharge", description: "#WL_shop_ability_recharge_description" },
+
 		// E 4
 		{ name: "Windwalk", column: 4, buyCost: 14, upgradeCost: [ 6, 7, 8, 9, 10, 11 ], iconPath: "file://{images}/spellicons/elder_titan_echo_stomp_spirit_png.vtex", displayName: "#WL_shop_ability_windwalk", description: "#WL_shop_ability_windwalk_description" },
 		{ name: "Meteor", column: 4, buyCost: 14, upgradeCost: [ 6, 7, 8, 9, 10, 11 ], iconPath: "file://{images}/spellicons/invoker_chaos_meteor_png.vtex", displayName: "#WL_shop_ability_meteor", description: "#WL_shop_ability_meteor_description" },

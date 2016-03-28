@@ -35,6 +35,7 @@ Shop.SPELL_DEFS = {
     { name = "Cluster", column = 3, ability_name = "warlock_cluster", buy_cost = 14, upgrade_cost = { 6, 7, 8, 9, 10, 11 } },
     { name = "Drain", column = 3, ability_name = "warlock_drain", buy_cost = 14, upgrade_cost = { 6, 7, 8, 9, 10, 11 } },
     { name = "Bouncer", column = 3, ability_name = "warlock_bouncer", buy_cost = 14, upgrade_cost = { 6, 7, 8, 9, 10, 11 } },
+    { name = "Recharge", column = 3, ability_name = "warlock_recharge", buy_cost = 13, upgrade_cost = { 6, 7, 8, 9, 10, 11 } },
 
     -- E
     { name = "Windwalk", column = 4, ability_name = "warlock_windwalk", buy_cost = 14, upgrade_cost = { 6, 7, 8, 9, 10, 11 } },

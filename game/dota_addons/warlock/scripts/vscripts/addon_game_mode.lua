@@ -24,6 +24,7 @@ BASE_MODULES		= {
     'warlock/projectiles/magnetizeprojectile', 'warlock/projectiles/linkprojectile',
     'warlock/projectiles/splitterprojectile', 'warlock/projectiles/splitterspawnerprojectile',
     'warlock/projectiles/splitterchildprojectile', 'warlock/projectiles/snowballprojectile',
+    'warlock/projectiles/rechargeprojectile', 'warlock/projectiles/rechargerefreshprojectile',
 
 	'warlock/spells/fireball', 'warlock/spells/scourge',
 	'warlock/spells/boomerang', 'warlock/spells/lightning',
@@ -38,6 +39,7 @@ BASE_MODULES		= {
     'warlock/spells/alteration', 'warlock/spells/link',
     'warlock/spells/splitter', 'warlock/spells/redirect',
     'warlock/spells/snowball', 'warlock/spells/pact',
+    'warlock/spells/recharge',
 
 	'warlock/modifiers/windwalkmodifier', 'warlock/modifiers/shieldmodifier',
 	'warlock/modifiers/rushmodifier', 'warlock/modifiers/gripmodifier',
@@ -170,7 +172,10 @@ function Precache(context)
     PrecacheResource("particle", "particles/econ/items/abaddon/abaddon_alliance/abaddon_aphotic_shield_alliance_explosion.vpcf", context)
     PrecacheResource("particle", "particles/econ/courier/courier_oculopus/courier_oculopus_ambient.vpcf", context)
     PrecacheResource("particle", "particles/generic_gameplay/rune_doubledamage.vpcf", context)
-
+    PrecacheResource("particle", "particles/econ/items/templar_assassin/templar_assassin_butterfly/templar_assassin_meld_attack_butterfly.vpcf", context)
+    PrecacheResource("particle", "particles/econ/items/templar_assassin/templar_assassin_butterfly/templar_assassin_trap_explosion_shock_butterfly.vpcf", context)
+    PrecacheResource("particle", "particles/units/heroes/hero_puck/puck_base_attack.vpcf", context)
+    
 	-- custom effects
 	PrecacheResource("particle_folder", "particles/fireball", context)
 	PrecacheResource("particle_folder", "particles/homing", context)

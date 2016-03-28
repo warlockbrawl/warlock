@@ -259,6 +259,43 @@
 		}
 	}
 
+	"warlock_recharge"
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"luaabils/warlock_recharge"
+		"AbilityTextureName"			"vengefulspirit_wave_of_terror"
+
+		// Stats
+		"AbilityCastRange"				"GLOBAL"
+		"AbilityCastPoint"				"0.2"
+		"AbilityCooldown"				"23.5 22.0 21.0 20.5 20.0 19.5 19.0"
+		"MaxLevel"						"7"
+		"AbilityManaCost"				"0"
+
+		// Attributes
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"damage"				"60 67 74 81 88 95 102"
+			}
+			
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"cooldown2"				"23.5 22.0 21.0 20.5 20.0 19.5 19.0"
+			}
+			
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"upgrade_cost"			"6 7 8 9 10 11"
+			}
+		}
+	}
+
 	"warlock_windwalk"
 	{
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE" //DOTA_ABILITY_BEHAVIOR_CHANNELLED

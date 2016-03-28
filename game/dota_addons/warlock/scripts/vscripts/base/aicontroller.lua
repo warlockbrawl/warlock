@@ -44,9 +44,9 @@ function AIController:init(def)
 
     self.purchasable_target_spells = {
         { 1, 2, 3 },
-        { 7, 8, 9 },
-        { 11, 12, 13 },
-        { 17, 18, 19, 20, 21, 22 }
+        { 7, 8, 9, 10 },
+        { 12, 13, 14 },
+        { 18, 19, 20, 21, 22, 23 }
     }
 
     self.purchasable_escape_spells = {
@@ -438,10 +438,14 @@ function Game:addBot(think_interval)
             local player_ent = PlayerResource:GetPlayer(i)
 
             -- Check if the player is a bot and doesnt have a hero yet (sometimes they automatically get a hero while still in selection)
-            if player_ent and not GAME.players[i] and PlayerResource:IsFakeClient(i) and not PlayerResource:HasSelectedHero(i) then
-                print("Created hero for AI with player id", i)
+            if player_ent and not GAME.players[i] and PlayerResource:IsFakeClient(i) then
+                print("Set AI Def for AI with player id", i)
                 player_ent.ai_def = { think_interval = think_interval }
-                CreateHeroForPlayer("npc_dota_hero_warlock", player_ent)
+
+                if not PlayerResource:HasSelectedHero(i) then
+                    print("Created hero for AI with player id", i)
+                    CreateHeroForPlayer("npc_dota_hero_warlock", player_ent)
+                end
             end
         end
     end
