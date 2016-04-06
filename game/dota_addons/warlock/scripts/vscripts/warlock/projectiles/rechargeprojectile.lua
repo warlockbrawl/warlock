@@ -1,4 +1,4 @@
-RechargeProjectile = class(SimpleProjectile)
+RechargeProjectile = class(Projectile)
 
 --- Params
 -- speed
@@ -15,6 +15,7 @@ function RechargeProjectile:init(def)
 	self.refresh_projectile_effect = def.refresh_projectile_effect
 	self.refresh_hit_sound = def.refresh_hit_sound
 	self.collided_pawn = false
+	self.damage = def.damage
 end
 
 function RechargeProjectile:onDestroy()
@@ -47,6 +48,12 @@ function RechargeProjectile:onCollision(coll_info, cc)
 	end
 
 	if coll_info.actor:instanceof(Pawn) then
+		coll_info.actor:receiveDamage {
+			source		= self.instigator or self,
+			hit_normal	= coll_info.hit_normal,
+			amount		= self.damage or 0,
+		}
+
 		if self.hit_effect then
 			Effect:create(self.hit_effect, { location = self.location })
 		end
@@ -54,6 +61,14 @@ function RechargeProjectile:onCollision(coll_info, cc)
 		self.collided_pawn = true
 
 		self:spawnRefreshProjectile()
+
+		self:destroy()
+	elseif coll_info.actor:instanceof(Obstacle) then
+		if self:isMovingTowards(coll_info.hit_normal) then
+			self:reflectVelocity(coll_info.hit_normal)
+		end
+	else
+		self:destroy()
 	end
 end
 
