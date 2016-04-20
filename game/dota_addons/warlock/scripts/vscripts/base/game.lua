@@ -178,10 +178,14 @@ function Game:initGameRules()
 	self.nativeMode:SetTopBarTeamValuesOverride ( true )
 	-- Use custom hero level maximum and your own XP per level
 	self.nativeMode:SetUseCustomHeroLevels ( true )
-	self.nativeMode:SetCustomHeroMaxLevel ( Config.MAX_LEVEL )
+	--self.nativeMode:SetCustomHeroMaxLevel ( Config.MAX_LEVEL )
 	self.nativeMode:SetFogOfWarDisabled( true )
 
-	--self.nativeMode:SetCustomXPRequiredToReachNextLevel( 1 )
+	local xp_table = {}
+	for i = 1, 25 do
+		table.insert(xp_table, 1)
+	end
+	self.nativeMode:SetCustomXPRequiredToReachNextLevel(xp_table)
 end
 
 --- Connect to events (including the tick loop)
