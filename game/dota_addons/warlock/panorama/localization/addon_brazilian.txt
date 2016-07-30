@@ -106,4 +106,5 @@
 	"WL_scoreboard_kills" "Vítimas"
 	"WL_scoreboard_deaths" "Mortes"
 	"WL_scoreboard_score" "Pontuação"
-"WL_scoreboard_damage" "Dano"
+    "WL_scoreboard_damage" "Dano"
+}
