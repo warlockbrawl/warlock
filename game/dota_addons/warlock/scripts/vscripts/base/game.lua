@@ -340,3 +340,22 @@ function Game:destroyTempActors()
 	
 	self.temp_actors = {}
 end
+
+-- TODO / TEMPORARY BUG FIX: Heroes are given invisibility by Dota for whatever reason
+-- Adding and removing invisibility seems to fix this
+-- Be careful not to remove invisibility when actually desired (ie. Wind Walk)
+function Game:fixInvisBug()
+	for pawn, _ in pairs(GAME.pawns) do
+		local p = pawn
+
+		p:addNativeModifier("modifier_invisible")
+		GAME:addTask {
+			time = 0.03,
+			func = function()
+				if not p:hasModifierOfType(WindWalkModifier) then
+					p:removeNativeModifier("modifier_invisible")
+				end
+			end
+		}
+	end
+end

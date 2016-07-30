@@ -158,6 +158,7 @@ function Mode:onRoundStart()
 	GAME:setCombat(true)
 	
 	GAME.team_mode:onNewRound()
+	GAME:fixInvisBug()
 
 	self:respawnPlayers(false)
 	
@@ -439,6 +440,7 @@ function ModeDeathmatch:onRoundStart()
     print("dm start")
 
 	GAME.team_mode:onNewRound()
+	GAME:fixInvisBug()
 
     -- obstacles
 	GAME:clearObstacles()
