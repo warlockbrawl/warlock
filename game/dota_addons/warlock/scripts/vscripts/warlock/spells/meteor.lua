@@ -37,7 +37,7 @@ end
 -- effects
 Effect:register('meteor_projectile', {
 	class = ProjectileParticleEffect,
-	effect_name = "particles/meteor/meteor_fly.vpcf",
+	effect_name = "particles/meteor/meteor.vpcf",
 	destruction_sound = "Meteor.Explode"
 })
 

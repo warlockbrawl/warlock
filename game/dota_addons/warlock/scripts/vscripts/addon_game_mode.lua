@@ -163,7 +163,6 @@ function Precache(context)
     PrecacheResource("particle", "particles/units/heroes/hero_skywrath_mage/skywrath_mage_arcane_bolt.vpcf", context)
     PrecacheResource("particle", "particles/units/heroes/hero_skywrath_mage/skywrath_mage_base_attack.vpcf", context)
     PrecacheResource("particle", "particles/units/heroes/hero_techies/techies_remote_mines_detonate.vpcf", context)
-    PrecacheResource("particle", "particles/meteor/meteor_fly.vpcf", context)
     PrecacheResource("particle", "particles/econ/courier/courier_faceless_rex/cour_rex_flying.vpcf", context)
     PrecacheResource("particle", "particles/econ/items/ursa/ursa_swift_claw/ursa_swift_fury_sweep_dim_b_blue.vpcf", context)
     PrecacheResource("particle", "particles/econ/items/crystal_maiden/crystal_maiden_cowl_of_ice/maiden_crystal_nova_cowlofice.vpcf", context)
@@ -175,12 +174,12 @@ function Precache(context)
     PrecacheResource("particle", "particles/econ/items/templar_assassin/templar_assassin_butterfly/templar_assassin_meld_attack_butterfly.vpcf", context)
     PrecacheResource("particle", "particles/econ/items/templar_assassin/templar_assassin_butterfly/templar_assassin_trap_explosion_shock_butterfly.vpcf", context)
     PrecacheResource("particle", "particles/units/heroes/hero_puck/puck_base_attack.vpcf", context)
+    PrecacheResource("particle", "particles/units/heroes/hero_pugna/pugna_base_attack.vpcf", context)
+    PrecacheResource("particle", "particles/units/heroes/hero_wisp/wisp_base_attack.vpcf", context)
     
 	-- custom effects
-	PrecacheResource("particle_folder", "particles/fireball", context)
-	PrecacheResource("particle_folder", "particles/homing", context)
-	PrecacheResource("particle_folder", "particles/gravity", context)
 	PrecacheResource("particle", "particles/warpzone.vpcf", context)
+	PrecacheResource("particle", "particles/meteor/meteor.vpcf", context)
 end
 
 function Activate()

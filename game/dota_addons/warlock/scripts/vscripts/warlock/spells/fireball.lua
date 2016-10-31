@@ -13,6 +13,6 @@ end
 -- effects
 Effect:register('fireball_projectile', {
 	class 				= ProjectileParticleEffect,
-	effect_name 		= 'particles/fireball/phoenix_base_attack.vpcf',
+	effect_name 		= 'particles/units/heroes/hero_phoenix/phoenix_base_attack.vpcf',
 	destruction_sound 	= "Fireball.Explode"
 })

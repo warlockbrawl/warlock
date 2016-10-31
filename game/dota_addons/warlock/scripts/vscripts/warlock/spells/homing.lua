@@ -48,7 +48,7 @@ end
 -- effects
 Effect:register('homing_projectile', {
 	class 				= ProjectileParticleEffect,
-	effect_name 		= 'particles/homing/wisp_base_attack.vpcf',
+	effect_name 		= 'particles/units/heroes/hero_wisp/wisp_base_attack.vpcf',
 	destruction_sound 	= "Homing.Destroy",
 	destruction_effect	= "homing_destroy"
 })

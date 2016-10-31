@@ -38,6 +38,6 @@ end
 -- effects
 Effect:register('gravity_projectile', {
 	class 				= ProjectileParticleEffect,
-	effect_name 		= 'particles/gravity/pugna_base_attack.vpcf',
+	effect_name 		= 'particles/units/heroes/hero_pugna/pugna_base_attack.vpcf',
 	destruction_sound 	= "Gravity.Destroyed"
 })
