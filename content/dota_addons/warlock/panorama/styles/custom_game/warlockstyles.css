@@ -62,7 +62,7 @@
 	flow-children: down;
     padding: 10px 50px;
     margin-right: 20px;
-	background-color: rgba(51, 51, 51, 245);
+	background-color: #333333F5;
 }
 
 .SelectionSubPanel
@@ -169,7 +169,7 @@
 	margin-left: 60px;
 	margin-top: 60px;
 	flow-children: down;
-	background-color: rgba(0, 0, 0, 200);
+	background-color: #000000C8;
 }
 
 .ScoreboardRoot
