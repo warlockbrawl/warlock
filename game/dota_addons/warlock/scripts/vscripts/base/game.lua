@@ -158,6 +158,7 @@ function Game:initGameRules()
 	GameRules:SetTreeRegrowTime(60.0)
 	GameRules:SetUseCustomHeroXPValues (true)
 	GameRules:SetGoldPerTick(0)
+	GameRules:SetStartingGold(0)
 
 	-- Heroes will use the basic NPC functionality for determining their bounty, rather than DOTA specific formulas.
 	GameRules:SetUseBaseGoldBountyOnHeroes(true)
