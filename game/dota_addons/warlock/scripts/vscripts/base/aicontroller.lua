@@ -1,5 +1,10 @@
 AIController = class()
 AIController.think_interval = 0.2
+AIController.danger_scale = 1000
+AIController.danger_min_dst = 2000
+AIController.danger_min_cos_dst = -0.1
+AIController.danger_dodge_thresh = 3
+AIController.danger_dodge_delta = 10
 
 function AIController:init(def)
     self.player = def.player
@@ -118,55 +123,22 @@ function AIController:destroy()
     GAME.ai_controllers[self.player] = nil
 end
 
--- Finds a random point to move to
+-- Finds a point to move to when nothing important needs to be done
 function AIController:chooseTargetPoint()
     -- Add delay before randomly choosing the next target point (other ways will still work)
     local time_delay = 0
-
+    
     -- Chance to move towards target
     if self.target_pawn and self.target_pawn.owner:isAlive() and math.random(0, 10) == 0 then
         local angle = math.random(0, 360)
         self.target = self.target_pawn.location + math.random(0, 200) * Vector(math.cos(angle), math.sin(angle), 0)
         time_delay = math.random(0.4, 0.8)
-    -- Dodge closest projectile
-    elseif math.random(0, 1) == 0 then
-        local projectiles = GAME:actorsOfType(Projectile)
-        local closest_proj = nil
-        local closest_proj_dst = 99999999
-
-        -- Get closest enemy projectile
-        for _, proj in pairs(projectiles) do
-            if proj.instigator.owner:getAlliance(self.pawn.owner) == Player.ALLIANCE_ENEMY then
-                local dst = (proj.location - self.pawn.location):Length()
-
-                if dst < closest_proj_dst then
-                    closest_proj = proj
-                    closest_proj_dst = dst
-                end
-            end
-        end
-
-        -- Move perpendicular to its velocity if it exists
-        if closest_proj then
-            local proj_dir = closest_proj.velocity:Normalized()
-            local perp_dir = Vector(-proj_dir[2], proj_dir[1], 0)
-
-            self.target = self.pawn.location + perp_dir * 300
-        
-            time_delay = math.random(0.4, 0.8)
-        -- else just move randomly
-        else
-            local angle = math.random(0, 360)
-            self.target = math.random(0, 0.3 * GAME.arena.current_layer * GAME.arena.ARENA_TILE_SIZE) * Vector(math.cos(angle), math.sin(angle), 0)
-            self.target.z = Config.GAME_Z
-            time_delay = math.random(0.0, 0.2)
-        end
     -- Choose random point on platform
     else
         local angle = math.random(0, 360)
         self.target = math.random(0, 0.3 * GAME.arena.current_layer * GAME.arena.ARENA_TILE_SIZE) * Vector(math.cos(angle), math.sin(angle), 0)
         self.target.z = Config.GAME_Z
-        time_delay = math.random(0.0, 0.2)
+        time_delay = math.random(0.2, 0.4)
     end
 
     self.next_target_time = self.next_target_time + time_delay
@@ -226,6 +198,52 @@ function AIController:getPredictedDir(target, speed)
 	end
 
 	return (target.velocity * t - delta) / (speed * t)
+end
+
+function AIController:getDanger(loc)
+    local danger = 0
+
+    -- Get all enemy projectiles
+    local projectiles = GAME:filterActors(function(actor)
+        return actor:instanceof(Projectile) and actor.instigator.owner:getAlliance(self.pawn.owner) == Player.ALLIANCE_ENEMY
+    end)
+
+    -- Get closest enemy projectile
+    for _, proj in pairs(projectiles) do
+        local offset = loc - proj.location
+        local dst = offset:Length()
+
+        -- Ignore projectiles that are moving away
+        -- Ignore projectiles that are too far away
+        if proj.velocity:Normalized():Dot((loc - proj.location):Normalized()) >= self.danger_min_cos_dst and 
+            dst <= self.danger_min_dst then
+
+            -- Calculate the line distance to the projectile's path
+            local proj_new_loc = proj.location + proj.velocity
+            local delta = proj_new_loc - proj.location
+            local line_dst = math.abs(delta.y * loc.x - delta.x * loc.y + proj_new_loc.x * proj.location.y - proj_new_loc.y * proj.location.x) / delta:Length()
+
+            danger = danger + self.danger_scale / (1.0 + line_dst)
+        end
+    end
+
+    return danger
+end
+
+function AIController:getDodgeDirection()
+    -- Do a first order approximation of the danger shape and
+    -- walk to where it gets smaller
+    local danger_self = self:getDanger(self.pawn.location)
+    local danger_right = self:getDanger(self.pawn.location + Vector(1, 0, 0) * self.danger_dodge_delta)
+    local danger_up = self:getDanger(self.pawn.location + Vector(0, 1, 0) * self.danger_dodge_delta)
+
+    local dir = Vector(danger_self - danger_right, danger_self - danger_up)
+
+    if dir.x == 0 and dir.y == 0 then
+        return Vector(0, 0, 0)
+    end
+
+    return dir:Normalized()
 end
 
 function AIController:buyRandomSpell()
@@ -328,7 +346,7 @@ function AIController:think(dt)
         end
 
         -- Choose new target point
-        if (self.pawn.location - self.target):Length() < 100 or (self.time > self.next_target_time and math.random(0, 4) == 0) then
+        if (self.pawn.location - self.target):Length() < 100 or self.time > self.next_target_time then
             self:chooseTargetPoint()
         end
 
@@ -338,6 +356,8 @@ function AIController:think(dt)
             return
         end
 
+        local danger = self:getDanger(self.pawn.location)
+
         -- Do nothing while scourging
         if self.time < self.scourge_end_time then
             local do_nothing = true
@@ -346,7 +366,8 @@ function AIController:think(dt)
                 local dist = (self.pawn.location - closest_pawn.location):Length()
 
                 -- Chance to cancel if enemy is too far away
-                if dist > 250 and math.random(0, 2) == 0 then
+                -- Always cancel if the danger is too high to try to dodge
+                if danger >= self.danger_dodge_thresh or (dist > 250 and math.random(0, 2) == 0) then
                     self.pawn.unit:Stop()
                     self.scourge_end_time = 0
                     do_nothing = false
@@ -362,11 +383,18 @@ function AIController:think(dt)
 
         local try_more = true
 
+        -- Dodge if danger is over threshold
+        if try_more and danger >= self.danger_dodge_thresh then
+            local dodge_loc = self.pawn.location + 5000 * self:getDodgeDirection()
+            self.pawn.unit:MoveToPosition(dodge_loc)
+            try_more = false
+        end
+
         -- Cast scourge on close pawns
         if try_more and closest_pawn and self.scourge:IsFullyCastable() then
             local dist = (self.pawn.location - closest_pawn.location):Length()
             
-            if dist < 300 and math.random(0, 3) == 0 then
+            if dist < 300 and math.random(0, 5) == 0 then
                 self.pawn.unit:CastAbilityNoTarget(self.scourge, self.player.id)
                 try_more = false
                 self.scourge_end_time = self.time + 1.0
@@ -378,9 +406,8 @@ function AIController:think(dt)
             try_more = not self:castRandomProjectileSpell()
         end
 
-        -- Move position
+        -- Move to target point
         if try_more then
-            -- Move to target point
             self.pawn.unit:MoveToPosition(self.target)
             try_more = false
         end
