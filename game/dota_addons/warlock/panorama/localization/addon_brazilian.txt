@@ -1,4 +1,4 @@
-"dota"
+﻿"dota"
 {
 	"WL_shop_ability_lightning" "Raio"
 	"WL_shop_ability_lightning_description" "Lança um raio que atinge instantaneamente o primeiro obstáculo no seu caminho"
@@ -100,11 +100,11 @@
 	"WL_setup_damage_multiplier" "Multiplicador do Dano"
 	"WL_setup_physics_friction" "Physics Friction"
 	"WL_setup_constants" "Constantes"
-	"WL_setup_tab_general" "General"
-	"WL_setup_tab_constants" "Geral"
+	"WL_setup_tab_general" "Geral"
+	"WL_setup_tab_constants" "Mais Constâncias"
 	"WL_scoreboard_name" "Nome"
 	"WL_scoreboard_kills" "Vítimas"
 	"WL_scoreboard_deaths" "Mortes"
 	"WL_scoreboard_score" "Pontuação"
-    "WL_scoreboard_damage" "Dano"
+	"WL_scoreboard_damage" "Dano"
 }
