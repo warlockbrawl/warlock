@@ -3,7 +3,7 @@ Gravity = Spell:new{id='warlock_gravity'}
 
 Gravity.projectile_class 	= GravityProjectile
 Gravity.projectile_effect 	= 'gravity_projectile'
-Gravity.projectile_speed = 400.0
+Gravity.projectile_speed = 500.0
 Gravity.cast_sound = "Gravity.Cast"
 
 function Gravity:onCast(cast_info)
@@ -38,6 +38,6 @@ end
 -- effects
 Effect:register('gravity_projectile', {
 	class 				= ProjectileParticleEffect,
-	effect_name 		= 'particles/units/heroes/hero_pugna/pugna_base_attack.vpcf',
+	effect_name 		= 'particles/gravity/gravity.vpcf',
 	destruction_sound 	= "Gravity.Destroyed"
 })
