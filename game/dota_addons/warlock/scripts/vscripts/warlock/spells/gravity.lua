@@ -3,8 +3,11 @@ Gravity = Spell:new{id='warlock_gravity'}
 
 Gravity.projectile_class 	= GravityProjectile
 Gravity.projectile_effect 	= 'gravity_projectile'
-Gravity.projectile_speed = 500.0
+Gravity.projectile_speed = 450.0
 Gravity.cast_sound = "Gravity.Cast"
+Gravity.max_range_pawn = 550
+Gravity.max_range_projectile = 600
+Gravity.max_range_pawn_dps = 250
 
 function Gravity:onCast(cast_info)
 	cast_info.caster_actor.unit:EmitSound(cast_info:attribute("cast_sound"))

@@ -62,7 +62,7 @@ function GravityProjectile:damageTick(dt)
 	for pawn, _ in pairs(GAME.pawns) do
 		if pawn.owner:getAlliance(self.instigator.owner) == Player.ALLIANCE_ENEMY then
 			local delta = self.location - pawn.location
-			if delta:Dot(delta) <= 62500 then -- 250*250
+			if delta:Dot(delta) <= Gravity.max_range_pawn_dps * Gravity.max_range_pawn_dps then
 				pawn:receiveDamage {
 					source = self.instigator or self,
 					amount = self.damage * dt
@@ -82,21 +82,21 @@ function GravityProjectile:onPreTick(dt)
 			and not actor:instanceof(GravityProjectile)
             and not actor:instanceof(LinkProjectile)
 		
-		if(is_pawn or is_proj) then
+		if is_pawn or is_proj then
 			local dir = self.location - actor.location
 			local dist = dir:Length()
 
-			if(is_pawn and self.instigator.owner:getAlliance(actor.owner) == Player.ALLIANCE_ENEMY) then
+			if is_pawn and self.instigator.owner:getAlliance(actor.owner) == Player.ALLIANCE_ENEMY then
 				-- Apply velocity for pawns that are close
-				if(dist <= 450) then
+				if dist <= Gravity.max_range_pawn then
 					dir = dir:Normalized()
-					actor.velocity = actor.velocity + self.strength * (1 - dist * dist / 202500) * dir * dt / actor.time_scale
+					actor.velocity = actor.velocity + self.strength * (1 - dist * dist / (Gravity.max_range_pawn * Gravity.max_range_pawn)) * dir * dt / actor.time_scale
 				end
 			elseif(is_proj) then
 				-- Apply velocity for projectiles that are close
-				if(dist <= 600) then
+				if dist <= Gravity.max_range_projectile then
 					dir = dir:Normalized()
-					actor.velocity = actor.velocity + 1650 * (1.5 - dist * dist / 360000) * dir * dt / actor.time_scale
+					actor.velocity = actor.velocity + 1650 * (1.5 - dist * dist / (Gravity.max_range_projectile * Gravity.max_range_projectile)) * dir * dt / actor.time_scale
 				end
 			end
 		end
