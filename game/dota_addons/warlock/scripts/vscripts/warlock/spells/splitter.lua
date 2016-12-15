@@ -56,7 +56,8 @@ function Splitter:onCast(cast_info)
     delta.z = 0
 
     -- Explode earlier if the target is closer than the max lifetime
-    lifetime = math.min(lifetime, delta:Length() / speed)
+    -- Divide by range mastery because lifetime gets scaled by it
+    lifetime = math.min(lifetime, delta:Length() / (speed * range_mastery_factor))
 
 	local dir = delta:Normalized()
 

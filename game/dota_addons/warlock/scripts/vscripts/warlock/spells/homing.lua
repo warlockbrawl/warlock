@@ -8,6 +8,7 @@ Homing.radius 				= 30
 Homing.explode_effect		= 'homing_explode'
 Homing.explode_radius		= 200 * 1.46
 Homing.burnout_effect		= 'homing_burnout'
+Homing.home_alpha			= 0.97
 
 function Homing:onCast(cast_info)
 	local start = cast_info.caster_actor.location
@@ -48,7 +49,7 @@ end
 -- effects
 Effect:register('homing_projectile', {
 	class 				= ProjectileParticleEffect,
-	effect_name 		= 'particles/units/heroes/hero_wisp/wisp_base_attack.vpcf',
+	effect_name 		= 'particles/homing/homing_projectile.vpcf',
 	destruction_sound 	= "Homing.Destroy",
 	destruction_effect	= "homing_destroy"
 })

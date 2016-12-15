@@ -175,7 +175,7 @@ function Precache(context)
     PrecacheResource("particle", "particles/econ/items/templar_assassin/templar_assassin_butterfly/templar_assassin_trap_explosion_shock_butterfly.vpcf", context)
     PrecacheResource("particle", "particles/units/heroes/hero_puck/puck_base_attack.vpcf", context)
     PrecacheResource("particle", "particles/gravity/gravity.vpcf", context)
-    PrecacheResource("particle", "particles/units/heroes/hero_wisp/wisp_base_attack.vpcf", context)
+    PrecacheResource("particle", "particles/homing/homing_projectile.vpcf", context)
     
 	-- custom effects
 	PrecacheResource("particle", "particles/warpzone.vpcf", context)

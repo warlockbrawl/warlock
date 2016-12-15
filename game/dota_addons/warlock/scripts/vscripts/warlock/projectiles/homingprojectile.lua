@@ -103,6 +103,6 @@ function HomingProjectile:onPreTick(dt)
 	
 	if self.target then
 		local v = self.speed * (self.target.location - self.location):Normalized()
-		self.velocity = 0.98 * self.velocity + 0.02 * v
+		self.velocity = Homing.home_alpha * self.velocity + (1 - Homing.home_alpha) * v
 	end
 end

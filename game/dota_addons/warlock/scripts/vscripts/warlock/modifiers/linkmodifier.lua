@@ -98,9 +98,9 @@ end
 function LinkModifier:onSpellCast(cast_info)
     LinkModifier.super.onSpellCast(self, cast_info)
 
-    -- Remove if linker casts teleport or swap and target is a pawn (only if target is enemy)
-    if self.linked:instanceof(Pawn) and self.linked.owner:getAlliance(self.pawn.owner) == Player.ALLIANCE_ENEMY then
-        if cast_info.spell.id == Teleport.id or cast_info.spell.id == Swap.id then
+    -- Remove if linker casts teleport or swap to lava and target is a pawn
+    if self.linked:instanceof(Pawn) then
+        if (cast_info.spell.id == Teleport.id or cast_info.spell.id == Swap.id) and not GAME.arena:isLocationSafe(cast_info.target) then
             GAME:removeModifier(self)
         end
     end
