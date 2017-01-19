@@ -78,6 +78,10 @@ function Game:initCommands()
         print("#END TEAM REPORT")
     end)
 
+    self:registerCommand("fixinvis", function()
+    	GAME:fixInvisBug()
+	end)
+
 	-- Development only commands
 	if Config.DEVELOPMENT then
 		self:registerCommand('f', function()

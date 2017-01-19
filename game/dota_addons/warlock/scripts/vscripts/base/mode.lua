@@ -440,8 +440,7 @@ function ModeDeathmatch:onRoundStart()
     print("dm start")
 
 	GAME.team_mode:onNewRound()
-	GAME:fixInvisBug()
-
+	
     -- obstacles
 	GAME:clearObstacles()
 	GAME:setRandomObstacleVariation()
@@ -449,6 +448,8 @@ function ModeDeathmatch:onRoundStart()
 	GAME.arena:setLayer(0) -- delete the remaining tiles (to create new platform type)
 	GAME.arena:setLayer(Config.ARENA_BASE_LAYER + GAME.player_count * Config.ARENA_LAYER_PER_PLAYER) -- corresponding to 1 player
 	GAME:addRandomObstacles(math.random(Mode.OBSTACLE_COUNT_MIN, Mode.OBSTACLE_COUNT_MAX))
+
+	GAME:fixInvisBug()
 
     -- Invul only for first round
     if self.round == 1 then

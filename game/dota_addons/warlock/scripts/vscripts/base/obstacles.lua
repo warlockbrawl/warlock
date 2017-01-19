@@ -64,6 +64,8 @@ function Obstacle:init(def)
 	
 	local obstacle_def = def.obstacle_def or Obstacle.getRandomDefinition()
 
+	self.obstacle_def = obstacle_def
+
 	-- construct actor
 	Obstacle.super.init(self, def)
 

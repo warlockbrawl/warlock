@@ -8,4 +8,8 @@
 	"npc_dota_hero_warlock"		"1"
 	"npc_dota_hero_invoker"		"1"
 	"npc_dota_hero_rubick"		"1"
+	"npc_dota_hero_lina"		"1"
+	"npc_dota_hero_oracle"		"1"
+	"npc_dota_hero_arc_warden"	"1"
+	"npc_dota_hero_crystal_maiden" "1"
 }

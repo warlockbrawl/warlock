@@ -49,6 +49,42 @@ Config.HERO_SETTINGS				= {
 		},
 		SCALE = 0.50
 	},
+	npc_dota_hero_lina = {
+		CAST_ANIMS = {
+			ACT_DOTA_DISABLED, -- None
+			ACT_DOTA_ATTACK, -- Generic cast
+			ACT_DOTA_CAST_ABILITY_4 , -- Lightning
+			ACT_DOTA_CAST_ABILITY_2 , -- Meteor
+		},
+		SCALE = 0.65
+	},
+	npc_dota_hero_oracle = {
+		CAST_ANIMS = {
+			ACT_DOTA_DISABLED, -- None
+			ACT_DOTA_ATTACK, -- Generic cast
+			ACT_DOTA_CAST_ABILITY_2 , -- Lightning
+			ACT_DOTA_CAST_ABILITY_4 , -- Meteor
+		},
+		SCALE = 0.65
+	},
+	npc_dota_hero_arc_warden = {
+		CAST_ANIMS = {
+			ACT_DOTA_DISABLED, -- None
+			ACT_DOTA_ATTACK, -- Generic cast
+			ACT_DOTA_CAST_ABILITY_1 , -- Lightning
+			ACT_DOTA_CAST_ABILITY_3 , -- Meteor
+		},
+		SCALE = 0.65
+	},
+	npc_dota_hero_crystal_maiden = {
+		CAST_ANIMS = {
+			ACT_DOTA_DISABLED, -- None
+			ACT_DOTA_ATTACK, -- Generic cast
+			ACT_DOTA_CAST_ABILITY_2 , -- Lightning
+			ACT_DOTA_CAST_ABILITY_1 , -- Meteor
+		},
+		SCALE = 0.68
+	},
 }
 
 Config.KB_DMG_TO_VELOCITY 			= 10.0

@@ -342,8 +342,8 @@ function Game:destroyTempActors()
 	self.temp_actors = {}
 end
 
--- TODO / TEMPORARY BUG FIX: Heroes are given invisibility by Dota for whatever reason
--- Adding and removing invisibility seems to fix this
+-- TODO / TEMPORARY BUG FIX: Units become invisible when changing
+-- teams while playing in Dota, fix this by applying and removing invis
 -- Be careful not to remove invisibility when actually desired (ie. Wind Walk)
 function Game:fixInvisBug()
 	for pawn, _ in pairs(GAME.pawns) do
@@ -358,5 +358,21 @@ function Game:fixInvisBug()
 				end
 			end
 		}
+	end
+
+	-- Fix pillars by removing their unit and creating a new one
+	for o, _ in pairs(GAME.obstacles) do
+		o.model_unit:RemoveSelf()
+		o.model_unit = CreateUnitByName(Obstacle.dummy_unit, o.location, false, nil, nil, DOTA_TEAM_NOTEAM)
+
+	    local locust_abil = o.model_unit:FindAbilityByName("warlock_tech_obstacle")
+	    locust_abil:SetLevel(1)
+
+		o.model_unit:SetModel(o.obstacle_def.model)
+		o.model_unit:SetOriginalModel(o.obstacle_def.model)
+		
+		-- Set the dummy's health
+		o.model_unit:SetMaxHealth(Obstacle.max_health)
+		o.model_unit:SetHealth(o.health)
 	end
 end

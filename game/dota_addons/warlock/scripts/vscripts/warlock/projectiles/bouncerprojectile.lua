@@ -10,6 +10,7 @@ function BouncerProjectile:init(def)
 	self.damage = def.damage
 	self.ttl = def.ttl
 	self.hit_sound = def.hit_sound
+	self.hit_sound_time = nil -- Last time the hit sound was played
 
 	BouncerProjectile.super.init(self, def)
 
@@ -42,8 +43,10 @@ function BouncerProjectile:onCollision(coll_info, cc)
 		if(coll_info.actor ~= self.prev_hit) then
 			-- Play a sound
 			-- TODO: maybe not use the effects locust
-			if self.hit_sound and self.effect and self.effect.locust then
+			-- Don't play a sound if one was played in the last 0.1 seconds to prevent spam
+			if self.hit_sound and self.effect and self.effect.locust and (not self.hit_sound_time or GAME:time() > self.hit_sound_time + 0.1) then
 				self.effect.locust:EmitSound(self.hit_sound)
+				self.hit_sound_time = GAME:time()
 			end
 
 			-- Damage enemies only
