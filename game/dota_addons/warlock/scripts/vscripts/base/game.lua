@@ -167,9 +167,6 @@ function Game:initGameRules()
 	GameRules:SetFirstBloodActive(false)
 
 	self.nativeMode = GameRules:GetGameModeEntity()
-    
-    -- Force hero selection to reenable the setup :(
-	self.nativeMode:SetCustomGameForceHero("npc_dota_hero_warlock")
 
     -- Disable recommended items
     self.nativeMode:SetHUDVisible(DOTA_HUD_VISIBILITY_SHOP_SUGGESTEDITEMS, false)
