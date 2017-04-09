@@ -10,7 +10,7 @@ end
 -- Sends a POST request for a path and optionally calls a callback with the received data
 -- Handles the JSON status
 function WebAPI:send(path, params, callback)
-    local request = CreateHTTPRequest("POST", self.base_url .. "/" .. path)
+    local request = CreateHTTPRequestScriptVM("POST", self.base_url .. "/" .. path)
 
     log("WebAPI sending request, path: " .. path .. " and params:")
     PrintTable(params)
