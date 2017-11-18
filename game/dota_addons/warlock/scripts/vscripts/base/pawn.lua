@@ -137,7 +137,7 @@ function Pawn:respawn()
 
 	if not self.unit:IsAlive() then
 		log("Respawning hero")
-		self.unit:RespawnHero(false, false, false)
+		self.unit:RespawnHero(false, false)
 	end
 
 	self.unit:SetMana(0)
