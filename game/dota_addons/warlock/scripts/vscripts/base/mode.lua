@@ -32,6 +32,12 @@ function Mode:getDescription()
 	return "Default"
 end
 
+function Mode:advanceRoundCounter()
+	self.round = self.round + 1
+	display(self:roundName())
+	GAME.web_api:setMatchProperty("round", self.round)
+end
+
 -- Adds gold for all players and saves how much so we can give new players
 -- the same gold once they select a hero
 function Mode:addGoldForAll(amount)
@@ -149,8 +155,7 @@ end
 
 -- Called when a round starts
 function Mode:onRoundStart()
-	self.round = self.round + 1
-	display(self:roundName())
+	self:advanceRoundCounter()
 
 	GAME:setShop(false)
 	GAME:removeProjectiles()
@@ -434,8 +439,7 @@ function ModeDeathmatch:prepareForRound()
 end
 
 function ModeDeathmatch:onRoundStart()
-    self.round = self.round + 1
-	display(self:roundName())
+	self:advanceRoundCounter()
 
     print("dm start")
 

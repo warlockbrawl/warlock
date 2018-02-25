@@ -21,7 +21,11 @@ function WebAPI:send(path, params, callback)
 
     request:Send(function(result)
         if not result or result.StatusCode ~= 200 then
-            log("WebAPI receive failed")
+            local log_msg = "WebAPI receive failed"
+            if result then
+                log_msg = log_msg .. " with code " .. tostring(result.StatusCode)
+            end
+            log(log_msg)
             return
         end
 
@@ -57,6 +61,7 @@ function WebAPI:startMatch()
     self:send("startmatch", {
         mod_name = self.mod_id,
         mod_version = self.mod_version,
+        dedicated_server_key = GetDedicatedServerKey(Config.DEDICATED_SERVER_VERSION),
     }, function(result)
         self.match_token = result.data.match_token
         log("WebAPI match successfully created, match token: " .. self.match_token)
@@ -73,8 +78,13 @@ function WebAPI:addPlayer(steam_id)
 end
 
 -- Ends the current match
-function WebAPI:finishMatch()
-    self:matchSend("finishmatch", {}, nil)
+function WebAPI:finishMatch(winners)
+    local winner_str = ""
+    for _, player in pairs(winners) do
+        winner_str = winner_str .. tostring(player.steam_id) .. ","
+    end
+
+    self:matchSend("finishmatch", {winners=winner_str}, nil)
 end
 
 function WebAPI:setMatchProperty(key, value)

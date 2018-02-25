@@ -18,6 +18,7 @@ GAME_OPT_LAVA_DPS	= 13
 GAME_OPT_KB_MULT	= 14
 GAME_OPT_DMG_MULT	= 15
 GAME_OPT_PHYS_FRICT	= 16
+GAME_OPT_RANKED     = 17
 
 GAME_OPT_TEAM_SHUFFLE	= 1
 GAME_OPT_TEAM_FFA		= 2
@@ -47,22 +48,7 @@ GAME_OPT_WIN_CONDS = {
 
 function GameSetup:init()
 	-- Setup the default options
-	self:setGameOption(GAME_OPT_TEAM, GAME_OPT_TEAM_SHUFFLE)
-	self:setGameOption(GAME_OPT_GAME, GAME_OPT_GAME_ROUNDS)
-	self:setGameOption(GAME_OPT_WINC, GAME_OPT_WINC_ROUNDS)
-	self:setGameOption(GAME_OPT_WINC_MAX, 11)
-	self:setGameOption(GAME_OPT_NODRAWS, 0)
-	self:setGameOption(GAME_OPT_TEAMSCORE, 0)
-    self:setGameOption(GAME_OPT_CASH_ROUND, 10)
-    self:setGameOption(GAME_OPT_CASH_START, 30)
-    self:setGameOption(GAME_OPT_CASH_KILL, 0)
-    self:setGameOption(GAME_OPT_CASH_WIN, 0)
-    self:setGameOption(GAME_OPT_BOT_COUNT, 0)
-    self:setGameOption(GAME_OPT_BOT_ON_DC, 1)
-    self:setGameOption(GAME_OPT_LAVA_DPS, 100)
-    self:setGameOption(GAME_OPT_KB_MULT, 1)
-    self:setGameOption(GAME_OPT_DMG_MULT, 1)
-	self:setGameOption(GAME_OPT_PHYS_FRICT, 0.96)
+	self:setDefaultGameOptions()
 
 	CustomGameEventManager:RegisterListener("set_team", Dynamic_Wrap(self, "onSetTeam"))
 	CustomGameEventManager:RegisterListener("set_game_option", Dynamic_Wrap(self, "onSetGameOption"))
@@ -115,6 +101,46 @@ function GameSetup:getGameOption(index)
     return CustomNetTables:GetTableValue("wl_game_options", tostring(index)).value
 end
 
+function GameSetup:setDefaultGameOptions()
+	self:setGameOption(GAME_OPT_TEAM, GAME_OPT_TEAM_SHUFFLE)
+	self:setGameOption(GAME_OPT_GAME, GAME_OPT_GAME_ROUNDS)
+	self:setGameOption(GAME_OPT_WINC, GAME_OPT_WINC_ROUNDS)
+	self:setGameOption(GAME_OPT_WINC_MAX, 11)
+	self:setGameOption(GAME_OPT_NODRAWS, 0)
+	self:setGameOption(GAME_OPT_TEAMSCORE, 0)
+    self:setGameOption(GAME_OPT_CASH_ROUND, 10)
+    self:setGameOption(GAME_OPT_CASH_START, 30)
+    self:setGameOption(GAME_OPT_CASH_KILL, 0)
+    self:setGameOption(GAME_OPT_CASH_WIN, 0)
+    self:setGameOption(GAME_OPT_BOT_COUNT, 0)
+    self:setGameOption(GAME_OPT_BOT_ON_DC, 1)
+    self:setGameOption(GAME_OPT_LAVA_DPS, 100)
+    self:setGameOption(GAME_OPT_KB_MULT, 1)
+    self:setGameOption(GAME_OPT_DMG_MULT, 1)
+    self:setGameOption(GAME_OPT_PHYS_FRICT, 0.96)
+    self:setGameOption(GAME_OPT_RANKED, false)
+end
+
+function GameSetup:setRankedGameOptions()
+	self:setGameOption(GAME_OPT_TEAM, GAME_OPT_TEAM_FFA)
+	self:setGameOption(GAME_OPT_GAME, GAME_OPT_GAME_ROUNDS)
+	self:setGameOption(GAME_OPT_WINC, GAME_OPT_WINC_ROUNDS)
+	self:setGameOption(GAME_OPT_WINC_MAX, 11)
+	self:setGameOption(GAME_OPT_NODRAWS, 0)
+	self:setGameOption(GAME_OPT_TEAMSCORE, 0)
+    self:setGameOption(GAME_OPT_CASH_ROUND, 10)
+    self:setGameOption(GAME_OPT_CASH_START, 30)
+    self:setGameOption(GAME_OPT_CASH_KILL, 0)
+    self:setGameOption(GAME_OPT_CASH_WIN, 0)
+    self:setGameOption(GAME_OPT_BOT_COUNT, 0)
+    self:setGameOption(GAME_OPT_BOT_ON_DC, 0)
+    self:setGameOption(GAME_OPT_LAVA_DPS, 100)
+    self:setGameOption(GAME_OPT_KB_MULT, 1)
+    self:setGameOption(GAME_OPT_DMG_MULT, 1)
+    self:setGameOption(GAME_OPT_PHYS_FRICT, 0.96)
+    self:setGameOption(GAME_OPT_RANKED, true)
+end
+
 ------------------------
 -- Game Interface
 ------------------------
@@ -126,7 +152,19 @@ end
 -- Select the modes
 function Game:selectModes()
 	local gs = self.game_setup
-	
+    
+    Config.ranked = gs:getGameOption(GAME_OPT_RANKED) ~= 0
+
+    -- Override with ranked settings if we chose ranked
+    if Config.ranked then
+        if GAME.player_count ~= 2 then
+            display("Can not start ranked game with more or less than two players.")
+            Config.ranked = false
+        else
+            gs:setRankedGameOptions()
+        end
+    end
+
     Config.bot_on_dc = gs:getGameOption(GAME_OPT_BOT_ON_DC) ~= 0
     Config.bot_count = gs:getGameOption(GAME_OPT_BOT_COUNT)
 
@@ -171,12 +209,13 @@ function Game:selectModes()
     self.web_api:setMatchProperty("kb_mult", tostring(gs:getGameOption(GAME_OPT_KB_MULT)))
     self.web_api:setMatchProperty("dmg_mult", tostring(gs:getGameOption(GAME_OPT_DMG_MULT)))
     self.web_api:setMatchProperty("phys_frict", tostring(gs:getGameOption(GAME_OPT_PHYS_FRICT)))
+    self.web_api:setMatchProperty("ranked", tostring(gs:getGameOption(GAME_OPT_RANKED)))
 
 	display("-- Modes have been selected")
 	display("Mode: " .. self.mode:getDescription())
 	display("Team Mode: " .. self.team_mode:getDescription())
 	display("Win Condition: " .. self.mode.win_condition:getDescription())
-	display("No draws: " .. tostring(win_cond.no_draws))
+    display("Ranked: " .. tostring(gs:getGameOption(GAME_OPT_RANKED)))
 	
 	self:addTask {
 		time = 3.0,

@@ -23,6 +23,7 @@ var GAME_OPT_LAVA_DPS	= 13;
 var GAME_OPT_KB_MULT	= 14;
 var GAME_OPT_DMG_MULT	= 15;
 var GAME_OPT_PHYS_FRICT	= 16;
+var GAME_OPT_RANKED		= 17;
 
 var g_TextBoxIntIds = {
 	4: "#WinCondMaxText",
@@ -70,6 +71,7 @@ function enableAll(enable) {
 	}
 	
 	$("#StartButton").enabled = enable;
+	$("#StartRankedButton").enabled = enable && Game.GetAllPlayerIDs().length == 2;
 }
 
 //Checks whether we are past game setup or not
@@ -287,6 +289,14 @@ function onStartGame() {
 		sendTextBoxValues(); //Send the text box's values before the game started
         Game.SetRemainingSetupTime(0);
     }
+}
+
+function onStartGameRanked() {
+	if(g_IsHost) {
+		$.Msg("Started ranked game");
+		sendSetGameOption(GAME_OPT_RANKED, true);
+		onStartGame();
+	}
 }
 
 //Check if we are the host every second

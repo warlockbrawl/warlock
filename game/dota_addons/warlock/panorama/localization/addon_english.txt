@@ -95,6 +95,7 @@
 	"WL_setup_bot_count" "Bot Count:"
 	"WL_setup_bots_for_leavers" "Bots for leavers:"
 	"WL_setup_start" "Start"
+	"WL_setup_start_ranked" "Ranked"
 	"WL_setup_lava_dps" "Lava DPS"
 	"WL_setup_knockback_multiplier" "Knockback Multiplier"
 	"WL_setup_damage_multiplier" "Damage Multiplier"

@@ -40,7 +40,11 @@ function Player:init()
 	
 	self.score = 0
 
-    self.name = "Unknown"
+	self.name = "Unknown"
+	
+	-- If the player is disconnected for longer than this time
+	-- he will get an abandon (currently only in ranked games)
+	self.abandon_time = Config.ABANDON_TIME
 end
 
 function Player:resetStats()
@@ -177,7 +181,18 @@ function Player:EventDisconnect()
     end
 
     -- Set disconencted flag for detecting reconnects
-    self.disconnected = true
+	self.disconnected = true
+	
+	-- Notify web api of when the player disconnected
+	-- This can be used for ranked to detect early abandons
+	if self.steam_id then
+		local disc_round = 0
+		if GAME.mode then
+			disc_round = GAME.mode.round
+		end
+		
+		GAME.web_api:setMatchPlayerProperty(self.steam_id, "disconnect_round", disc_round)
+	end
 end
 
 -- Native dota teams cannot be reassigned
@@ -240,6 +255,10 @@ function Player:getCash(reliable)
 	return self.cash
 end
 
+function Player:hasAbandoned()
+	return self.abandon_time <= 0
+end
+
 --- Set the displayed cash to match the script value
 function Player:updateCash()
 	PlayerResource:SetGold(self.id, self.cash, true)
@@ -291,9 +310,11 @@ function Game:getOrCreatePlayer(player_id)
 end
 
 function Game:startReconnectTask()
+	local reconnect_task_period = 1
+
     self:addTask {
         id = "Reconnect detection",
-        period = 1,
+        period = reconnect_task_period,
         func = function()
             -- Find reconnected players
             for id, player in pairs(self.players) do
@@ -301,9 +322,52 @@ function Game:startReconnectTask()
                     log("Detected reconnected player " .. tostring(id))
                     player:EventReconnect()
                 end
-            end
+			end
+			
+			-- Advance abandonment timer for disconnected players
+			for id, player in pairs(self.players) do
+				local abandoned = player:hasAbandoned()
+				if player.disconnected and not abandoned then
+					if PlayerResource:GetConnectionState(id) == DOTA_CONNECTION_STATE_ABANDONED then
+						player.abandon_time = 0
+					else
+						player.abandon_time = max(0, player.abandon_time - reconnect_task_period)
+					end
+
+					if player.abandon_time % 60 == 0 and player.abandon_time ~= 0 then
+						display(player.name .. " has " .. tostring(player.abandon_time / 60) .. "minute(s) to reconnect before abandoning.")
+					end
+
+					if player:hasAbandoned() then
+						GAME:onPlayerAbandoned(player)
+					end
+				end
+			end
         end
     }
+end
+
+function Game:onPlayerAbandoned(player)
+	display(player.name .. " has abandoned the game.")
+
+	if Config.ranked then
+		-- Check if there's only one team left that hasn't abandoned
+		local non_abandoned_teams = GAME:getTeamsWhere(function(team)
+			for _, player in pairs(team.players) do
+				if not player:hasAbandoned() then
+					return true
+				end
+			end
+
+			return false
+		end)
+
+		-- Make the last non-abandoned team the winner
+		if #non_abandoned_teams == 1 then
+			local winning_team = non_abandoned_teams[1]
+			GAME:winGame(winning_team.players)
+		end
+	end
 end
 
 function Game:EventPlayerJoinedTeam(event)

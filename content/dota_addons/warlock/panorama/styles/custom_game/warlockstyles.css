@@ -151,11 +151,21 @@
 	vertical-align: center;
 }
 
+#StartButtonContainer
+{
+	horizontal-align: center;
+	margin-top: 30px;
+	flow-children: right;
+}
+
 #StartButton
 {
-    height: 40px;
-    horizontal-align: center;
-    margin-top: 30px;
+	height: 40px;
+}
+
+#StartRankedButton
+{
+	height: 40px;
 }
 
 /*---------------------

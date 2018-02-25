@@ -107,8 +107,12 @@ Config.ARENA_SPAWN_INSET            = 600
 
 -- Web API constants
 Config.WEB_API_MOD_ID               = "warlockbrawl"
-Config.WEB_API_MOD_VERSION          = 5
+Config.WEB_API_MOD_VERSION          = 6
 Config.WEB_API_BASE_URL             = "http://api.warlockbrawl.com/mod"
+
+Config.DEDICATED_SERVER_VERSION     = "WARLOCKBRAWL"
+
+Config.ABANDON_TIME					= 120
 
 --[[
 
@@ -121,3 +125,5 @@ Config.bot_count = 0 -- How many bots to add in Game:start()
 
 Config.dmg_multiplier = 1
 Config.kb_multiplier = 1
+
+Config.ranked = false

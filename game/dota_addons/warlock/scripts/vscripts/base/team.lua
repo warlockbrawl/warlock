@@ -184,6 +184,17 @@ function Game:getAliveTeams()
 	return alive_teams
 end
 
+function Game:getTeamsWhere(delegate)
+	local teams = {}
+	for _, team in pairs(GAME.active_teams) do
+		if delegate(team) then
+			table.insert(teams, team)
+		end
+	end
+	
+	return teams
+end
+
 function Game:getWinnerTeams()
 	local best_score = -1
 	local best_teams = {}

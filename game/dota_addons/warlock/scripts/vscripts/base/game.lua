@@ -75,8 +75,8 @@ function Game:winGame(winners)
 	end
 	
 	display("If you have found any bugs or have feedback please visit us at warlockbrawl.com")
-	
-    self.web_api:finishMatch()
+
+    self.web_api:finishMatch(winners)
 
 	GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
 end

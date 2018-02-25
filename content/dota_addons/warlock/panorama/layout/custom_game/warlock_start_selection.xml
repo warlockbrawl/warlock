@@ -122,9 +122,15 @@
 				</Panel>
 			</Panel>
 
-			<Button id="StartButton" class="ButtonBevel" onactivate="onStartGame()">
-				<Label text="#WL_setup_start" />
-			</Button>
+			<Panel id="StartButtonContainer">
+				<Button id="StartButton" class="ButtonBevel" onactivate="onStartGame()">
+					<Label text="#WL_setup_start" />
+				</Button>
+
+				<Button id="StartRankedButton" class="ButtonBevel" onactivate="onStartGameRanked()">
+					<Label text="#WL_setup_start_ranked" />
+				</Button>
+			</Panel>
 		</Panel>
 	</Panel>
 </root>
