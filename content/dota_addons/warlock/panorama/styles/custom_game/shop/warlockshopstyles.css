@@ -14,7 +14,7 @@
 {
 	vertical-align: top;
 	horizontal-align: center;
-	margin-top: 80px;
+	margin-top: 50px;
 	flow-children: down;
 	z-index: 3;
 }
@@ -23,6 +23,28 @@
 {
 	horizontal-align: center;
 	margin-bottom: 30px;
+}
+
+#ShopGoldPanel
+{
+	flow-children: right;
+	horizontal-align: center;
+}
+
+#ShopGoldText
+{
+	font-size: 30px;
+	color: shopBuyColor;
+	text-shadow: 1px 1px black;
+	text-align: center;
+	vertical-align: center;
+	horizontal-align: center;
+}
+
+#ShopGoldIcon
+{
+	width: 32px;
+	height: 32px;
 }
 
 #ShopElements

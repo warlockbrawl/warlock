@@ -14,6 +14,11 @@
 		<include src="file://{resources}/scripts/custom_game/shop/warlock_shop_setup.js" />
 	</scripts>
 	<Panel class="ShopRoot" hittest="false">
+		<Panel id="ShopGoldPanel">
+			<Label id="ShopGoldText" />
+			<Image id="ShopGoldIcon" src="file://{images}/hud/icon_gold_psd.vtex" />
+		</Panel>
+		
 		<Button id="ShopButton" class="ButtonBevel" onactivate="toggleShop()">
 			<Label id="ShopLabel" text="#WL_shop_close" />
 		</Button>
