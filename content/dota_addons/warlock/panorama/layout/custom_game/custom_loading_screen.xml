@@ -9,7 +9,13 @@
 	
 	<Panel class="LoadingScreenRoot">
 		<Panel id="LoadingScreenBackground">
-			<Image id="LoadingScreenImage" src="file://{resources}/images/custom_game/LoadingScreen.jpg" />
+			<Image id="LoadingScreenImage" src="file://{resources}/images/custom_game/LoadingScreen.jpg">
+				<Panel id="LoadingScreenIconContainer">
+					<Panel class="LoadingScreenIcon">
+						<Label html="true" text="&lt;a href=&quot;https://discord.gg/pSEUr3T&quot;&gt;&lt;img src=&quot;file://{resources}/images/custom_game/Discord-Logo-Color.png&quot; /&gt;&lt;/a&gt;" />
+					</Panel>
+				</Panel>
+			</Image>
 		</Panel>
 	</Panel>
 </root>

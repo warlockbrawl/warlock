@@ -28,3 +28,17 @@
 {
 	font-size: 80px;
 }
+
+#LoadingScreenIconContainer
+{
+	horizontal-align: right;
+	vertical-align: bottom;
+	margin: 30px;
+	flow-children: left;
+}
+
+.LoadingScreenIcon
+{
+	width: 64px;
+	height: 64px;
+}
