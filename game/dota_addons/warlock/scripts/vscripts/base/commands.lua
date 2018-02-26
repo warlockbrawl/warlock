@@ -5,30 +5,42 @@ function Game:initCommands()
 
 	self.commands = {}
 
-    self:registerCommand("addbotinsane", function()
-        GAME:addBot(0.01)
+	self:registerCommand("addbotinsane", function()
+		if not Config.ranked then
+			GAME:addBot(0.01)
+		end
     end)
 
-    self:registerCommand("addbothard", function()
-        GAME:addBot(0.2)
+	self:registerCommand("addbothard", function()
+		if not Config.ranked then
+			GAME:addBot(0.2)
+		end
     end)
 
-    self:registerCommand("addbotmedium", function()
-        GAME:addBot(0.5)
+	self:registerCommand("addbotmedium", function()
+		if not Config.ranked then
+			GAME:addBot(0.5)
+		end
     end)
 
-    self:registerCommand("addboteasy", function()
-        GAME:addBot(1.0)
+	self:registerCommand("addboteasy", function()
+		if not Config.ranked then
+			GAME:addBot(1.0)
+		end
     end)
 
-    self:registerCommand("addbotdummy", function()
-        GAME:addBot(10000000)
+	self:registerCommand("addbotdummy", function()
+		if not Config.ranked then
+			GAME:addBot(10000000)
+		end
     end)
 
-    self:registerCommand("fillbots", function()
-        for i = 1, 10 do
-            GAME:addBot(math.random(0.2, 1.0))
-        end
+	self:registerCommand("fillbots", function()
+		if not Config.ranked then
+			for i = 1, 10 do
+				GAME:addBot(math.random(0.2, 1.0))
+			end
+		end
     end)
 
     self:registerCommand("actorlist", function()
