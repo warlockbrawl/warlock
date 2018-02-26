@@ -27,6 +27,12 @@ function Spell:init(def)
 	end
 
 	Spell.spells[self.id] = self
+
+	if def.alt_ids then
+		for _, alt_id in pairs(def.alt_ids) do
+			Spell.spells[alt_id] = self
+		end
+	end
 end
 
 --- Override for spell behaviour

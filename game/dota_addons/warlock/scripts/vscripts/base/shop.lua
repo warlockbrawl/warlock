@@ -63,7 +63,7 @@ Shop.MAX_ITEMS = 6
 
 Shop.ITEM_DEFS = {
     { name = "Scourge", item_name = "item_warlock_scourge", buy_cost = 7, max_level = 3, mod_defs = { {}, {}, {} } },
-    { name = "Fireball", item_name = "item_warlock_fireball", buy_cost = 0, max_level = 1, mod_defs = { {} } },
+    { name = "Fireball", item_name = "item_warlock_fireball", buy_cost = 7, max_level = 7, mod_defs = { {}, {}, {}, {}, {}, {}, {} } },
     { name = "Ring of Health", item_name = "item_warlock_ring_of_health", buy_cost = 4, max_level = 5, mod_defs = { { hp_bonus = 100 }, { hp_bonus = 190 }, { hp_bonus = 270 }, { hp_bonus = 340 }, { hp_bonus = 400 } } },
     { name = "Cursed Ring", item_name = "item_warlock_cursed_ring", buy_cost = 4, max_level = 2, mod_defs = { { hp_bonus = 100, kb_reduction = 0.15, debuff_factor = 0.25 }, { hp_bonus = 200, kb_reduction = 0.15, debuff_factor = 0.30 } } },
     { name = "Cape", item_name = "item_warlock_cape", buy_cost = 3, max_level = 3, mod_defs = { { hp_regen = 1.5 }, { hp_regen = 2.5 }, { hp_regen = 3.5 } } },

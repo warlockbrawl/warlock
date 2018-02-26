@@ -2,6 +2,8 @@
 {
 %(strings)s	"WL_shop_item_scourge_incarnation"	"Scourge Incarnation"
 	"WL_shop_item_scourge_incarnation_description"	"Upgrades scourge to deal 10/20 more damage and recover 20/30 DP for each opponent struck"
+	"WL_shop_item_fireball" "Fireball"
+	"WL_shop_item_fireball_description" "Upgrades Fireball to deal 7 more damage"
 	"WL_shop_item_redirector"	"Redirector"
 	"WL_shop_item_redirector_description"	"Changes the direction of a projectile owned by you closest to your target towards it and increases its lifetime by 0.5 seconds but increases your knockback vulnerability by 30 percent for 8 seconds"
 	"WL_shop_item_pact"	"Pact"

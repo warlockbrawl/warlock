@@ -244,16 +244,11 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"GLOBAL"
 		"AbilityCastPoint"				"0.2"
-		"AbilityCooldown"				"4.8 4.8 4.8 4.8 4.8"
+		"AbilityCooldown"				"4.8"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
 		"AbilityCastAnimation"			"ACT_DOTA_ATTACK"
-		"MaxLevel"						"5"
+		"MaxLevel"						"1"
 		"AbilityManaCost"				"0"
-
-		"precache"
-		{
-			"particle_folder"		"particles/econ/generic/generic_aoe_explosion_sphere_1"
-		}
 
 		"OnSpellStart"
 		{
@@ -271,13 +266,301 @@
 			"01"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"damage"				"70 70 70 70 70"
+				"damage"				"70"
 			}
 
 			"02"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"range"					"1000 1000 1000 1000 1000"
+				"range"					"1000"
+			}
+		}
+	}
+
+	"item_warlock_fireball2"
+	{
+		"ID"							"8801"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"item_warlock_fireball"
+		"ItemKillable"					"0"
+		"ItemSellable"					"0"
+		"ItemDroppable"					"0"
+		"ItemPurchasable"				"0"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"GLOBAL"
+		"AbilityCastPoint"				"0.2"
+		"AbilityCooldown"				"4.8"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"			"ACT_DOTA_ATTACK"
+		"MaxLevel"						"1"
+		"AbilityManaCost"				"0"
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"				"POINT"
+				"ScriptFile"			"scripts/vscripts/triggers.lua"
+				"Function"				"cast"
+			}
+		}
+
+		// Attributes
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"damage"				"77"
+			}
+
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"range"					"1000"
+			}
+		}
+	}
+
+	"item_warlock_fireball3"
+	{
+		"ID"							"8802"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"item_warlock_fireball"
+		"ItemKillable"					"0"
+		"ItemSellable"					"0"
+		"ItemDroppable"					"0"
+		"ItemPurchasable"				"0"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"GLOBAL"
+		"AbilityCastPoint"				"0.2"
+		"AbilityCooldown"				"4.8"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"			"ACT_DOTA_ATTACK"
+		"MaxLevel"						"1"
+		"AbilityManaCost"				"0"
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"				"POINT"
+				"ScriptFile"			"scripts/vscripts/triggers.lua"
+				"Function"				"cast"
+			}
+		}
+
+		// Attributes
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"damage"				"84"
+			}
+
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"range"					"1000"
+			}
+		}
+	}
+
+	"item_warlock_fireball4"
+	{
+		"ID"							"8803"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"item_warlock_fireball"
+		"ItemKillable"					"0"
+		"ItemSellable"					"0"
+		"ItemDroppable"					"0"
+		"ItemPurchasable"				"0"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"GLOBAL"
+		"AbilityCastPoint"				"0.2"
+		"AbilityCooldown"				"4.8"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"			"ACT_DOTA_ATTACK"
+		"MaxLevel"						"1"
+		"AbilityManaCost"				"0"
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"				"POINT"
+				"ScriptFile"			"scripts/vscripts/triggers.lua"
+				"Function"				"cast"
+			}
+		}
+
+		// Attributes
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"damage"				"91"
+			}
+
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"range"					"1000"
+			}
+		}
+	}
+
+	"item_warlock_fireball5"
+	{
+		"ID"							"8804"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"item_warlock_fireball"
+		"ItemKillable"					"0"
+		"ItemSellable"					"0"
+		"ItemDroppable"					"0"
+		"ItemPurchasable"				"0"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"GLOBAL"
+		"AbilityCastPoint"				"0.2"
+		"AbilityCooldown"				"4.8"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"			"ACT_DOTA_ATTACK"
+		"MaxLevel"						"1"
+		"AbilityManaCost"				"0"
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"				"POINT"
+				"ScriptFile"			"scripts/vscripts/triggers.lua"
+				"Function"				"cast"
+			}
+		}
+
+		// Attributes
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"damage"				"98"
+			}
+
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"range"					"1000"
+			}
+		}
+	}
+
+	"item_warlock_fireball6"
+	{
+		"ID"							"8805"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"item_warlock_fireball"
+		"ItemKillable"					"0"
+		"ItemSellable"					"0"
+		"ItemDroppable"					"0"
+		"ItemPurchasable"				"0"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"GLOBAL"
+		"AbilityCastPoint"				"0.2"
+		"AbilityCooldown"				"4.8"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"			"ACT_DOTA_ATTACK"
+		"MaxLevel"						"1"
+		"AbilityManaCost"				"0"
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"				"POINT"
+				"ScriptFile"			"scripts/vscripts/triggers.lua"
+				"Function"				"cast"
+			}
+		}
+
+		// Attributes
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"damage"				"105"
+			}
+
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"range"					"1000"
+			}
+		}
+	}
+
+	"item_warlock_fireball7"
+	{
+		"ID"							"8806"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"item_warlock_fireball"
+		"ItemKillable"					"0"
+		"ItemSellable"					"0"
+		"ItemDroppable"					"0"
+		"ItemPurchasable"				"0"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"GLOBAL"
+		"AbilityCastPoint"				"0.2"
+		"AbilityCooldown"				"4.8"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
+		"AbilityCastAnimation"			"ACT_DOTA_ATTACK"
+		"MaxLevel"						"1"
+		"AbilityManaCost"				"0"
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"Target"				"POINT"
+				"ScriptFile"			"scripts/vscripts/triggers.lua"
+				"Function"				"cast"
+			}
+		}
+
+		// Attributes
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"damage"				"112"
+			}
+
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"range"					"1000"
 			}
 		}
 	}

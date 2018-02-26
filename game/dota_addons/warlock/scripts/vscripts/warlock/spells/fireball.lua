@@ -1,5 +1,15 @@
 --- Spell warlock_fireball
-Fireball = Spell:new{id='item_warlock_fireball1'}
+Fireball = Spell:new{
+	id='item_warlock_fireball1',
+	alt_ids={
+		"item_warlock_fireball2",
+		"item_warlock_fireball3",
+		"item_warlock_fireball4",
+		"item_warlock_fireball5",
+		"item_warlock_fireball6",
+		"item_warlock_fireball7",
+	}
+}
 
 Fireball.projectile_class 	= FireballProjectile
 Fireball.projectile_speed 	= 1000
