@@ -107,7 +107,7 @@ Config.ARENA_SPAWN_INSET            = 600
 
 -- Web API constants
 Config.WEB_API_MOD_ID               = "warlockbrawl"
-Config.WEB_API_MOD_VERSION          = 6
+Config.WEB_API_MOD_VERSION          = 7
 Config.WEB_API_BASE_URL             = "http://api.warlockbrawl.com/mod"
 
 Config.DEDICATED_SERVER_VERSION     = "WARLOCKBRAWL"

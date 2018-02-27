@@ -295,7 +295,7 @@ function Game:getOrCreatePlayer(player_id)
         
         -- Add the player through the web api, dont add bots (0)
         if p.steam_id and p.steam_id ~= 0 then
-            self.web_api:addPlayer(p.steam_id)
+            self.web_api:addPlayer(p.steam_id, p.name)
         end
 
         self.players[p.id] = p

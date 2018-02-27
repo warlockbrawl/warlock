@@ -69,11 +69,12 @@ function WebAPI:startMatch()
 end
 
 -- Adds players to the current match id
-function WebAPI:addPlayer(steam_id)
+function WebAPI:addPlayer(steam_id, name)
     self:matchSend("addplayer", {
         steam_id = steam_id,
+        name = name,
     }, function(result)
-        log("WebAPI successfully added player with steam id " .. steam_id)
+        log("WebAPI successfully added player " .. name .. " with steam id " .. steam_id)
     end)
 end
 
