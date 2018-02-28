@@ -24,7 +24,8 @@ BASE_MODULES		= {
     'warlock/projectiles/magnetizeprojectile', 'warlock/projectiles/linkprojectile',
     'warlock/projectiles/splitterprojectile', 'warlock/projectiles/splitterspawnerprojectile',
     'warlock/projectiles/splitterchildprojectile', 'warlock/projectiles/snowballprojectile',
-    'warlock/projectiles/rechargeprojectile', 'warlock/projectiles/rechargerefreshprojectile',
+	'warlock/projectiles/rechargeprojectile', 'warlock/projectiles/rechargerefreshprojectile',
+	'warlock/projectiles/twinprojectile',
 
 	'warlock/spells/fireball', 'warlock/spells/scourge',
 	'warlock/spells/boomerang', 'warlock/spells/lightning',
@@ -39,7 +40,7 @@ BASE_MODULES		= {
     'warlock/spells/alteration', 'warlock/spells/link',
     'warlock/spells/splitter', 'warlock/spells/redirect',
     'warlock/spells/snowball', 'warlock/spells/pact',
-    'warlock/spells/recharge',
+    'warlock/spells/recharge', 'warlock/spells/twin',
 
 	'warlock/modifiers/windwalkmodifier', 'warlock/modifiers/shieldmodifier',
 	'warlock/modifiers/rushmodifier', 'warlock/modifiers/gripmodifier',
@@ -175,7 +176,9 @@ function Precache(context)
     PrecacheResource("particle", "particles/econ/items/templar_assassin/templar_assassin_butterfly/templar_assassin_trap_explosion_shock_butterfly.vpcf", context)
     PrecacheResource("particle", "particles/units/heroes/hero_puck/puck_base_attack.vpcf", context)
     PrecacheResource("particle", "particles/gravity/gravity.vpcf", context)
-    PrecacheResource("particle", "particles/homing/homing_projectile.vpcf", context)
+	PrecacheResource("particle", "particles/homing/homing_projectile.vpcf", context)
+	PrecacheResource("particle", "particles/units/heroes/hero_dark_willow/dark_willow_base_attack.vpcf", context)
+	PrecacheResource("particle", "particles/units/heroes/hero_dark_willow/dark_willow_base_attack_explosion.vpcf", context)
     
 	-- custom effects
 	PrecacheResource("particle", "particles/warpzone.vpcf", context)

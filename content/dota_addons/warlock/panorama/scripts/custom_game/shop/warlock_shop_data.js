@@ -10,7 +10,8 @@ function ShopData() {
 		{ name: "Boomerang", column: 1, buyCost: 11, upgradeCost: [ 7, 8, 9, 10, 11, 12 ], iconPath: "file://{images}/spellicons/bounty_hunter_shuriken_toss_png.vtex", displayName: "#WL_shop_ability_boomerang", description: "#WL_shop_ability_boomerang_description" },
 		{ name: "Lightning", column: 1, buyCost: 11, upgradeCost: [ 8, 9, 10, 11, 12, 13 ], iconPath: "file://{images}/spellicons/lina_laguna_blade_png.vtex", displayName: "#WL_shop_ability_lightning", description: "#WL_shop_ability_lightning_description" },
 		{ name: "Homing", column: 1, buyCost: 11, upgradeCost: [ 8, 9, 10, 11, 12, 13 ], iconPath: "file://{images}/spellicons/puck_illusory_orb_png.vtex", displayName: "#WL_shop_ability_homing", description: "#WL_shop_ability_homing_description" },
-		
+		{ name: "Twin", column: 1, buyCost: 12, upgradeCost: [ 7, 8, 9, 10, 11, 12 ], iconPath: "file://{images}/spellicons/dark_willow_bedlam_png.vtex", displayName: "#WL_shop_ability_twin", description: "#WL_shop_ability_twin_description" },
+
 		// R 2
 		{ name: "Teleport", column: 2, buyCost: 12, upgradeCost: [ 6, 7, 8, 9, 10, 11 ], iconPath: "file://{images}/spellicons/rubick_telekinesis_png.vtex", displayName: "#WL_shop_ability_teleport", description: "#WL_shop_ability_teleport_description" },
 		{ name: "Thrust", column: 2, buyCost: 11, upgradeCost: [ 6, 7, 8, 9, 10, 11 ], iconPath: "file://{images}/spellicons/disruptor_glimpse_png.vtex", displayName: "#WL_shop_ability_thrust", description: "#WL_shop_ability_thrust_description" },

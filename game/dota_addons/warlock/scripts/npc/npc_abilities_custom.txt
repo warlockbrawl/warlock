@@ -132,6 +132,49 @@
 		}
 	}
 
+	"warlock_twin"
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"luaabils/warlock_twin"
+		"AbilityTextureName"			"dark_willow_bedlam"
+
+		// Stats
+		"AbilityCastRange"				"GLOBAL"
+		"AbilityCastPoint"				"0.2"
+		"AbilityCooldown"				"16.0 13.9 12.5 11.7 11.0 10.3 9.6"
+		"MaxLevel"						"7"
+		"AbilityManaCost"				"0"
+
+		// Attributes
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"damage"				"44 48 52 56 62 66 72"
+			}
+
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"range"					"800 800 800 800 800 800 800"
+			}
+			
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"cooldown2"				"14.0 13.4 12.8 12.2 11.6 11.0 10.4"
+			}
+			
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"upgrade_cost"			"7 8 9 10 11 12"
+			}
+		}
+	}
+
 	"warlock_cluster"
 	{
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"

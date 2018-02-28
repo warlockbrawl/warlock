@@ -59,6 +59,11 @@ function ShieldModifier:onCollision(coll_info, cc)
 		if(actor:instanceof(BoomerangProjectile)) then
 			actor:stopAcceleration()
 		end
+
+		-- Hardcode twin negate angle
+		if actor:instanceof(TwinProjectile) then
+			actor:negateAngle()
+		end
 		
 		-- Change owner
 		if change_owner then

@@ -2551,3 +2551,104 @@
         }
     }
 }
+
+"Twin.Hit"
+{
+    "operator_stacks"
+    {
+        "update_stack"
+        {
+            "reference_operator"
+            {
+                "operator"		"sos_reference_stack"
+                "reference_stack"		"dota_src1_3d"
+                "operator_variables"
+                {
+                    "vsnd_files"
+                    {
+                        "value"
+                        {
+                            "wave0"		"sounds/weapons/hero/dark_willow/ley_cast.vsnd"
+                        }
+                    }
+                    "volume"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "pitch"
+                    {
+                        "value"		"1.000000"
+                    }
+                    "memory_type"
+                    {
+                        "value"		"0"
+                    }
+                    "soundlevel"
+                    {
+                        "value"		"78.000000"
+                    }
+                    "distance_max"
+                    {
+                        "value"		"1000.000000"
+                    }
+                    "limiter_on"
+                    {
+                        "value"		"0.000000"
+                    }
+                }
+            }
+        }
+    }
+}
+"Twin.Cast"
+{
+	"operator_stacks"
+	{
+		"update_stack"
+		{
+			"reference_operator"
+			{
+				"operator"		"sos_reference_stack"
+				"reference_stack"		"dota_src1_3d"
+				"operator_variables"
+				{
+					"vsnd_files"
+					{
+						"value"
+						{
+							"value0"		"sounds/weapons/hero/dark_willow/ley_counter.vsnd"
+						}
+					}
+					"volume"
+					{
+						"value"		"0.799805"
+					}
+					"pitch_rand_min"
+					{
+						"value"		"-0.050000"
+					}
+					"pitch_rand_max"
+					{
+						"value"		"0.050000"
+					}
+					"pitch"
+					{
+						"value"		"1.000000"
+					}
+					"soundlevel"
+					{
+						"value"		"81.000000"
+					}
+					"distance_max"
+					{
+						"value"		"2500.000000"
+					}
+					"limiter_on"
+					{
+						"value"		"0.000000"
+					}
+				}
+			}
+		}
+	}
+}

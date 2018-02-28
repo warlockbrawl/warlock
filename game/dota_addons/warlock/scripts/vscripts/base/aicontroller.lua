@@ -48,14 +48,14 @@ function AIController:init(def)
     }
 
     self.purchasable_target_spells = {
-        { 1, 2, 3 },
-        { 7, 8, 9, 10 },
-        { 12, 13, 14 },
-        { 18, 19, 20, 21, 22, 23 }
+        { 1, 2, 3, 4 },
+        { 8, 9, 10, 11 },
+        { 13, 14, 15 },
+        { 19, 20, 21, 22, 23, 24 }
     }
 
     self.purchasable_escape_spells = {
-        4, 5, 6
+        5, 6, 7
     }
 
     self.escape_spell = nil

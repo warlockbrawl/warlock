@@ -56,6 +56,7 @@ spells.append(WarlockSpell("link", "Shoot a magical link which can latch on enem
 spells.append(WarlockSpell("splitter", "Cast a projectile which splits into minor missiles", 2))
 spells.append(WarlockSpell("snowball", "Spawns a snowball which will drag other players with it and explode", 2))
 spells.append(WarlockSpell("recharge", "Casts a projectile that refreshes the spell's cooldown if it hits. Consecutive hits deal more damage", 2))
+spells.append(WarlockSpell("twin", "Shoots two projectiles flying in an elliptic curve towards the target location and damaging enemies on impact", 2))
 
 # Items		
 items.append(WarlockItem("ring_of_health", "Increases maximum HP", 5, { "hp_bonus": "100 190 270 340 400" }))

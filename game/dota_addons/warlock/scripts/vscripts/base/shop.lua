@@ -25,6 +25,7 @@ Shop.SPELL_DEFS = {
     { name = "Boomerang", column = 1, ability_name = "warlock_boomerang", buy_cost = 11, upgrade_cost = { 7, 8, 9, 10, 11, 12 } },
     { name = "Lightning", column = 1, ability_name = "warlock_lightning", buy_cost = 11, upgrade_cost = { 8, 9, 10, 11, 12, 13 } },
     { name = "Homing", column = 1, ability_name = "warlock_homing", buy_cost = 11, upgrade_cost = { 8, 9, 10, 11, 12, 13 } },
+    { name = "Twin", column = 1, ability_name = "warlock_twin", buy_cost = 12, upgrade_cost = { 7, 8, 9, 10, 11, 12 } },
 
     -- R
     { name = "Teleport", column = 2, ability_name = "warlock_teleport", buy_cost = 12, upgrade_cost = { 6, 7, 8, 9, 10, 11 } },
