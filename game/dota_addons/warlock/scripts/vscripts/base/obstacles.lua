@@ -20,24 +20,24 @@ setmetatable(Obstacle.owner, Player)
 Obstacle.variations = 
 {
 	{
-		{ model = "models/props_stone/stone_ruins001a.vmdl", elasticity = 0.5, radius = 70 },
-		{ model = "models/props_stone/stone_ruins002a.vmdl", elasticity = 0.5, radius = 70 },
-		{ model = "models/props_stone/stone_ruins003a.vmdl", elasticity = 0.5, radius = 70 },
-		{ model = "models/props_stone/stone_ruins004a.vmdl", elasticity = 0.5, radius = 70 },
-		{ model = "models/props_stone/stone_ruins005a.vmdl", elasticity = 0.5, radius = 70 }
+		{ model = "models/props_stone/stone_ruins001a.vmdl", elasticity = 0.5, radius = 60 },
+		{ model = "models/props_stone/stone_ruins002a.vmdl", elasticity = 0.5, radius = 60 },
+		{ model = "models/props_stone/stone_ruins003a.vmdl", elasticity = 0.5, radius = 60 },
+		{ model = "models/props_stone/stone_ruins004a.vmdl", elasticity = 0.5, radius = 60 },
+		{ model = "models/props_stone/stone_ruins005a.vmdl", elasticity = 0.5, radius = 60 }
 	},
 	{
-		{ model = "models/props_rock/badside_rocks001.vmdl", elasticity = 0.5, radius = 80 },
-		{ model = "models/props_rock/badside_rocks002.vmdl", elasticity = 0.5, radius = 55 },
-		{ model = "models/props_rock/badside_rocks003.vmdl", elasticity = 0.5, radius = 70 },
-		{ model = "models/props_rock/badside_rocks004.vmdl", elasticity = 0.5, radius = 50 }
+		{ model = "models/props_rock/badside_rocks001.vmdl", elasticity = 0.5, radius = 70 },
+		{ model = "models/props_rock/badside_rocks002.vmdl", elasticity = 0.5, radius = 45 },
+		{ model = "models/props_rock/badside_rocks003.vmdl", elasticity = 0.5, radius = 60 },
+		{ model = "models/props_rock/badside_rocks004.vmdl", elasticity = 0.5, radius = 40 }
 	},
 	{
-		{ model = "models/props_debris/barrel001.vmdl", elasticity = 0.5, radius = 60 },
-		{ model = "models/props_debris/barrel002.vmdl", elasticity = 0.5, radius = 60 },
-		{ model = "models/props_debris/wooden_pole_01.vmdl", elasticity = 0.5, radius = 45 },
-		{ model = "models/props_debris/wooden_pole_02.vmdl", elasticity = 0.5, radius = 45 },
-		{ model = "models/props_debris/merchant_debris_chest001.vmdl", elasticity = 0.5, radius = 60 }
+		{ model = "models/props_debris/barrel001.vmdl", elasticity = 0.5, radius = 50 },
+		{ model = "models/props_debris/barrel002.vmdl", elasticity = 0.5, radius = 50 },
+		{ model = "models/props_debris/wooden_pole_01.vmdl", elasticity = 0.5, radius = 35 },
+		{ model = "models/props_debris/wooden_pole_02.vmdl", elasticity = 0.5, radius = 35 },
+		{ model = "models/props_debris/merchant_debris_chest001.vmdl", elasticity = 0.5, radius = 50 }
 	}
 }
 
