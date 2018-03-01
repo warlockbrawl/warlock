@@ -293,100 +293,102 @@ function Game:_physResolveCollisions(dt)
 		local a1 = coll_spec.cc1.actor
 		local a2 = coll_spec.cc2.actor
 
-		-- move them to collision time
-		if tm > 0 then
-			a1:moveInTime(tm)
-			a2:moveInTime(tm)
-		end
-
-		-- prepare collision info for the handlers
-		local coll_info = {}
-
-		local diff = a2.location - a1.location
-		coll_info.hit_location = (a1.location + a2.location)*0.5
-		coll_info.hit_distance = diff:Length()
-
-		-- get normal, if applicable
-		if coll_info.hit_distance > 0 then
-			coll_info.hit_normal = diff / coll_info.hit_distance
-		else
-			coll_info.hit_normal = Vector(1, 0, 0)
-		end
-
-		-- overlapping when time to collision was 0
-		coll_info.overlapping = (tm == 0)
-
-		-- notify the objects
-		if coll_spec.n1 then
-			coll_info.other_cc = coll_spec.cc2
-			coll_info.actor = a2
-			coll_spec.cc1:onCollision(coll_info)
-		end
-
-		if coll_spec.n2 then
-			coll_info.hit_normal = -coll_info.hit_normal
-
-			coll_info.other_cc = coll_spec.cc1
-			coll_info.actor = a1
-			coll_spec.cc2:onCollision(coll_info)
-
-			coll_info.hit_normal = -coll_info.hit_normal
-		end
-
-		-- perform ellastic if needed
-		if coll_spec.ellastic then
-			if coll_spec.cc1.channel == 2 or coll_spec.cc2.channel == 2 then
-				self:_physEllasticCollision(coll_spec.cc1, coll_spec.cc2, coll_info)
-			else
-				a1:moveInTime(-Config.GAME_TICK_RATE)
-				a2:moveInTime(-Config.GAME_TICK_RATE) -- revert time to check if player was previously colliding
-				
-				local dif = a2.location - a1.location
-				local dist = dif:Length() -- previous distance
-				local real r2 = coll_spec.cc1.radius + coll_spec.cc2.radius
-				local real s = dist*dist
-				local real r = s - r2*r2
-				
-				a1:moveInTime(Config.GAME_TICK_RATE)
-				a2:moveInTime(Config.GAME_TICK_RATE) -- players can still walk while standing on each other
-				--coll_info.hit_distance = diff:Length()
-			
-				--print(r)
-				if r < 0 then
-					s = math.sqrt(-r)
-					if s < 30 then
-						s = 30
-					end
-					if coll_spec.cc1.channel == coll_spec.cc2.channel then -- warlock-warlock collision
-						a1.location = a1.location - dif/s -- Warlock-Warlock push away
-						a2.location = a2.location + dif/s
-					elseif coll_spec.cc1.channel + coll_spec.cc2.channel == 4 then -- 3+1 = 1+3 = 4 = warlock pillar collision
-						if coll_spec.cc1.channel == 1 then
-							a1.location = a2.location - coll_info.hit_normal*r2	
-						else
-							a2.location = a1.location + coll_info.hit_normal*r2
-						end
-					end
-				else
-					self:_physEllasticCollision(coll_spec.cc1, coll_spec.cc2, coll_info)
-				end
+		if not a1:isDestroyedNextFrame() and not a2:isDestroyedNextFrame() then
+			-- move them to collision time
+			if tm > 0 then
+				a1:moveInTime(tm)
+				a2:moveInTime(tm)
 			end
-			--PrintTable(coll_spec.cc2)			
-		end
 
-		-- revert the time
-		if tm > 0 then
-			a1:moveInTime(-tm)
-			a2:moveInTime(-tm)
-		end
+			-- prepare collision info for the handlers
+			local coll_info = {}
+
+			local diff = a2.location - a1.location
+			coll_info.hit_location = (a1.location + a2.location)*0.5
+			coll_info.hit_distance = diff:Length()
+
+			-- get normal, if applicable
+			if coll_info.hit_distance > 0 then
+				coll_info.hit_normal = diff / coll_info.hit_distance
+			else
+				coll_info.hit_normal = Vector(1, 0, 0)
+			end
+
+			-- overlapping when time to collision was 0
+			coll_info.overlapping = (tm == 0)
+
+			-- notify the objects
+			if coll_spec.n1 then
+				coll_info.other_cc = coll_spec.cc2
+				coll_info.actor = a2
+				coll_spec.cc1:onCollision(coll_info)
+			end
+
+			if coll_spec.n2 then
+				coll_info.hit_normal = -coll_info.hit_normal
+
+				coll_info.other_cc = coll_spec.cc1
+				coll_info.actor = a1
+				coll_spec.cc2:onCollision(coll_info)
+
+				coll_info.hit_normal = -coll_info.hit_normal
+			end
+
+			-- perform ellastic if needed
+			if coll_spec.ellastic then
+				if coll_spec.cc1.channel == 2 or coll_spec.cc2.channel == 2 then
+					self:_physEllasticCollision(coll_spec.cc1, coll_spec.cc2, coll_info)
+				else
+					a1:moveInTime(-Config.GAME_TICK_RATE)
+					a2:moveInTime(-Config.GAME_TICK_RATE) -- revert time to check if player was previously colliding
+					
+					local dif = a2.location - a1.location
+					local dist = dif:Length() -- previous distance
+					local real r2 = coll_spec.cc1.radius + coll_spec.cc2.radius
+					local real s = dist*dist
+					local real r = s - r2*r2
+					
+					a1:moveInTime(Config.GAME_TICK_RATE)
+					a2:moveInTime(Config.GAME_TICK_RATE) -- players can still walk while standing on each other
+					--coll_info.hit_distance = diff:Length()
+				
+					--print(r)
+					if r < 0 then
+						s = math.sqrt(-r)
+						if s < 30 then
+							s = 30
+						end
+						if coll_spec.cc1.channel == coll_spec.cc2.channel then -- warlock-warlock collision
+							a1.location = a1.location - dif/s -- Warlock-Warlock push away
+							a2.location = a2.location + dif/s
+						elseif coll_spec.cc1.channel + coll_spec.cc2.channel == 4 then -- 3+1 = 1+3 = 4 = warlock pillar collision
+							if coll_spec.cc1.channel == 1 then
+								a1.location = a2.location - coll_info.hit_normal*r2	
+							else
+								a2.location = a1.location + coll_info.hit_normal*r2
+							end
+						end
+					else
+						self:_physEllasticCollision(coll_spec.cc1, coll_spec.cc2, coll_info)
+					end
+				end
+				--PrintTable(coll_spec.cc2)			
+			end
+
+			-- revert the time
+			if tm > 0 then
+				a1:moveInTime(-tm)
+				a2:moveInTime(-tm)
+			end
 
 
-		if a1.static then
-			a1.velocity = v_zero
-		end
+			if a1.static then
+				a1.velocity = v_zero
+			end
 
-		if a2.static then
-			a2.velocity = v_zero
+			if a2.static then
+				a2.velocity = v_zero
+			end
 		end
 	end
 end

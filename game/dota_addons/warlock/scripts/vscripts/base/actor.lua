@@ -145,6 +145,12 @@ function Actor:getLifetime()
     return nil
 end
 
+-- Whether the actor will likely be destroyed next frame (eg. destroyed in coll this frame)
+function Actor:isDestroyedNextFrame()
+	local lifetime = self:getLifetime()
+	return (lifetime ~= nil and lifetime <= 0) or not self.exists
+end
+
 function Actor:heal(info)
 end
 
