@@ -362,17 +362,20 @@ function Game:fixInvisBug()
 
 	-- Fix pillars by removing their unit and creating a new one
 	for o, _ in pairs(GAME.obstacles) do
-		o.model_unit:RemoveSelf()
-		o.model_unit = CreateUnitByName(Obstacle.dummy_unit, o.location, false, nil, nil, DOTA_TEAM_NOTEAM)
+		if o.model_unit then
+			o.model_unit:RemoveSelf()
 
-	    local locust_abil = o.model_unit:FindAbilityByName("warlock_tech_obstacle")
-	    locust_abil:SetLevel(1)
+			o.model_unit = CreateUnitByName(Obstacle.dummy_unit, o.location, false, nil, nil, DOTA_TEAM_NOTEAM)
 
-		o.model_unit:SetModel(o.obstacle_def.model)
-		o.model_unit:SetOriginalModel(o.obstacle_def.model)
-		
-		-- Set the dummy's health
-		o.model_unit:SetMaxHealth(Obstacle.max_health)
-		o.model_unit:SetHealth(o.health)
+			local locust_abil = o.model_unit:FindAbilityByName("warlock_tech_obstacle")
+			locust_abil:SetLevel(1)
+
+			o.model_unit:SetModel(o.obstacle_def.model)
+			o.model_unit:SetOriginalModel(o.obstacle_def.model)
+
+			-- Set the dummy's health
+			o.model_unit:SetMaxHealth(Obstacle.max_health)
+			o.model_unit:SetHealth(o.health)
+		end
 	end
 end
