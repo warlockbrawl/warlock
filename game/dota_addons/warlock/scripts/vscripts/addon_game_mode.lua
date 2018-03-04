@@ -178,7 +178,7 @@ function Precache(context)
     PrecacheResource("particle", "particles/gravity/gravity.vpcf", context)
 	PrecacheResource("particle", "particles/homing/homing_projectile.vpcf", context)
 	PrecacheResource("particle", "particles/units/heroes/hero_dark_willow/dark_willow_base_attack.vpcf", context)
-	PrecacheResource("particle", "particles/units/heroes/hero_dark_willow/dark_willow_base_attack_explosion.vpcf", context)
+	PrecacheResource("particle", "particles/units/heroes/hero_dark_willow/dark_willow_wisp_aoe_cast_glow.vpcf", context)
     
 	-- custom effects
 	PrecacheResource("particle", "particles/warpzone.vpcf", context)

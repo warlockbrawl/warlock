@@ -81,6 +81,6 @@ Effect:register('twin_projectile', {
 
 Effect:register('twin_hit', {
 	class		= ParticleEffect,
-	effect_name	= "particles/units/heroes/hero_dark_willow/dark_willow_base_attack_explosion.vpcf",
+	effect_name	= "particles/units/heroes/hero_dark_willow/dark_willow_wisp_aoe_cast_glow.vpcf",
 	scale = 1.2,
 })
