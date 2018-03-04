@@ -11,6 +11,7 @@
 		<Panel id="LoadingScreenBackground">
 			<Image id="LoadingScreenImage" src="file://{resources}/images/custom_game/LoadingScreen.jpg">
 				<Panel id="LoadingScreenIconContainer">
+					<Label class="LoadingScreenText" text="discord.gg/pSEUr3T"></Label>
 					<Panel class="LoadingScreenIcon">
 						<Label html="true" text="&lt;a href=&quot;https://discord.gg/pSEUr3T&quot;&gt;&lt;img src=&quot;file://{resources}/images/custom_game/Discord-Logo-Color.png&quot; /&gt;&lt;/a&gt;" />
 					</Panel>
