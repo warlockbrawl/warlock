@@ -7,6 +7,10 @@
 		<include src="file://{resources}/scripts/custom_game/warlock_scoreboard.js" />
 	</scripts>
 	<Panel hittest="false" class="ScoreboardRoot">
+		<Button id="ScoreboardButton" class="ButtonBevel" onactivate="toggleScoreboard()">
+			<Label text="Scoreboard" />
+		</Button>
+
 		<Panel id="ScorePlayerList">
 			<Panel class="HeaderScoreRow">
 				<Label id="HeaderScoreAvatar" class="HeaderScoreAvatarColumn" />

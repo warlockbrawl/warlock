@@ -174,28 +174,26 @@
 	 
 ----------------------*/
 
-#ScorePlayerList
-{
-	margin-left: 60px;
-	margin-top: 60px;
-	flow-children: down;
-	background-color: #000000C8;
-}
-
 .ScoreboardRoot
 {
-	transform: translatex(-600px);
-	transition-property: transform;
-	transition-duration: 0.1s;
 	vertical-align: top;
-	horizontal-align: left;
+	horizontal-align: right;
 	padding: 10px;
 	flow-children: down;
 }
 
-.ScoreboardRoot.ScoreboardVisible
+#ScorePlayerList
 {
-	transform: translatex(0px);
+	margin-top: 10px;
+	flow-children: down;
+	background-color: #333333F0;
+	border-radius: 6px;
+}
+
+#ScoreboardButton
+{
+	horizontal-align: right;
+	margin-top: 40px;
 }
 
 .HeaderScoreRow
@@ -204,9 +202,10 @@
 	height: 40px;
 	border-bottom: 2px solid black;
 	margin-bottom: 1px;
-	background-color: black;
+	background-color: #333333F0;
 	padding: 8px;
 	vertical-align: middle;
+	font-weight: bold;
 }
 
 .ScoreRow
@@ -214,7 +213,7 @@
 	flow-children: right;
 	height: 40px;
 	border-bottom: 2px solid black;
-	background-color: black;
+	background-color: #333333F0;
 	padding: 8px;
 	vertical-align: middle;
 }
@@ -242,20 +241,15 @@
 
 .HeaderScoreAvatarColumn
 {
-	width: 30px;
-	flow-children: down;
+	width: 60px;
 	vertical-align: middle;
-	text-align: center;
-	color: white;
 }
 
 .ScoreAvatarColumn
 {
-	width: 30px;
-	flow-children: down;
+	width: 60px;
+	height: 60px;
 	vertical-align: middle;
-	text-align: center;
-	color: white;
 }
 
 .ScoreColumn

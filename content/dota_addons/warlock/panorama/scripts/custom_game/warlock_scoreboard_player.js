@@ -4,6 +4,7 @@ var g_PanelKills;
 var g_PanelDeaths;
 var g_PanelScore;
 var g_PanelDamage;
+var g_PanelAvatar;
 
 var g_Score = 0;
 var g_Damage = 0;
@@ -54,7 +55,9 @@ function onScoreTableChanged(tableName, key, data) {
 	}
 	
 	//Setup the steam avatar and name
-	$("#ScoreAvatar").steamid = g_PlayerInfo.player_steamid;
+	g_PanelAvatar = $("#ScoreAvatar");
+	g_PanelAvatar.steamid = g_PlayerInfo.player_steamid;
+
 	$("#ScoreName").steamid = g_PlayerInfo.player_steamid;
 	
 	//Grab some panels

@@ -28,13 +28,10 @@ function playerSelectLoop() {
 	$.Schedule(1.0, playerSelectLoop);
 }
 
-function SetScoreboardVisible(visible)
-{
-	$.Msg("Called:", visible);
-	g_ScoreBoard.SetHasClass("ScoreboardVisible", visible);
+function toggleScoreboard() {
+	g_ScoreBoard.visible = !g_ScoreBoard.visible;
 }
 
-g_ScoreBoard = $.GetContextPanel();
-SetScoreboardVisible(false);
-$.RegisterEventHandler("DOTACustomUI_SetFlyoutScoreboardVisible", g_ScoreBoard, SetScoreboardVisible);
+g_ScoreBoard = $("#ScorePlayerList");
+g_ScoreBoard.visible = false;
 playerSelectLoop();
