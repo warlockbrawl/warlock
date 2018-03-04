@@ -91,7 +91,7 @@ Config.KB_DMG_TO_VELOCITY 			= 10.0
 
 Config.LOCUST_UNIT 					= "npc_dummy_unit"
 
-Config.DEVELOPMENT 					= false
+Config.DEVELOPMENT 					= IsInToolsMode()
 Config.MAX_LEVEL					= 100
 
 Config.OBSTACLE_MAX_COORD			= 1000
