@@ -64,6 +64,12 @@ function HomingProjectile:onCollision(coll_info, cc)
 				native_mod = "modifier_chen_test_of_faith_teleport"
 			})
 		end
+	else if actor:instanceOf(Obstacle) then
+		actor:receiveDamage {
+			source		= self.instigator,
+			hit_normal	= coll_info.hit_normal,
+			amount		= self.damage
+		}
 	end
 	
 	-- destroy
