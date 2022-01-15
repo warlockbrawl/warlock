@@ -16,7 +16,7 @@
 	<Panel class="ShopRoot" hittest="false">
 		<Panel id="ShopGoldPanel">
 			<Label id="ShopGoldText" />
-			<Image id="ShopGoldIcon" src="file://{images}/hud/icon_gold_psd.vtex" />
+			<Image id="ShopGoldIcon" />
 		</Panel>
 		
 		<Button id="ShopButton" class="ButtonBevel" onactivate="toggleShop()">

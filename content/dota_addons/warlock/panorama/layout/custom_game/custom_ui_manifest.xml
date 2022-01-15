@@ -9,10 +9,10 @@
 		GameUI.SetDefaultUIEnabled(DotaDefaultUIElement_t.DOTA_DEFAULT_UI_ACTION_MINIMAP , false);
 	</script>
 	<Panel>
-		<CustomUIElement type="LoadingScreen" layoutfile="file://{resources}/layout/custom_game/warlock_loading_screen.xml" />
+		<CustomUIElement type="LoadingScreen" layoutfile="file://{resources}/layout/custom_game/custom_loading_screen.xml" />
 		<CustomUIElement type="GameSetup" layoutfile="file://{resources}/layout/custom_game/warlock_start_selection.xml" />
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/shop/warlock_shop.xml" />
 		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/warlock_camera.xml" />
-		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/warlock_scoreboard.xml" />>
+		<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/warlock_scoreboard.xml" />
 	</Panel>
 </root>

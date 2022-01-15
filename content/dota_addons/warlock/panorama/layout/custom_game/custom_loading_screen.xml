@@ -3,18 +3,12 @@
 		<include src="file://{resources}/styles/custom_game/warlockloadingscreen.css" />
 	</styles>
 	
-	<scripts>
-	
-	</scripts>
-	
 	<Panel class="LoadingScreenRoot">
 		<Panel id="LoadingScreenBackground">
 			<Image id="LoadingScreenImage" src="file://{resources}/images/custom_game/LoadingScreen.jpg">
-				<Panel id="LoadingScreenIconContainer">
+				<Panel id="LoadingScreenIconContainer" onactivate="ExternalBrowserGoToURL('https://discord.gg/pSEUr3T')">
 					<Label class="LoadingScreenText" text="discord.gg/pSEUr3T"></Label>
-					<Panel class="LoadingScreenIcon">
-						<Label html="true" text="&lt;a href=&quot;https://discord.gg/pSEUr3T&quot;&gt;&lt;img src=&quot;file://{resources}/images/custom_game/Discord-Logo-Color.png&quot; /&gt;&lt;/a&gt;" />
-					</Panel>
+					<Image class="LoadingScreenIcon" src="file://{resources}/images/custom_game/Discord-Logo-Color.png" />
 				</Panel>
 			</Image>
 		</Panel>
