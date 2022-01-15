@@ -4,7 +4,7 @@
 BASE_LOG_PREFIX 	= '[WL] '
 BASE_MODULES		= {'util', 'class', 'set', 'base_game', 'base_tasks', 'main'}
 
-function log(msg)
+function print(msg)
 	print(BASE_LOG_PREFIX .. msg)
 end
 
@@ -14,7 +14,7 @@ end
 
 
 function start_file(name)
-	log(' module ' .. mod_name)
+	print(' module ' .. mod_name)
 end
 
 local function load_module(mod_name)
@@ -24,10 +24,10 @@ local function load_module(mod_name)
 	end)
 
 	if status then
-		log(' module ' .. mod_name .. '- OK')
+		print(' module ' .. mod_name .. '- OK')
 	else
-		log(' module ' .. mod_name .. '- FAILED:')
-		log('	' .. err_msg)
+		print(' module ' .. mod_name .. '- FAILED:')
+		print('	' .. err_msg)
 	end
 end
 

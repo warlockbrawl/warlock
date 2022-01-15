@@ -136,7 +136,7 @@ function Pawn:respawn()
 	self:enable()
 
 	if not self.unit:IsAlive() then
-		log("Respawning hero")
+		print("Respawning hero")
 		self.unit:RespawnHero(false, false)
 	end
 
@@ -156,7 +156,7 @@ function Pawn:die(dmg_info)
 	local source_actor = nil
 	local source_unit = nil
 
-	log("Pawn:die()")
+	print("Pawn:die()")
 
 	if dmg_info.source then
 		source_actor = dmg_info.source
@@ -410,7 +410,7 @@ function Game:filterPawns(filter)
 	local pawns = {}
 
 	if(not filter) then
-		log("Warning: filter in filterPawns was nil, returning empty list")
+		warning("filter in filterPawns was nil, returning empty list")
 		return pawns
 	end
 

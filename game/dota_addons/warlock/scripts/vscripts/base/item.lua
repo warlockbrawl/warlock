@@ -11,7 +11,7 @@ ItemClasses["ModifierItem"] = ModifierItem
 
 function Item:init(def)
 	if not def.pawn then
-		log("def.pawn was nil in Item")
+		print("def.pawn was nil in Item")
 	end
 	
 	self.pawn = def.pawn
@@ -24,7 +24,7 @@ end
 
 function Item:onUpgrade(level)
 	if(level > self.maxlevel or level < 1) then
-		log("Warning: Item:onUpgrade invalid level")
+		warning("Item:onUpgrade invalid level")
 	end
 
 	self.level = level
@@ -45,11 +45,11 @@ ModifierItem = class(Item)
 
 function ModifierItem:init(def)
 	if not def.mod_defs then
-		log("Warning: ModifierInit:init def.mod_defs is nil")
+		warning("ModifierInit:init def.mod_defs is nil")
 	end
 	
 	if not def.pawn then
-		log("Warning: ModifierInit:init def.pawn is nil")
+		warning("ModifierInit:init def.pawn is nil")
 	end
 	
 	-- For each modifier definition create a modifier

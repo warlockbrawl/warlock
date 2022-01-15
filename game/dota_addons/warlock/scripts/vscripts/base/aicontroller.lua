@@ -19,12 +19,12 @@ function AIController:init(def)
             local item_name = item:GetAbilityName()
 
             if item_name == "item_warlock_fireball1" then
-                log("Found fireball in slot " .. tostring(i))
+                print("Found fireball in slot " .. tostring(i))
                 self.fireball = item
             end
 
             if item_name == "item_warlock_scourge1" or item_name == "item_warlock_scourge2" or item_name == "item_warlock_scourge3" then
-                log("Found scourge in slot " .. tostring(i))
+                print("Found scourge in slot " .. tostring(i))
                 self.scourge = item
             end
         end
@@ -69,14 +69,14 @@ function AIController:init(def)
         if abil then
             local abil_name = abil:GetAbilityName()
             local found_abil = false
-            log("Checking for ability " .. abil_name)
+            print("Checking for ability " .. abil_name)
 
             -- Special case for windwalk, remove E column
             if abil_name == "warlock_windwalk" then
                 for j = 1, #self.purchasable_target_spells do
                     if Shop.SPELL_DEFS[self.purchasable_target_spells[j][1]].name == "Splitter" then
                         table.remove(self.purchasable_target_spells, j)
-                        log("Handled windwalk")
+                        print("Handled windwalk")
                         found_abil = true
                         break
                     end
@@ -92,7 +92,7 @@ function AIController:init(def)
                             table.insert(self.projectile_spells, Shop.SPELL_DEFS[spells[k]]) -- Add found spell to available spell list
                             table.remove(self.purchasable_target_spells, j) -- Remove column from purchasable spells
                             found_abil = true
-                            log("Found")
+                            print("Found")
                             break
                         end
                     end
@@ -108,7 +108,7 @@ function AIController:init(def)
                         if Shop.SPELL_DEFS[self.purchasable_escape_spells[j]].ability_name == abil_name then
                             self.escape_spell = Shop.SPELL_DEFS[self.purchasable_escape_spells[j]]
                             self.purchasable_escape_spells = { }
-                            log("Found")
+                            print("Found")
                             break
                         end
                     end
@@ -290,7 +290,7 @@ function AIController:castRandomProjectileSpell()
     end
 
     if not spell or spell:IsNull() then
-        log("Could not find spell " .. spell_name)
+        print("Could not find spell " .. spell_name)
         return false
     end
 

@@ -64,7 +64,7 @@ function GameSetup:onSetTeam(args)
     local player = PlayerResource:GetPlayer(player_id)
 
     if not player or not GameRules:PlayerHasCustomGameHostPrivileges(player) then
-        log("Non-host tried to set teams")
+        print("Non-host tried to set teams")
         return
     end
 
@@ -82,7 +82,7 @@ function GameSetup:onSetGameOption(args)
     local player = PlayerResource:GetPlayer(player_id)
 
     if not player or not GameRules:PlayerHasCustomGameHostPrivileges(player) then
-        log("Non-host tried to set game option")
+        print("Non-host tried to set game option")
         return
     end
 

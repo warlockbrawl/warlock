@@ -5,7 +5,7 @@ Game = class()
 
 --- Game constructor, called from addon_game_mode.lua
 function Game:init()
-	log('Game:init')
+	print('Game:init')
 	GAME = self
 
 	if Config.DEVELOPMENT then
@@ -14,7 +14,7 @@ function Game:init()
 
 	-- Seed RNG randomly
 	local time_txt = string.gsub(string.gsub(GetSystemTime(), ':', ''), '0','')
-	log("RNG Seed:" .. time_txt)
+	print("RNG Seed:" .. time_txt)
 	math.randomseed(tonumber(time_txt))
 
 	-- Game data structures
@@ -86,7 +86,7 @@ function Game:EventStateChanged(event)
 		self:selectModes()
 	end
 
-	log("GameState changed to " .. tostring(new_state))
+	print("GameState changed to " .. tostring(new_state))
 end
 
 function Game:start()
@@ -99,7 +99,7 @@ function Game:start()
         period = 1,
         func = function()
             if self.player_count < 1 then
-                log("Waiting for at least 1 player to pick")
+                print("Waiting for at least 1 player to pick")
                 return
             end
 
@@ -108,7 +108,7 @@ function Game:start()
             
             self.in_progress = true
 
-            log("Game:start called")
+            print("Game:start called")
 
 	        display("Welcome to Warlock")
 	        display("Created by Toraxxx, Adynathos, Zymoran")
@@ -121,7 +121,7 @@ function Game:start()
 	        self.mode:onStart()
 
             -- Add bots
-            log("Adding " .. tostring(Config.bot_count) .. " bots")
+            print("Adding " .. tostring(Config.bot_count) .. " bots")
             for i = 1, Config.bot_count do
                 self:addBot(0.2)
             end

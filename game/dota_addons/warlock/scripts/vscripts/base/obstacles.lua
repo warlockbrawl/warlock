@@ -134,7 +134,7 @@ end
 function Obstacle:explode(destroyer_dmg_info)
 	local destroyer = nil
 	
-	log("Obstacle exploded")
+	print("Obstacle exploded")
 	
 	-- Set the damage source if any
 	if destroyer_dmg_info.source then

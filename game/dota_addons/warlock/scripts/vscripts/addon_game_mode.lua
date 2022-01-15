@@ -57,7 +57,7 @@ local function load_module(mod_name)
 	end)
 
 	if status then
-		log(' module ' .. mod_name .. ' OK')
+		print(' module ' .. mod_name .. ' OK')
 	else
 		err(' module ' .. mod_name .. ' FAILED: '..err_msg)
 	end

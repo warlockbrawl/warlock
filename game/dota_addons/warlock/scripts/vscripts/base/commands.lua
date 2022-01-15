@@ -123,7 +123,7 @@ function Game:initCommands()
 					count = count + 1
 				end
 
-				log("Projectile Count: " .. count)
+				print("Projectile Count: " .. count)
 		end)
 
 		self:registerCommand('resetcd', function()
@@ -208,16 +208,16 @@ function Game:initCommands()
 			for i, player in pairs(GAME.players) do
 				if player.pawn then
 					local p = player.pawn
-					log("-- Stats for player " .. player.name .. " --")
-					log("move_speed: " .. tostring(p.move_speed))
-					log("max_hp: " .. tostring(p.max_hp))
-					log("hp_regen: " .. tostring(p.hp_regen))
-					log("mass: " .. tostring(p.mass))
-					log("dmg_factor: " .. tostring(p.dmg_factor))
-					log("kb_factor: " .. tostring(p.kb_factor))
-					log("dmg_reduction: " .. tostring(p.dmg_reduction))
-					log("debuff_factor: " .. tostring(p.debuff_factor))
-					log("--------------------------")
+					print("-- Stats for player " .. player.name .. " --")
+					print("move_speed: " .. tostring(p.move_speed))
+					print("max_hp: " .. tostring(p.max_hp))
+					print("hp_regen: " .. tostring(p.hp_regen))
+					print("mass: " .. tostring(p.mass))
+					print("dmg_factor: " .. tostring(p.dmg_factor))
+					print("kb_factor: " .. tostring(p.kb_factor))
+					print("dmg_reduction: " .. tostring(p.dmg_reduction))
+					print("debuff_factor: " .. tostring(p.debuff_factor))
+					print("--------------------------")
 				end
 			end
 		end)

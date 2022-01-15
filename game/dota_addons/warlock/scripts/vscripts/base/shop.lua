@@ -85,7 +85,7 @@ function Shop:init()
 end
 
 function Shop:addPlayer(player)
-    log("Added player to shop with id", player.player_id)
+    print("Added player to shop with id", player.player_id)
     self.mastery_level[player] = { 0, 0, 0 }
     self.spell_level[player] = { 0, 0, 0, 0, 0, 0 }
     self.spells[player] = { nil, nil, nil, nil, nil, nil }
@@ -200,7 +200,7 @@ function Shop:buySpell(player, spell_index)
 
     -- Check if player already has a spell in this column
     if self.spells[player][spell_def.column] then
-        log("Player tried to buy spell but already has a spell in that column")
+        print("Player tried to buy spell but already has a spell in that column")
         return false
     end
 
@@ -357,7 +357,7 @@ function Shop:buyItem(player, item_index)
 
     -- Check if the player has enough money to buy or upgrade the item
     if player.cash < item_def.buy_cost then
-        log("Player tried to buy item but had not enough cash")
+        print("Player tried to buy item but had not enough cash")
         return false
     end
 
@@ -387,7 +387,7 @@ function Shop:buyItem(player, item_index)
 
         -- Check if the item is already maxed
         if level >= item_def.max_level then
-            log("Player tried upgrading maxed item")
+            print("Player tried upgrading maxed item")
             return false
         end
 
@@ -424,7 +424,7 @@ function Shop:buyItem(player, item_index)
     else -- Add new item
         -- If theres no free index it means theres no slot left
         if not first_free_index then
-            log("Player tried buying item but has no free slot")
+            print("Player tried buying item but has no free slot")
             return false
         end
 
@@ -549,7 +549,7 @@ function ShopUI:sendMasteryInfo(player, levels)
         levels = levels
     }
 
-    log("Sending mastery info")
+    print("Sending mastery info")
 
     CustomGameEventManager:Send_ServerToPlayer(player.playerEntity, "shop_mastery_info", event_data)
 end
@@ -643,7 +643,7 @@ function ShopUI:sendSpellColumnInfo(player, column)
         event_data.level = GAME.shop.spell_level[player][column]
     end
 
-    log("Sending spell column info: " .. tostring(event_data))
+    print("Sending spell column info: " .. tostring(event_data))
 
     CustomGameEventManager:Send_ServerToPlayer(player.playerEntity, "shop_spell_column_info", event_data)
 end

@@ -52,7 +52,7 @@ end
 
 function Team:playerJoined(player)
 	if player.team_player_index and self.players[player.team_player_index] == player then
-		log("Player tried to join team but was already in it.")
+		print("Player tried to join team but was already in it.")
 		return
 	end
 	
@@ -93,7 +93,7 @@ end
 
 function Team:playerLeft(player)
 	if self.players[player.team_player_index] ~= player then
-		log("Player tried to leave team but wasnt in it.")
+		print("Player tried to leave team but wasnt in it.")
 		return
 	end
 	
@@ -165,7 +165,7 @@ function Game:initTeams()
 		GAME.teams[team.id] = team
 	end
 	
-	log("Initialized Teams")
+	print("Initialized Teams")
 end
 
 function Game:getAliveTeams()

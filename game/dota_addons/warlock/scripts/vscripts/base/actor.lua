@@ -249,7 +249,7 @@ function Game:filterActors(filter)
 	local actors = {}
 
 	if(not filter) then
-		log("Warning: filter in filterActors was nil, returning empty list")
+		warning("filter in filterActors was nil, returning empty list")
 		return actors
 	end
 

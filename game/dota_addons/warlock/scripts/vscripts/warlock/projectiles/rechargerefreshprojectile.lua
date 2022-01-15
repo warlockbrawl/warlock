@@ -31,7 +31,7 @@ function RechargeRefreshProjectile:onPreTick(dt)
 		if recharge_abil then
 			recharge_abil:EndCooldown()
 		else
-			log("Could not find recharge abil when trying to refresh its cooldown")
+			print("Could not find recharge abil when trying to refresh its cooldown")
 		end
 
 		-- Play a sound

@@ -57,7 +57,7 @@ function Modifier:init(def)
         self.sound_loop_task = GAME:addTask {
             period = loop_duration,
             func = function()
-                log("In loop")
+                print("In loop")
 
                 if self.pawn.unit then
                     self.pawn.unit:EmitSound(self.loop_sound)

@@ -134,7 +134,7 @@ function CastInfo:fromEvent(cast_info)
 	end
 
 	if not cast_info.caster_actor.enabled then
-		log("Ignoring spell from disabled actor")
+		print("Ignoring spell from disabled actor")
 		return nil
 	end
 

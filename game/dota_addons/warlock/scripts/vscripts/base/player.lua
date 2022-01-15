@@ -64,7 +64,7 @@ function Player:HeroSpawned(hero)
 	end
 	
 	------- Player init ----------
-	log("Hero spawned, initializing player...")
+	print("Hero spawned, initializing player...")
 
 	-- Assign a non-native team
 	self:initTeam()
@@ -76,7 +76,7 @@ function Player:HeroSpawned(hero)
 	self.active = true
 	GAME.active_players[self] = true
 
-	log("Player initialized")
+	print("Player initialized")
 	
 	------------------------------
 	
@@ -142,7 +142,7 @@ function Player:EventReconnect()
     -- Get the player entity, invalid after reconnecting
     self.playerEntity = PlayerResource:GetPlayer(self.id)
 
-	log("Player " .. self.name .. " reconnected fully.")
+	print("Player " .. self.name .. " reconnected fully.")
 
     if GAME.mode then
         GAME.mode:playerReconnected(self)
@@ -150,7 +150,7 @@ function Player:EventReconnect()
 end
 
 function Player:EventDisconnect()
-	log(self.name .. ' has left the game.')
+	print(self.name .. ' has left the game.')
 
     -- Replace leavers with bots or kill the leaver until he rejoins
     if Config.bot_on_dc then
@@ -183,7 +183,7 @@ end
 
 -- Native dota teams cannot be reassigned
 function Player:initTeam()
-	log("initTeam")
+	print("initTeam")
 	
 	print("Player ID:", self.playerEntity:GetPlayerID())
 	print("Native Team:", self.playerEntity:GetTeam())
@@ -194,12 +194,12 @@ function Player:initTeam()
 end
 
 function Player:setTeam(new_team)
-	log("setTeam " .. tostring(new_team.id))
+	print("setTeam " .. tostring(new_team.id))
 	
     -- Assign native custom team if it's changed
 	local native_team = PlayerResource:GetCustomTeamAssignment(self.id)
 	if native_team ~= new_team.id then
-		log("Reassigning native custom team")
+		print("Reassigning native custom team")
 		PlayerResource:SetCustomTeamAssignment(self.id, new_team.id)
 	end
 
@@ -266,7 +266,7 @@ function Game:getOrCreatePlayer(player_id)
 	local p = self.players[player_id]
 	
 	if not p then
-		log("New player created")
+		print("New player created")
 		p = Player:new()
         p.id = player_id
         p.playerEntity = PlayerResource:GetPlayer(p.id)
@@ -300,7 +300,7 @@ function Game:startReconnectTask()
             -- Find reconnected players
             for id, player in pairs(self.players) do
                 if player.disconnected and PlayerResource:GetConnectionState(id) == DOTA_CONNECTION_STATE_CONNECTED then
-                    log("Detected reconnected player " .. tostring(id))
+                    print("Detected reconnected player " .. tostring(id))
                     player:EventReconnect()
                 end
 			end
@@ -352,7 +352,7 @@ function Game:onPlayerAbandoned(player)
 end
 
 function Game:EventPlayerJoinedTeam(event)
-	log("EventPlayerJoinedTeam")
+	print("EventPlayerJoinedTeam")
 	PrintTable(event)
 
     if event.disconnect == 1 then
@@ -361,7 +361,7 @@ function Game:EventPlayerJoinedTeam(event)
         -- Find newly disconnected players
         for id, player in pairs(self.players) do
             if not player.disconnected and PlayerResource:GetConnectionState(id) ~= DOTA_CONNECTION_STATE_CONNECTED then
-                log("Detected disconnected player " .. tostring(id))
+                print("Detected disconnected player " .. tostring(id))
                 player:EventDisconnect()
                 dc_count = dc_count + 1
             end
