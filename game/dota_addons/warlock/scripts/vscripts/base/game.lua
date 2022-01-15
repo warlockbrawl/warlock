@@ -43,7 +43,6 @@ function Game:init()
 	self:initArena()
 	self:initGameSetup()
     self:initScoreboard()
-    self:initAwards()
 
 	-- Wait for the game to start
 	self.in_progress = false
@@ -76,8 +75,6 @@ function Game:winGame(winners)
 	
 	display("If you have found any bugs or have feedback please visit us at warlockbrawl.com")
 
-    self.web_api:finishMatch(winners)
-
 	GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
 end
 
@@ -88,11 +85,6 @@ function Game:EventStateChanged(event)
 	if not self.in_progress and not self.is_over and not self.game_start_task and new_state >= DOTA_GAMERULES_STATE_PRE_GAME then
 		self:selectModes()
 	end
-
-    -- Need to init web api here because http requests dont work before
-    if new_state == DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then
-        self:initWebAPI()
-    end
 
 	log("GameState changed to " .. tostring(new_state))
 end
@@ -259,17 +251,6 @@ function Game:PawnKilled(event)
 
 	-- Modifier Stuff
 	Game:modOnDeath(event.victim)
-
-    -- Update kills and deaths for Web API
-    if event.killer and event.killer.owner and event.killer.owner.steam_id ~= 0 then
-        local kills = tostring(PlayerResource:GetKills(event.killer.owner.id))
-        self.web_api:setMatchPlayerProperty(event.killer.owner.steam_id, "kills", kills)
-    end
-
-    if event.victim.owner and event.victim.owner.steam_id ~= 0 then
-        local deaths = tostring(PlayerResource:GetDeaths(event.victim.owner.id))
-        self.web_api:setMatchPlayerProperty(event.victim.owner.steam_id, "deaths", deaths)
-    end
 end
 
 

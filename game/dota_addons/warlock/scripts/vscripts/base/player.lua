@@ -111,9 +111,6 @@ function Player:HeroSpawned(hero)
         child = child:NextMovePeer()
     end
 
-    -- Add awards
-    GAME.awards:applyPlayerAwards(self)
-
     -- Add all start and round gold
     -- The mode can be nil in the start of the game
     if GAME.mode then
@@ -182,17 +179,6 @@ function Player:EventDisconnect()
 
     -- Set disconencted flag for detecting reconnects
 	self.disconnected = true
-	
-	-- Notify web api of when the player disconnected
-	-- This can be used for ranked to detect early abandons
-	if self.steam_id then
-		local disc_round = 0
-		if GAME.mode then
-			disc_round = GAME.mode.round
-		end
-		
-		GAME.web_api:setMatchPlayerProperty(self.steam_id, "disconnect_round", disc_round)
-	end
 end
 
 -- Native dota teams cannot be reassigned
@@ -292,11 +278,6 @@ function Game:getOrCreatePlayer(player_id)
 
         p.name = PlayerResource:GetPlayerName(p.id)
         p.steam_id = PlayerResource:GetSteamAccountID(p.id)
-        
-        -- Add the player through the web api, dont add bots (0)
-        if p.steam_id and p.steam_id ~= 0 then
-            self.web_api:addPlayer(p.steam_id, p.name)
-        end
 
         self.players[p.id] = p
 

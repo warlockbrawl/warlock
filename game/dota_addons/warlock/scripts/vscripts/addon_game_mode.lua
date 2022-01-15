@@ -14,7 +14,6 @@ BASE_MODULES		= {
 	'base/physics', 'base/projectile', 'base/pawn', 'base/spell', 'base/arena', 'base/obstacles',
 	'base/mode', 'base/shop', 'base/modifier', 'base/item', 'base/wincondition',
 	'base/teammode', 'base/team', 'base/gamesetup', 'base/scoreboard', 'base/aicontroller',
-    'base/webapi', 'base/awards',
 
 	'warlock/projectiles/boomerangprojectile', 'warlock/projectiles/gravityprojectile',
 	'warlock/projectiles/meteorprojectile', 'warlock/projectiles/bouncerprojectile',

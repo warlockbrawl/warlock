@@ -105,11 +105,6 @@ Config.ARENA_BASE_LAYER             = 13
 Config.ARENA_LAYER_PER_PLAYER       = 1
 Config.ARENA_SPAWN_INSET            = 600
 
--- Web API constants
-Config.WEB_API_MOD_ID               = "warlockbrawl"
-Config.WEB_API_MOD_VERSION          = 7
-Config.WEB_API_BASE_URL             = "http://api.warlockbrawl.com/mod"
-
 Config.DEDICATED_SERVER_VERSION     = "WARLOCKBRAWL"
 
 Config.ABANDON_TIME					= 120

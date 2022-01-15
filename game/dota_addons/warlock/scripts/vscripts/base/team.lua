@@ -139,11 +139,6 @@ function Team:addScore(score)
 	-- Increase individual player score
 	for _, player in pairs(self.players) do
 		player.score = player.score + 1
-
-        -- Update web api score
-        if player.steam_id and player.steam_id ~= 0 then
-            GAME.web_api:setMatchPlayerProperty(player.steam_id, "score", player.score)
-        end
 	end
 end
 

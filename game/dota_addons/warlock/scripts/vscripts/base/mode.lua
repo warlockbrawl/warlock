@@ -35,7 +35,6 @@ end
 function Mode:advanceRoundCounter()
 	self.round = self.round + 1
 	display(self:roundName())
-	GAME.web_api:setMatchProperty("round", self.round)
 end
 
 -- Adds gold for all players and saves how much so we can give new players
